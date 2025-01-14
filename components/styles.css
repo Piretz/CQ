@@ -1,0 +1,643 @@
+/* General Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  display: flex;
+	justify-content: center;
+	align-items: center;
+	min-height: 100vh;
+  height: 100vh;
+  background-image: url(../img/bgimage.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+/* Header Styles */
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 10%;
+    color: #fff;
+    display: flex;
+    align-items: start; /* Center the logo container vertically */
+  }
+  
+  .header .start,
+  .header .middle,
+  .header .end {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  .start img {
+    width: 40%;
+    height: 40%;
+    border-radius: 50%;
+    margin-right: 10px;
+    cursor: pointer;
+    position: relative;
+    top: 20px;
+    left: 20px;
+  }
+  
+  .start img:hover {
+    transform: scale(1.3);
+  }
+  
+  .start .user-info {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    top: 25px;
+    width: 100%;
+  }
+  
+  .start .level-bar {
+    width: 100px;
+    height: 15px;
+    background-color: #ddd;
+    border-radius: 50px;
+    margin-top: 4px;
+    position: relative;
+  }
+  
+  .start .level-bar .progress {
+    height: 100%;
+    background-color: #4caf50;
+    width: 5%; /* Example progress */
+    border-radius: 4px;
+    
+  }
+  
+  .start .user-info span {
+    position: relative;
+    font-size: 20px;
+    font-family: Poppins;
+  }
+  
+  .start .user-info .level {
+    position: relative;
+    font-size: 16px;
+    font-family: Poppins;
+  }
+  
+  .middle {
+    text-align: center;
+    flex-grow: 1;
+  }
+  
+  .middle .badges {
+    position: relative;
+    top: 10px;
+    left: 28%;
+  }
+  
+  .middle h1 {
+    margin: 0;
+    font-size: 60px;
+    position: relative;
+    right: 78px;
+    top: 10px;
+    font-family: Poppins;
+  }
+  .middle span {
+    position: relative;
+    right: 38%;
+    top: 10px;
+    font-size: 50px;
+    color: #221080;
+  }
+  
+  .end img {
+    width: 40px;
+    height: 30px;
+    margin-left: 30px;
+    cursor: pointer;
+    top: 40px;
+    right: 40px;
+    position: relative;
+  }
+  
+  .end img:hover {
+    transform: scale(1.3);
+  }
+  
+  .icon {
+    fill: #555;
+  }
+  
+  .icon:hover {
+    fill: #000;
+  }
+  
+  
+  /* Sidebar Styles */
+  .sidebar {
+    position: fixed;
+    top: 10%;
+    left: 0;
+    width: 8%;
+    height: calc(100% - 60px);
+    color: #fff;
+    padding-top: 20px;
+  }
+  
+  .sidebar ul {
+    list-style: none;
+  }
+  
+  .sidebar ul li {
+    margin: 10px 0;
+  }
+  
+  .sidebar ul li a {
+    color: #fff;
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+  }
+  
+  /* Icon styles */
+  .sidebar ul li a img.icon {
+    width: 70%;
+    height: 70%;
+    margin-right: 10px;
+    
+  }
+  
+  /* Scale effect on hover */
+  .sidebar ul li a img.icon:hover,
+  .sidebar-footer a img.icon:hover {
+    transform: scale(1.2); /* Increase size on hover */
+  }
+  
+  /* Scale effect on active (click) state */
+  .sidebar ul li a:active img.icon,
+  .sidebar-footer a:active img.icon {
+    transform: scale(1.4); /* Scale the image when clicked */
+  }
+  
+  /* Sidebar Footer Styles */
+  .sidebar-footer {
+    display: flex;
+    flex-direction: column;
+    padding: 10px 20px;
+    margin-top: 25%; /* Push the footer to the bottom of the sidebar */
+  }
+  
+  .sidebar-footer a {
+    color: #fff;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    margin-bottom: 30px; /* Espasyo sa pagitan ng bawat item */
+  }
+  
+  .sidebar-footer a img.icon {
+    width: 70%;
+    height: 70%;
+    margin-right: 10px;
+  }
+  
+  .sidebar ul li a:hover {
+    cursor: pointer;
+  }
+
+  /* Logout Basic styling for the modal */
+.logout-modal {
+  display: none;
+  position: fixed;
+  z-index: 9999;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4); /* Black background with transparency */
+  padding-top: 100px;
+  animation: fadeIn 0.3s ease; /* Background fade-in effect */
+}
+
+/* Modal content with popup animation */
+.logout-modal-content {
+  background-image: url(../img/bgpanel.png);
+  margin: 14% auto;
+  padding: 50px;
+  border: 2px solid #019AEC;
+  width: 30%;
+  height: 30%;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transform: scale(0.8); /* Initial scale for animation */
+  animation: popupEffect 0.3s ease forwards; /* Popup animation */
+}
+
+.logout-modal-content h2 {
+  color: #fff;
+  text-align: center;
+  fofont-family: Poppins;
+}
+
+/* Close button */
+.logout-close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  font-family: Poppins;
+  cursor: pointer;
+}
+
+.logout-close:hover,
+.logout-close:focus {
+  color: #fff;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* Buttons */
+.logout-modal-footer {
+  text-align: center;
+}
+
+.cancel-btn,
+.logout-btn {
+  padding: 15px 30px;
+  margin: 40px;
+  border: none;
+  cursor: pointer;
+  font-size: 20px;
+  border-radius: 5px;
+  font-family: Poppins;
+  background: linear-gradient(to bottom, #035CC2, #0190E6, #00B0FC); /* Gradient background */
+  color: white;
+  transition: transform 0.3s; /* Smooth hover effect */
+}
+
+.cancel-btn:hover,
+.logout-btn:hover {
+  transform: scale(1.3);
+}
+
+/* Animation for fade-in background */
+@keyframes fadeIn {
+  from {
+    background-color: rgba(0, 0, 0, 0);
+  }
+  to {
+    background-color: rgba(0, 0, 0, 0.4);
+  }
+}
+
+/* Animation for popup effect */
+@keyframes popupEffect {
+  from {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Profile Modal Styling */
+/* Profile Modal Styling */
+.profile-modal {
+  display: none;
+  position: fixed;
+  z-index: 100;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4); /* Black background with transparency */
+  padding-top: 100px;
+}
+
+/* Profile Modal Content */
+.profile-modal-content {
+  position: relative;
+  top: 0;
+  background-image: url(../img/profilepanel.png); /* Background image */
+  padding: 10px;
+  height: 100%;
+  width: 100%;
+  background-size: auto;
+  background-repeat: no-repeat; /* Prevents repeating */
+  background-position: center; /* Centers the image */
+  border-radius: 10px;
+  animation: popupEffect 0.3s ease forwards; /* Popup effect */
+  text-align: start;
+}
+
+.profile-modal-content h2 {
+  position:absolute;
+  left: 25%;
+  top: 11%;
+  font-size: 70px;
+  font-family: Poppins;
+  color: #fff;
+}
+
+.profile-details {
+  position: relative;
+}
+
+.profile-image {
+  position: absolute;
+  top: 220px;
+  left: 18%;
+  width: 150px;
+  height: 150px;
+  background-color: #FDAD56;
+  border-left: 2px solid #170099; 
+  border-right: 2px solid #170099;
+  border-top: 2px solid #170099;
+  border-bottom: 6px solid #170099;
+  border-radius: 10%;
+  margin-bottom: 20px;
+  box-shadow: 0 10px 20px #FDAD56;
+}
+
+/* .profile-actions {
+  margin-top: 20px;
+} */
+.profile-details h3 {
+  position: absolute;
+  top: 230px;
+  left: 30%;
+  color: #fff;
+  font-size: 30px;
+  font-family: Poppins;
+  margin-bottom: 10px;
+}
+.profile-badges {
+  position: absolute;
+  top: 270px;
+  left: 30%;
+  color: #fff;
+  font-size: 20px;
+  font-family: Poppins;
+  margin-bottom: 10px;
+}
+
+.profile-labels {
+  position: absolute;
+  color: #fff;
+  border-radius: 50px;
+  top: 280px;
+  left: 36%;
+  font-size: 30px;
+  font-family: zen dots;
+}
+
+.profile-actions button {
+  padding: 10px 20px;
+  margin: 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: #007BFF;
+  color: white;
+  cursor: pointer;
+  font-size: 16px;
+  font-family: Poppins;
+  transition: background-color 0.3s;
+}
+
+.profile-actions button:hover {
+  background-color: #0056b3;
+}
+
+.profile-progress {
+  width: 500px;
+  height: 40px;
+}
+
+.profile-background {
+  display: flex;
+  flex-wrap: wrap;
+  position: fixed;
+  top: 45%;
+  left: 16%;
+  gap: 10px;
+
+}
+
+.badge{
+  width: 110px;
+  height: 90px;
+}
+
+.level-container {
+  position: absolute;
+  top: 310px;
+  left: 36%;
+  color: #fff;
+  font-size: 20px;
+  font-family: Poppins;
+  margin-bottom: 10px;
+  border-radius: 10%;
+}
+
+.level-container span {
+  position: absolute;
+  top: 40px;
+  left: 80%;
+  width: 100px;
+  font-size: 20px;
+  font-family: Poppins;
+  color: #fff;
+}
+
+.close-icon {
+  width: 110px; /* Adjust size as needed */
+  height: 110px;
+  cursor: pointer;
+  position: absolute;
+  left: 18%;
+  top: 10%;
+  
+}
+
+.close-icon:hover {
+  transform: scale(1.3);
+}
+
+/* Animation for popup effect */
+@keyframes popupEffect {
+  from {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Notification Modal Styling */
+.notification-modal {
+  display: none;
+  position: fixed;
+  z-index: 100;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4); /* Background with transparency */
+  padding-top: 100px;
+}
+
+/* Notification Modal Content */
+.notification-modal-content {
+  background: #ffffff;
+  margin: 10% auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  width: 40%;
+  border-radius: 10px;
+  animation: popupEffect 0.3s ease forwards; /* Popup effect */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  text-align: center;
+}
+
+.notification-modal-content h2 {
+  color: #333;
+}
+
+.notification-list {
+  list-style: none;
+  padding: 0;
+  margin: 20px 0;
+  text-align: left;
+}
+
+.notification-list li {
+  margin: 10px 0;
+  font-size: 16px;
+  font-family: Poppins;
+  color: #555;
+}
+
+.notification-actions {
+  margin-top: 20px;
+}
+
+.notification-actions button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  background-color: #007BFF;
+  color: white;
+  cursor: pointer;
+  font-size: 16px;
+  font-family: Poppins;
+  transition: background-color 0.3s;
+}
+
+.notification-actions button:hover {
+  background-color: #0056b3;
+}
+
+/* Close Button Styling */
+.notification-close {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  font-size: 24px;
+  font-weight: bold;
+  font-family: Poppins;
+  color: #aaa;
+  cursor: pointer;
+}
+
+.notification-close:hover {
+  color: #333;
+}
+
+/* Animation for popup effect */
+@keyframes popupEffect {
+  from {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Modal Styling */
+.settings-modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(3, 3, 3, 0.89);
+  padding-top: 100px;
+}
+
+.settings-modal-content {
+  background-color: white;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 40%;
+  border-radius: 10px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  text-align: center;
+}
+
+.settings-close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  font-family: Poppins;
+  cursor: pointer;
+}
+
+.settings-close:hover,
+.settings-close:focus {
+  color: black;
+  text-decoration: none;
+}
+
+.settings-options {
+  margin: 20px 0;
+  text-align: left;
+}
+
+.settings-actions {
+  margin-top: 20px;
+}
+
+.save-settings-btn,
+.close-settings-btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  background-color: #007BFF;
+  color: white;
+  cursor: pointer;
+  font-size: 16px;
+  font-family: Poppins;
+}
+
+.save-settings-btn:hover,
+.close-settings-btn:hover {
+  background-color: #0056b3;
+}
+
+

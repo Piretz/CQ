@@ -1,0 +1,135 @@
+body {
+    font-family: 'Poppins' sans-serif, 'zen dots' sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Ensure the body takes full height of the viewport */
+
+}
+
+.Title {
+    position: relative;
+    top: 5%;
+    text-align: center-middle;
+    font-family: zen dots;
+    font-size: xx-large;
+    font-weight: bold;
+    background-image: linear-gradient(to right, #FFFFFF, #7CD8FF, #FFFFFF, #035CC2); /* Gradient colors */
+    -webkit-background-clip: text; /* Clip the background to the text */
+    color: transparent; /* Make the text color transparent to show the gradient */
+}
+
+/* Panel Box Styling */
+.panel-box {
+    height: 80%;
+    width: 100%;
+    max-width: 70%;
+    max-height: 800px;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    background-color: #223F77;
+    border-left: 1px solid #019AEC;  /* Left border */
+    border-right: 1px solid #019AEC; /* Right border */
+    border-top: 1px solid #019AEC;   /* Top border */
+    border-bottom: 4px solid #019AEC; /* Bottom border */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center; /* Center content in the panel */
+}
+
+/* h2 {
+    margin-bottom: 10px;
+} */
+
+/* Badge Container Styling */
+.badge-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 0px;
+    margin-top: 2%;
+}
+
+/* Badge Styling */
+.badge {
+    text-align: center;
+    padding: 6px;
+    border-radius: 8px;
+    background-image: url(../img/bgbadge.png);
+    border-left: 1px solid #019AEC;  /* Left border */
+    border-right: 1px solid #019AEC; /* Right border */
+    border-top: 1px solid #019AEC;   /* Top border */
+    border-bottom: 4px solid #019AEC; /* Bottom border */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 150px;
+    height: 120px;
+    box-sizing: border-box;
+    position: relative;
+}
+
+.badge img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+}
+
+.badge p {
+    margin-top: 8px;
+    font-size: 14px;
+    font-family: Poppins;
+    color: #fff;
+}
+/* Lock Icon Styling */
+.lock-icon {
+    position: absolute;
+    top: 20px;
+    right: 40px;
+    width: 20px;
+    height: 20px;
+    display: none; /* Initially hidden */
+  }
+  
+  /* Locked Badge Styling (with lock icon) */
+  .badge.locked {
+    opacity: 0.5; /* Make locked badges semi-transparent */
+  }
+  
+  .badge.locked .lock-icon {
+    display: block; /* Show lock icon for locked badges */
+  }
+  
+  /* Unlocked Badge Styling */
+  .badge.unlocked {
+    opacity: 1; /* Fully visible for unlocked badges */
+  }
+
+/* Responsive Styling */
+@media screen and (max-width: 768px) {
+    .badge-container {
+        justify-content: center; /* Center the badges */
+    }
+
+    .badge {
+        width: 100px; /* Reduce badge size */
+    }
+
+    .badge img {
+        width: 50px;
+        height: 50px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .panel-box {
+        padding: 15px;
+    }
+
+    .badge {
+        width: 80px; /* Reduce badge size more for smaller screens */
+    }
+
+    .badge img {
+        width: 40px;
+        height: 40px;
+    }
+}

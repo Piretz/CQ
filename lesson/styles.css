@@ -1,0 +1,299 @@
+/* main content */
+.main-content {
+  position: relative;
+  top: 6%;
+}
+
+body {
+  font-family: 'Poppins' sans-serif;
+  display: flex;
+	justify-content: center;
+	align-items: center;
+	min-height: 100vh;
+  height: 100vh;
+  background-image: url(../img/bgimage.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+/* Top Box */
+.top-box {
+  background: linear-gradient(to bottom, #035CC2, #073269);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Box shadow */
+  border-left: 1px solid #019AEC;  /* Left border */
+  border-right: 1px solid #019AEC; /* Right border */
+  border-top: 1px solid #019AEC;   /* Top border */
+  border-bottom:1px solid #019AEC;   /* bottom border */
+  width: 100%;
+  height: 50px; /* Adjust height of the top box */
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  display: flex;
+  justify-content: space-between; /* Aligns buttons to the left and search bar to the right */
+  align-items: center; /* Vertically center items */
+  gap: 30px;
+  margin-bottom: 5px;
+}
+
+/* Search Bar Container */
+.search-bar-container {
+  position: relative;
+  width: 40%;
+}
+
+.search-bar {
+  width: 100%;
+  padding: 10px;
+  padding-right: 40px; /* Space for the icon */
+  font-size: 16px;
+  font-family: Poppins;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background: linear-gradient(to right, #035CC2, #073269);
+  color: #fff;
+}
+
+.search-bar::placeholder {
+  color: #fff;
+}
+
+/* Icon Inside Input Field */
+.search-bar-container::after {
+  content: "🔍"; /* Search Icon */
+  position: absolute;
+  right: 15px; /* Position at the end */
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 18px;
+  color: #fff;
+}
+
+/* Button Container */
+.button-container {
+  display: flex;
+  gap: 15px;
+}
+
+.action-button {
+  padding: 10px 20px;
+  background-color: #0F62E6;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.action-button:hover {
+  background-color: #2980b9;
+}
+
+/* Box Container */
+.box-container {
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+  scroll-behavior: smooth;
+}
+
+/* Box Styling */
+.box-box-1 {
+  background: linear-gradient(to bottom, #123775, #164592, #07152C);
+  border-left: 1px solid #019AEC;  /* Left border */
+  border-right: 1px solid #019AEC; /* Right border */
+  border-bottom: 4px solid #019AEC; /* Bottom border */
+  width: 750px;
+  height: 750px;
+  overflow-y: auto;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Centered Box Styling */
+.centered-box {
+  width: 90%; /* Adjust width of the centered box */
+  height: 24%; /* Adjust height of the centered box */
+  background: linear-gradient(to bottom, #019AEC, #127CC3, #07152C);
+  border: 1px solid #019AEC; /* Border styling */
+  border-radius: 10px; /* Rounded corners */
+  display: flex; /* Use flexbox for centering content inside */
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  margin: auto; /* Align the box itself in the parent */
+  margin-bottom: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+}
+
+/* Lesson Details Styling */
+.lesson-details {
+  text-align: start; /* Center-align text */
+  font-family: Poppins;
+  color: #fff; /* Text color */
+  max-height: 700px; /* Adjust as needed */
+  overflow-y: auto; /* Enable vertical scrolling */
+  padding-right: 5px; /* Prevent content from being hidden behind scrollbar */
+  padding: 2%; /* Add padding */
+  padding-bottom: 3%;
+  padding-top: 2%;
+}
+
+.lesson-details h3 {
+  font-size: 18px; /* Lesson title font size */
+  font-family: Poppins;
+  margin-bottom: 10px; /* Spacing below title */
+  color: #fff; /* Highlight color for title */
+  text-indent: 5%;
+}
+
+.lesson-details h5{
+  font-size: 16px; /* Lesson title font size */
+  font-family: Poppins;
+  margin-bottom: 10px; /* Spacing below title */
+  color: #fff; /* Highlight color for title */
+  text-indent: 7%;
+}
+
+.lesson-details p {
+  font-size: 14px; /* Font size for paragraphs */
+  font-family: Poppins;
+  margin-top: 10px; /* Margin between paragraphs */
+  text-indent: 10%;
+  border-bottom: 2px solid #ddd; /* Add a border below each paragraph */
+  text-underline-position: under;
+  text-align: center;
+}
+
+/* Underline the last paragraph */
+.lesson-details p:last-child {
+  text-decoration: underline; /* Adds an underline */
+  text-underline-position: under;
+}
+
+/* View Button Styling */
+.view-button {
+  margin-top: 15px; /* Spacing above button */
+  padding: 8px 16px; /* Button padding */
+  background: linear-gradient(to right, #01A1F1, #127CC3, #127CC3, #01A1F1); /* Button gradient background */
+  color: white; /* Button text color */
+  border: none; /* Remove border */
+  border-radius: 5px; /* Rounded corners */
+  cursor: pointer; /* Pointer cursor on hover */
+  font-size: 14px; /* Font size for button text */
+  font-family: Poppins;
+  margin-left: 5%;
+}
+
+.view-button:hover {
+  background-color: #0056b3; /* Darker shade on hover */
+}
+
+.video-container {
+  margin-bottom: 2%;
+  border: 2px solid #019AEC;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.box-box-2 {
+  background: linear-gradient(to bottom, #123775, #164592, #07152C);
+  border-left: 1px solid #019AEC;  /* Left border */
+  border-right: 1px solid #019AEC; /* Right border */
+  border-bottom: 4px solid #019AEC; /* Bottom border */
+  width: 650px;
+  height: 750px; 
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  padding-top: 20px;
+}
+
+.box-box-2 h3, h5, p {
+  color: #fff;
+}
+.box-box-2 h3 {
+  text-indent: 5%;
+  margin-bottom: 20px;
+}
+
+.box-box-2 h5 {
+  text-indent: 7%;
+  margin-bottom: 20px;
+}
+
+.box-box-2 p {
+  text-indent: 10%;
+  margin-bottom: 10px;
+  margin-left: 5px;
+  text-align: center;
+  border-bottom: 2px solid #ddd;
+  text-underline-position: under;
+}
+
+.experience-bar {
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
+  justify-content: flex-start; /* Align items to the left */
+}
+
+
+.badge {
+  display: flex;
+  align-items: center;
+}
+
+.badge img {
+  padding: 10px;
+}
+
+.progress-container {
+  width: 80%;
+}
+
+.progress-bar {
+  width: 50%;
+  background: #dadcdf;
+  padding: 2px;
+  border-radius: 5px;
+  position: relative;
+}
+
+.progress {
+  width: 75%;
+  background-color: #4caf50;
+  height: 10px;
+  border-radius: 5px;
+}
+
+.progress-text {
+  position: absolute;
+  left: calc(75% - 20px);
+  top: -18px;
+  font-size: 12px;
+  font-family: Poppins;
+  color: #fff;
+  font-weight: bold;
+}
+
+/* Align button content and play icon to the right */
+.view-button {
+  display: flex; /* Use flexbox to align items horizontally */
+  align-items: center; /* Vertically center the items */
+  justify-content: flex-end; /* Push the play icon to the right side */
+  
+  background-color: #019AEC;
+  color: white;
+  border: none;
+  border-radius: 5px;
+}
+
+.view-button .play-icon {
+  width: 20px;
+  height: 20px;
+  margin-left: 8px; /* Adds space between the text and the icon */
+}
+
+
+.view-button:hover {
+  background: #0178BA;
+}
+
