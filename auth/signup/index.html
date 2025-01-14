@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="signup.css">
+  <script defer src="script.js"></script>
+  <title>Sign Up Page</title>
+</head>
+<body>
+  <header class="header">
+    <nav class="container">
+      <ul class="nav-links">
+        <li><a href="#home" class="nav-link" id="home-link">Home</a></li>
+        <li><a href="#about" class="nav-link" id="about-link">About</a></li>
+        <li><a href="#courses" class="nav-link" id="courses-link">Courses</a></li>
+        <li><a href="#contact" class="nav-link" id="contact-link">Contact Us</a></li>
+        <li><a href="login" class="nav-link" id="login-link">Login</a></li>
+        <li><a href="signup" class="nav-link" id="signup-link"><b>Sign Up</b></a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="content">
+    <a href="/" class="top-image">
+      <img src="/assets/SG.png" alt="Go Back to Homepage">
+    </a>
+
+    <div class="login-section">
+      <div class="background">
+        <img src="/assets/bg.png" alt="Background Image" class="background-image">
+        <img src="/assets/IMG33.png" alt="Login Illustration" class="foreground-image">
+      </div>
+
+      <form class="login-form">
+        <label for="name">Full Name</label>
+        <input id="name" type="text" placeholder="Ex: Johnny Seens">
+
+        <label for="email">Email</label>
+        <input id="email" type="email" placeholder="Enter your Email">
+
+        <label for="username">Username</label>
+        <input id="username" type="text" placeholder="Choose a username">
+
+        <label for="birthday">Birthday</label>
+        <input id="birthday" type="date">
+
+        <label for="password">Password</label>
+        <div class="password-container">
+          <input id="password" type="password" placeholder="Enter your password">
+          <button type="button" id="toggle-password" class="password-toggle">
+            <i class="fas fa-eye"></i>
+          </button>
+        </div>
+
+        <label for="confirm-password">Confirm Password</label>
+        <input id="confirm-password" type="password" placeholder="Confirm your password">
+
+        <button type="submit" class="submit-button">Sign Up</button>
+      </form>
+    </div>
+  </div>
+</body>
+</html>
