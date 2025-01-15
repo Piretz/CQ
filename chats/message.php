@@ -16,24 +16,106 @@
 
     <div class="panel-container">
         <!-- Panel Box for Messages List -->
+         
         <div class="messages-list">
-            <h2>My Messages</h2>
-            <div class="search-bar">
-                <input type="text" placeholder="Search..." id="search-input">
-                <button class="search-btn">
-                    <img src="../img/iconsearch.png" alt="Search Icon" style="width: 30px; height: 30px;">
-                </button>
-            </div>
-            <div class="message-item" onclick="openConversation('Jane Smith', 'Hello, are you free to talk?', 'annette.png')">
-                <img src="../img/annette.png" alt="Profile Image" class="profile-img">
-                <div class="message-details">
-                    <p class="user-name">Jane Smith</p>
-                    <p class="message-text">Hey, how's it going?THGFDHGDFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF</p>
-                    <p class="user-text"></p>
-                    <span class="message-time">10:30 AM</span>
+                <div class="list-header">
+                    <h2>My Messages</h2>
+                    <div class="search-bar">
+                        <input type="text" placeholder="Search..." id="search-input">
+                        <button class="search-btn">
+                            <img src="../img/iconsearch.png" alt="Search Icon" style="width: 30px; height: 30px;">
+                        </button>
+                    </div>
+                </div>
+
+            <div class="messages-container">
+                <div class="message-item" onclick="openConversation('Jane Smith', 'Hello, are you free to talk?', 'annette.png')">
+                    <img src="../img/annette.png" alt="Profile Image" class="profile-img">
+                    <div class="message-details">
+                        <p class="user-name">Jane Smith</p>
+                        <p class="message-text">Hello, are you free to talk?</p>
+                        <p class="user-text"></p>
+                        <span class="message-times">10:30 AM</span>
+                    </div>
+                    
+                </div>
+                <!-- More message items can be added here -->
+                <div class="message-item" onclick="openConversation('Jane Smith', 'Hello, are you free to talk?', 'annette.png')">
+                    <img src="../img/annette.png" alt="Profile Image" class="profile-img">
+                    <div class="message-details">
+                        <p class="user-name">Jane Smith</p>
+                        <p class="message-text">Hello, are you free to talk?</p>
+                        <p class="user-text"></p>
+                        <span class="message-times">10:30 AM</span>
+                    </div>
+                </div>
+
+                <div class="message-item" onclick="openConversation('Jane Smith', 'Hello, are you free to talk?', 'annette.png')">
+                    <img src="../img/annette.png" alt="Profile Image" class="profile-img">
+                    <div class="message-details">
+                        <p class="user-name">Jane Smith</p>
+                        <p class="message-text">Hello, are you free to talk?</p>
+                        <p class="user-text"></p>
+                        <span class="message-times">10:30 AM</span>
+                    </div>
+                    
+                </div>
+
+                <div class="message-item" onclick="openConversation('Jane Smith', 'Hello, are you free to talk?', 'annette.png')">
+                    <img src="../img/annette.png" alt="Profile Image" class="profile-img">
+                    <div class="message-details">
+                        <p class="user-name">Jane Smith</p>
+                        <p class="message-text">Hello, are you free to talk?</p>
+                        <p class="user-text"></p>
+                        <span class="message-times">10:30 AM</span>
+                    </div>
+                    
+                </div>
+
+                <div class="message-item" onclick="openConversation('Jane Smith', 'Hello, are you free to talk?', 'annette.png')">
+                    <img src="../img/annette.png" alt="Profile Image" class="profile-img">
+                    <div class="message-details">
+                        <p class="user-name">Jane Smith</p>
+                        <p class="message-text">Hello, are you free to talk?</p>
+                        <p class="user-text"></p>
+                        <span class="message-times">10:30 AM</span>
+                    </div>
+                    
+                </div>
+
+                <div class="message-item" onclick="openConversation('Jane Smith', 'Hello, are you free to talk?', 'annette.png')">
+                    <img src="../img/annette.png" alt="Profile Image" class="profile-img">
+                    <div class="message-details">
+                        <p class="user-name">Jane Smith</p>
+                        <p class="message-text">Hello, are you free to talk?</p>
+                        <p class="user-text"></p>
+                        <span class="message-times">10:30 AM</span>
+                    </div>
+                    
+                </div>
+
+                <div class="message-item" onclick="openConversation('Jane Smith', 'Hello, are you free to talk?', 'annette.png')">
+                    <img src="../img/annette.png" alt="Profile Image" class="profile-img">
+                    <div class="message-details">
+                        <p class="user-name">Jane Smith</p>
+                        <p class="message-text">Hello, are you free to talk?</p>
+                        <p class="user-text"></p>
+                        <span class="message-times">10:30 AM</span>
+                    </div>
+                    
+                </div>
+
+                <div class="message-item" onclick="openConversation('Jane Smith', 'Hello, are you free to talk?', 'annette.png')">
+                    <img src="../img/annette.png" alt="Profile Image" class="profile-img">
+                    <div class="message-details">
+                        <p class="user-name">Jane Smith</p>
+                        <p class="message-text">Hello, are you free to talk?</p>
+                        <p class="user-text"></p>
+                        <span class="message-times">10:30 AM</span>
+                    </div>
+                    
                 </div>
             </div>
-            <!-- More message items can be added here -->
         </div>
 
         <!-- Panel Box for Conversation Body -->
@@ -46,7 +128,7 @@
                 <!-- Conversation will appear here -->
             </div>
             <div class="bottom-box">
-                <textarea id="message-input" placeholder="Type a message"></textarea>
+                <textarea id="message-input" placeholder="Type a message" class="message-input"></textarea>
                 <button class="send-btn" onclick="sendMessage()">
                     <img src="../img/btnsend.png" alt="Send Icon">
                 </button>
@@ -74,7 +156,7 @@
                    
                     <img src="../img/${profileImg}" alt="Friend's Profile Image" class="profile-img">
                     <p class="message-text">${initialMessage}</p>
-                    <span class="message-time">10:35 AM</span>
+                    <span class="message-time"></span>
                 </div>
                 <div class="message me">
                     <span class="message-label"></span>
@@ -108,10 +190,12 @@
         // Update the last message in the message details with "YOU: HI"
         const messageDetails = document.querySelector('.message-details');
         const messageTextElement = messageDetails.querySelector('.message-text');
+        const messageTimeElement = messageDetails.querySelector('.message-times');
 
         if (messageTextElement) {
             // If message-text exists, just update it without removing the username
             messageTextElement.innerHTML = `<span class="message-label">You:</span> ${messageText}`;
+            messageTimeElement.textContent = currentTime; // Update the message time in the message list
         } else {
             // If message-text doesn't exist (initial state), set it
             messageDetails.innerHTML = `  
@@ -121,6 +205,11 @@
                 <span class="message-time">${currentTime}</span>
             `;
         }
+
+         // Update message-time in the messages list
+            const messageItem = document.querySelector('.message-item');
+            const messageTimeInList = messageItem.querySelector('.message-times');
+            messageTimeInList.textContent = currentTime; // Update time in message list
 
             // Clear the input field
             messageInput.value = "";

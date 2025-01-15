@@ -22,7 +22,7 @@
                 
                 <!-- Fixed Description Paragraph -->
                 <p class="fixed-description">
-                  Having trouble navigating CodeQuest? Don’t worry! This page will guide you through the most common questions and issues.
+                  - Having trouble navigating CodeQuest? Don’t worry! This page will guide you through the most common questions and issues.
                 </p>
               
                 <!-- Getting Started -->

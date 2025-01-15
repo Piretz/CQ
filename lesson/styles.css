@@ -1,7 +1,14 @@
 /* main content */
 .main-content {
-  position: relative;
-  top: 6%;
+  display: flex;
+  flex-direction: column; /* Stack items vertically */
+  align-items: center; /* Center items horizontally */
+  gap: 20px; /* Space between top-box and box-container */
+  width: 100%; /* Ensure it takes the full width */
+  box-sizing: border-box;
+  max-height: 100vh;
+  height: 100%;
+
 }
 
 body {
@@ -18,13 +25,15 @@ body {
 
 /* Top Box */
 .top-box {
+  position: relative;
+  top: 120px;
   background: linear-gradient(to bottom, #035CC2, #073269);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Box shadow */
   border-left: 1px solid #019AEC;  /* Left border */
   border-right: 1px solid #019AEC; /* Right border */
   border-top: 1px solid #019AEC;   /* Top border */
   border-bottom:1px solid #019AEC;   /* bottom border */
-  width: 100%;
+  width: 70%;
   height: 50px; /* Adjust height of the top box */
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -33,7 +42,7 @@ body {
   justify-content: space-between; /* Aligns buttons to the left and search bar to the right */
   align-items: center; /* Vertically center items */
   gap: 30px;
-  margin-bottom: 5px;
+ 
 }
 
 /* Search Bar Container */
@@ -90,10 +99,17 @@ body {
 
 /* Box Container */
 .box-container {
-  display: flex;
-  justify-content: center;
-  gap: 6px;
-  scroll-behavior: smooth;
+  display: grid;
+  grid-template-columns: 0fr 0fr; /* Two equal columns */
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  gap: 20px; /* Space between the boxes */
+  width: 100%; /* Ensure it takes the full available width */
+  height: calc(100vh - 6%); /* Adjust to make the container fill available space */
+  padding: 40px; /* Add padding if needed */
+  box-sizing: border-box; /* Include padding and border in the element's total width and height */
+  margin-top: 3%;
+ 
 }
 
 /* Box Styling */
@@ -103,9 +119,11 @@ body {
   border-right: 1px solid #019AEC; /* Right border */
   border-bottom: 4px solid #019AEC; /* Bottom border */
   width: 750px;
-  height: 750px;
+  height: 720px;
   overflow-y: auto;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 3%;
+  border-radius: 8px;
+  box-shadow: 0 8px 16px #019AEC;
 }
 
 /* Centered Box Styling */
@@ -200,8 +218,9 @@ body {
   border-right: 1px solid #019AEC; /* Right border */
   border-bottom: 4px solid #019AEC; /* Bottom border */
   width: 650px;
-  height: 750px; 
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  height: 720px; 
+  box-shadow: 0 8px 16px #019AEC;
+  border-radius: 6px;
   padding: 20px;
   padding-top: 20px;
 }

@@ -483,100 +483,122 @@ body {
   }
 }
 
-/* Notification Modal Styling */
-.notification-modal {
+/* Notification Modal */
+#notificationModal {
   display: none;
+  color: #fff;
   position: fixed;
-  z-index: 100;
+  z-index: 1000;
   left: 0;
   top: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.4); /* Background with transparency */
-  padding-top: 100px;
+  background-color: rgba(0, 0, 0, 0.4);
 }
 
-/* Notification Modal Content */
 .notification-modal-content {
-  background: #ffffff;
+  background-color: #172842;
   margin: 10% auto;
   padding: 20px;
-  border: 1px solid #ccc;
-  width: 40%;
-  border-radius: 10px;
-  animation: popupEffect 0.3s ease forwards; /* Popup effect */
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-  text-align: center;
+  border: 1px solid #888;
+  width: 80%;
+  border-radius: 8px;
+  box-shadow: 0 10px 20px #0286DF;
+  max-height: 60vh;
+  overflow-y:auto;
+}
+
+.notification-close {
+  color: #fff;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+  position: sticky; /* Make the close button sticky */
+  top: 20px; /* Position it near the top */
+  z-index: 10; /* Make sure it stays above other content */
+}
+
+.notification-close:hover,
+.notification-close:focus {
+  color: #fff;
+  text-decoration: none;
+}
+
+.box-container {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  padding: 4%;
+}
+
+.box {
+  display: flex;
+  align-items: flex-start;
+  gap: 15px;
+  padding: 10px;
+  border: 2px solid #019AEC;
+  background: linear-gradient(to bottom, #019AEC, #005681, #004C73, #00121B);
+  box-shadow: 0 4px 8px #8f989c;
+  border-radius: 8px;
+  position: relative;
+}
+
+.badge-image {
+  width: 50px;
+  height: 50px;
+}
+
+.badge-details {
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  position: relative;
+  padding: 5px;
+}
+
+.badge-type {
+  font-weight: bold;
+  margin: 0;
+}
+
+.badge-description {
+  margin: 1%;
+  color: #fff;
+  list-style-type: disc; /* Add bullet points */
+  padding-left: 2%;
+}
+
+.badge-description li {
+  color: #fff; /* Text color for list items */
+  text-indent: 0; /* Prevent additional indentation */
+}
+
+.badge-time {
+  margin: 0;
+  color: #fff;
+  position: absolute;
+  top: 0;
+  right: 0;
 }
 
 .notification-modal-content h2 {
-  color: #333;
-}
-
-.notification-list {
-  list-style: none;
-  padding: 0;
-  margin: 20px 0;
-  text-align: left;
-}
-
-.notification-list li {
-  margin: 10px 0;
-  font-size: 16px;
-  font-family: Poppins;
-  color: #555;
-}
-
-.notification-actions {
-  margin-top: 20px;
-}
-
-.notification-actions button {
-  padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
-  background-color: #007BFF;
-  color: white;
-  cursor: pointer;
-  font-size: 16px;
-  font-family: Poppins;
-  transition: background-color 0.3s;
-}
-
-.notification-actions button:hover {
-  background-color: #0056b3;
-}
-
-/* Close Button Styling */
-.notification-close {
-  position: absolute;
-  top: 15px;
-  right: 20px;
   font-size: 24px;
   font-weight: bold;
   font-family: Poppins;
-  color: #aaa;
-  cursor: pointer;
+  color: #fff;
+  position: sticky; /* Make the title sticky */
+  top: -20px; /* Ensure it sticks near the top */
+  background-color: #172842; /* Match background to prevent flicker */
+  padding: 10px;
+  z-index: 5; /* Ensure the title is above content */
 }
 
-.notification-close:hover {
-  color: #333;
-}
 
-/* Animation for popup effect */
-@keyframes popupEffect {
-  from {
-    transform: scale(0.8);
-    opacity: 0;
-  }
-  to {
-    transform: scale(1);
-    opacity: 1;
-  }
-}
 
-/* Modal Styling */
-.settings-modal {
+/* Settings Modal */
+#settingsModal {
   display: none;
   position: fixed;
   z-index: 1000;
@@ -584,19 +606,17 @@ body {
   top: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(3, 3, 3, 0.89);
-  padding-top: 100px;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.4);
 }
 
 .settings-modal-content {
-  background-color: white;
-  margin: auto;
+  background-color: #fff;
+  margin: 15% auto;
   padding: 20px;
   border: 1px solid #888;
-  width: 40%;
-  border-radius: 10px;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-  text-align: center;
+  width: 80%;
+  border-radius: 8px;
 }
 
 .settings-close {
@@ -604,7 +624,6 @@ body {
   float: right;
   font-size: 28px;
   font-weight: bold;
-  font-family: Poppins;
   cursor: pointer;
 }
 
@@ -614,30 +633,7 @@ body {
   text-decoration: none;
 }
 
-.settings-options {
-  margin: 20px 0;
-  text-align: left;
+.settings-options label {
+  display: block;
+  margin: 10px 0;
 }
-
-.settings-actions {
-  margin-top: 20px;
-}
-
-.save-settings-btn,
-.close-settings-btn {
-  padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
-  background-color: #007BFF;
-  color: white;
-  cursor: pointer;
-  font-size: 16px;
-  font-family: Poppins;
-}
-
-.save-settings-btn:hover,
-.close-settings-btn:hover {
-  background-color: #0056b3;
-}
-
-

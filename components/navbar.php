@@ -121,44 +121,87 @@
             </div>
           </div>
 
-           <!-- -------------------------------Notification Modal--------------------------------------- -->
+        
+           <!---------------- Notification Modal ------------------>
           <div id="notificationModal" class="notification-modal">
             <div class="notification-modal-content">
-              <span class="notification-close" id="notification-closeModal">&times;</span>
+              <span class="notification-close">&times;</span>
               <h2>Notifications</h2>
-              <ul class="notification-list">
-                <li>You have completed Lesson 1: Introduction to Programming!</li>
-                <li>Your achievement "Code Beginner" is unlocked!</li>
-                <li>New badge added: "5 Days Streak!"</li>
-              </ul>
-              <div class="notification-actions">
-                <button class="close-notifications-btn" id="closeNotificationsBtn">Close</button>
+              <div class="box-container">
+                <div class="box">
+                  <img src="../img/bronze.png" alt="Bronze Badge" class="badge-image" />
+                  <div class="badge-details">
+                    <p class="badge-type">Bronze Badge</p>
+                    <ul class="badge-description">
+                      <li>Completed your first lesson</li>
+                      </ul>
+                    <p class="badge-time">5 minutes ago</p>
+                  </div>
+                </div>
+                <div class="box">
+                  <img src="../img/gold.png" alt="Silver Badge" class="badge-image" />
+                  <div class="badge-details">
+                    <p class="badge-type">Silver Badge</p>
+                    <ul class="badge-description">
+                      <li>Achieved Unlocked</li>
+                      </ul>
+                    <p class="badge-time">2 hours ago</p>
+                  </div>
+                </div>
+                <div class="box">
+                  <img src="../img/gold.png" alt="Silver Badge" class="badge-image" />
+                  <div class="badge-details">
+                    <p class="badge-type">Silver Badge</p>
+                    <ul class="badge-description">
+                      <li>Achieved Unlocked</li>
+                      </ul>
+                    <p class="badge-time">2 hours ago</p>
+                  </div>
+                </div>
+                <div class="box">
+                  <img src="../img/gold.png" alt="Silver Badge" class="badge-image" />
+                  <div class="badge-details">
+                    <p class="badge-type">Silver Badge</p>
+                    <ul class="badge-description">
+                      <li>Achieved Unlocked</li>
+                      </ul>
+                    <p class="badge-time">2 hours ago</p>
+                  </div>
+                </div>
+                <div class="box">
+                  <img src="../img/gold.png" alt="Silver Badge" class="badge-image" />
+                  <div class="badge-details">
+                    <p class="badge-type">Silver Badge</p>
+                    <ul class="badge-description">
+                      <li>Achieved Unlocked</li>
+                      </ul>
+                    <p class="badge-time">2 hours ago</p>
+                  </div>
+                </div>
+                
               </div>
             </div>
           </div>
 
-            <!--------------------------------------- Settings Modal -------------------------------------------------->
-          <div id="settingsModal" class="settings-modal">
-            <div class="settings-modal-content">
-              <span class="settings-close" id="settings-closeModal">&times;</span>
-              <h2>Settings</h2>
-              <div class="settings-options">
-                <label>
-                  <input type="checkbox" id="darkModeToggle">
-                  Enable Dark Mode
-                </label>
-                <br>
-                <label>
-                  <input type="checkbox" id="notificationsToggle">
-                  Enable Notifications
-                </label>
-              </div>
-              <div class="settings-actions">
-                <button class="save-settings-btn" id="saveSettingsBtn">Save</button>
-                <button class="close-settings-btn" id="closeSettingsBtn">Close</button>
-              </div>
+        <!------------------------ Settings Modal ------------------------------->
+        <div id="settingsModal" class="settings-modal">
+          <div class="settings-modal-content">
+            <span class="settings-close">&times;</span>
+            <h2>Settings</h2>
+            <div class="settings-options">
+              <label>
+                <input type="checkbox"> Enable Notifications
+              </label>
+              <label>
+                <input type="checkbox"> Dark Mode
+              </label>
+              <label>
+                <input type="checkbox"> Auto-update Lessons
+              </label>
             </div>
           </div>
+        </div>
+
 
             <!--------------------------------- Modal for logout confirmation ------------------------------------->
         <div id="logoutModal" class="logout-modal">
@@ -172,6 +215,7 @@
           </div>
         </div>
 
+        <!-- ------------------------------SCRIPT------------------------------------------ -->
           <script>
             // Get modal, buttons, and close icon for logout
             const modal = document.getElementById("logoutModal");
@@ -186,7 +230,44 @@
             const profileCloseModal = document.getElementById("profile-closeModal");
             const closeProfileBtn = document.getElementById("closeProfileBtn");
 
-           
+            // Get modal elements of notification and settings
+            const notificationModal = document.getElementById("notificationModal");
+            const settingsModal = document.getElementById("settingsModal");
+
+            // Get buttons for notification and settings
+            const notificationIcon = document.getElementById("notification-icon");
+            const settingsIcon = document.getElementById("settings-icon");
+
+            // Get close icons for notif and settings
+            const notificationClose = document.querySelector(".notification-close");
+            const settingsClose = document.querySelector(".settings-close");
+
+            // Notification Modal Events
+            notificationIcon.addEventListener("click", () => {
+              notificationModal.style.display = "block";
+            });
+            notificationClose.addEventListener("click", () => {
+              notificationModal.style.display = "none";
+            });
+            window.addEventListener("click", (event) => {
+              if (event.target === notificationModal) {
+                notificationModal.style.display = "none";
+              }
+            });
+
+            // Settings Modal Events
+            settingsIcon.addEventListener("click", () => {
+              settingsModal.style.display = "block";
+            });
+            settingsClose.addEventListener("click", () => {
+              settingsModal.style.display = "none";
+            });
+            window.addEventListener("click", (event) => {
+              if (event.target === settingsModal) {
+                settingsModal.style.display = "none";
+              }
+            });
+
             // When the user clicks the signout button, show the modal
             signoutBtn.addEventListener("click", function() {
               modal.style.display = "block";
@@ -237,50 +318,17 @@
               }
             });
 
-            // ----------------------------------------------Notification and Settings Modal----------------------------------------------
-            // Get elements
-            // Get Notification and Settings modal elements
-            const notificationIcon = document.getElementById("notification-icon");
-            const settingsIcon = document.getElementById("settings-icon");
-
-            const notificationModal = document.getElementById("notificationModal");
-            const settingsModal = document.getElementById("settingsModal");
-
-            const closeNotification = document.getElementById("notification-closeModal"); // Correct ID
-            const closeSettings = document.getElementById("settings-closeModal"); // Correct ID
-
-            // Open Notification Modal
-            notificationIcon.addEventListener("click", () => {
-              notificationModal.style.display = "block";
-            });
-
-            // Close Notification Modal
-            closeNotification.addEventListener("click", () => {
-              notificationModal.style.display = "none";
-            });
-
-            // Open Settings Modal
-            settingsIcon.addEventListener("click", () => {
-              settingsModal.style.display = "block";
-            });
-
-            // Close Settings Modal
-            closeSettings.addEventListener("click", () => {
-              settingsModal.style.display = "none";
-            });
-
-            // Close modals when clicking outside
-            window.addEventListener("click", (event) => {
-              if (event.target === notificationModal) {
-                notificationModal.style.display = "none";
-              }
-              if (event.target === settingsModal) {
-                settingsModal.style.display = "none";
-              }
-            });
-
+          // Close modals if clicked outside
+          window.addEventListener('click', (event) => {
+            if (event.target === notificationModal) {
+              notificationModal.style.display = 'none';
+            }
+            if (event.target === settingsModal) {
+              settingsModal.style.display = 'none';
+            }
+          });
           </script>
 
-          
+                  
     </body>
 </html>

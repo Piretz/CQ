@@ -144,9 +144,9 @@
                         </div>
                     </div>
                     <!-- Watch Lesson Button with Play Icon aligned to the right side inside the button -->
-                    <button class="view-button" style="position: absolute; bottom: 28px; right: 28px; border-left: 1px solid #019AEC; border-right: 1px solid #123775; border-top: 1px solid #123775; border-bottom: 4px solid #123775;" onclick="showLesson()">
+                    <button class="view-button" style="position: absolute; bottom: 6%; right: 14%; border-left: 1px solid #019AEC; border-right: 1px solid #123775; border-top: 1px solid #123775; border-bottom: 4px solid #123775;" onclick="showLesson()">
                         Watch Lesson
-                        <img src="../img/btnplay.png" alt="Play Icon" class="play-icon">
+                        <img src="../img/btnplay.png" alt="Play Icon" class="box2-play-icon">
                     </button>
                 `;
             }

@@ -11,6 +11,14 @@
 <body>
 
           <?php include '../components/navbar.php'; ?>
+
+                <?php
+        if (isset($_GET['mode'])) {
+          $mode = $_GET['mode'];
+          // Now, you can use $mode to load specific content or handle the selected mode
+        }
+      ?>
+
             <!-- Main Content -->
         <main class="main-content">
             <!-- Image at the top of the swiper slider -->
@@ -64,6 +72,9 @@
             <h3>Panel Title</h3>
             <p>This is a description inside the panel box.</p>
           </div>
+
+         
+
         </main>
     </body>
 </html>
