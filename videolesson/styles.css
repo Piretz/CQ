@@ -1,0 +1,153 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: #f4f4f4;
+}
+
+.box-container {
+    display: flex;
+    background: linear-gradient(to bottom, #035CC2, #073269);
+    border: 1px solid #167AFA;
+    border-bottom: 0 2px 4px solid #167AFA;
+    height: 80%; /* Adjusted height */
+    width: 85%; /* Adjusted width */
+    margin-top: 80px; /* Moves the box-container down */
+    padding: 20px; /* Adds space between panels and edges of the container */
+    justify-content: center;
+    align-items: center;
+    border-radius: 15px;
+    box-shadow: 0 10px 20px #019AEC;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* 2 columns */
+    grid-template-rows: 1fr 1fr; /* 2 rows */
+    gap: 20px; /* Adds spacing between the panels */
+    width: 100%; /* Fully spans the container */
+    height: 100%; /* Fully spans the container */
+    box-sizing: border-box;
+}
+
+.panel {
+    background: linear-gradient(to bottom, #035CC2, #073269);
+    border-left: 1px solid #019AEC;  /* Left border */
+    border-right: 1px solid #019AEC; /* Right border */
+    border-top: 1px solid #019AEC;   /* Top border */
+    border-bottom: 4px solid #019AEC; /* Bottom border */
+    box-shadow: 0 8px 16px #019AEC;
+    border-radius: 10px;
+    padding: 20px; /* Padding inside each panel */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    font-size: 1rem; /* Consistent font size */
+}
+
+.video-panel video {
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+}
+
+.lesson-info-panel{
+    color: #fff;
+    font-size: 14px;
+    font-family: Poppins;
+    padding: 20px;
+    max-height: 100%;
+    overflow-y: auto;
+}
+
+.lesson-info-panel h2, p{
+    margin-bottom: 20px;
+    word-break: break-all;
+    text-overflow: ellipsis;
+    white-space: normal;
+}
+
+.lesson-details-panel{
+    color: #fff;
+    font-family: Poppins;
+    font-size: 14px;
+}
+
+.lesson-info-panel button,
+.comment-panel button,
+.lesson-details-panel button {
+    padding: 12px 25px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.lesson-info-panel button:hover,
+.comment-panel button:hover,
+.lesson-details-panel button:hover {
+    background-color: #0056b3;
+}
+
+.comment-panel {
+    color: #fff;
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    display: flex;
+    flex-direction: column; /* Align child elements in a column */
+    justify-content: flex-start; /* Align items at the top */
+    height: 100%; /* Full height of the panel */
+}
+
+.comment-panel #comment-section {
+    height: 300px; /* Fixed height for the comment section */
+    margin-top: 20px;
+    padding-top: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    overflow-y: auto; /* Allows scrolling for long comments */
+    word-break: break-all;
+    text-overflow: ellipsis;
+    white-space: normal;
+}
+
+.comment-panel textarea {
+    width: 100%;
+    height: 70px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 1rem;
+}
+
+.comment-panel button {
+    padding: 12px 25px;
+    background-color: #035CC2;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.comment-panel button:hover {
+    background-color: #0056b3;
+}
+
+.comment-panel .input-area {
+    display: flex;
+    gap: 10px;
+    margin-top: auto; /* Pushes the input area (textarea + button) to the bottom */
+    width: 100%;
+}
+
+.comment {
+    padding: 10px 0;
+    border: 1px solid #ddd;
+    background:linear-gradient(to right, #035CC2, #073267);
+}
+
+
