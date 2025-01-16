@@ -1,3 +1,8 @@
+<?php
+include("../landing_page/connection.php");
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -33,95 +38,41 @@
           <div class="box-container">
     <div class="box-box-1">
         <!-- Centered Box -->
+         <?php
+         $query = "SELECT * FROM lesson";
+         $result = mysqli_query ($con, $query);
+         while($row = mysqli_fetch_assoc($result)){
+         ?>
         <div class="centered-box">
             <div class="lesson-details">
-                <h3>Lesson: Introduction to Programming</h3>
+                <h3><?php echo $row['Lesson_Title'] ?></h3>
                 <h5>
                     <img src="../img/john.png" alt="Profile Icon" style="width: 3%; height: 2%; margin-right: 8px; vertical-align: middle; border-radius: 10px;">
-                    <strong>Mr.</strong> John Doe
+                    <strong><?php echo $row['Lesson_Creator']?></strong>
                 </h5>
-                <p>This lesson provides an overview of programming basics, including variables, data types, and control structures.</p>
+                <p><?php echo $row['Lesson_Description'] ?></p>
                 <!-- Watch Lesson Button with Play Icon aligned to the right side inside the button -->
-                <button class="view-button" onclick="showLesson()">
+                <form  action="" method="POST">
+                <button class="view-button" name="submit" onclick="showLesson()">
                     Watch Lesson
                     <img src="../img/btnplay.png" alt="Play Icon" class="play-icon">
                 </button>
+                </form>
             </div>
         </div>
-
-        <div class="centered-box">
-            <div class="lesson-details">
-                <h3>Lesson: Introduction to Programming</h3>
-                <h5>
-                    <img src="../img/john.png" alt="Profile Icon" style="width: 3%; height: 2%; margin-right: 8px; vertical-align: middle; border-radius: 10px;">
-                    <strong>Mr.</strong> John Doe
-                </h5>
-                <p>This lesson provides an overview of programming basics, including variables, data types, and control structures.</p>
-                <!-- Watch Lesson Button with Play Icon aligned to the right side inside the button -->
-                <button class="view-button" onclick="showLesson()">
-                    Watch Lesson
-                    <img src="../img/btnplay.png" alt="Play Icon" class="play-icon">
-                </button>
-            </div>
-        </div>
-
-        <div class="centered-box">
-            <div class="lesson-details">
-                <h3>Lesson: Introduction to Programming</h3>
-                <h5>
-                    <img src="../img/john.png" alt="Profile Icon" style="width: 3%; height: 2%; margin-right: 8px; vertical-align: middle; border-radius: 10px;">
-                    <strong>Mr.</strong> John Doe
-                </h5>
-                <p>This lesson provides an overview of programming basics, including variables, data types, and control structures.</p>
-                <!-- Watch Lesson Button with Play Icon aligned to the right side inside the button -->
-                <button class="view-button" onclick="showLesson()">
-                    Watch Lesson
-                    <img src="../img/btnplay.png" alt="Play Icon" class="play-icon">
-                </button>
-            </div>
-        </div>
-
-        <div class="centered-box">
-            <div class="lesson-details">
-                <h3>Lesson: Introduction to Programming</h3>
-                <h5>
-                    <img src="../img/john.png" alt="Profile Icon" style="width: 3%; height: 2%; margin-right: 8px; vertical-align: middle; border-radius: 10px;">
-                    <strong>Mr.</strong> John Doe
-                </h5>
-                <p>This lesson provides an overview of programming basics, including variables, data types, and control structures.</p>
-                <!-- Watch Lesson Button with Play Icon aligned to the right side inside the button -->
-                <button class="view-button" onclick="showLesson()">
-                    Watch Lesson
-                    <img src="../img/btnplay.png" alt="Play Icon" class="play-icon">
-                </button>
-            </div>
-        </div>
-
-        <div class="centered-box">
-            <div class="lesson-details">
-                <h3>Lesson: Introduction to Programming</h3>
-                <h5>
-                    <img src="../img/john.png" alt="Profile Icon" style="width: 3%; height: 2%; margin-right: 8px; vertical-align: middle; border-radius: 10px;">
-                    <strong>Mr.</strong> John Doe
-                </h5>
-                <p>This lesson provides an overview of programming basics, including variables, data types, and control structures.</p>
-                <!-- Watch Lesson Button with Play Icon aligned to the right side inside the button -->
-                <button class="view-button" onclick="showLesson()">
-                    Watch Lesson
-                    <img src="../img/btnplay.png" alt="Play Icon" class="play-icon">
-                </button>
-            </div>
-        </div>
+        <?php
+        }
+        ?>
     </div>
-
     <div class="box-box-2" id="lesson-display">
+
         <script>
             function showLesson() {
                 const box2 = document.getElementById("lesson-display");
                 box2.innerHTML = `
                     <div class="video-container">
                         <iframe 
-                            width="100%" 
+                            width="100%"
                             height="315" 
                             src="https://www.youtube.com/embed/VIDEO_ID" 
                             frameborder="0" 
@@ -129,9 +80,9 @@
                             allowfullscreen>
                         </iframe>
                     </div>
-                    <h3>Lesson: Introduction to Programming</h3>
-                    <h5><img src="../img/john.png" alt="Profile Icon" style="width: 3%; height: 2%; margin-right: 8px; vertical-align: middle; border-radius: 10px;"><strong>Mr.</strong> John Doe</h5>
-                    <p>This lesson provides an overview of programming basics, including variables, data types, and control structures.</p>
+                    <h3>Lesson TItle</h3>
+                    <h5><img src="../img/john.png" alt="Profile Icon" style="width: 3%; height: 2%; margin-right: 8px; vertical-align: middle; border-radius: 10px;"><strong>Kesson Creator</strong></h5>
+                    <p>Lesson Description</p>
                     <div class="experience-bar">
                         <div class="badge">
                             <img src="../img/bronze.png" alt="Badge Icon">
@@ -153,8 +104,6 @@
         </script>
     </div>
 </div>
-
-
 
     </main>
 </body>

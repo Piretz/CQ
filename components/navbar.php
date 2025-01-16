@@ -1,3 +1,20 @@
+<?php
+include("../landing_page/connection.php");
+  session_start();
+  if (!isset($_SESSION['username'])) {
+    header('location: ../landing_page/login.php');
+  }
+  $username = $_SESSION['username'];
+
+  $query = "SELECT * FROM users WHERE User_Name ='$username'";
+  $result = mysqli_query ($con, $query);
+  $row = mysqli_fetch_assoc($result);
+
+  $full_name = $row['First_Name'] . " " . $row['Last_Name'];
+  $id = $row['User_ID'];
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,11 +33,11 @@
               <div class="start">
                 <img src="../img/avatar.png" alt="Profile Image" id="profile-avatar">
                 <div class="user-info">
-                  <span>Christopher Potter</span>
+                  <span><?php echo $username; ?></span>
                   <div class="level-bar">
                     <div class="progress"></div>
                   </div>
-                  <div class="level">Level 1</div>
+                  <div class="level">Level <?php echo $row['Level'] ?></div>
                 </div>
                 
               </div>
@@ -86,7 +103,7 @@
               <h2>Profile</h2>
               <div class="profile-details">
                 <img src="../img/avatar.png" alt="Profile Image" class="profile-image">
-                <h3><strong></strong> Christopher Potter</h3>
+                <h3><strong></strong><?php echo $full_name ?></h3>
                 
                 <!-- Achievements (Badge Images) -->
                 <div class="profile-badges">
@@ -103,8 +120,8 @@
                  <!-- Level Progress -->
                  <div class="level-container">
                   
-                  <progress id="exp-progress" value="40" max="100" class="profile-progress"></progress> <!-- Adjust 'value' as needed -->
-                  <span>1000/3000</span>
+                  <progress id="exp-progress" value="<?php echo $row["level_progress"]; ?>" max="<?php echo $row["next_level"];   ?>" class="profile-progress"></progress> <!-- Adjust 'value' as needed -->
+                  <span><?php echo $row["level_progress"]; ?> / <?php echo $row["next_level"];   ?></span>
                 </div>
 
                 <div class="profile-background">
@@ -205,7 +222,7 @@
             // When the user clicks the logout button, trigger logout functionality
             logoutBtn.addEventListener("click", function() {
               // Implement your logout functionality here, e.g.:
-              window.location.href = '/logout'; // Redirect to logout page
+              window.location.href = '../components/logout.php'; // Redirect to logout page
             });
 
             // Close the modal if the user clicks outside of it

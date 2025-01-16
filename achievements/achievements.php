@@ -1,3 +1,7 @@
+<?php
+include ('../landing_page/connection.php');
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,36 +23,40 @@
 
     <div class="panel-box">
       <div class="badge-container">
-        <!-- Bronze Badge (Locked) -->
-        <div class="badge unlocked">
-          <img src="../img/bronze.png" alt="Badge 1">
-          <p>Bronze</p>
+        <?php
+        $queryunlocked = "SELECT *
+        FROM unlocked_badges
+        JOIN badges
+        ON badges.Badge_ID = unlocked_badges.Badge_ID
+        WHERE unlocked_badges.User_ID= $id;";
+        $resultunlocked = mysqli_query($con, $queryunlocked);
+        while($rows = mysqli_fetch_array($resultunlocked)){
+        ?>
+        <div class="badge unlocked" title="<?php echo $rows['Badge_Description'] ?> Unlocked IN:<?php echo $rows['Unlocked_Date'] ?>" >
+          <img src="../img/<?php echo $rows['Badge_Pic'] ?>" alt="Badge 1">
+          <p><?php echo $rows['Badge_Name'] ?></p>
         </div>
-        <!-- Diamond Badge (Unlocked) -->
-        <div class="badge locked">
-          <img src="../img/diamond.png" alt="Badge 2">
-          <p>Diamond</p>
+        <?php
+        }
+        $query = "SELECT * 
+        FROM badges
+        where badges.Badge_ID NOT IN (
+        SELECT Badge_ID
+        FROM unlocked_badges
+        WHERE User_ID = $id
+        );";
+        $result = mysqli_query($con, $query);
+        while($row = mysqli_fetch_array($result)){
+        ?>
+        <!-- Diamond Badge (locked) -->
+        <div class="badge locked" title="<?php echo $row['Badge_Description'] ?>. Requirements:<?php echo $row['Badge_Requirements'] ?>">
+          <img src="../img/<?php echo $row['Badge_Pic'] ?>" alt="Badge 2">
+          <p><?php echo $row['Badge_Name'] ?></p>
           <img src="../img/lock.png" class="lock-icon" alt="Lock Icon">
         </div>
-        <!-- Platinum Badge (Locked) -->
-        <div class="badge locked">
-          <img src="../img/platinum.png" alt="Badge 3">
-          <p>Platinum</p>
-          <img src="../img/lock.png" class="lock-icon" alt="Lock Icon">
-        </div>
-        <!-- Gold Badge (Unlocked) -->
-        <div class="badge locked">
-          <img src="../img/gold.png" alt="Badge 3">
-          <p>Gold</p>
-          <img src="../img/lock.png" class="lock-icon" alt="Lock Icon">
-        </div>
-        <!-- Silver Badge (Locked) -->
-        <div class="badge locked">
-          <img src="../img/silver.png" alt="Badge 3">
-          <p>Silver</p>
-          <img src="../img/lock.png" class="lock-icon" alt="Lock Icon">
-        </div>
-        <!-- Add more badges as needed -->
+        <?php
+        }
+        ?>
       </div>
     </div>
 

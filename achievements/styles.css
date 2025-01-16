@@ -48,6 +48,7 @@ body {
     flex-wrap: wrap;
     gap: 0px;
     margin-top: 2%;
+    overflow-y: auto;
 }
 
 /* Badge Styling */
