@@ -53,11 +53,13 @@ body {
   .back-button img {
     position: absolute;
     top: 170px;
-    left: 580px;
+    left: 600px;
     transform: translateX(-50%);
     z-index: 3;
     cursor: pointer;
-    width: 500px;
+    width: 550px;
+  
+    height: 90px;
     
     
   }
@@ -84,6 +86,7 @@ body {
     margin-top: 10px;
     margin-left: 1000px;
     width: 400px;
+    
    
   }
   
@@ -101,50 +104,86 @@ body {
     flex-direction: column;
     align-items: center;
     gap: 5px;
-    max-width: 400px;
+    max-width: 450px;
    top:auto;
    bottom: 50px;
    padding: 100px;
     z-index: 10;
     padding-top: 300px;
+    width: 500px;
+    margin: auto;
+    
   }
   
   .form-label {
     color: white;
     font-size: 1rem;
     opacity: 0.7;
+    margin-left: 20px;
+    height: 20px;
     
   }
   
-  .form-input {
-    padding: 7px;
-    border-radius: 3px;
-    border: 1px solid #ccc;
-    background-color: #273239;
-    color: white;
-    width: 100%;
-    height: 40px;
-    font-size: 1rem;
+    .form-input {
+      padding: 10px 10px 10px 40px;
+      border-radius: 3px;
+      border: 1px solid #ccc;
+      background-color: #273239;
+      color: white;
+      width: 100%;
+      height: 40px;
+      font-size: 20px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      
     
-  
+    }
+  .input-container {
+    position: relative;
+    margin-bottom: 15px;
+    max-width: 450px;
+    
   }
   
   .password-container {
     position: relative;
     width: 100%;
   }
-  
+  .input-icon {
+    position: absolute;
+    left: 10px; /* Space between icon and input border */
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 18px;
+    color: #aaa;
+  }
   .toggle-password {
     position: absolute;
-    right: 10px;
+    right: 5px;
     top: 50%;
     transform: translateY(-50%);
     background: transparent;
     border: none;
     color: #ccc;
     cursor: pointer;
+    padding: 0;
+  }
+  .eye-icon {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: #888;
   }
   
+  .eye-icon:hover {
+    color: #000;
+  }
+  .toggle-password i {
+    font-size: 18px;
+    color: #aaa;
+  }
   .login-button {
     background-color: transparent; /* Removes the black background */
     color: white;
@@ -156,7 +195,12 @@ body {
     width: 100%;
     margin-top: 20px;
 }
- 
+.login-button img {
+  display: block;
+  margin: auto;
+  max-width: 100%;
+  height: 80px;
+}
   .divider {
     display: flex;
     align-items: center;
@@ -176,27 +220,30 @@ body {
     padding: 0 10px; /* Adjust horizontal padding around the "or" text */
     font-size: 16px; /* Adjust font size if needed */
     opacity: 0.7;
+    margin-top: 5px;
   }
 
   .social-login {
     display: flex;
     justify-content: center;
     gap: 20px; /* Space between icons */
-    margin-top: 50px; /* Space below the divider */
+    margin-top: 20px; /* Space below the divider */
     
   }
   
   .social-icon {
-    width: 80px; /* Icon size */
-    height: 80px;
+    width: 50px; /* Icon size */
+    height: 40px;
     cursor: pointer;
     z-index: 10;
+    
   }
   
   
   .forgot-password {
     text-align: center;
     margin-top: 20px;
+    font-size: 10px;
   }
   .social-icon:hover {
     transform: scale(1.1); /* Slightly enlarge on hover */
@@ -219,8 +266,26 @@ body {
   top: 50%;
   right: 0;
   transform: translateY(-50%);
-  z-index: 1;
+  z-index: 10;
   width: 600px; /* Adjust size as needed */
   max-width: 150%;
 
+}
+.forgot-password {
+  margin-top: 10px;
+  text-align: center;
+  z-index: 10px;
+  
+}
+
+.forgot-password-link {
+  color: #007bff;
+  text-decoration: none;
+  z-index: 10px;
+  padding-top: 50px;
+}
+
+.forgot-password-link:hover {
+  text-decoration: underline;
+  z-index: 10px;
 }
