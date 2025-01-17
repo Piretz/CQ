@@ -332,10 +332,10 @@ body {
 /* Style for the tables */
 .courses-table {
   width: 100%;
-  
   color: #fff;
   border-radius: 8px;
   overflow: hidden;
+  border-collapse: collapse;
 }
 
 .courses-table thead {
@@ -344,19 +344,22 @@ body {
 }
 
 .courses-table th, .courses-table td {
-  padding: 8px 10px;
+  padding: 10px 10px;
   text-align: left;
 }
 
 .courses-table th {
   font-size: 1.2rem;
+  border: none;
 }
 
 .course-table tr {
   margin-top: 20px;
+  border: none;
 }
 
 .courses-table td {
+  width: 100%;
   font-size: 1rem;
   background: linear-gradient(to right, #035CC2, #073269);
   border-bottom: 1px solid #019AEC;
@@ -376,12 +379,27 @@ body {
   margin-bottom: 10px;
 }
 
+/* Style for "See All" link */
+.see-all-link {
+  font-size: 0.9rem;
+  color: #fff; /* Link color */
+  text-decoration: underline;
+  transition: color 0.3s ease;
+  margin-left: 600px;
+}
+
+.see-all-link:hover {
+  color: #0286DF;
+}
+
 /* Profile image style */
 .profile-img {
   width: 30px; /* Size of the profile image */
   height: 30px; /* Size of the profile image */
   border-radius: 50%; /* Circular shape */
-  margin-right: 10px; /* Space between the image and course name */
+  margin-left: -10px; /* Overlap profile images */
+  border: 2px solid #035CC2; /* Add a border for better visibility */
+  z-index: 1; /* Ensure proper stacking order */
 }
 
 /* Limit number of rows visible */
@@ -408,16 +426,38 @@ body {
 .avatar-group {
   display: flex;
   align-items: center;
+  position: relative;
 }
 
 .avatar-group-container {
   display: flex;
   justify-content: flex-end;
+  width: 50%;
+  border: none;
 }
 
-/* Hide extra avatars */
 .hidden {
   display: none;
+}
+
+.hidden-avatar-count {
+  display: none; /* Initially hidden */
+  justify-content: center;
+  align-items: center;
+  width: 30px; /* Same size as the profile image */
+  height: 30px; /* Same size as the profile image */
+  background: linear-gradient(to right, #035CC2, #073269);
+  color: white;
+  font-size: 0.8rem;
+  border-radius: 50%;
+  text-align: center;
+  font-weight: bold;
+  margin-left: -10px; /* Keep consistent spacing with images */
+  z-index: 1; /* Lower stacking order than images */
+}
+
+.avatar-group .profile-img:first-child {
+  margin-left: 0; /* No negative margin for the first image */
 }
 
 

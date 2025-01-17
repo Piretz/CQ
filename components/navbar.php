@@ -82,8 +82,8 @@
             <!------------------------------------------------- Profile Modal --------------------------------------->
           <div id="profileModal" class="profile-modal">
             <div class="profile-modal-content">
-              <span class="profile-close" id="profile-closeModal"><img src="../img/btnback.png" alt="Close Button" class="close-icon"></span>
-              <h2>Profile</h2>
+                <span class="profile-close" id="profile-closeModal"><img src="../img/btnback.png" alt="Close Button" class="close-icon"></span>
+                <h2>Profile</h2>
               <div class="profile-details">
                 <img src="../img/avatar.png" alt="Profile Image" class="profile-image">
                 <h3><strong></strong> Christopher Potter</h3>
@@ -107,16 +107,44 @@
                   <span>1000/3000</span>
                 </div>
 
-                <div class="profile-background">
-                  <div class="high"><img src="../img/highpanel.png"></div>
-                  <div class="stats"><img src="../img/statspanel.png"></div>
-                  <div class="achievement"><img src="../img/achievepanel.png"></div>
-                </div>
+                      <div class="profile-background">
+                        <div class="high">
+                          <img src="../img/highpanel.png" alt="High Panel">
+                          <div class="badge-container">
+                            <img src="../img/diamond.png" alt="High Badge" class="high-badge">
+                            <span class="badge-title">Master 1</span>
+                          </div>
+                        </div>
+                        <div class="stats">
+                          <img src="../img/statspanel.png" alt="Stats Panel">
+                          <div class="stats-data">
+                            <div class="column">
+                              <p><strong>Mastery:</strong> 85%</p>
+                              <p><strong>QuestPoints:</strong> 12,450</p>
+                              <p><strong>Bugs Fixed:</strong> 320</p>
+                              <p><strong>Teamwork:</strong> 92%</p>
+                            </div>
+                            <div class="column">
+                              <p><strong>Logic:</strong> 75%</p>
+                              <p><strong>XP:</strong> 24,800</p>
+                              <p><strong>Streak:</strong> 15 Days</p>
+                              <p><strong>Badges:</strong> 18</p>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="achievement">
+                          <img src="../img/achievepanel.png" alt="Achievement Panel">
+                          <!-- Badge images added here -->
+                          <div class="badges-container">
+                            <img src="../img/bronze.png" alt="Badge 1" class="badge-image">
+                            <img src="../img/silver.png" alt="Badge 2" class="badge-image">
+                            <img src="../img/platinum.png" alt="Badge 3" class="badge-image">
+                            <img src="../img/gold.png" alt="Badge 4" class="badge-image">
+                            <img src="../img/diamond.png" alt="Badge 5" class="badge-image">
+                          </div>
+                        </div>
+                      </div>
 
-              </div>
-              <div class="profile-actions">
-                <!-- <button class="edit-profile-btn">Edit Profile</button>
-                <button class="close-profile-btn" id="closeProfileBtn">Close</button> -->
               </div>
             </div>
           </div>
@@ -127,7 +155,7 @@
             <div class="notification-modal-content">
               <span class="notification-close">&times;</span>
               <h2>Notifications</h2>
-              <div class="box-container">
+              <div class="box-container" id="box-container">
                 <div class="box">
                   <img src="../img/bronze.png" alt="Bronze Badge" class="badge-image" />
                   <div class="badge-details">
@@ -180,6 +208,7 @@
                 </div>
                 
               </div>
+              <button id="clearButton" class="clear-button">Clear All</button>
             </div>
           </div>
 
@@ -242,6 +271,10 @@
             const notificationClose = document.querySelector(".notification-close");
             const settingsClose = document.querySelector(".settings-close");
 
+                                  // Get the Clear All button and box container
+            const clearButton = document.getElementById("clearButton");
+            const boxContainer = document.getElementById("box-container");
+
             // Notification Modal Events
             notificationIcon.addEventListener("click", () => {
               notificationModal.style.display = "block";
@@ -254,6 +287,15 @@
                 notificationModal.style.display = "none";
               }
             });
+
+ 
+
+            // Add event listener to the Clear All button
+            clearButton.addEventListener("click", () => {
+              // Remove all the box elements inside the box container
+              boxContainer.innerHTML = "";
+            });
+
 
             // Settings Modal Events
             settingsIcon.addEventListener("click", () => {

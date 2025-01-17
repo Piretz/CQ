@@ -35,6 +35,7 @@ body {
     border-bottom: 4px solid #019AEC; /* Bottom border */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     text-align: center; /* Center content in the panel */
+   
 }
 
 /* h2 {
@@ -46,10 +47,14 @@ body {
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
-    gap: 0px;
-    margin-top: 2%;
+    gap: 40px;
+    margin-top: 10%;
+    overflow-y: auto;
+    height: 100%;
+    width: 100%;
+    max-width: 65%;
+    max-height: 70%;
 }
-
 /* Badge Styling */
 .badge {
     text-align: center;

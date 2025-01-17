@@ -128,7 +128,10 @@
                     <div class="courses-container">  
                       <!-- My Courses Table -->
                       <div class="courses-column">
-                        <h4>My Courses</h4>
+                        <h4>
+                          My Courses
+                          <a href="#" class="see-all-link">See All</a>
+                        </h4>
                         <table class="courses-table">
                           <tbody>
                             <tr>
@@ -138,6 +141,8 @@
                                   <img src="../img/john.png" alt="John" class="profile-img">
                                   <img src="../img/jane.png" alt="Jane" class="profile-img">
                                   <img src="../img/annette.png" alt="Annette" class="profile-img">
+                                  <img src="../img/john.png" alt="John" class="profile-img">
+                            
                                 </div>
                               </td>
                             </tr>
@@ -155,6 +160,8 @@
                               <td class="avatar-group-container">
                                 <div class="avatar-group">
                                   <img src="../img/john.png" alt="John" class="profile-img">
+                                  <img src="../img/john.png" alt="John" class="profile-img">
+                                  
                                 </div>
                               </td>
                             </tr>
@@ -176,7 +183,10 @@
 
                       <!-- Popular Courses Table -->
                       <div class="courses-column">
-                        <h4>Popular Courses</h4>
+                        <h4>
+                          Popular Courses
+                          <a href="#" class="see-all-link">See All</a>
+                        </h4>
                         <table class="courses-table">
                           <tbody>
                             <tr>
@@ -186,7 +196,6 @@
                                   <img src="../img/john.png" alt="John" class="profile-img">
                                   <img src="../img/jane.png" alt="Jane" class="profile-img">
                                   <img src="../img/annette.png" alt="Annette" class="profile-img">
-                              
                                 </div>
                               </td>
                             </tr>
@@ -205,9 +214,8 @@
                                 <div class="avatar-group">
                                   <img src="../img/john.png" alt="John" class="profile-img">
                                   <img src="../img/jane.png" alt="Jane" class="profile-img">
-                                  <img src="../img/john.png" alt="John" class="profile-img">
-                                  <img src="../img/john.png" alt="John" class="profile-img">
-                                  <img src="../img/john.png" alt="John" class="profile-img">
+                           
+                                
                                 </div>
                               </td>
                             </tr>
@@ -217,9 +225,9 @@
                                 <div class="avatar-group">
                                   <img src="../img/john.png" alt="John" class="profile-img">
                                   <img src="../img/jane.png" alt="Jane" class="profile-img">
-                                  <img src="../img/jane.png" alt="Jane" class="profile-img">
-                                  <img src="../img/jane.png" alt="Jane" class="profile-img">
-                                  <img src="../img/jane.png" alt="Jane" class="profile-img">
+                                  <img src="../img/john.png" alt="John" class="profile-img">
+                                 
+                               
                                 </div>
                               </td>
                             </tr>
@@ -230,21 +238,40 @@
                   </div>
 
                   <script>
-                    // Limit the number of visible avatars in each group
-                document.addEventListener("DOMContentLoaded", function() {
-                  const maxVisible = 5;  // Maximum number of avatars to display
-                  const avatarGroups = document.querySelectorAll('.avatar-group');
+                   document.addEventListener("DOMContentLoaded", function () {
+  const maxVisible = 15; // Maximum number of visible avatars
+  const avatarGroups = document.querySelectorAll(".avatar-group");
 
-                  avatarGroups.forEach(group => {
-                    const avatars = group.querySelectorAll('.profile-img');
-                    
-                    avatars.forEach((avatar, index) => {
-                      if (index >= maxVisible) {
-                        avatar.classList.add('hidden'); // Hide avatars beyond the maxVisible count
-                      }
-                    });
-                  });
-                });
+  avatarGroups.forEach((group) => {
+    const avatars = group.querySelectorAll(".profile-img");
+    let hiddenCountIndicator = group.querySelector(".hidden-avatar-count");
+
+    // Create hidden count indicator if it doesn't exist
+    if (!hiddenCountIndicator) {
+      hiddenCountIndicator = document.createElement("span");
+      hiddenCountIndicator.classList.add("hidden-avatar-count");
+      group.appendChild(hiddenCountIndicator);
+    }
+
+    // Hide avatars exceeding the limit and calculate hidden count
+    avatars.forEach((avatar, index) => {
+      if (index >= maxVisible) {
+        avatar.classList.add("hidden");
+      } else {
+        avatar.classList.remove("hidden");
+      }
+    });
+
+    const hiddenCount = avatars.length - maxVisible;
+
+    if (hiddenCount > 0) {
+      hiddenCountIndicator.textContent = `+${hiddenCount}`;
+      hiddenCountIndicator.style.display = "flex"; // Show the hidden count
+    } else {
+      hiddenCountIndicator.style.display = "none"; // Hide the hidden count
+    }
+  });
+});
                 </script>
 
                 <!-- FOR SWIPER CARD -->
