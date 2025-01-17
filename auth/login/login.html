@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login Page</title>
+  <!-- Add Google Fonts link for Poppins -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="login.css">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+  <script src="login.js"></script>
+</head>
+<body>
+  <header class="header"></header>
+  <div class="login-container">
+    <a href="../landingpage/landingpage.html" class="back-button">
+      <img src="./back button.png">
+    </a>
+
+    <div class="background">
+      <div>
+        <div class="form-container">
+          <form class="login-form">
+            <!-- Username and Password Fields -->
+            <label for="username" class="form-label">Username</label>
+            <input id="username" type="text" class="form-input" placeholder="Username">
+          
+            <label for="password" class="form-label">Password</label>
+            <div class="password-container">
+              <input id="password" type="password" class="form-input" placeholder="Password">
+              <button type="button" class="toggle-password">
+                <i class="fas fa-eye" aria-hidden="true"></i>
+              </button>
+            </div>
+            <a href="../landingpage/landingpage.html" class="login-button">
+              <img src="./btnlog.png">
+            </a>
+          
+            <!-- Divider -->
+            <div class="divider">
+              <hr>
+              <span>or</span>
+              <hr>
+            </div>
+          </form>
+          
+          <img src="./logsignPanel.png" class="background-img">
+          <img src="./signupgirl.png" class="background-image">
+        </div>
+      </div>
+
+      <div class="social-login">
+        <img src="./Facebook.png" alt="Facebook Login" class="social-icon">
+        <img src="./GooglePlus.png" alt="Google Login" class="social-icon">
+      </div>
+
+      <div class="forgot-password">
+        <a href="/reset-password">Forgot Password? <b>Reset Password</b></a>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

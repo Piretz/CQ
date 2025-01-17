@@ -1,0 +1,699 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    line-height: 1.6;
+    background-color: #1a1a1a;
+    color: #ddd;
+    scroll-behavior: smooth;
+    
+}
+
+/* Navigation */
+/* Navigation */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background: rgba(10, 10, 50, 0.2); /* Slight transparency */
+    color: #fff;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    transition: transform 0.3s ease, background 0.3s ease;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+    border-bottom: 3px solid rgba(30, 144, 255, 0.3); /* Subtle border */
+    backdrop-filter: blur(5px); /* Frosted effect */
+    font-family: Zen Dots, Poppins;
+}
+
+
+nav.hidden {
+    transform: translateY(-100%);
+}
+
+nav .logo img {
+    height: 60px;
+    transition: transform 0.3s ease, filter 0.3s ease;
+    filter: drop-shadow(0 0 10px #1e90ff);
+    margin-right: 50px;
+}
+
+nav .logo img:hover {
+    transform: scale(1.2);
+    filter: drop-shadow(0 0 20px #00bfff);
+}
+
+nav .nav-center {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+nav .nav-center a {
+    font-family: 'Zen Dots', 'Poppins';
+    font-size: 1.2rem;
+    color: #87ceeb;
+    font-weight: bold;
+    position: relative;
+    text-shadow: 0 0 2px #87ceeb, 0 0 5px #87ceeb;
+    transition: color 0.3s ease, transform 0.3s ease;
+    overflow: hidden;
+}
+
+nav .nav-center a.active {
+    color: #00bfff;
+    text-shadow: 0 0 10px #00bfff, 0 0 20px #00bfff;
+}
+
+nav .nav-center a::before,
+nav .nav-center a::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 50%;
+    width: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #1e90ff, #00bfff);
+    transition: width 0.3s ease, left 0.3s ease;
+}
+
+nav .nav-center a:hover {
+    color: #00bfff;
+    transform: scale(1.1);
+}
+
+nav .nav-center a:hover::before {
+    width: 100%;
+    left: 0;
+}
+
+nav .nav-center a:hover::after {
+    width: 100%;
+    left: 0;
+}
+
+nav .nav-right {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+nav .nav-right .btn {
+    background: linear-gradient(45deg, #1e90ff, #00bfff);
+    color: #fff;
+    font-weight: bold;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    box-shadow: 0 0 5px #1e90ff, 0 0 15px #00bfff;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+nav .nav-right .btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 0 15px #1e90ff, 0 0 30px #00bfff;
+}
+
+nav .nav-right .loginbtn {
+    background-color: #333;
+    color: #fff;
+    border: 1px solid #1e90ff;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 0 5px #1e90ff, 0 0 10px #00bfff;
+}
+
+nav .nav-right .loginbtn:hover {
+    background-color: #444;
+    transform: translateY(-3px);
+    box-shadow: 0 0 15px #00bfff, 0 0 25px #1e90ff;
+}
+
+.hero {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: url('picture/image 34.png') no-repeat center center/cover;
+    text-align: center;
+}
+
+.hero h1 {
+    font-size: 100px;
+    margin-bottom: 20px;
+    font-family: "Zen Dots", Poppins;
+}
+
+.hero p {
+    font-size: 18px;
+    margin-bottom: 30px;
+}
+
+.section {
+    padding: 50px 100px;
+}
+
+.features {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+    padding: 50px 0;
+}
+
+.feature {
+    flex: 1;
+    margin: 0 20px;
+}
+
+.feature img {
+    max-width: 100px;
+    margin-bottom: 20px;
+}
+
+.testimonial {
+    background-color: #112240;
+    margin: 50px 0;
+    border-radius: 10px;
+    text-align: center;
+}
+
+footer {
+    background-color: #0a192f;
+    text-align: center;
+    padding: 20px;
+}
+
+footer p {
+    font-size: 14px;
+    color: #8892b0;
+}
+
+/* Style for the image as a button */
+.image-button {
+    border: none;
+    background: none;
+    padding: 0;
+    cursor: pointer;  /* Ensures the cursor is a pointer (hand icon) */
+}
+
+/* Add hover effects */
+.image-btn {
+    width: 400px;  /* Adjust the width of the image */
+    height: auto;  /* Maintain aspect ratio */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.image-btn:hover {
+    transform: scale(1.1);  /* Slight zoom effect on hover */
+    box-shadow: 0 4px 10px rgba(0, 216, 255, 0.6);  /* Shadow effect */
+}
+/* About Us Section */
+.about {
+ 
+    background: url('picture/image 11.png') no-repeat center center/cover;
+    padding: 100px 0px;
+}
+
+.about-container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    text-align: left;
+    margin-bottom: 50px;
+    margin-right: 30px;
+}
+
+.about-image {
+    flex: 1;
+    text-align: center;
+}
+
+.about-image img {
+    width: 350px;
+    height: auto;
+    max-width: 100%; /* Ensures image is responsive */
+}
+
+.about-content {
+    flex: 2;
+    max-width: 600px;
+}
+
+.about-content h1 {
+    font-size: 48px;
+    font-family: 'Zen Dots', Poppins;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+}
+
+.about-content hr {
+    width: 100x;
+    border: 1px solid white;
+    margin: 20px 0;
+}
+
+.about-content p {
+    font-size: 16px;
+    line-height: 1.8;
+    margin-bottom: 20px;
+}
+
+/* Features Section */
+.features {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #163e4b;
+    color: white;
+    padding: 50px 0;
+    gap: 0; /* No gap between features */
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.feature {
+    text-align: center;
+    flex: 1;
+    padding: 10px 20px;
+    position: relative; /* To position the divider */
+}
+
+.feature h2 {
+    font-size: 36px;
+    color: #00d8ff;
+    margin-bottom: 10px;
+}
+
+.feature p {
+    font-size: 14px;
+    color: #8892b0;
+}
+
+/* Add vertical line between features */
+.feature:not(:last-child)::after {
+    content: "";
+    position: absolute;
+    top: 20%;
+    bottom: 20%;
+    right: 0;
+    width: 1px;
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+    .features {
+        flex-wrap: wrap;
+    }
+
+    .feature {
+        flex: 0 0 45%; /* Each feature takes 45% width */
+        margin-bottom: 20px;
+    }
+
+    .feature:not(:last-child)::after {
+        display: none; /* Remove vertical lines on smaller screens */
+    }
+}
+/* Courses Section */
+.courses-section {
+    padding: 200px 100px;
+    background: url('picture/image 23.png') no-repeat center center/cover;
+    background-size: cover; /* Ensure the background image covers the entire section */
+    color: white;
+}
+   
+
+.courses-section .course-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-size: cover;
+    gap: 30px;
+}
+
+.course-content {
+    flex: 2;
+    max-width: 600px;
+}
+
+.course-content h1 {
+   font-size: 48px;
+    font-family: 'Zen Dots', Poppins;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+}
+
+.course-content hr {
+    border: none;
+    border-top: 2px solid white;
+    width:110x;
+    margin-bottom: 20px;
+}
+
+.course-content p {
+    font-size: 16px;
+    line-height: 1.6;
+    color: white;
+}
+
+/* Course Image */
+.course-image img {
+    width: 400px;
+    height: auto;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+    .course-container {
+        flex-direction: column-reverse;
+        text-align: center;
+    }
+
+    .course-content {
+        padding-right: 0;
+    }
+
+    .course-image img {
+        width: 100%;
+        border-left: none;
+        border-top: 2px solid rgba(0, 216, 255, 0.2);
+    }
+}
+.learn-more-link {
+    color: #00d8ff;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+.learn-more-link:hover {
+    color: #ffffff;
+}
+
+.contact-us {
+    display: flex;
+    flex-direction: row; /* Ensure items are arranged in a row */
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 100px;
+    background: url('picture/image 45.png') no-repeat center center/cover;
+    color: white;
+}
+
+.contact-left {
+    flex: 1;
+    padding-right: 50px;
+    text-align: left; /* Align text to the left */
+}
+
+.contact-left h2 {
+    font-size: 32px;
+    margin-left: 30px;
+    margin-bottom: 20px;
+    font-family: 'Zen Dots', Poppins;
+    color: white; /* Ensure consistent color */
+    line-height: 1.2;
+    text-align: left; /* Align heading to the left */
+}
+
+.contact-left p {
+    font-size: 18px;
+    margin-bottom: 30px;
+    font-family: 'Zen Dots', Poppins;
+    color: white; /* Ensure text color is white */
+    line-height: 1.5;
+    margin: 0 0 30px 30px; /* Add spacing similar to the heading */
+    text-align: left; /* Align paragraph text to the left */
+    background: none; /* Remove any background */
+    border: none; /* Remove borders */
+    padding: 0; /* Remove internal padding */
+}
+
+/* Image as a Button */
+.image-button {
+    border: none;
+    background: none;
+    padding: 0;
+    cursor: pointer; /* Makes the image clickable */
+    outline: none;
+}
+
+.contact-img {
+    width: 100%;
+    max-width: 400px; /* Adjust the max width as per your design */
+    height: auto;
+    border-radius: 8px;
+    transition: transform 0.3s ease; /* Smooth transition for hover effect */
+}
+
+.image-button:hover .contact-img {
+    transform: scale(1.1); /* Slight zoom effect on hover */
+}
+
+.contact-right {
+    flex: 1;
+    padding-left: 50px;
+    text-align: left; /* Align all text to the left */
+    
+}
+
+.contact-right h2 {
+    font-size: 32px;
+    margin-bottom: 20px;
+    font-family: 'Arial', sans-serif; /* Simple font for the heading */
+    font-weight: bold;
+    color: white; /* Ensure white text color */
+    text-align: left; /* Align heading to the left */
+}
+
+.testimonial {
+    margin-bottom: none; /* Small spacing between testimonial sections */
+    text-align: left; /* Align testimonial text to the left */
+    background-color: transparent;
+}
+
+.testimonial p {
+    font-size: 13px;
+    font-style: italic;
+    font-family: 'Arial', sans-serif;
+    color: white; /* Ensure text color matches the theme */
+    line-height: 1.2; /* Close line spacing */
+    text-align: left; /* Align testimonial paragraph to the left */
+    padding: 0; /* Remove padding */
+    margin: 0 0 10px; /* Slight spacing between paragraphs */
+}
+
+.testimonial p:last-child {
+    font-size: 16px;
+    font-weight: bold;
+    color: #00d8ff; /* Highlight the name or role */
+    margin: 0; /* Remove additional spacing for the last paragraph */
+}
+/* General styles */
+
+
+.custom-footer {
+    background: linear-gradient(135deg, #0a192f, #16253f);
+    color: #d9d9d9;
+    font-family: 'Roboto', sans-serif;
+    letter-spacing: 0.5px;
+    border-top: 3px solid #00d8ff;
+    margin-top: auto;
+    padding: 40px 80px;
+    position: relative;
+    overflow: hidden;
+}
+
+.custom-footer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 200%;
+    height: 3px;
+    background: linear-gradient(90deg, rgba(0, 216, 255, 0.4), transparent);
+    animation: move-gradient 6s infinite linear;
+}
+
+@keyframes move-gradient {
+    0% { transform: translateX(-50%) translateY(0); }
+    100% { transform: translateX(50%) translateY(0); }
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 20px;
+    z-index: 1;
+    position: relative;
+    
+}
+
+.footer-section {
+    flex: 1;
+    min-width: 200px;
+    text-align: left;
+}
+
+.footer-section h3 {
+    color: #ffffff;
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    position: relative;
+    display: inline-block;
+    font-style: 'Zen Dots';
+    font-family: Zen Dots, POPPINS;
+}
+
+.footer-section h3::after {
+    content: '';
+    display: block;
+    width: 50%;
+    height: 2px;
+    background: #00d8ff;
+    margin-top: 5px;
+    border-radius: 2px;
+    transition: width 0.4s ease-in-out;
+}
+
+.footer-section h3:hover::after {
+    width: 100%;
+}
+
+.footer-section ul li a {
+    color: #d9d9d9;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    transition: all 0.3s ease-in-out;
+    position: relative;
+}
+
+.footer-section ul li a::before {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: #00d8ff;
+    transition: width 0.3s ease-in-out;
+}
+
+.footer-section ul li a:hover {
+    color: #ffffff;
+}
+
+.footer-section ul li a:hover::before {
+    width: 100%;
+}
+
+.footer-section p {
+    font-size: 14px;
+    line-height: 1.6;
+    margin: 0;
+    color: #b5b5b5;
+}
+
+.social-icons {
+    margin-top: 15px;
+}
+
+.social-icons a {
+    color: #d9d9d9;
+    font-size: 20px;
+    margin-right: 15px;
+    text-decoration: none;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.social-icons a:hover {
+    color: #00d8ff;
+    transform: scale(1.2);
+    text-shadow: 0 0 10px #00d8ff;
+}
+
+.footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    padding-top: 15px;
+    margin-top: 30px;
+    font-size: 14px;
+    color: #8892b0;
+    position: relative;
+}
+
+.footer-bottom p {
+    margin: 0;
+}
+
+.footer-links a {
+    color: #d9d9d9;
+    text-decoration: none;
+    margin-left: 20px;
+    font-size: 14px;
+    position: relative;
+}
+
+.footer-links a::before {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: #00d8ff;
+    transition: width 0.3s ease-in-out;
+}
+
+.footer-links a:hover {
+    color: #ffffff;
+}
+
+.footer-links a:hover::before {
+    width: 100%;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .footer-container {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .footer-section {
+        margin-bottom: 20px;
+    }
+
+    .footer-bottom {
+        flex-direction: column;
+        text-align: center;
+        gap: 10px;
+    }
+
+    .footer-links a {
+        margin-left: 10px;
+    }
+}
+
+    
