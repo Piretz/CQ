@@ -28,17 +28,17 @@ document.getElementById('toggle-password-confirmation').addEventListener('click'
     }
 });
 
-document.getElementById('toggle-terms').addEventListener('click', function() {
-    const termsCheckbox = document.getElementById('terms');
-    const icon = this.querySelector('i');
+// document.getElementById('toggle-terms').addEventListener('click', function() {
+//     const termsCheckbox = document.getElementById('terms');
+//     const icon = this.querySelector('i');
   
-    if (termsCheckbox.checked) {
-      termsCheckbox.checked = false;
-      icon.classList.remove('fa-check-square');
-      icon.classList.add('fa-square'); 
-    } else {
-      termsCheckbox.checked = true;
-      icon.classList.remove('fa-square');
-      icon.classList.add('fa-check-square');  
-    }
-});
+//     if (termsCheckbox.checked) {
+//       termsCheckbox.checked = false;
+//       icon.classList.remove('fa-check-square');
+//       icon.classList.add('fa-square'); 
+//     } else {
+//       termsCheckbox.checked = true;
+//       icon.classList.remove('fa-square');
+//       icon.classList.add('fa-check-square');  
+//     }
+// });
