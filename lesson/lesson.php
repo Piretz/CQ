@@ -47,71 +47,8 @@
                     <img src="../img/btnplay.png" alt="Play Icon" class="play-icon">
                 </button>
             </div>
-        </div>
+        </div>    
 
-        <div class="centered-box">
-            <div class="lesson-details">
-                <h3>Lesson: Introduction to Programming</h3>
-                <h5>
-                    <img src="../img/john.png" alt="Profile Icon" style="width: 3%; height: 2%; margin-right: 8px; vertical-align: middle; border-radius: 10px;">
-                    <strong>Mr.</strong> John Doe
-                </h5>
-                <p>This lesson provides an overview of programming basics, including variables, data types, and control structures.</p>
-                <!-- Watch Lesson Button with Play Icon aligned to the right side inside the button -->
-                <button class="view-button" onclick="showLesson()">
-                    Watch Lesson
-                    <img src="../img/btnplay.png" alt="Play Icon" class="play-icon">
-                </button>
-            </div>
-        </div>
-
-        <div class="centered-box">
-            <div class="lesson-details">
-                <h3>Lesson: Introduction to Programming</h3>
-                <h5>
-                    <img src="../img/john.png" alt="Profile Icon" style="width: 3%; height: 2%; margin-right: 8px; vertical-align: middle; border-radius: 10px;">
-                    <strong>Mr.</strong> John Doe
-                </h5>
-                <p>This lesson provides an overview of programming basics, including variables, data types, and control structures.</p>
-                <!-- Watch Lesson Button with Play Icon aligned to the right side inside the button -->
-                <button class="view-button" onclick="showLesson()">
-                    Watch Lesson
-                    <img src="../img/btnplay.png" alt="Play Icon" class="play-icon">
-                </button>
-            </div>
-        </div>
-
-        <div class="centered-box">
-            <div class="lesson-details">
-                <h3>Lesson: Introduction to Programming</h3>
-                <h5>
-                    <img src="../img/john.png" alt="Profile Icon" style="width: 3%; height: 2%; margin-right: 8px; vertical-align: middle; border-radius: 10px;">
-                    <strong>Mr.</strong> John Doe
-                </h5>
-                <p>This lesson provides an overview of programming basics, including variables, data types, and control structures.</p>
-                <!-- Watch Lesson Button with Play Icon aligned to the right side inside the button -->
-                <button class="view-button" onclick="showLesson()">
-                    Watch Lesson
-                    <img src="../img/btnplay.png" alt="Play Icon" class="play-icon">
-                </button>
-            </div>
-        </div>
-
-        <div class="centered-box">
-            <div class="lesson-details">
-                <h3>Lesson: Introduction to Programming</h3>
-                <h5>
-                    <img src="../img/john.png" alt="Profile Icon" style="width: 3%; height: 2%; margin-right: 8px; vertical-align: middle; border-radius: 10px;">
-                    <strong>Mr.</strong> John Doe
-                </h5>
-                <p>This lesson provides an overview of programming basics, including variables, data types, and control structures.</p>
-                <!-- Watch Lesson Button with Play Icon aligned to the right side inside the button -->
-                <button class="view-button" onclick="showLesson()">
-                    Watch Lesson
-                    <img src="../img/btnplay.png" alt="Play Icon" class="play-icon">
-                </button>
-            </div>
-        </div>
     </div>
 
     <div class="box-box-2" id="lesson-display">
@@ -144,7 +81,7 @@
                         </div>
                     </div>
                     <!-- Watch Lesson Button with Play Icon aligned to the right side inside the button -->
-                    <button class="view-button" style="position: absolute; bottom: 6%; right: 14%; border-left: 1px solid #019AEC; border-right: 1px solid #123775; border-top: 1px solid #123775; border-bottom: 4px solid #123775;" onclick="showLesson()">
+                    <button class="view-button" style="position: absolute; bottom: 6%; right: 14%; border-left: 1px solid #019AEC; border-right: 1px solid #123775; border-top: 1px solid #123775; border-bottom: 4px solid #123775;" onclick="videolesson.php">
                         Watch Lesson
                         <img src="../img/btnplay.png" alt="Play Icon" class="box2-play-icon">
                     </button>

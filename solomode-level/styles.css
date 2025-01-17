@@ -1,0 +1,184 @@
+/* General Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins' sans-serif;
+  display: flex;
+	justify-content: center;
+	align-items: center;
+	min-height: 100vh;
+  height: 100vh;
+  background-image: url(../img/bg-level.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+/* Level Panel */
+.level-panel {
+  position: fixed;
+  top: 56%;
+  left: 51%;
+  transform: translate(-50%, -50%);
+ 
+}
+
+.level-panel-image {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+/* Back Button */
+.btn-back {
+  position: fixed;
+  top: 19.5%; /* Adjust as needed */
+  right: 30%; /* Adjust as needed */
+  z-index: 2;
+}
+
+.btn-back-image {
+  width: 64px; /* Adjust button size */
+  height: auto;
+  cursor: pointer;
+}
+
+/* Prev Level Button */
+.btn-prev-level {
+  position: absolute;
+  left: 28.4%; /* Align to left center */
+  top: 44%;
+  z-index: 2;
+}
+
+.btn-prev-level-image {
+  width: 80px; /* Adjust button size */
+  height: auto;
+  cursor: pointer;
+}
+
+/* Next Level Button */
+.btn-next-level {
+  position: absolute;
+  right: 28.4%; /* Align to right center */
+  top: 45.5%;
+  z-index: 2;
+}
+
+.btn-next-level-image {
+  width: 80px; /* Adjust button size */
+  height: auto;
+  cursor: pointer;
+}
+
+.btn-back:hover, .btn-prev-level:hover, .btn-next-level:hover {
+  transform: scale(1.1);
+}
+
+/* Media Queries for Responsiveness */
+
+/* Small Devices (Tablets, Smartphones) */
+@media screen and (max-width: 768px) {
+  .btn-back {
+    top: 15%;
+    right: 25%;
+  }
+
+  .btn-back-image {
+    width: 50px; /* Scale down button size */
+  }
+
+  .btn-prev-level {
+    left: 20%;
+    top: 40%;
+  }
+
+  .btn-prev-level-image {
+    width: 60px; /* Scale down button size */
+  }
+
+  .btn-next-level {
+    right: 20%;
+    top: 40%;
+  }
+
+  .btn-next-level-image {
+    width: 60px; /* Scale down button size */
+  }
+}
+
+/* Extra Small Devices (Smartphones) */
+@media screen and (max-width: 480px) {
+  .btn-back {
+    top: 12%;
+    right: 20%;
+  }
+
+  .btn-back-image {
+    width: 40px; /* Scale down button size */
+  }
+
+  .btn-prev-level {
+    left: 15%;
+    top: 38%;
+  }
+
+  .btn-prev-level-image {
+    width: 50px; /* Scale down button size */
+  }
+
+  .btn-next-level {
+    right: 15%;
+    top: 38%;
+  }
+
+  .btn-next-level-image {
+    width: 50px; /* Scale down button size */
+  }
+}
+
+/* Level Cards Section */
+.level-cards {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr); /* 5 cards per row */
+  gap: 20px;
+  padding: 25px;
+  margin: 0 auto;
+  max-width: 1200px;
+  
+}
+
+.level-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 5px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  z-index: 100;
+}
+
+.level-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.level-card-image {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+  margin-bottom: 10px;
+}
+
+.level-title {
+  font-size: 18px;
+  font-weight: bold;
+  text-align: center;
+  font-family: zen dots;
+}

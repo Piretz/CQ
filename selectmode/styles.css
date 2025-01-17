@@ -294,7 +294,7 @@ body {
 .panel-box {
   position: absolute;
   bottom: 2%; /* Distance from the bottom */
-  left: 53%; /* Center horizontally */
+  left: 52%; /* Center horizontally */
   transform: translateX(-50%); /* Adjust for centering */
   width: 100%; /* Width of the panel */
   height: 100%; /* Height of the panel */
@@ -312,20 +312,123 @@ body {
   text-align: center; /* Center-align text */
 }
 
-/* Panel title */
-.panel-box h3 {
-  margin: 0;
-  font-size: 1.5rem;
+/* Container for My Courses and Popular Courses in 2 columns */
+.courses-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Create two equal columns */
+  gap: 10px; /* Space between columns */
+  padding: 20px;
+  position: relative;
+  top: -20%;
+}
+
+/* Style for each courses column */
+.courses-column {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+}
+
+/* Style for the tables */
+.courses-table {
+  width: 100%;
+  
+  color: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.courses-table thead {
+  background-color: #019AEC;
+  color: #fff;
+}
+
+.courses-table th, .courses-table td {
+  padding: 8px 10px;
+  text-align: left;
+}
+
+.courses-table th {
+  font-size: 1.2rem;
+}
+
+.course-table tr {
+  margin-top: 20px;
+}
+
+.courses-table td {
+  font-size: 1rem;
+  background: linear-gradient(to right, #035CC2, #073269);
+  border-bottom: 1px solid #019AEC;
+}
+
+.courses-table tr:hover td {
+  background-color: #f1f1f1;
+}
+
+/* Title for sub-sections */
+.panel-box h4 {
+  margin-top: 20px;
+  font-size: 1.2rem;
   font-family: Poppins;
+  font-weight: bold;
+  color: #fff;
   margin-bottom: 10px;
 }
 
-/* Panel description */
-.panel-box p {
-  margin: 0;
-  font-size: 1rem;
-  font-family: Poppins;
+/* Profile image style */
+.profile-img {
+  width: 30px; /* Size of the profile image */
+  height: 30px; /* Size of the profile image */
+  border-radius: 50%; /* Circular shape */
+  margin-right: 10px; /* Space between the image and course name */
 }
+
+/* Limit number of rows visible */
+.courses-table tr:nth-child(n+6) {
+  display: none; /* Hide rows greater than the 5th row */
+}
+
+/* Add a 'Show More' button to show all rows */
+.show-more-btn {
+  background-color: #019AEC;
+  color: white;
+  padding: 5px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 10px;
+  display: block;
+  text-align: center;
+}
+
+.show-more-btn:hover {
+  background-color: #035CC2;
+}
+
+.avatar-group {
+  display: flex;
+  align-items: center;
+}
+
+.avatar-group-container {
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* Hide extra avatars */
+.hidden {
+  display: none;
+}
+
+
+/* Responsiveness for smaller screens */
+@media screen and (max-width: 768px) {
+  .courses-container {
+    grid-template-columns: 1fr; /* Stack the columns on smaller screens */
+  }
+}
+
+
 
 /* FOR ALL POPUP MODAL */
 /* Solo Mode Modal Styles */

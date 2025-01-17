@@ -124,9 +124,128 @@
                 </div>
                 
                 <div class="panel-box">
-                  <h3>Panel Title</h3>
-                  <p>This is a description inside the panel box.</p>
-                </div>
+                    <!-- Courses Container (Two columns) -->
+                    <div class="courses-container">  
+                      <!-- My Courses Table -->
+                      <div class="courses-column">
+                        <h4>My Courses</h4>
+                        <table class="courses-table">
+                          <tbody>
+                            <tr>
+                              <td>Web Development</td>
+                              <td class="avatar-group-container">
+                                <div class="avatar-group">
+                                  <img src="../img/john.png" alt="John" class="profile-img">
+                                  <img src="../img/jane.png" alt="Jane" class="profile-img">
+                                  <img src="../img/annette.png" alt="Annette" class="profile-img">
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>Data Science</td>
+                              <td class="avatar-group-container">
+                                <div class="avatar-group">
+                                  <img src="../img/john.png" alt="John" class="profile-img">
+                                  <img src="../img/jane.png" alt="Jane" class="profile-img">
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>Machine Learning</td>
+                              <td class="avatar-group-container">
+                                <div class="avatar-group">
+                                  <img src="../img/john.png" alt="John" class="profile-img">
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>React.js Basics</td>
+                              <td class="avatar-group-container">
+                                <div class="avatar-group">
+                                  <img src="../img/john.png" alt="John" class="profile-img">
+                                  <img src="../img/jane.png" alt="Jane" class="profile-img">
+                                  <img src="../img/john.png" alt="John" class="profile-img">
+                                  <img src="../img/john.png" alt="John" class="profile-img">
+                                  <img src="../img/john.png" alt="John" class="profile-img">
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+
+                      <!-- Popular Courses Table -->
+                      <div class="courses-column">
+                        <h4>Popular Courses</h4>
+                        <table class="courses-table">
+                          <tbody>
+                            <tr>
+                              <td>Advanced JavaScript</td>
+                              <td class="avatar-group-container">
+                                <div class="avatar-group">
+                                  <img src="../img/john.png" alt="John" class="profile-img">
+                                  <img src="../img/jane.png" alt="Jane" class="profile-img">
+                                  <img src="../img/annette.png" alt="Annette" class="profile-img">
+                              
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>React.js Basics</td>
+                              <td class="avatar-group-container">
+                                <div class="avatar-group">
+                                  <img src="../img/john.png" alt="John" class="profile-img">
+                                  <img src="../img/jane.png" alt="Jane" class="profile-img">
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>React.js Basics</td>
+                              <td class="avatar-group-container">
+                                <div class="avatar-group">
+                                  <img src="../img/john.png" alt="John" class="profile-img">
+                                  <img src="../img/jane.png" alt="Jane" class="profile-img">
+                                  <img src="../img/john.png" alt="John" class="profile-img">
+                                  <img src="../img/john.png" alt="John" class="profile-img">
+                                  <img src="../img/john.png" alt="John" class="profile-img">
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>React.js Basics</td>
+                              <td class="avatar-group-container">
+                                <div class="avatar-group">
+                                  <img src="../img/john.png" alt="John" class="profile-img">
+                                  <img src="../img/jane.png" alt="Jane" class="profile-img">
+                                  <img src="../img/jane.png" alt="Jane" class="profile-img">
+                                  <img src="../img/jane.png" alt="Jane" class="profile-img">
+                                  <img src="../img/jane.png" alt="Jane" class="profile-img">
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+
+                  <script>
+                    // Limit the number of visible avatars in each group
+                document.addEventListener("DOMContentLoaded", function() {
+                  const maxVisible = 5;  // Maximum number of avatars to display
+                  const avatarGroups = document.querySelectorAll('.avatar-group');
+
+                  avatarGroups.forEach(group => {
+                    const avatars = group.querySelectorAll('.profile-img');
+                    
+                    avatars.forEach((avatar, index) => {
+                      if (index >= maxVisible) {
+                        avatar.classList.add('hidden'); // Hide avatars beyond the maxVisible count
+                      }
+                    });
+                  });
+                });
+                </script>
 
                 <!-- FOR SWIPER CARD -->
                 <script>
@@ -153,8 +272,8 @@
                 <div id="soloModeModal" class="solo-modal">
                   <div class="solo-modal-content">
                     <span class="solo-close" id="soloCloseModal"><img src="../img/btnback.png" alt="Close Button"></span>
-                    <button id="TakeLesson" class="solo-start-btn"><img src="../img/btntklesson.png" alt="Close Button"></button>
-                    <button id="StartGame" class="solo-start-btn"><img src="../img/btnstart.png" alt="Close Button"></button>
+                    <button id="TakeLesson" class="solo-start-btn"><img src="../img/btntklesson.png" alt="Close Button" onclick="window.location.href='../lesson/lesson.php'"></button>
+                    <button id="StartGame" class="solo-start-btn"><img src="../img/btnstart.png" alt="Close Button" onclick="window.location.href='../solomode-level/level1-15.php'"></button>
                   </div>
                 </div>
 

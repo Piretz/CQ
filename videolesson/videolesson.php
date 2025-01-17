@@ -11,21 +11,33 @@
 <body>
 <?php include '../components/navbar.php'; ?>
 
+<?php
+$lesson = isset($_GET['lesson']) ? $_GET['lesson'] : 'No Lesson';
+$video = isset($_GET['video']) ? $_GET['video'] : 'default';
+$description = isset($_GET['description']) ? $_GET['description'] : 'No Description';
+?>
+
 
         <div class="box-container">
             <div class="grid-container">
                     <!-- First Panel: Video -->
                     <div class="panel video-panel">
-                        <video id="lesson-video" controls>
-                            <source src="sample-video.mp4" type="video/mp4">
-                            Your browser does not support the video tag.
-                        </video>
+                        <iframe 
+                            id="lesson-video" 
+                            width="100%" 
+                            height="400" 
+                            src="https://www.youtube.com/embed/default" 
+                            frameborder="2" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen>
+                        </iframe>
                     </div>
                     <!-- Second Panel: Comments -->
                     <div class="panel comment-panel">
                         <h2>COMMENTS:</h2>
                         <div id="comment-section"></div>
-                        <div class="input-area"> <!-- Wrapper for textarea and button -->
+                        <div class="input-area"> <!-- Wrapper for textarea, button, and profile image -->
+                            <img src="../img/john.png" alt="User Profile" class="comment-profile-image">
                             <textarea id="comment-input" placeholder="Add your comment"></textarea>
                             <button onclick="addComment()"><img src="../img/btnsend.png" alt="Send Icon"></button>
                         </div>
@@ -38,50 +50,122 @@
                         <button onclick="downloadFile()">Download File</button>
                     </div>
 
-                    <!-- Fourth Panel: Lesson Details -->
+                   <!-- Fourth Panel: Lesson Details -->
                     <div class="panel lesson-details-panel">
-                        <button onclick="showContent()">
-                            <span id="lesson-title">Lesson Title</span> <br>
-                            Instructor: John Doe <br>
-                            Video Duration: 10 minutes
+                        <button onclick="showContent('Lesson 1: Introduction of HTML', 'qz0aGYrrlhU', 'This lesson covers the basics of HTML structure and syntax.')" class="lesson-button">
+                            <div class="lesson-content">
+                                <div class="lesson-info">
+                                    <span id="lesson-title">Lesson 1: Introduction of HTML</span> <br>
+                                    <span class="instructor">Mr. John Doe</span>
+                                </div>
+                                <span class="lesson-duration">(10:00)</span>
+                            </div>
                         </button>
+
+                        <button onclick="showContent('Lesson 2: HTML Elements', 'LXb3EKWsInQ', 'Learn about various HTML elements and their uses.')" class="lesson-button">
+                            <div class="lesson-content">
+                                <div class="lesson-info">
+                                    <span id="lesson-title">Lesson 2: HTML Elements</span> <br>
+                                    <span class="instructor">Ms. Jane Smith</span>
+                                </div>
+                                <span class="lesson-duration">(15:00)</span>
+                            </div>
+                        </button>
+
+                        <button onclick="showContent('Lesson 3: Advanced HTML', '1rbo_HHt5nw', 'Explore advanced HTML concepts including forms and multimedia integration.')" class="lesson-button">
+                            <div class="lesson-content">
+                                <div class="lesson-info">
+                                    <span id="lesson-title">Lesson 3: Advanced HTML</span> <br>
+                                    <span class="instructor">Mr. Alan Turing</span>
+                                </div>
+                                <span class="lesson-duration">(20:00)</span>
+                            </div>
+                        </button>
+
                     </div>
             </div>
         </div>
                 <script>
                     // Function to add a comment
-                function addComment() {
+                    function addComment() {
                     const commentInput = document.getElementById('comment-input');
                     const commentSection = document.getElementById('comment-section');
 
-                    if (commentInput.value.trim() !== '') {
-                        const newComment = document.createElement('div');
-                        newComment.className = 'comment';
-                        newComment.textContent = commentInput.value;
-                        commentSection.appendChild(newComment);
-                        commentInput.value = ''; // Clear input after adding
-                    } else {
-                        alert('Please enter a comment!');
+                    if (commentInput.value.trim() === '') {
+                        alert('Please enter a comment before submitting.');
+                        return;
                     }
-                }
 
-                // Function to download file
-                function downloadFile() {
-                    const link = document.createElement('a');
-                    link.href = 'sample-file.pdf'; // Replace with your file URL
-                    link.download = 'Lesson 1 - Description.pdf';
-                    link.click();
-                }
+                    // Create a comment container
+                    const commentContainer = document.createElement('div');
+                    commentContainer.className = 'comment';
 
-                // Function to show video and lesson details
-                function showContent() {
-                    const videoPanel = document.querySelector('.video-panel');
+                    // Add profile image
+                    const profileImage = document.createElement('img');
+                    profileImage.src = '../img/john.png';
+                    profileImage.alt = 'User Profile';
+                    profileImage.className = 'comment-profile-image';
+
+                    // Add text content container
+                    const textContent = document.createElement('div');
+                    textContent.className = 'text-content';
+
+                    // Add username
+                    const username = document.createElement('span');
+                    username.className = 'username';
+                    username.textContent = 'User'; // Replace with dynamic username if available
+
+                    // Add comment text
+                    const commentText = document.createElement('span');
+                    commentText.textContent = commentInput.value;
+
+                    // Append username and comment text to text content container
+                    textContent.appendChild(username);
+                    textContent.appendChild(commentText);
+
+                    // Append elements to the comment container
+                    commentContainer.appendChild(profileImage);
+                    commentContainer.appendChild(textContent);
+
+                    // Append the comment container to the comment section
+                    commentSection.appendChild(commentContainer);
+
+                    // Clear the input field
+                    commentInput.value = '';
+                    }
+
+                    // Function to display lesson content
+                    function showContent(title, videoSrc, description) {
+                        const video = document.getElementById('lesson-video');
+                        const lessonInfoPanel = document.querySelector('.lesson-info-panel');
+
+                        video.querySelector('source').src = videoSrc;
+                        video.load();
+
+                        lessonInfoPanel.querySelector('h2').textContent = title;
+                        lessonInfoPanel.querySelector('p').textContent = description;
+                    }
+
+                    function showContent(title, videoSrc, description) {
+                    const video = document.getElementById('lesson-video');
                     const lessonInfoPanel = document.querySelector('.lesson-info-panel');
 
-                    videoPanel.style.display = 'block';
-                    lessonInfoPanel.style.display = 'block';
-                }
+                    // Update the YouTube video URL
+                    video.src = `https://www.youtube.com/embed/${videoSrc}`;
 
+                    // Update lesson title and description
+                    lessonInfoPanel.querySelector('h2').textContent = title;
+                    lessonInfoPanel.querySelector('p').textContent = description;
+                    }
+
+                    document.addEventListener("DOMContentLoaded", function () {
+        const video = document.getElementById('lesson-video');
+        video.src = `https://www.youtube.com/embed/<?php echo $video; ?>`;
+
+        const lessonInfoPanel = document.querySelector('.lesson-info-panel');
+        lessonInfoPanel.querySelector('h2').textContent = "<?php echo $lesson; ?>";
+        lessonInfoPanel.querySelector('p').textContent = "<?php echo $description; ?>";
+    });
                 </script>
 </body>
 </html>

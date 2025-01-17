@@ -1,3 +1,7 @@
+body {
+    background-image: url(../img/bgimage.png);
+    font-family: 'Poppins', sans-serif;
+}
 /* Panel Container */
 .panel-container {
     display: flex;
