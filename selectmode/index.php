@@ -7,6 +7,9 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 	<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.4.2/css/swiper.min.css'><link rel="stylesheet" href="../components/styles.css">
 	<script src='https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.4.2/js/swiper.min.js'></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/shepherd.js/8.4.0/css/shepherd.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/shepherd.js/8.4.0/js/shepherd.min.js"></script>
+
   <title>CoDev</title>
 </head>
 <body>
@@ -194,8 +197,7 @@
                               <td class="avatar-group-container">
                                 <div class="avatar-group">
                                   <img src="../img/john.png" alt="John" class="profile-img">
-                                  <img src="../img/jane.png" alt="Jane" class="profile-img">
-                                  <img src="../img/annette.png" alt="Annette" class="profile-img">
+                                
                                 </div>
                               </td>
                             </tr>
@@ -225,9 +227,7 @@
                                 <div class="avatar-group">
                                   <img src="../img/john.png" alt="John" class="profile-img">
                                   <img src="../img/jane.png" alt="Jane" class="profile-img">
-                                  <img src="../img/john.png" alt="John" class="profile-img">
-                                 
-                               
+                                  
                                 </div>
                               </td>
                             </tr>
@@ -239,39 +239,39 @@
 
                   <script>
                    document.addEventListener("DOMContentLoaded", function () {
-  const maxVisible = 15; // Maximum number of visible avatars
-  const avatarGroups = document.querySelectorAll(".avatar-group");
+                    const maxVisible = 5; // Maximum number of visible avatars
+                    const avatarGroups = document.querySelectorAll(".avatar-group");
 
-  avatarGroups.forEach((group) => {
-    const avatars = group.querySelectorAll(".profile-img");
-    let hiddenCountIndicator = group.querySelector(".hidden-avatar-count");
+                    avatarGroups.forEach((group) => {
+                      const avatars = group.querySelectorAll(".profile-img");
+                      let hiddenCountIndicator = group.querySelector(".hidden-avatar-count");
 
-    // Create hidden count indicator if it doesn't exist
-    if (!hiddenCountIndicator) {
-      hiddenCountIndicator = document.createElement("span");
-      hiddenCountIndicator.classList.add("hidden-avatar-count");
-      group.appendChild(hiddenCountIndicator);
-    }
+                      // Create hidden count indicator if it doesn't exist
+                      if (!hiddenCountIndicator) {
+                        hiddenCountIndicator = document.createElement("span");
+                        hiddenCountIndicator.classList.add("hidden-avatar-count");
+                        group.appendChild(hiddenCountIndicator);
+                      }
 
-    // Hide avatars exceeding the limit and calculate hidden count
-    avatars.forEach((avatar, index) => {
-      if (index >= maxVisible) {
-        avatar.classList.add("hidden");
-      } else {
-        avatar.classList.remove("hidden");
-      }
-    });
+                      // Hide avatars exceeding the limit and calculate hidden count
+                      avatars.forEach((avatar, index) => {
+                        if (index >= maxVisible) {
+                          avatar.classList.add("hidden");
+                        } else {
+                          avatar.classList.remove("hidden");
+                        }
+                      });
 
-    const hiddenCount = avatars.length - maxVisible;
+                      const hiddenCount = avatars.length - maxVisible;
 
-    if (hiddenCount > 0) {
-      hiddenCountIndicator.textContent = `+${hiddenCount}`;
-      hiddenCountIndicator.style.display = "flex"; // Show the hidden count
-    } else {
-      hiddenCountIndicator.style.display = "none"; // Hide the hidden count
-    }
-  });
-});
+                      if (hiddenCount > 0) {
+                        hiddenCountIndicator.textContent = `+${hiddenCount}`;
+                        hiddenCountIndicator.style.display = "flex"; // Show the hidden count
+                      } else {
+                        hiddenCountIndicator.style.display = "none"; // Hide the hidden count
+                      }
+                    });
+                  });
                 </script>
 
                 <!-- FOR SWIPER CARD -->
@@ -589,7 +589,108 @@
 
                     </script>
                   
+                  <!-- walkthrough -->
+                  <script>
+                      document.addEventListener("DOMContentLoaded", function () {
+                      const steps = [
+                        { selector: ".leaderboard-panel", text: "Check out the leaderboard to see top players!" },
+                        { selector: "#multimodeImage", text: "This is the Multiplayer Mode where you can challenge others!" },
+                        { selector: "#solomodeImage", text: "This is Solo Mode for practicing on your own!" },
+                        { selector: "#practiceModeImage", text: "Practice Mode allows you to hone your skills!" },
+                        { selector: "#customModeImage", text: "Custom Mode lets you personalize your challenges!" },
+                        { selector: ".panel-box", text: "View and manage your courses here!" }
+                      ];
+
+                      let currentStep = 0;
+
+                      function showStep(step) {
+                        const element = document.querySelector(step.selector);
+                        if (element) {
+                          // Blur all content except specified elements
+                          const blurBackground = document.createElement("div");
+                          blurBackground.style.position = "fixed";
+                          blurBackground.style.top = "0";
+                          blurBackground.style.left = "0";
+                          blurBackground.style.width = "100%";
+                          blurBackground.style.height = "100%";
+                          blurBackground.style.backgroundColor = "rgba(0, 0, 0, 0.5)";
+                          blurBackground.style.backdropFilter = "blur(20px)";
+                          blurBackground.style.zIndex = "9995";
+                          document.body.appendChild(blurBackground);
+
+                          // Bring the current step element to the front
+                          element.style.position = "relative";
+                          element.style.zIndex = "9999";
+
+                          const overlay = document.createElement("div");
+                          overlay.className = "walkthrough-overlay";
+                          overlay.style.position = "absolute";
+                          
+                          overlay.style.padding = "10px";
+                          overlay.style.zIndex = "10000"; // Ensure it's above the blur background
+                          overlay.style.color = "#fff";
+                          overlay.style.boxShadow = "0 0 10px rgba(0,0,0,0.5)";
+
+                          const rect = element.getBoundingClientRect();
+                          overlay.style.top = `${rect.top + window.scrollY}px`;
+                          overlay.style.left = `${rect.left + window.scrollX}px`;
+                          overlay.style.width = `${rect.width}px`;
+                          overlay.style.height = `${rect.height}px`;
+
+                          // Add the instructor image
+                          const instructorImage = document.createElement("img");
+                          instructorImage.src = "../img/joybee.png";
+                          instructorImage.alt = "Instructor";
+                          instructorImage.style.position = "absolute";
+                          instructorImage.style.width = "150%";
+                          instructorImage.style.height = "150%";
+                          instructorImage.style.opacity = "1";
+
+                          // Adjust the position for 'panel-box' step
+                          if (step.selector === ".panel-box") {
+                            instructorImage.style.left = "400px";
+                            instructorImage.style.bottom = "400px"; // Align at top for 'panel-box'
+                            instructorImage.style.width = "50%";
+                            instructorImage.style.height = "70%";
+                            element.style.height = "60%";
+                          } else {
+                            instructorImage.style.bottom = "-100px"; // Default value for other steps
+                          }
+
+                          instructorImage.style.right = "-400px";
+                          overlay.appendChild(instructorImage);
+
+                          // Add the text
+                          const text = document.createElement("div");
+                          text.textContent = step.text;
+                          text.style.position = "absolute";
+                          text.style.top = "-50px";
+                          text.style.left = "50%";
+                          text.style.transform = "translateX(-50%)";
+                          text.style.backgroundColor = "rgba(98, 0, 234, 0.95)";
+                          text.style.padding = "5px 10px";
+                          text.style.borderRadius = "4px";
+                          text.style.whiteSpace = "nowrap";
+                          text.style.opacity = "1";
+                          overlay.appendChild(text);
+
+                          document.body.appendChild(overlay);
+
+                          overlay.addEventListener("click", () => {
+                            overlay.remove();
+                            blurBackground.remove();
+                            element.style.zIndex = "auto"; // Reset z-index for the step element
+                            currentStep++;
+                            if (currentStep < steps.length) {
+                              showStep(steps[currentStep]);
+                            }
+                          });
+                        }
+                      }
+
+                      showStep(steps[currentStep]);
+                    });
+                </script>
               </main>
-  
 </body>
 </html>

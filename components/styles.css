@@ -37,13 +37,13 @@ body {
   }
   
   .start img {
-    width: 40%;
-    height: 40%;
+    width: 30%;
+    height: 30%;
     border-radius: 50%;
     margin-right: 10px;
     cursor: pointer;
     position: relative;
-    top: 20px;
+    top: 30px;
     left: 20px;
   }
   
@@ -55,7 +55,8 @@ body {
     display: flex;
     flex-direction: column;
     position: relative;
-    top: 25px;
+    top: 30px;
+    left: 10px;
     width: 100%;
   }
   
@@ -175,13 +176,13 @@ body {
   /* Scale effect on hover */
   .sidebar ul li a img.icon:hover,
   .sidebar-footer a img.icon:hover {
-    transform: scale(1.2); /* Increase size on hover */
+    transform: scale(1.1); /* Increase size on hover */
   }
   
   /* Scale effect on active (click) state */
   .sidebar ul li a:active img.icon,
   .sidebar-footer a:active img.icon {
-    transform: scale(1.4); /* Scale the image when clicked */
+    transform: scale(1.1); /* Scale the image when clicked */
   }
   
   /* Sidebar Footer Styles */
@@ -209,6 +210,37 @@ body {
   .sidebar ul li a:hover {
     cursor: pointer;
   }
+
+  /* tooltip for navabar */
+  /* Tooltip styles */
+.tooltip {
+  position: relative;
+  top: 20px;
+}
+
+.tooltip:hover::after {
+  content: attr(alt); /* Use the alt attribute as tooltip text */
+  position: absolute;
+  top: -35px; /* Adjust tooltip position above the element */
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 5px 10px;
+  background-color: #333;
+  color: #fff;
+  border-radius: 5px;
+  font-size: 12px;
+  white-space: nowrap;
+  z-index: 10;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.tooltip:hover::after {
+  opacity: 1;
+  visibility: visible;
+}
+
 
   /* Logout Basic styling for the modal */
 .logout-modal {

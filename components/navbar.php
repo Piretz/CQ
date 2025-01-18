@@ -245,6 +245,37 @@
         </div>
 
         <!-- ------------------------------SCRIPT------------------------------------------ -->
+        <!-- tooltip -->
+        <script>
+          document.querySelectorAll('.icon, #profile-avatar, #notification-icon, #settings-icon').forEach((element) => {
+          element.addEventListener('mouseenter', function () {
+            const tooltipText = this.getAttribute('alt') || 'Tooltip';
+            const tooltip = document.createElement('div');
+            tooltip.className = 'custom-tooltip';
+            tooltip.textContent = tooltipText;
+
+            // Position the tooltip dynamically
+            const rect = this.getBoundingClientRect();
+            tooltip.style.position = 'absolute';
+            tooltip.style.top = `${rect.top - 15 + window.scrollY}px`;
+            tooltip.style.left = `${rect.left + rect.width / 2 - 50}px`;
+            tooltip.style.padding = '5px 10px';
+            tooltip.style.backgroundColor = '#333';
+            tooltip.style.color = '#fff';
+            tooltip.style.borderRadius = '5px';
+            tooltip.style.fontSize = '12px';
+            tooltip.style.zIndex = '1000';
+            tooltip.style.whiteSpace = 'nowrap';
+
+            document.body.appendChild(tooltip);
+
+            this.addEventListener('mouseleave', () => {
+              tooltip.remove();
+            });
+          });
+        });
+
+        </script>
           <script>
             // Get modal, buttons, and close icon for logout
             const modal = document.getElementById("logoutModal");

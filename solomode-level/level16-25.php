@@ -11,10 +11,8 @@
 <body>
   <?php include '../components/navbar.php'; ?>
 
-  <!-- Level Panel Image Centered -->
   <div class="level-panel">
-    <img src="../img/level-panel.png" alt="Level Panel Image" class="level-panel-image">
-  </div>
+  <img src="../img/level-panel.png" alt="Level Panel Image" class="level-panel-image">
 
   <!-- Back Button -->
   <div class="btn-back">
@@ -28,17 +26,17 @@
 
   <!-- Next Level Button -->
   <div class="btn-next-level">
-    <img src="../img/btnnext-level.png" alt="Next Level Button" class="btn-next-level-image">
+    <img src="../img/btnnext-level.png" alt="Next Level Button" class="btn-next-level-image" >
   </div>
 
-  <!-- Level Cards Section -->
-  <div class="level-cards">
-    <?php 
-      // Example: User's current unlocked level (can be retrieved from a database)
-      $currentLevel = 1; 
+  <!-- Course Title -->
+  <h1 class="course-level">CSS</h1>
 
+  <!-- Level Cards Section -->
+  <div class="level16-cards">
+    <?php 
+      $currentLevel = 1; 
       for ($i = 16; $i <= 25; $i++): 
-        // Determine image based on unlocked level
         $image = ($i <= $currentLevel) ? "../img/level-unlock.png" : "../img/level-lock.png";
     ?>
       <div class="level-card">
@@ -47,5 +45,7 @@
       </div>
     <?php endfor; ?>
   </div>
+</div>
+
 </body>
 </html>

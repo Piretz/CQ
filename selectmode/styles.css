@@ -297,8 +297,8 @@ body {
   left: 52%; /* Center horizontally */
   transform: translateX(-50%); /* Adjust for centering */
   width: 100%; /* Width of the panel */
-  height: 100%; /* Height of the panel */
-  max-height: 30%; /* Maximum height */
+  height: 80%; /* Height of the panel */
+  max-height: 28%; /* Maximum height */
   max-width: 90%; /* Maximum width */
   padding: 20px;
   background: linear-gradient(to bottom, #035CC2, #073269); /* Gradient background */
@@ -385,7 +385,7 @@ body {
   color: #fff; /* Link color */
   text-decoration: underline;
   transition: color 0.3s ease;
-  margin-left: 600px;
+  margin-left: 500px;
 }
 
 .see-all-link:hover {
@@ -926,4 +926,9 @@ body {
   color: #fff;
   font-family: Poppins;
   text-align: center;
+}
+
+/* walkthrough */
+.walkthrough-overlay {
+  transition: opacity 10s;
 }
