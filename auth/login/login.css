@@ -155,7 +155,7 @@ body {
   }
   .input-icon {
     position: absolute;
-    left: 10px; /* Space between icon and input border */
+    left: 10px; 
     top: 50%;
     transform: translateY(-50%);
     font-size: 18px;
@@ -189,7 +189,7 @@ body {
     color: #aaa;
   }
   .login-button {
-    background-color: transparent; /* Removes the black background */
+    background-color: transparent;
     color: white;
     padding: 7px 0;
     border: none;
@@ -208,9 +208,9 @@ body {
   .divider {
     display: flex;
     align-items: center;
-    justify-content: center; /* Ensures the content is horizontally centered */
+    justify-content: center;
     width: 400px;
-    margin-top: 30px; /* Adjust the space below the login button */
+    margin-top: 30px; 
   }
   
   .divider hr {
@@ -222,8 +222,8 @@ body {
   
   .divider span {
     color: white;
-    padding: 0 10px; /* Adjust horizontal padding around the "or" text */
-    font-size: 16px; /* Adjust font size if needed */
+    padding: 0 10px; 
+    font-size: 16px; 
     opacity: 0.7;
     margin-top: 5px;
     height: 10px;
@@ -232,28 +232,27 @@ body {
   .social-login {
     display: flex;
     justify-content: center;
-    gap: 20px; /* Space between icons */
-    margin-top: 20px; /* Space below the divider */
+    gap: 20px; 
+    margin-top: 20px; 
     height: 40px;
     
   }
   
   .social-icon {
-    width: 50px; /* Icon size */
+    width: 50px; 
     height: 40px;
     cursor: pointer;
     z-index: 10;
   }
 .social-icon {
-  width: 50px; /* Icon size */
+  width: 50px; 
   height: 40px;
   cursor: pointer;
   z-index: 10;
-  background-color: #DB4437; /* Google logo color */
+  background-color: #DB4437; 
 }
- 
   .social-fb {
-    width: 50px; /* Icon size */
+    width: 50px; 
     height: 40px;
     cursor: pointer;
     z-index: 10;
@@ -266,7 +265,7 @@ body {
     font-size: 10px;
   }
   .social-icon:hover {
-    transform: scale(1.1); /* Slightly enlarge on hover */
+    transform: scale(1.1); 
   }
   .forgot-password a {
     color: white;
@@ -286,7 +285,7 @@ body {
   right: 0;
   transform: translateY(-50%);
   z-index: 10;
-  width: 600px; /* Adjust size as needed */
+  width: 600px; 
   max-width: 150%;
 
 }
