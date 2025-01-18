@@ -1,8 +1,6 @@
 body {
     font-family: 'Poppins', sans-serif; 
 }
-    
-
 
 .panel-container {
     display: flex;
@@ -33,6 +31,7 @@ body {
     font-weight: bold;
     background-image: linear-gradient(to right, #FFFFFF, #7CD8FF, #FFFFFF, #019AEC); /* Gradient colors */
     -webkit-background-clip: text; /* Clip the background to the text */
+    background-clip: text; /* Standard property for compatibility */
     color: transparent; /* Make the text color transparent to show the gradient */
 }
 
