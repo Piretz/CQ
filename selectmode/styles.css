@@ -17,6 +17,22 @@ body {
   background-repeat: no-repeat;
 }
 
+/* For smaller screens */
+@media screen and (max-width: 768px) {
+  body {
+    background-size: cover; /* Keep it covering */
+    background-position: center top; /* Adjust the position for smaller screens */
+  }
+}
+
+/* For very small screens (mobile) */
+@media screen and (max-width: 480px) {
+  body {
+    background-size: cover; /* Keep the image fully covering */
+    background-position: center; /* Center the image on small screens */
+  }
+}
+
 /* Main Content Styles */
 .main-content {
   padding: 10px;
@@ -44,7 +60,6 @@ body {
   margin-top: 6%;
   text-align: start;
   position: relative;
-  
 }
 
 /* See All Link Styling */
@@ -195,7 +210,8 @@ body {
   font-size: 16px;
   font-weight: bold;
   font-family: Poppins;
-  margin-right: 5px;
+  margin-right: 6px;
+  margin-left: 1%;
 }
 
 .top-4-10 .player-name {
@@ -292,7 +308,7 @@ body {
 
 /* Style for the panel box */
 .panel-box {
-  position: absolute;
+  position: relative;
   bottom: 2%; /* Distance from the bottom */
   left: 52%; /* Center horizontally */
   transform: translateX(-50%); /* Adjust for centering */
@@ -300,16 +316,16 @@ body {
   height: 80%; /* Height of the panel */
   max-height: 28%; /* Maximum height */
   max-width: 90%; /* Maximum width */
-  padding: 20px;
   background: linear-gradient(to bottom, #035CC2, #073269); /* Gradient background */
-  border-left: 1px solid #019AEC;  /* Left border */
+  border-left: 1px solid #019AEC; /* Left border */
   border-right: 1px solid #019AEC; /* Right border */
-  border-top: 1px solid #019AEC;   /* Top border */
+  border-top: 1px solid #019AEC; /* Top border */
   border-bottom: 4px solid #019AEC; /* Bottom border */
   box-shadow: 0 8px 16px #019AEC;
   color: #fff; /* Text color */
   border-radius: 10px; /* Rounded corners */
   text-align: center; /* Center-align text */
+  margin-top: 1%;
 }
 
 /* Container for My Courses and Popular Courses in 2 columns */
@@ -370,13 +386,17 @@ body {
 }
 
 /* Title for sub-sections */
+/* Title for sub-sections */
 .panel-box h4 {
-  margin-top: 20px;
+  position: relative;
   font-size: 1.2rem;
   font-family: Poppins;
   font-weight: bold;
   color: #fff;
   margin-bottom: 10px;
+  display: flex; /* Enable flexbox */
+  justify-content: space-evenly; /* Push the link to the right */
+  align-items: center; /* Vertically align items */
 }
 
 /* Style for "See All" link */
@@ -385,12 +405,13 @@ body {
   color: #fff; /* Link color */
   text-decoration: underline;
   transition: color 0.3s ease;
-  margin-left: 500px;
+  margin-left: 580px;
 }
 
 .see-all-link:hover {
   color: #0286DF;
 }
+
 
 /* Profile image style */
 .profile-img {
@@ -460,14 +481,67 @@ body {
   margin-left: 0; /* No negative margin for the first image */
 }
 
-
 /* Responsiveness for smaller screens */
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1024px) {
+  /* For tablets and smaller screens */
+  .panel-box {
+    max-height: 35%; /* Adjust max height */
+    max-width: 95%; /* Adjust max width */
+    overflow-y: auto;
+  }
+
   .courses-container {
     grid-template-columns: 1fr; /* Stack the columns on smaller screens */
   }
+
+  .courses-column {
+    width: 100%; /* Ensure each column takes full width on smaller screens */
+  }
+
+  .see-all-link {
+    margin-left: 0; /* Remove margin */
+    text-align: center; /* Center the link */
+    display: block; /* Ensure it appears on its own line */
+  }
+  
+  .profile-img {
+    width: 25px; /* Smaller profile images */
+    height: 25px;
+  }
 }
 
+@media screen and (max-width: 768px) {
+  /* For mobile screens */
+  .panel-box {
+    max-height: 40%; /* Adjust max height */
+    max-width: 90%; /* Adjust max width */
+    padding: 10px; /* Reduce padding */
+    overflow-y: auto;
+  }
+
+  .courses-container {
+    grid-template-columns: 1fr; /* Stack the columns on smaller screens */
+  }
+
+  .courses-table td {
+    font-size: 0.9rem; /* Smaller font size for tables */
+  }
+
+  .see-all-link {
+    font-size: 0.8rem; /* Reduce font size */
+    margin-left: 0;
+    text-align: center; /* Center the link */
+  }
+  
+  .profile-img {
+    width: 20px; /* Smaller profile images */
+    height: 20px;
+  }
+
+  .hidden-avatar-count {
+    font-size: 0.7rem; /* Smaller hidden count font */
+  }
+}
 
 
 /* FOR ALL POPUP MODAL */
@@ -548,7 +622,7 @@ body {
 .multiplayer-modal {
   display: none; /* Hidden by default */
   position: fixed;
-  z-index: 1000;
+  z-index: 9999;
   left: 0;
   top: 0;
   width: 100%;
@@ -615,7 +689,7 @@ body {
 .practice-modal {
   display: none; /* Hidden by default */
   position: fixed;
-  z-index: 1000;
+  z-index: 9999;
   left: 0;
   top: 0;
   width: 100%;
@@ -667,7 +741,7 @@ body {
 .custom-modal {
   display: none; /* Hidden by default */
   position: fixed;
-  z-index: 1000;
+  z-index: 9999;
   left: 0;
   top: 0;
   width: 100%;
@@ -929,6 +1003,3 @@ body {
 }
 
 /* walkthrough */
-.walkthrough-overlay {
-  transition: opacity 10s;
-}

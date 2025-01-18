@@ -6,7 +6,7 @@
 }
 
 body {
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Poppins', 'Zendots', sans-serif;
   display: flex;
 	justify-content: center;
 	align-items: center;
@@ -137,6 +137,65 @@ body {
   .icon:hover {
     fill: #000;
   }
+
+  /* Responsiveness for smaller screens */
+@media screen and (max-width: 768px) {
+  .header {
+    height: auto; /* Adjust height for smaller screens */
+    flex-direction: column; /* Stack sections vertically */
+    padding: 10px;
+  }
+
+  .start img {
+    width: 20%; /* Adjust profile image size */
+    height: auto;
+  }
+
+  .start .user-info {
+    align-items: center;
+  }
+
+  .middle h1 {
+    font-size: 20px; /* Adjust text size */
+    margin: 10px 0;
+  }
+
+  .middle span {
+    font-size: 20px; /* Adjust text size */
+  }
+
+  .end img {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+/* For very small screens (e.g., mobile) */
+@media screen and (max-width: 480px) {
+  .header {
+    flex-direction: row; /* Stack elements */
+    padding: 10px;
+  }
+
+  .start img {
+    width: 30%; /* Adjust profile image for very small screens */
+    height: auto;
+  }
+
+  .middle h1 {
+    font-size: 20px; /* Adjust heading size */
+  }
+
+  .middle span {
+    font-size: 20px; /* Adjust text size */
+  }
+
+  .end img {
+    width: 20px;
+    height: 20px;
+  }
+}
+
   
   
   /* Sidebar Styles */
@@ -369,11 +428,11 @@ body {
 }
 
 .profile-modal-content h2 {
-  position:absolute;
+  position: absolute;
   left: 25%;
   top: 11%;
   font-size: 70px;
-  font-family: Poppins;
+  font-family: zendots;
   color: #fff;
 }
 

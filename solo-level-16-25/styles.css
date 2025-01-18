@@ -1,0 +1,153 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: 'Zen dots', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-image: url(../img/bg-level16-25.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+  
+  /* Level Panel */
+  .level-panel {
+    position: relative;
+    width: 80%;
+    max-width: 1200px;
+    margin: auto;
+  }
+  
+  .level-panel-image {
+    position: relative;
+    top: 50px;
+    left: 150px;
+    width: 80%;
+    height: auto;
+    object-fit: contain;
+    display: block;
+  }
+  
+  /* Back Button */
+  .btn-back {
+    position: fixed;
+    top: 18%;
+    right: 29%;
+    z-index: 2;
+  }
+  
+  .btn-back-image {
+    width: 60px;
+    height: auto;
+    cursor: pointer;
+  }
+  
+  /* Prev Level Button */
+  .btn-prev-level {
+    position: fixed;
+    left: 28.5%;
+    top: 43%;
+    z-index: 2;
+  }
+  
+  .btn-prev-level-image {
+    width: 80px;
+    height: auto;
+    cursor: pointer;
+  }
+  
+  /* Next Level Button */
+  .btn-next-level {
+    position: fixed;
+    right: 27.5%;
+    top: 44.6%;
+    z-index: 2;
+  }
+  
+  .btn-next-level-image {
+    width: 80px;
+    height: auto;
+    cursor: pointer;
+  }
+  
+  .btn-back:hover, .btn-prev-level:hover, .btn-next-level:hover {
+    transform: scale(1.1);
+  }
+  
+  /* Course Title */
+  .course-level {
+    position: absolute;
+    top: 14%;
+    left: 51%;
+    transform: translateX(-50%);
+    font-size: 54px;
+    font-weight: bold;
+    font-family: zendots;
+    text-align: center;
+    color: #3EE321;
+    text-transform: uppercase;
+    z-index: 2;
+  }
+  
+  /* Level Cards Section */
+  .level-cards {
+    position: absolute;
+    bottom: 24%; /* Position relative to the panel */
+    left: 51%;
+    transform: translateX(-50%);
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 10px;
+    max-width: 90%;
+    z-index: 2;
+  }
+  
+  .level-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(255, 255, 255, 0.8); /* Slightly transparent */
+    border-radius: 8px;
+    padding: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .level-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  }
+  
+  .level-card-image {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 10px;
+  }
+  
+  .level-title {
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+    
+  }
+  
+  /* Level Cards Section */
+  .level16-cards {
+    position: absolute;
+    bottom: 34%; /* Position relative to the panel */
+    left: 51%;
+    transform: translateX(-50%);
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 10px;
+    max-width: 90%;
+    z-index: 2;
+    font-family: zen dots;
+  }

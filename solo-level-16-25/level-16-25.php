@@ -21,22 +21,22 @@
 
   <!-- Prev Level Button -->
   <div class="btn-prev-level">
-    <img src="../img/btnprev-level.png" alt="Prev Level Button" class="btn-prev-level-image">
+    <img src="../img/btnprev-level.png" alt="Prev Level Button" class="btn-prev-level-image" onclick="window.location.href='../solo-level-1-15/level1-15.php';">
   </div>
 
   <!-- Next Level Button -->
   <div class="btn-next-level">
-    <img src="../img/btnnext-level.png" alt="Next Level Button" class="btn-next-level-image" onclick="window.location.href='level16-25.php';">
+    <img src="../img/btnnext-level.png" alt="Next Level Button" class="btn-next-level-image" >
   </div>
 
   <!-- Course Title -->
-  <h1 class="course-level">HTML</h1>
+  <h1 class="course-level">CSS</h1>
 
   <!-- Level Cards Section -->
-  <div class="level-cards">
+  <div class="level16-cards">
     <?php 
       $currentLevel = 1; 
-      for ($i = 1; $i <= 15; $i++): 
+      for ($i = 16; $i <= 25; $i++): 
         $image = ($i <= $currentLevel) ? "../img/level-unlock.png" : "../img/level-lock.png";
     ?>
       <div class="level-card">

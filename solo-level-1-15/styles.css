@@ -6,7 +6,7 @@
 }
 
 body {
-  font-family: 'Zendots', sans-serif;
+  font-family: 'Zen dots', sans-serif;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -106,6 +106,7 @@ body {
   gap: 10px;
   max-width: 90%;
   z-index: 2;
+  font-family: zendots;
 }
 
 .level-card {
@@ -118,6 +119,7 @@ body {
   padding: 10px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  font-family: zen ots;
 }
 
 .level-card:hover {
@@ -136,17 +138,4 @@ body {
   font-weight: bold;
   text-align: center;
   
-}
-
-/* Level Cards Section */
-.level16-cards {
-  position: absolute;
-  bottom: 34%; /* Position relative to the panel */
-  left: 51%;
-  transform: translateX(-50%);
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 10px;
-  max-width: 90%;
-  z-index: 2;
 }

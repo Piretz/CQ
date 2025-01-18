@@ -14,7 +14,7 @@
             <header class="header">
               <!-- Start Section -->
               <div class="start">
-                <img src="../img/avatar.png" alt="Profile Image" id="profile-avatar">
+                <img src="../img/avatar.png" alt="Profile" id="profile-avatar">
                 <div class="user-info">
                   <span>Christopher Potter</span>
                   <div class="level-bar">
