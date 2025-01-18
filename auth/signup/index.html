@@ -4,61 +4,87 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="signup.css">
-  <script defer src="script.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha384-jLKHWMWWUIud06VVy4eFj3BJJSKLsAJ9gIZgd0PhJDjUWw5VREyMnnjN9scwJhvw" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <title>Sign Up Page</title>
 </head>
 <body>
   <div class="content">
     <div class="login-section">
-        <img src="./profilepanel.png" class="background-image">
-        <img src="./girlcharacter.png" class="girl-background-image">
-        <!--  Lagyan mo ng landing page yung href back button nyan  -->
-        <a href="#" img src="./btnback.png" class="back-button-image">
+        <div class="image-container">
+          <img src="./profilepanel.png" class="background-image" alt="Profile Panel">
+          <h1 class="signup-text">Sign Up</h1>
+        <a href="../landingpage/landingpage.html" class="back-button-link">
+          <img src="./btnback.png" alt="Back Button" class="back-button-image">
+        </a>
+        <a href="#" class="back-button-link">
+          <img src="./btnsign.png" alt="Sign Button" class="sign-button-image">
+        </a>
       </div>
 
       <div>
         <form class="login-form">
-          <div class="section-1">
-            <div class="firstname">
-              <label for="name">First Name</label>
-              <input id="name" type="text" placeholder="Ex: johhny esns">
+          <div class="section-fn-ln">
+            <div class="input-group-fn-ln">
+              <label for="first-name">First Name</label>
+              <input id="first-name" type="text" placeholder="First Name">
             </div>
-            <div class="lastname">
-              <label for="name">Last Name</label>
-              <input id="name" type="text" placeholder="Ex: johhny esns">
+            
+            <div class="input-group-fn-ln">
+              <label for="last-name">Last Name</label>
+              <input id="last-name" type="text" placeholder="Last Name">
             </div>
           </div>
-
-          <div>
-            <label for="email">Email</label>
-            <input id="email" type="email" placeholder="Enter your Email">
+          <div class="section-email">
+            <div class="input-group-email">
+              <label for="email">Email</label>
+              <input id="email" type="text" placeholder="Email">
+            </div>
           </div>
-
-          <!-- <label for="password">Password</label>
-          <div class="password-container">
-            <input id="password" type="password" placeholder="Enter your password">
-            <button type="button" id="toggle-password" class="password-toggle">
-              <i class="fas fa-eye"></i>
-            </button>
+          <div class="section-password">
+            <div class="input-group-password">
+              <label for="password">Password</label>
+              <input id="password" type="password" placeholder="Enter your password">
+              <button type="button" id="toggle-password" class="password-toggle">
+                <i class="fas fa-eye"></i>
+              </button>
+            </div>
           </div>
-          <div>
-            <label for="username">Username</label>
-            <input id="username" type="text" placeholder="Choose a username">
+          <div class="section-username">
+            <div class="input-group-username">
+              <label for="username">Username</label>
+              <input id="username" type="username" placeholder="Username">
+            </div>
           </div>
-          <div>
-            <label for="birthday">Birthday</label>
-            <input id="birthday" type="date">
+          <div class="section-birthday">
+            <div class="input-group-birthday">
+              <label for="birthday">Birthday</label>
+              <input id="birthday" type="date">
+            </div>
           </div>
-  
-          <div>
-            <label for="confirm-password">Confirm Password</label>
-            <input id="confirm-password" type="password" placeholder="Confirm your password">
+          <div class="section-password-confirmation">
+            <div class="input-group-password-confirmation">
+              <label for="passwordconfirmation">Password Confirmation</label>
+              <input id="passwordconfirmation" type="passwordconfirmation" placeholder="Confirm Password">
+              <button type="button" id="toggle-password-confirmation" class="password-toggle">
+                <i class="fas fa-eye"></i>
+              </button>
+            </div>
           </div>
-  
-          <button type="submit" class="submit-button">Sign Up</button> -->
+          <div class="section-terms">
+            <div class="input-group-terms">
+              <input type="checkbox" id="terms"> 
+              <label for="terms">I have read and agree to the terms of service</label>
+            </div>
+          </div>
         </form>
       </div>
+      <img src="./girlcharacter.png" class="girl-background-image" alt="Girl Character">
     </div>
   </div>
+
+  <script src="main.js"></script>
 </body>
 </html>
