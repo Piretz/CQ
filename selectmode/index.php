@@ -595,7 +595,7 @@
                     </script>
                   
                   <script>
-                    // Listen for the custom 'new user load' event instead of 'DOMContentLoaded'
+                    // Listen for the custom 'new user load' event instead of 'NewUserLoad'
                     document.addEventListener("DOMContentLoaded", function () {
                         const steps = [
                             { selector: ".leaderboard-panel", text: "Check out the leaderboard to see top players!" }, 
@@ -606,7 +606,7 @@
                             { selector: ".panel-box", text: "View and manage your courses here!" }
                         ];
 
-                        let currentStep = 0;
+                        let currentStep = 10;
 
                         function showStep(step) {
                             const element = document.querySelector(step.selector);
