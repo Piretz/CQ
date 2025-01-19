@@ -312,7 +312,24 @@
                       el: ".swiper-pagination",
                     },
                   });
+
+                  // Add click event to slides
+                  swiper.on("slideChangeTransitionEnd", function () {
+                    // Loop through each slide
+                    document.querySelectorAll(".swiper-slide").forEach((slide) => {
+                      // Check if the slide is the active one
+                      if (slide.classList.contains("swiper-slide-active")) {
+                        slide.style.pointerEvents = "auto"; // Enable interaction for the active slide
+                      } else {
+                        slide.style.pointerEvents = "none"; // Disable interaction for non-active slides
+                      }
+                    });
+                  });
+
+                  // Trigger the event once to ensure the correct state at initialization
+                  swiper.emit("slideChangeTransitionEnd");
                 </script>
+
 
 
                 <!-- Solo Mode Modal -->
