@@ -386,7 +386,6 @@ body {
 }
 
 /* Title for sub-sections */
-/* Title for sub-sections */
 .panel-box h4 {
   position: relative;
   font-size: 1.2rem;
@@ -907,7 +906,7 @@ body {
 }
 
 
-/* ---------Joining Lobby Modal ---------------------*/
+/* ---------Joining Lobby Modal ---------------------*/ 
 .users-join-modal {
   display: none;
   position: fixed;
@@ -919,7 +918,6 @@ body {
   justify-content: center;
   align-items: center;
   z-index: 50;
-  
 }
 
 .users-join-modal-content {
@@ -936,29 +934,28 @@ body {
   position: absolute;
   top: 0;
   right: 0;
-  
 }
 
 .users-back-close:hover {
   cursor: pointer;
   transform: scale(1.1);
-  
 }
 
 /* Align btnjoin.png to the bottom-right */
-.users-join-close {
+
+.users-join-btn {
   display: flex;
   justify-content: end;
 }
 
-.users-join-close:hover {
+.users-join-close:hover, .users-join-btn:hover {
   cursor: pointer;
   transform: scale(1.1);
 }
 
 .users-Join-title {
   color: #fff;
-  font-family: Poppins;;
+  font-family: Poppins;
   font-size: 2rem;
   font-weight: bold;
   margin-bottom: 1rem;
@@ -968,26 +965,29 @@ body {
   color: #fff;
   font-family: Poppins;
   font-size: 1rem;
+  margin: 5px 0; /* Add spacing */
 }
 
 .users-join-table {
   width: 100%;
   border-collapse: collapse;
   margin-top: 2rem;
+  padding: 10px;
 }
 
 .users-join-table th, .users-join-table td {
-  padding: 5px;
+  padding: 10px;
   text-align: center;
+  color: #fff; /* Set white font color */
 }
 
 .users-join-table th {
-  color: white;
   border: 1px solid #ddd;
 }
 
 .users-join-table td {
   border: 1px solid #ddd;
+  margin: 5px 0; /* Add spacing between rows */
 }
 
 .join-user-avatar {
@@ -1000,6 +1000,13 @@ body {
   color: #fff;
   font-family: Poppins;
   text-align: center;
+}
+
+.join-ID {
+  color: #fff;
+  font-family: Poppins;
+  text-align: center;
+  margin: 5px 0; /* Add spacing */
 }
 
 /* walkthrough */

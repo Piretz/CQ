@@ -16,7 +16,9 @@ body {
 
 /* Messages List */
 .messages-list {
-    width: 50%;
+    width: 100%;
+    max-width: 500px; /* Fixed size */
+    overflow: hidden;
     background-color: #091A36;
     padding: 10px;
     border-radius: 10px;
@@ -81,9 +83,12 @@ body {
 .message-item {
     display: flex;
     align-items: flex-start;
-    padding: 10px 0;
+    padding: 10px 12px;
     justify-content: space-between; /* Spread out the content */
-   
+    margin-bottom: 5px;
+    width: 100%; /* Fixed size */
+    overflow: hidden;
+    border-radius: 2px;
 }
 
 .profile-img {
@@ -133,6 +138,7 @@ body {
     justify-content: space-between;
     width: calc(100% - 60px); /* Adjusting for profile image */
 }
+
 
 /* Panel Box for Conversation Body */
 .conversation-body {
@@ -190,16 +196,17 @@ body {
 }
 
 .message-text {
-    max-width: 100%;
     padding: 10px;
     border-radius: 8px;
     color: #fff;
     font-size: 14px;
     font-family: Poppins;
     word-break: break-all;
+    overflow: hidden;
     text-overflow: ellipsis;
-    white-space: normal;
+    white-space: nowrap;
     margin-bottom: 5px;
+    max-width: calc(100% - 100px); /* Adjust based on layout */
 }
 
 .message.friend .message-text {
@@ -209,7 +216,7 @@ body {
 .message.me .message-text {
     background-color: #019aec;
     color: white;
-    max-width: 50%;
+    max-width: 70%;
     flex-wrap: wrap;
     overflow-wrap: break-word;
     word-wrap: break-word;

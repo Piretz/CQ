@@ -560,28 +560,28 @@
                         </thead>
                         <tbody>
                           <tr>
-                            <td><img src="../img/avatar.png" alt="User 1" class="join-user-avatar"></td>
+                            <td class="join-ID">12345</td>
                             <td class="join-user-name">John Doe</td>
                           </tr>
                           <tr>
-                            <td><img src="../img/avatar.png" alt="User 2" class="join-user-avatar"></td>
+                            <td class="join-ID">12345</td>
                             <td class="join-user-name">Jane Smith</td>
                           </tr>
                           <tr>
-                            <td><img src="../img/avatar.png" alt="User 3" class="join-user-avatar"></td>
+                            <td class="join-ID">12345</td>
                             <td class="join-user-name">Alex Johnson</td>
                           </tr>
                           <tr>
-                            <td><img src="../img/avatar.png" alt="User 4" class="join-user-avatar"></td>
+                            <td class="join-ID">12345</td>
                             <td class="join-user-name">Chris Lee</td>
                           </tr>
                           <tr>
-                            <td><img src="../img/avatar.png" alt="User 5" class="join-user-avatar"></td>
+                            <td class="join-ID">12345</td>
                             <td class="join-user-name">Pat Morgan</td>
                           </tr>
                         </tbody>
                       </table>
-                      <span class="users-join-close" id="usersJoinCloseModal">
+                      <span class="users-join-btn" id="usersJoinCloseModal">
                         <img src="../img/btnjoin.png" alt="Close Button">
                       </span>
                     </div>
