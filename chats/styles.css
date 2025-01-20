@@ -32,7 +32,6 @@ body {
 .messages-container {
     overflow-y: auto;
     height: 80%;
-
 }
 
 .list-header h2{
@@ -83,9 +82,8 @@ body {
 .message-item {
     display: flex;
     align-items: flex-start;
-    padding: 10px 12px;
+    padding: 10px;
     justify-content: space-between; /* Spread out the content */
-    margin-bottom: 5px;
     width: 100%; /* Fixed size */
     overflow: hidden;
     border-radius: 2px;
