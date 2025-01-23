@@ -91,41 +91,40 @@
                 </div>
 
                 
-                <!-- Image at the top of the swiper slider -->
+               <!-- Image at the top of the swiper slider -->
                 <div class="intro-image">
                   <img src="../img/introtxt.png" alt="Intro Text">
                 </div>
                 <div class="swiper-container">    
                   <div class="swiper-wrapper">
-                   
                     <div class="swiper-slide">
                       <div class="picture">
-                        <img src="../img/multimode.png" alt="Multiplayer Mode" id="multimodeImage">
+                        <img src="../img/multimode.png" alt="Multiplayer Mode" id="multimodeImage" class="locked">
+                        <div class="lock-overlay">Locked</div>
                       </div>
                     </div>
-
                     <div class="swiper-slide">
                       <div class="picture">
-                        <img src="../img/solomode.png" alt="Solo Mode" id="solomodeImage">
+                        <img src="../img/solomode.png" alt="Solo Mode" id="solomodeImage" class="unlocked">
                       </div>
                     </div>
-                
                     <div class="swiper-slide">
                       <div class="picture">
-                        <img src="../img/practicemode.png" alt="" id="practiceModeImage">
+                        <img src="../img/practicemode.png" alt="Practice Mode" id="practiceModeImage" class="locked">
+                        <div class="lock-overlay">Locked</div>
                       </div>
                     </div>
-
                     <div class="swiper-slide">
                       <div class="picture">
-                        <img src="../img/custommode.png" alt="" id="customModeImage">
+                        <img src="../img/custommode.png" alt="Custom Mode" id="customModeImage" class="locked">
+                        <div class="lock-overlay">Locked</div>
                       </div>
                     </div>
-
                   </div>
-                
                   <div class="swiper-pagination"></div>
                 </div>
+
+
                 
                 <div class="panel-box">
                     <!-- Courses Container (Two columns) -->
@@ -295,39 +294,74 @@
 
                 <!-- FOR SWIPER CARD -->
                 <script>
-                  var swiper = new Swiper(".swiper-container", {
-                    effect: "coverflow",
-                    grabCursor: true,
-                    centeredSlides: true,
-                    slidesPerView: "auto",
-                    initialSlide: 1, // Set to 1 to make 'solomode.png' the first visible slide
-                    coverflowEffect: {
-                      rotate: 20,
-                      stretch: 0,
-                      depth: 350,
-                      modifier: 1,
-                      slideShadows: true,
-                    },
-                    pagination: {
-                      el: ".swiper-pagination",
-                    },
-                  });
+                  // Example user type (change this value to test different scenarios)
+                const isNewUser = true; // Set to false for old users
 
-                  // Add click event to slides
-                  swiper.on("slideChangeTransitionEnd", function () {
-                    // Loop through each slide
-                    document.querySelectorAll(".swiper-slide").forEach((slide) => {
-                      // Check if the slide is the active one
-                      if (slide.classList.contains("swiper-slide-active")) {
-                        slide.style.pointerEvents = "auto"; // Enable interaction for the active slide
+                // Initialize Swiper
+                var swiper = new Swiper(".swiper-container", {
+                  effect: "coverflow",
+                  grabCursor: true,
+                  centeredSlides: true,
+                  slidesPerView: "auto",
+                  initialSlide: 1, // Set 'solomode.png' as the first visible slide
+                  coverflowEffect: {
+                    rotate: 20,
+                    stretch: 0,
+                    depth: 350,
+                    modifier: 1,
+                    slideShadows: true,
+                  },
+                  pagination: {
+                    el: ".swiper-pagination",
+                  },
+                });
+
+                // Function to update lock/unlock states based on user type
+                function updateSlideLockState() {
+                  document.querySelectorAll(".swiper-slide .picture img").forEach((img) => {
+                    if (isNewUser) {
+                      // Lock all except 'solomode.png' for new users
+                      if (img.id === "solomodeImage") {
+                        img.classList.remove("locked");
+                        img.classList.add("unlocked");
                       } else {
-                        slide.style.pointerEvents = "none"; // Disable interaction for non-active slides
+                        img.classList.remove("unlocked");
+                        img.classList.add("locked");
                       }
-                    });
+                    } else {
+                      // Unlock all for old users
+                      img.classList.remove("locked");
+                      img.classList.add("unlocked");
+                    }
                   });
+                }
 
-                  // Trigger the event once to ensure the correct state at initialization
-                  swiper.emit("slideChangeTransitionEnd");
+                // Prevent interaction with locked slides
+                document.querySelectorAll(".locked").forEach((image) => {
+                  image.addEventListener("click", (e) => {
+                    e.preventDefault();
+                    alert("This mode is locked!");
+                  });
+                });
+
+                // Handle pointer events on active and inactive slides
+                swiper.on("slideChangeTransitionEnd", function () {
+                  document.querySelectorAll(".swiper-slide").forEach((slide) => {
+                    if (slide.querySelector("img").classList.contains("unlocked")) {
+                      slide.style.pointerEvents = "auto"; // Enable interaction
+                    } else {
+                      slide.style.pointerEvents = "none"; // Disable interaction
+                    }
+                  });
+                });
+
+                // Initialize lock/unlock state
+                updateSlideLockState();
+
+                // Trigger the event to ensure the correct state at initialization
+                swiper.emit("slideChangeTransitionEnd");
+
+
                 </script>
 
 
@@ -611,10 +645,86 @@
 
                     </script>
                   
+                  <!-- // Listen for the custom 'new user load' event instead of 'NewUserLoad & DOMContentLoaded' -->
                   <script>
-                    // Listen for the custom 'new user load' event instead of 'NewUserLoad'
-                    document.addEventListener("DOMContentLoaded", function () {
-                        const steps = [
+                      document.addEventListener("DOMContentLoaded", function () {
+                          // Display welcome message function
+                          function showWelcomeMessage(username) {
+                              const welcomeOverlay = document.createElement("div");
+                              welcomeOverlay.style.position = "fixed";
+                              welcomeOverlay.style.top = "0";
+                              welcomeOverlay.style.left = "0";
+                              welcomeOverlay.style.width = "100%";
+                              welcomeOverlay.style.height = "100%";
+                              welcomeOverlay.style.backgroundColor = "rgba(0, 0, 0, 0.7)";
+                              welcomeOverlay.style.zIndex = "10000";
+                              welcomeOverlay.style.display = "flex";
+                              welcomeOverlay.style.flexDirection = "row";
+                              welcomeOverlay.style.justifyContent = "center";
+                              welcomeOverlay.style.alignItems = "center";
+                              welcomeOverlay.style.padding = "0 50px"; // Add padding to prevent touching edges
+                              welcomeOverlay.style.color = "#fff";
+
+                              // Add welcome text
+                              const welcomeText = document.createElement("div");
+                              welcomeText.textContent = `WELCOME to CodeQuest ${username}! to continue the game, please click the Continue button`;
+                              welcomeText.style.fontSize = "20px";
+                              welcomeText.style.marginBottom = "20px";
+                              welcomeText.style.width = "480px";
+                              welcomeText.style.backgroundColor = "rgba(236, 233, 240, 0.95)";
+                              welcomeText.style.color = "black";
+                              welcomeText.style.padding = " 15px 20px";
+                              welcomeText.style.borderRadius = "12px";      
+                              welcomeText.style.boxShadow = "0 0 10px rgba(0, 0, 0, 0.5)";
+                              welcomeText.style.textAlign = "center";
+                              welcomeOverlay.appendChild(welcomeText);
+
+                              // Add Joybee instructor image
+                              const instructorImage = document.createElement("img");
+                              instructorImage.src = "../img/joybee.png";
+                              instructorImage.alt = "Joybee Instructor";
+                              instructorImage.style.width = "600px";
+                              instructorImage.style.height = "600px";
+                              instructorImage.style.margin = "0"; // Reset margins
+                              welcomeOverlay.appendChild(instructorImage);
+
+                              // Add "Continue" button
+                              const continueButton = document.createElement("button");
+                              continueButton.textContent = "Continue";
+                              continueButton.style.padding = "10px 20px";
+                              continueButton.style.backgroundColor = "#6200ea";
+                              continueButton.style.color = "#fff";
+                              continueButton.style.border = "none";
+                              continueButton.style.cursor = "pointer";
+                              continueButton.style.borderRadius = "14px";
+                              continueButton.addEventListener("click", () => {
+                                  welcomeOverlay.remove();
+                                  showStep(steps[currentStep]); // Proceed to the first selector step
+                              });
+                              welcomeOverlay.appendChild(continueButton);
+
+                              document.body.appendChild(welcomeOverlay);
+
+                              // Create a container for text and button
+                              const textButtonContainer = document.createElement("div");
+                              textButtonContainer.style.display = "flex";
+                              textButtonContainer.style.flexDirection = "column";
+                              textButtonContainer.style.alignItems = "center"; // Align text and button in the center
+                              textButtonContainer.style.transform = "translateX(-50%)";
+                              textButtonContainer.style.transform = "translateY(-50%)";
+
+                              // Append welcomeText and continueButton to the container
+                              textButtonContainer.appendChild(welcomeText);
+                              textButtonContainer.appendChild(continueButton);
+
+                              // Append the container to the overlay
+                              welcomeOverlay.appendChild(textButtonContainer);
+                          }
+
+                          
+
+                          // Existing selector steps
+                          const steps = [
                             { selector: ".leaderboard-panel", text: "Check out the leaderboard to see top players!" }, 
                             { selector: "#solomodeImage", text: "This is Solo Mode for practicing on your own!" }, 
                             { selector: "#multimodeImage", text: "This is the Multiplayer Mode where you can challenge others!" },      
@@ -623,7 +733,7 @@
                             { selector: ".panel-box", text: "View and manage your courses here!" }
                         ];
 
-                        let currentStep = 10;
+                        let currentStep = 0;
 
                         function showStep(step) {
                             const element = document.querySelector(step.selector);
@@ -767,9 +877,12 @@
                             }
                         }
 
-                        showStep(steps[currentStep]);
-                    });
-                </script>
-              </main>
+                      // Fetch username and display welcome message
+                      const username = "John Doe"; // Replace with dynamic database retrieval
+                      showWelcomeMessage(username);
+                  });
+              </script>
+
+            </main>
 </body>
 </html>

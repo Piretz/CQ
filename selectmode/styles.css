@@ -57,7 +57,7 @@ body {
   max-height: 50%;
   margin-left: 8%; /* Align to the left */
   margin-right: auto; /* Keep the right margin auto for left alignment */
-  margin-top: 6%;
+  margin-top: 8%;
   text-align: start;
   position: relative;
 }
@@ -305,6 +305,42 @@ body {
   opacity: 1;
   background: #fff;
 }
+
+/* Locked and unlocked styles */
+.locked {
+  filter: grayscale(100%);
+  opacity: 0.6;
+  pointer-events: none; /* Prevent interaction */
+}
+
+.unlocked {
+  filter: none;
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Lock overlay for locked images */
+.lock-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  background: rgba(0, 0, 0, 0.7);
+  padding: 5px 10px;
+  border-radius: 4px;
+  display: none; /* Hidden for unlocked images */
+}
+
+.locked + .lock-overlay {
+  display: block; /* Show lock overlay for locked images */
+}
+
+.picture {
+  position: relative;
+}
+
+
 
 /* Style for the panel box */
 .panel-box {
