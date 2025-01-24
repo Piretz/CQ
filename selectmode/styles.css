@@ -1046,3 +1046,24 @@ body {
 }
 
 /* walkthrough */
+/* Example for the tutorial overlay */
+.tutorial-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  z-index: 10000;
+}
+
+.tutorial-overlay .tutorial-text {
+  background-color: rgba(98, 0, 234, 0.95);
+  padding: 15px;
+  border-radius: 10px;
+  font-size: 20px;
+}

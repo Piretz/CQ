@@ -647,9 +647,9 @@
                   
                   <!-- // Listen for the custom 'new user load' event instead of 'NewUserLoad & DOMContentLoaded' -->
                   <script>
-                      document.addEventListener("DOMContentLoaded", function () {
-                          // Display welcome message function
-                          function showWelcomeMessage(username) {
+                     document.addEventListener("DOMContentLoaded", function () {
+                       // Display welcome message function
+                       function showWelcomeMessage(username) {
                               const welcomeOverlay = document.createElement("div");
                               welcomeOverlay.style.position = "fixed";
                               welcomeOverlay.style.top = "0";
@@ -665,6 +665,15 @@
                               welcomeOverlay.style.padding = "0 50px"; // Add padding to prevent touching edges
                               welcomeOverlay.style.color = "#fff";
 
+                              // Add Joybee instructor image
+                              const instructorImage = document.createElement("img");
+                              instructorImage.src = "../img/joybee.png";
+                              instructorImage.alt = "Joybee Instructor";
+                              instructorImage.style.width = "600px";
+                              instructorImage.style.height = "600px";
+                              instructorImage.style.margin = "0"; // Reset margins
+                              welcomeOverlay.appendChild(instructorImage);
+
                               // Add welcome text
                               const welcomeText = document.createElement("div");
                               welcomeText.textContent = `WELCOME to CodeQuest ${username}! to continue the game, please click the Continue button`;
@@ -679,17 +688,9 @@
                               welcomeText.style.textAlign = "center";
                               welcomeOverlay.appendChild(welcomeText);
 
-                              // Add Joybee instructor image
-                              const instructorImage = document.createElement("img");
-                              instructorImage.src = "../img/joybee.png";
-                              instructorImage.alt = "Joybee Instructor";
-                              instructorImage.style.width = "600px";
-                              instructorImage.style.height = "600px";
-                              instructorImage.style.margin = "0"; // Reset margins
-                              welcomeOverlay.appendChild(instructorImage);
 
-                              // Add "Continue" button
-                              const continueButton = document.createElement("button");
+                           // Add "Continue" button
+                           const continueButton = document.createElement("button");
                               continueButton.textContent = "Continue";
                               continueButton.style.padding = "10px 20px";
                               continueButton.style.backgroundColor = "#6200ea";
@@ -721,54 +722,55 @@
                               welcomeOverlay.appendChild(textButtonContainer);
                           }
 
-                          
 
-                          // Existing selector steps
-                          const steps = [
-                            { selector: ".leaderboard-panel", text: "Check out the leaderboard to see top players!" }, 
-                            { selector: "#solomodeImage", text: "This is Solo Mode for practicing on your own!" }, 
-                            { selector: "#multimodeImage", text: "This is the Multiplayer Mode where you can challenge others!" },      
-                            { selector: "#practiceModeImage", text: "Practice Mode allows you to hone your skills!" },
-                            { selector: "#customModeImage", text: "Custom Mode lets you personalize your challenges!" },
-                            { selector: ".panel-box", text: "View and manage your courses here!" }
-                        ];
+                      // Existing selector steps
+                      const steps = [
+                          { selector: ".leaderboard-panel", text: "Check out the leaderboard to see top players!" }, 
+                          { selector: "#solomodeImage", text: "This is Solo Mode for practicing on your own!" }, 
+                          { selector: "#multimodeImage", text: "This is the Multiplayer Mode where you can challenge others!" },      
+                          { selector: "#practiceModeImage", text: "Practice Mode allows you to hone your skills!" },
+                          { selector: "#customModeImage", text: "Custom Mode lets you personalize your challenges!" },
+                          { selector: ".panel-box", text: "View and manage your courses here!" }
+                      ];
 
-                        let currentStep = 0;
+                      let currentStep = 0;
+                      let tutorialShown = false;
 
-                        function showStep(step) {
-                            const element = document.querySelector(step.selector);
-                            if (element) {
-                                // Blur all content except specified elements
-                                const blurBackground = document.createElement("div");
-                                blurBackground.style.position = "fixed";
-                                blurBackground.style.top = "0";
-                                blurBackground.style.left = "0";
-                                blurBackground.style.width = "100%";
-                                blurBackground.style.height = "100%";
-                                blurBackground.style.backgroundColor = "rgba(0, 0, 0, 0.5)";
-                                blurBackground.style.backdropFilter = "blur(20px)";
-                                blurBackground.style.zIndex = "9995";
-                                document.body.appendChild(blurBackground);
+                      function showStep(step) {
+                          const element = document.querySelector(step.selector);
+                          if (element) {
+                              // Blur all content except specified elements
+                              const blurBackground = document.createElement("div");
+                              blurBackground.style.position = "fixed";
+                              blurBackground.style.top = "0";
+                              blurBackground.style.left = "0";
+                              blurBackground.style.width = "100%";
+                              blurBackground.style.height = "100%";
+                              blurBackground.style.backgroundColor = "rgba(0, 0, 0, 0.5)";
+                              blurBackground.style.backdropFilter = "blur(20px)";
+                              blurBackground.style.zIndex = "9995";
+                              document.body.appendChild(blurBackground);
 
-                                // Bring the current step element to the front
-                                element.style.position = "relative";
-                                element.style.zIndex = "9999";
+                              // Bring the current step element to the front
+                              element.style.position = "relative";
+                              element.style.zIndex = "9999";
 
-                                const overlay = document.createElement("div");
-                                overlay.className = "walkthrough-overlay";
-                                overlay.style.position = "absolute";
-                                overlay.style.zIndex = "10000"; // Ensure it's above the blur background
-                                overlay.style.color = "#fff";
-                                overlay.style.boxShadow = "0 0 10px rgba(0,0,0,0.5)";
+                              const overlay = document.createElement("div");
+                              overlay.className = "walkthrough-overlay";
+                              overlay.style.position = "absolute";
+                              overlay.style.zIndex = "10000"; // Ensure it's above the blur background
+                              overlay.style.color = "#fff";
+                              overlay.style.boxShadow = "0 0 10px rgba(0,0,0,0.5)";
 
-                                const rect = element.getBoundingClientRect();
-                                overlay.style.top = `${rect.top + window.scrollY}px`;
-                                overlay.style.left = `${rect.left + window.scrollX}px`;
-                                overlay.style.width = `${rect.width}px`;
-                                overlay.style.height = `${rect.height}px`;
+                              const rect = element.getBoundingClientRect();
+                              overlay.style.top = `${rect.top + window.scrollY}px`;
+                              overlay.style.left = `${rect.left + window.scrollX}px`;
+                              overlay.style.width = `${rect.width}px`;
+                              overlay.style.height = `${rect.height}px`;
 
-                                // Add the specific mode image and set position
-                                const modeImage = document.createElement("img");
+
+                              // Add the specific mode image and set position
+                              const modeImage = document.createElement("img");
                                 modeImage.style.position = "absolute";
                                 modeImage.style.width = "100%";  // Keep fixed width for the mode images
                                 modeImage.style.height = "100%"; // Keep fixed height for the mode images
@@ -799,88 +801,154 @@
                                 instructorImage.style.bottom = "40px"; // Adjust vertical positioning if needed
                                 overlay.appendChild(instructorImage);
 
-                                // Add the text
-                                const text = document.createElement("div");
-                                text.textContent = step.text;
-                                text.style.position = "absolute";
-                                text.style.top = "-50px";
-                                text.style.left = "50%";
-                                text.style.transform = "translateX(-50%)";
-                                text.style.backgroundColor = "rgba(98, 0, 234, 0.95)";
-                                text.style.padding = "10px 20px";
-                                text.style.whiteSpace = "nowrap";
-                                text.style.opacity = "1"; // Fixed opacity for visibility
-                                text.style.fontSize = "20px";
-                                overlay.appendChild(text);
+                              // Add the text
+                              const text = document.createElement("div");
+                              text.textContent = step.text;
+                              text.style.position = "absolute";
+                              text.style.top = "-50px";
+                              text.style.left = "50%";
+                              text.style.transform = "translateX(-50%)";
+                              text.style.backgroundColor = "rgba(98, 0, 234, 0.95)";
+                              text.style.padding = "10px 20px";
+                              text.style.whiteSpace = "nowrap";
+                              text.style.opacity = "1"; // Fixed opacity for visibility
+                              text.style.fontSize = "20px";
+                              overlay.appendChild(text);
 
-                                // Create a container for the buttons to align them center
-                                const buttonContainer = document.createElement("div");
-                                buttonContainer.style.position = "absolute";
-                                buttonContainer.style.left = "50%";
-                                buttonContainer.style.transform = "translateX(-50%)";
-                                buttonContainer.style.display = "flex";
-                                buttonContainer.style.gap = "10px"; // Add gap between buttons
-                                
+                              // Create a container for the buttons to align them center
+                              const buttonContainer = document.createElement("div");
+                              buttonContainer.style.position = "absolute";
+                              buttonContainer.style.left = "50%";
+                              buttonContainer.style.transform = "translateX(-50%)";
+                              buttonContainer.style.display = "flex";
+                              buttonContainer.style.gap = "10px"; // Add gap between buttons
+                              
+                              if (step.selector === ".panel-box") {
+                                  buttonContainer.style.bottom = "-10px"; // For .panel-box, use -10px
+                              } else {
+                                  buttonContainer.style.bottom = "-50px"; // For other steps, use -50px
+                              }
 
-                                // Set the bottom position conditionally
-                                if (step.selector === ".panel-box") {
-                                    buttonContainer.style.bottom = "-10px"; // For .panel-box, use -10px
-                                } else {
-                                    buttonContainer.style.bottom = "-50px"; // For other steps, use -50px
-                                }
+                              // Create "Next" button
+                              const nextButton = document.createElement("button");
+                              nextButton.textContent = "Next";
+                              nextButton.style.padding = "10px 20px";
+                              nextButton.style.backgroundColor = "#6200ea";
+                              nextButton.style.color = "#fff";
+                              nextButton.style.border = "none";
+                              nextButton.style.cursor = "pointer";
+                              nextButton.style.borderRadius = "14px";
 
-                                // Create "Next" button
-                                const nextButton = document.createElement("button");
-                                nextButton.textContent = "Next";
-                                nextButton.style.padding = "10px 20px";
-                                nextButton.style.backgroundColor = "#6200ea";
-                                nextButton.style.color = "#fff";
-                                nextButton.style.border = "none";
-                                nextButton.style.cursor = "pointer";
-                                nextButton.style.borderRadius = "14px";
+                              // Create "Skip" button
+                              const skipButton = document.createElement("button");
+                              skipButton.textContent = "Skip";
+                              skipButton.style.padding = "10px 20px";
+                              skipButton.style.backgroundColor = "red";
+                              skipButton.style.color = "#fff";
+                              skipButton.style.border = "none";
+                              skipButton.style.cursor = "pointer";
+                              skipButton.style.borderRadius = "14px";
 
-                                // Create "Skip" button
-                                const skipButton = document.createElement("button");
-                                skipButton.textContent = "Skip";
-                                skipButton.style.padding = "10px 20px";
-                                skipButton.style.backgroundColor = "red";
-                                skipButton.style.color = "#fff";
-                                skipButton.style.border = "none";
-                                skipButton.style.cursor = "pointer";
-                                skipButton.style.borderRadius = "14px";
+                              buttonContainer.appendChild(nextButton);
+                              buttonContainer.appendChild(skipButton);
 
-                                buttonContainer.appendChild(nextButton);
-                                buttonContainer.appendChild(skipButton);
+                              // Append the button container to the overlay
+                              overlay.appendChild(buttonContainer);
 
-                                // Append the button container to the overlay
-                                overlay.appendChild(buttonContainer);
+                              // Append overlay to the body
+                              document.body.appendChild(overlay);
 
-                                // Append overlay to the body
-                                document.body.appendChild(overlay);
+                              // "Next" button functionality
+                              nextButton.addEventListener("click", () => {
+                                  overlay.remove();
+                                  blurBackground.remove();
+                                  element.style.zIndex = "auto"; // Reset z-index for the step element
+                                  currentStep++;
+                                  if (currentStep < steps.length) {
+                                      showStep(steps[currentStep]);
+                                  } else {
+                                      // If it's the last step, check if the tutorial has been shown
+                                      if (!tutorialShown) {
+                                          showTutorial();
+                                      }
+                                  }
+                              });
 
-                                // "Next" button functionality
-                                nextButton.addEventListener("click", () => {
-                                    overlay.remove();
-                                    blurBackground.remove();
-                                    element.style.zIndex = "auto"; // Reset z-index for the step element
-                                    currentStep++;
-                                    if (currentStep < steps.length) {
-                                        showStep(steps[currentStep]);
-                                    }
-                                });
+                              // "Skip" button functionality
+                              skipButton.addEventListener("click", () => {
+                                  overlay.remove();
+                                  blurBackground.remove();
+                                  element.style.zIndex = "auto"; // Reset z-index for the step element
+                                  if (currentStep >= steps.length - 1) {
+                                      // Continue to the next step if there are more steps
+                                      currentStep++;
+                                      showStep(steps[currentStep]);
+                                  } else {
+                                      // If it's the last step, show the tutorial regardless of the selector
+                                      if (!tutorialShown) {
+                                          showTutorial();
+                                      }
+                                  }
+                              });
+                          }
+                      }
 
-                                // "Skip" button functionality
-                                skipButton.addEventListener("click", () => {
-                                    overlay.remove();
-                                    blurBackground.remove();
-                                });
-                            }
+                      function showTutorial() {
+                            tutorialShown = true; // Mark the tutorial as shown
+
+                            // Create the tutorial overlay for Solo Mode or the general tutorial
+                            const tutorialOverlay = document.createElement("div");
+                            tutorialOverlay.style.position = "fixed";
+                            tutorialOverlay.style.top = "0";
+                            tutorialOverlay.style.left = "0";
+                            tutorialOverlay.style.width = "100%";
+                            tutorialOverlay.style.height = "100%";
+                            tutorialOverlay.style.backgroundColor = "rgba(0, 0, 0, 0.7)";
+                            tutorialOverlay.style.zIndex = "10000";
+                            tutorialOverlay.style.display = "flex";
+                            tutorialOverlay.style.flexDirection = "column";
+                            tutorialOverlay.style.justifyContent = "center";
+                            tutorialOverlay.style.alignItems = "center";
+                            tutorialOverlay.style.color = "#fff";
+
+                            // Add the image or tutorial content
+                            const tutorialImage = document.createElement("img");
+                            tutorialImage.src = "../img/solomode.png"; // Image for the tutorial
+                            tutorialImage.alt = "Tutorial Image";
+                            tutorialImage.style.width = "300px";
+                            tutorialImage.style.cursor = "pointer"; // Hand cursor on hover
+
+                            // Open the solo modal when the tutorial image is clicked
+                            tutorialImage.addEventListener("click", () => {
+                                // Open the Solo Mode Modal
+                                const soloModal = document.getElementById("soloModeModal");
+                                soloModal.style.display = "block"; // Show the modal
+
+                                // Remove the tutorial overlay
+                                tutorialOverlay.remove();
+                            });
+
+                            tutorialOverlay.appendChild(tutorialImage);
+
+                            // Add tutorial text
+                            const tutorialText = document.createElement("div");
+                            tutorialText.textContent = "Click on Solo Mode to start practicing!";
+                            tutorialText.style.fontSize = "20px";
+                            tutorialText.style.backgroundColor = "rgba(98, 0, 234, 0.95)";
+                            tutorialText.style.padding = "15px";
+                            tutorialText.style.borderRadius = "10px";
+                            tutorialOverlay.appendChild(tutorialText);
+
+                            // Append tutorial overlay to the body
+                            document.body.appendChild(tutorialOverlay);
                         }
+
 
                       // Fetch username and display welcome message
                       const username = "John Doe"; // Replace with dynamic database retrieval
                       showWelcomeMessage(username);
                   });
+
               </script>
 
             </main>
