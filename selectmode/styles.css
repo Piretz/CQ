@@ -1,20 +1,14 @@
 /* General Reset */
-* {
+
+body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-}
-
-body {
   font-family: 'Poppins', sans-serif;
-  display: flex;
-	justify-content: center;
-	align-items: center;
-	min-height: 100vh;
-  height: 100vh;
-  background-image: url(../img/bgimage.png);
+  background-image: url(../img/bgdashboard.png);
   background-size: cover;
   background-repeat: no-repeat;
+  background-attachment: fixed;
 }
 
 /* For smaller screens */

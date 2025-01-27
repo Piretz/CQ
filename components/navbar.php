@@ -73,7 +73,7 @@
                   <img src="../img/btninfo.png" alt="Info" class="icon">
                 </a>
                 <a href="#logout" class="nav-link" id="signout-btn">
-                  <img src="../img/btnsignout.png" alt="Sign Out" class="icon"> 
+                  <img src="../img/btnlogout.png" alt="Sign Out" class="icon"> 
                 </a>
               </footer>
             </aside>
