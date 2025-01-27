@@ -22,26 +22,26 @@
             <!-- Main Content -->
         <main class="main-content">
             <!-- Image at the top of the swiper slider -->
-          <div class="intro-image">
+          <!-- <div class="intro-image">
             <img src="../img/lblcourse.png" alt="Intro Text">
-          </div>
+          </div> -->
           <div class="swiper-container">    
             <div class="swiper-wrapper">
               <div class="swiper-slide">
                 <div class="picture">
-                  <img src="../img/htmlcourse.png" alt="">
+                  <img src="../img/csscourse.png" alt="" id="">
                 </div>
               </div>
           
               <div class="swiper-slide">
                 <div class="picture">
-                  <img src="../img/csscourse.png" alt="">
+                  <img src="../img/html.png" alt="" id="">
                 </div>
               </div>
           
               <div class="swiper-slide">
                 <div class="picture">
-                  <img src="../img/jscourse.png" alt="">
+                  <img src="../img/jscourse.png" alt="" id="">
                 </div>
               </div>
             </div>
@@ -69,8 +69,7 @@
           </script>
           
           <div class="panel-box">
-            <h3>Panel Title</h3>
-            <p>This is a description inside the panel box.</p>
+            
           </div>
 
          

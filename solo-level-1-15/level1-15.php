@@ -12,7 +12,7 @@
   <?php include '../components/navbar.php'; ?>
 
   <div class="level-panel">
-  <img src="../img/level-panel.png" alt="Level Panel Image" class="level-panel-image">
+  <img src="../img/levelPanel.png" alt="Level Panel Image" class="level-panel-image">
 
   <!-- Back Button -->
   <div class="btn-back">

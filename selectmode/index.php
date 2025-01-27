@@ -14,11 +14,29 @@
 </head>
 <body>
 
-  <?php include '../components/navbar.php'; ?>
-  
-  <!-- ALL MODAL MODES (SOLO) (PVP) (PRACTICE) (CUSTOM)-->
-     <!-- Solo Mode Modal -->
-     <div id="soloModeModal" class="solo-modal">
+              <?php include '../components/navbar.php'; ?>
+              
+              <!-- Right-aligned images -->
+              <div class="select-mode-images">
+                <img src="../img/mdSolo.png" alt="Solo Mode" class="solo-mode">
+                <img src="../img/mdPvp.png" alt="PvP Mode" class="pvp-mode">
+                <img src="../img/mdLesson.png" alt="Lesson Mode" class="lesson-mode">
+                <img src="../img/mdPractice.png" alt="Practice Mode" class="practice-mode">
+              </div>
+
+              <!-- Typewriter Text -->
+              <div class="typewriter-container">
+              <span class="globe-icon">
+                🌐
+              </span>
+                <div class="typewriter-text">
+                  Hi guys!! Let's play
+                </div>
+              </div>
+
+              <!-- ALL MODAL MODES (SOLO) (PVP) (PRACTICE) (CUSTOM)-->
+                <!-- Solo Mode Modal -->
+                <div id="soloModeModal" class="solo-modal">
                   <div class="solo-modal-content">
                     <span class="solo-close" id="soloCloseModal"><img src="../img/btnback.png" alt="Close Button"></span>
                     <button id="TakeLesson" class="solo-start-btn"><img src="../img/btntklesson.png" alt="Close Button" onclick="window.location.href='../lesson/lesson.php'"></button>

@@ -117,11 +117,11 @@ body {
   }
   
   .end img {
-    width: 40px;
-    height: 30px;
+    width: 40%;
+    height: 30%;
     margin-left: 30px;
     cursor: pointer;
-    top: 40px;
+    top: 60px;
     right: 40px;
     position: relative;
   }

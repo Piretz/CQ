@@ -11,7 +11,7 @@ body {
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background-image: url(../img/bg-level.png);
+  background-image: url(../img/bglevel.png);
   background-size: cover;
   background-repeat: no-repeat;
 }
@@ -27,7 +27,7 @@ body {
 .level-panel-image {
   position: relative;
   top: 50px;
-  left: 150px;
+  left: 100px;
   width: 80%;
   height: auto;
   object-fit: contain;
@@ -37,8 +37,8 @@ body {
 /* Back Button */
 .btn-back {
   position: fixed;
-  top: 18%;
-  right: 29%;
+  top: 24%;
+  right: 28%;
   z-index: 2;
 }
 
@@ -51,13 +51,13 @@ body {
 /* Prev Level Button */
 .btn-prev-level {
   position: fixed;
-  left: 28.5%;
-  top: 43%;
+  left: 24.2%;
+  top: 50%;
   z-index: 2;
 }
 
 .btn-prev-level-image {
-  width: 80px;
+  width: 95px;
   height: auto;
   cursor: pointer;
 }
@@ -65,13 +65,13 @@ body {
 /* Next Level Button */
 .btn-next-level {
   position: fixed;
-  right: 27.5%;
-  top: 44.6%;
+  right: 26.2%;
+  top: 50%;
   z-index: 2;
 }
 
 .btn-next-level-image {
-  width: 80px;
+  width: 95px;
   height: auto;
   cursor: pointer;
 }
@@ -84,7 +84,7 @@ body {
 .course-level {
   position: absolute;
   top: 14%;
-  left: 51%;
+  left: 48%;
   transform: translateX(-50%);
   font-size: 54px;
   font-weight: bold;
@@ -98,8 +98,8 @@ body {
 /* Level Cards Section */
 .level-cards {
   position: absolute;
-  bottom: 24%; /* Position relative to the panel */
-  left: 51%;
+  bottom: 10%; /* Position relative to the panel */
+  left: 48%;
   transform: translateX(-50%);
   display: grid;
   grid-template-columns: repeat(5, 1fr);
