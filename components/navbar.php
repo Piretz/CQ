@@ -44,22 +44,22 @@
               <ul>
                 <li>
                   <a href="../selectmode/index.php" class="nav-link">
-                    <img src="../img/btnhome.png" alt="Home" class="icon"> 
+                    <img src="../img/btnHome.png" alt="Home" class="icon"> 
                   </a>
                 </li>
                 <li>
                   <a href="../lesson/lesson.php" class="nav-link">
-                    <img src="../img/btnlesson.png" alt="Lesson" class="icon"> 
+                    <img src="../img/btnLesson.png" alt="Lesson" class="icon"> 
                   </a>
                 </li>
                 <li>
                   <a href="../achievements/achievements.php" class="nav-link">
-                    <img src="../img/btnachi.png" alt="Achievements" class="icon"> 
+                    <img src="../img/btnAchi.png" alt="Achievements" class="icon"> 
                   </a>
                 </li>
                 <li>
                   <a href="../chats/message.php" class="nav-link">
-                    <img src="../img/btnchat.png" alt="Chat" class="icon"> 
+                    <img src="../img/btnChat.png" alt="Chat" class="icon"> 
                   </a>
                 </li>
               </ul>
@@ -70,7 +70,7 @@
                   <img src="../img/btndark.png" alt="Dark Mode" class="icon"> 
                 </a>
                 <a href="../info/information.php" class="nav-link">
-                  <img src="../img/btninfo.png" alt="Info" class="icon">
+                  <img src="../img/btnInfo.png" alt="Info" class="icon">
                 </a>
                 <a href="#logout" class="nav-link" id="signout-btn">
                   <img src="../img/btnlogout.png" alt="Sign Out" class="icon"> 
