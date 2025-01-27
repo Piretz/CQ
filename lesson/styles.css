@@ -13,11 +13,7 @@
 
 body {
   font-family: 'Poppins' sans-serif;
-  display: flex;
-	justify-content: center;
-	align-items: center;
-	min-height: 100vh;
-  height: 100vh;
+ box-sizing: border-box;
   background-image: url(../img/background.png);
   background-size: cover;
   background-repeat: no-repeat;
