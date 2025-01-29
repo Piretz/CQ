@@ -6,88 +6,86 @@
 }
 
 body {
-  font-family: 'Poppins', 'Zendots', sans-serif;
+  font-family: 'Poppins', sans-serif;
   display: flex;
-	justify-content: center;
-	align-items: center;
-	min-height: 100vh;
-  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
   background-size: cover;
   background-repeat: no-repeat;
 }
 
 /* Header Styles */
 .header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 10%;
-    color: #fff;
-    display: flex;
-    align-items: start; /* Center the logo container vertically */
-  }
-  
-  .header .start,
-  .header .middle,
-  .header .end {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-  
-  .start img {
-    width: 30%;
-    height: 30%;
-    border-radius: 50%;
-    margin-right: 10px;
-    cursor: pointer;
-    position: relative;
-    top: 30px;
-    left: 20px;
-  }
-  
-  .start img:hover {
-    transform: scale(1.3);
-  }
-  
-  .start .user-info {
-    display: flex;
-    flex-direction: column;
-    position: relative;
-    top: 30px;
-    left: 10px;
-    width: 100%;
-  }
-  
-  .start .level-bar {
-    width: 100px;
-    height: 15px;
-    background-color: #ddd;
-    border-radius: 50px;
-    margin-top: 4px;
-    position: relative;
-  }
-  
-  .start .level-bar .progress {
-    height: 100%;
-    background-color: #4caf50;
-    width: 5%; /* Example progress */
-    border-radius: 4px;
-    
-  }
-  
-  .start .user-info span {
-    position: relative;
-    font-size: 20px;
-    font-family: Poppins;
-  }
-  
-  .start .user-info .level {
-    position: relative;
-    font-size: 16px;
-    font-family: Poppins;
-  }
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 10%;
+  color: #fff;
+  display: flex;
+  align-items: start;
+}
+
+.header .start,
+.header .middle,
+.header .end {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.start img {
+  width: 30%;
+  height: 30%;
+  border-radius: 50%;
+  margin-right: 10px;
+  cursor: pointer;
+  position: relative;
+  top: 40px;
+  left: 20px;
+}
+
+.start img:hover{
+  transform: scale(1.1);
+}
+
+.start .user-info {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  top: 40px;
+  left: 10px;
+  width: 100%;
+}
+
+.start .level-bar {
+  width: 100px;
+  height: 15px;
+  background-color: #ddd;
+  border-radius: 50px;
+  margin-top: 4px;
+  position: relative;
+  overflow: hidden;
+}
+
+.start .level-bar .progress {
+  height: 100%;
+  background-color: #4caf50;
+  width: 0;
+  border-radius: 50px;
+  transition: width 0.5s ease-in-out;
+}
+
+.start .user-info span {
+  font-size: 16px;
+  font-family: Poppins;
+}
+
+.start .user-info .level {
+  font-size: 16px;
+  font-family: Poppins;
+}
   
   .middle {
     text-align: center;
@@ -97,7 +95,7 @@ body {
   .middle .badges {
     position: relative;
     top: 10px;
-    left: 28%;
+    left: 10%;
   }
   
   .middle h1 {
@@ -110,24 +108,23 @@ body {
   }
   .middle span {
     position: relative;
-    right: 38%;
+    right: 21%;
     top: 10px;
     font-size: 50px;
     color: #221080;
   }
   
   .end img {
-    width: 40%;
-    height: 30%;
-    margin-left: 30px;
+    width: 26%;
+    height: 8%;
     cursor: pointer;
-    top: 60px;
+    top: 50px;
     right: 40px;
     position: relative;
   }
   
   .end img:hover {
-    transform: scale(1.3);
+    transform: scale(1.1);
   }
   
   .icon {
@@ -502,9 +499,22 @@ body {
   background-color: #0056b3;
 }
 
+/* Profile Progress Bar Styling */
 .profile-progress {
+  background-color: #ddd;
   width: 500px;
-  height: 40px;
+  height: 30px;
+  transform: skewX(-30deg);
+  border-radius: 0px;
+}
+
+#exp-progress::-webkit-progress-bar {
+  background-color: #ddd;
+  border-radius: 10px;
+}
+
+#exp-progress::-webkit-progress-value {
+  background-color: #4caf50; /* Green color for progress */
 }
 
 .profile-background {

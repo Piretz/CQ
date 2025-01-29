@@ -41,7 +41,13 @@
           
               <div class="swiper-slide">
                 <div class="picture">
-                  <img src="../img/jscourse.png" alt="" id="">
+                  <img src="../img/js.png" alt="" id="">
+                </div>
+              </div>
+
+              <div class="swiper-slide">
+                <div class="picture">
+                  <img src="../img/python.png" alt="" id="">
                 </div>
               </div>
             </div>

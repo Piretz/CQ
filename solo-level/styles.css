@@ -1,0 +1,16 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    position: relative;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    background-image: url(../img/bg-levels.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+  }
