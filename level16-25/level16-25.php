@@ -34,16 +34,20 @@
 
   <!-- Level Cards Section -->
   <div class="level16-cards">
-    <?php 
-      $currentLevel = 1; 
-      for ($i = 16; $i <= 25; $i++): 
-        $image = ($i <= $currentLevel) ? "../img/level-unlock.png" : "../img/level-lock.png";
-    ?>
+  <?php 
+    $currentLevel = 16; 
+    for ($i = 16; $i <= 25; $i++): 
+  ?>
+    <?php if ($i <= $currentLevel): ?>
+      <a href="../solo-level/levels.php?level=<?php echo $i; ?>" class="level-card">
+        <span class="level-number"><?php echo $i; ?></span>
+      </a>
+    <?php else: ?>
       <div class="level-card">
-        <img src="<?php echo $image; ?>" alt="Level <?php echo $i; ?>" class="level-card-image">
-        <h3 class="level-title">Level <?php echo $i; ?></h3>
+        <img src="../img/level-lock.png" alt="Level <?php echo $i; ?>" class="level-card-image">
       </div>
-    <?php endfor; ?>
+    <?php endif; ?>
+  <?php endfor; ?>
   </div>
 </div>
 

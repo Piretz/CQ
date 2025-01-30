@@ -118,8 +118,8 @@
 
                         <!-- Level Progress -->
                         <div class="level-container">
-                            <progress id="exp-progress" value="1000" max="3000" class="profile-progress"></progress>
-                            <span>1000/3000</span>
+                            <progress id="exp-progress" value="3000" max="5000" class="profile-progress"></progress>
+                            <span>3000/5000</span>
                         </div>
 
                         <div class="profile-background">

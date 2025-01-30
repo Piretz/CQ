@@ -90,9 +90,25 @@
     font-weight: bold;
     font-family: zendots;
     text-align: center;
-    color: #3EE321;
+    color: #FCAE00;
     text-transform: uppercase;
     z-index: 2;
+  }
+
+  /* Level Cards Section */
+  .level16-cards {
+    position: absolute;
+    padding: 30px;
+    top: 25%;
+    left: 42%;
+    transform: translateX(-50%);
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 10px;
+    width: 100%;
+    max-width: 600px;
+    z-index: 2;
+    font-family: zen dots;
   }
   
   .level-card {
@@ -100,11 +116,18 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background-color: rgba(255, 255, 255, 0.8); /* Slightly transparent */
+    background-image: url(../img/bg-level-card.png);
+    background-size: cover;
+    background-repeat: no-repeat;
     border-radius: 8px;
-    padding: 10px;
+    width: 130px;
+    height: 150px;
+    padding: 50px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    font-family: zen dots;
+    text-decoration: none;
+    color: inherit;
   }
   
   .level-card:hover {
@@ -113,28 +136,19 @@
   }
   
   .level-card-image {
-    width: 80px;
-    height: 80px;
-    margin-bottom: 10px;
+    width: 100px;
+    height: 100px;
   }
   
-  .level-title {
-    font-size: 14px;
+  .level-number {
+    font-size: 40px;
     font-weight: bold;
-    text-align: center;
-    
+    color: #F5F900;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
   }
   
-  /* Level Cards Section */
-  .level16-cards {
-    position: absolute;
-    bottom: 26%; /* Position relative to the panel */
-    left: 48%;
-    transform: translateX(-50%);
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 10px;
-    max-width: 90%;
-    z-index: 2;
-    font-family: zen dots;
-  }
+  

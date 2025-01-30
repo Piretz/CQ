@@ -101,7 +101,7 @@ body {
   background-color: #032743; /* Fixed background */
   transform: skewX(-22deg);
   color: #fff;
-  padding: 20px 40px;
+  padding: 10px;
   border-bottom: 2px solid #aaa;
   display: flex; /* Use flexbox to align items */
   align-items: start;
@@ -112,7 +112,7 @@ body {
 
 /* Icon Styling */
 .globe-icon {
-  font-size: 1.5rem; /* Adjust size of the icon */
+  font-size: 1.2rem; /* Adjust size of the icon */
   display: flex;
   align-items: start;
   color: #fff; /* Icon color */
@@ -122,7 +122,7 @@ body {
 /* Typewriter Text */
 .typewriter-text {
   display: inline-block;
-  font-size: 1.1rem;
+  font-size: 1.0rem;
   white-space: nowrap; /* Prevent wrapping */
   overflow: hidden; /* Hide overflowing text */
   border-right: 2px solid #fff; /* Cursor effect */

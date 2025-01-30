@@ -118,7 +118,7 @@ body {
     width: 26%;
     height: 8%;
     cursor: pointer;
-    top: 50px;
+    top: 60px;
     right: 40px;
     position: relative;
   }
@@ -514,7 +514,7 @@ body {
 }
 
 #exp-progress::-webkit-progress-value {
-  background-color: #4caf50; /* Green color for progress */
+  background: linear-gradient(to right, #073267, #0E64CD);
 }
 
 .profile-background {
@@ -522,7 +522,7 @@ body {
   flex-wrap: wrap;
   position: fixed;
   top: 45%;
-  left: 16%;
+  left: 15.6%;
   gap: 10px;
 
 }
@@ -554,8 +554,8 @@ body {
 }
 
 .close-icon {
-  width: 110px; /* Adjust size as needed */
-  height: 110px;
+  width: 100px; /* Adjust size as needed */
+  height: 100px;
   cursor: pointer;
   position: absolute;
   left: 18%;
@@ -564,7 +564,7 @@ body {
 }
 
 .close-icon:hover {
-  transform: scale(1.3);
+  transform: scale(1.1);
 }
 
 /* Animation for popup effect */
@@ -646,7 +646,7 @@ body {
 
 .achievement {
   position: relative;
-  width: 80%;
+  width: 81.4%;
   height: 60px; /* Adjust the height of the achievement panel */
 }
 

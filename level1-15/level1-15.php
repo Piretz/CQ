@@ -32,19 +32,23 @@
   <!-- Course Title -->
   <h1 class="course-level">HTML</h1>
 
-  <!-- Level Cards Section -->
-  <div class="level-cards">
-    <?php 
-      $currentLevel = 1; 
-      for ($i = 1; $i <= 15; $i++): 
-        $image = ($i <= $currentLevel) ? "../img/level-unlock.png" : "../img/level-lock.png";
-    ?>
+ <!-- Level Cards Section -->
+<div class="level-cards">
+  <?php 
+    $currentLevel = 5; 
+    for ($i = 1; $i <= 15; $i++): 
+  ?>
+    <?php if ($i <= $currentLevel): ?>
+      <a href="../solo-level/levels.php?level=<?php echo $i; ?>" class="level-card">
+        <span class="level-number"><?php echo $i; ?></span>
+      </a>
+    <?php else: ?>
       <div class="level-card">
-        <img src="<?php echo $image; ?>" alt="Level <?php echo $i; ?>" class="level-card-image">
-        <h3 class="level-title">Level <?php echo $i; ?></h3>
+        <img src="../img/level-lock.png" alt="Level <?php echo $i; ?>" class="level-card-image">
       </div>
-    <?php endfor; ?>
-  </div>
+    <?php endif; ?>
+  <?php endfor; ?>
+</div>
 </div>
 
 </body>
