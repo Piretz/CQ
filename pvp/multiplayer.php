@@ -39,14 +39,13 @@
                 <p>Debug the code:</p>
                 <p><strong>Bonus XP:</strong> Change the background color into green</p>
                 <div class="output-preview">
-                    <!-- Example of the output preview image -->
                     <p>Output:</p>
-                    <img src="../img/bgGreen.png" alt="Green Background Preview" class="output-img">
+                    <div id="output-area" style="width: 50%; height: 100px; background-color: #fff; border: 1px solid #ddd;"></div>
                 </div>
                 <div class="scoreboard">
-                    <div class="score team-1-score">9pts</div>
+                    <div class="score team-1-score">5pts</div>
                     <div class="vs">VS</div>
-                    <div class="score team-2-score">6pts</div>
+                    <div class="score team-2-score">5pts</div>
                 </div>
             </div>
 
@@ -73,29 +72,16 @@
         </div>
 </div>
 
-<script>
-    document.addEventListener("DOMContentLoaded", function() {
-        const runButtons = document.querySelectorAll(".run");
+<!-- Modal -->
+<div id="resultModal" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <h2>Game Over</h2>
+    <p id="resultMessage"></p>
+  </div>
+</div>
 
-        runButtons.forEach((button, index) => {
-            button.addEventListener("click", function() {
-                let code;
-                if (index === 0) {
-                    code = document.getElementById("team1-code").value;
-                } else {
-                    code = document.getElementById("team2-code").value;
-                }
-
-                try {
-                    eval(code); // ⚠️ Note: Gamitin ito nang may pag-iingat (sandboxing is recommended)
-                    alert("Code executed successfully!");
-                } catch (error) {
-                    alert("Error: " + error.message);
-                }
-            });
-        });
-    });
-</script>
+<script src="script.js"></script>
 
 </body>
 </html>
