@@ -19,9 +19,9 @@
               <!-- Right-aligned images -->
               <div class="select-mode-images">
                 <img src="../img/mdSolo.png" alt="Solo Mode" class="solo-mode" id="solomodeImage" class="locked">
-                <img src="../img/mdPvp.png" alt="PvP Mode" class="pvp-mode" id="multimodeImage" class="locked"> 
+                <img src="../img/mdpvp.png" alt="PvP Mode" class="pvp-mode" id="multimodeImage" class="locked"> 
                 <img src="../img/mdLesson.png" alt="Lesson Mode" class="lesson-mode" id="lessonModeImage" class="unlocked">
-                <img src="../img/mdPractice.png" alt="Practice Mode" class="practice-mode" id="practiceModeImage" class="locked">
+                <img src="../img/mdpractice.png" alt="Practice Mode" class="practice-mode" id="practiceModeImage" class="locked">
               </div>
 
               <!-- Typewriter Text -->

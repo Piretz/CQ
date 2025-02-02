@@ -150,6 +150,7 @@
 
 .instruction-panel p{
     color: black;
+    text-align: center;
 }
 
 .output-preview {
@@ -171,7 +172,7 @@
 
 .scoreboard {
     position: absolute; /* Position scoreboard relative to .instruction-panel */
-    bottom: -140px;
+    bottom: -165px;
     width: 95%; /* Ensure scoreboard spans the full width */
     display: flex;
     justify-content: space-around;
@@ -179,20 +180,21 @@
 
 .score {
     background-color: #ffcc00;
-    padding: 10px;
+    padding:  30px;
     border-radius: 5px;
-    font-size: 18px;
+    font-size: 24px;
     font-weight: bold;
     color: black;
+    text-align: center;
 }
 
 .vs {
     position: relative;
     color: #fff;
-    font-size: 20px;
+    font-size: 30px;
     font-weight: bold;
     border: 3px solid #FFE346;
-    padding: 10px;
+    padding: 20px;
     text-align: center;
 }
 .vs::before {
@@ -237,14 +239,16 @@
 
 /* CSS for the floating score animation */
 .floating-score {
-    position: absolute;
+    position: absolute;border: 1px solid #888;
     font-size: 40px;
     font-weight: bold;
-    font-family: Poppins;
+    font-family: zen dots;
     padding: 20px;
-    background-color: #FCAE00; /* Orange color for +1 */
+    background-color: #032743; /* Orange color for +1 */
     color: green;
     animation: floatUp 1s ease-in-out forwards;
+    border: 1px solid #888;
+    border-radius: 10px;
 }
 
 /* Keyframes for the floating animation */
@@ -279,20 +283,22 @@
     overflow: auto;
     background-color: rgba(0, 0, 0, 0.4);
     padding-top: 60px;
+    color: #fff;
   }
 
   .modal-content {
-    background-color: #fff;
+    background-color: #032743;
     margin: 5% auto;
-    padding: 20px;
+    padding: 10px;
     border: 1px solid #888;
     width: 80%;
     max-width: 400px;
     border-radius: 8px;
+    text-align: center;
   }
 
   .close {
-    color: #aaa;
+    color: #ddd;
     float: right;
     font-size: 28px;
     font-weight: bold;
@@ -300,13 +306,14 @@
 
   .close:hover,
   .close:focus {
-    color: black;
+    color: #fff;
     text-decoration: none;
     cursor: pointer;
   }
 
   .modal h2 {
     margin-bottom: 20px;
+    color: #fff;
   }
 
   .modal p {

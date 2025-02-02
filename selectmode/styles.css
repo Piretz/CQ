@@ -25,8 +25,14 @@ body {
   gap: 20px; /* Spacing between images */
 }
 
-.solo-mode, .pvp-mode, .lesson-mode, .practice-mode {
-  width: 270px; /* Adjust for responsiveness */
+.pvp-mode{
+  width: 320px; /* Adjust for responsiveness */
+  height: auto;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  cursor: pointer;
+}
+.solo-mode, .lesson-mode, .practice-mode {
+  width: 280px; /* Adjust for responsiveness */
   height: auto;
   transition: transform 0.3s ease, opacity 0.3s ease;
   cursor: pointer;
@@ -40,7 +46,7 @@ body {
 .solo-mode{
   position: relative;
   top: 10%;
-  left: 110%;
+  left: 120%;
  
 }
 

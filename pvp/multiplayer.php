@@ -37,7 +37,7 @@
             <div class="instruction-panel">
                 <h3>INSTRUCTION</h3>
                 <p>Debug the code:</p>
-                <p><strong>Bonus XP:</strong> Change the background color into green</p>
+                <p><strong id="task-instruction"></strong></p>
                 <div class="output-preview">
                     <p>Output:</p>
                     <div id="output-area" style="width: 50%; height: 100px; background-color: #fff; border: 1px solid #ddd;"></div>
@@ -80,6 +80,7 @@
     <p id="resultMessage"></p>
   </div>
 </div>
+
 
 <script src="script.js"></script>
 
