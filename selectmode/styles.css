@@ -25,13 +25,7 @@ body {
   gap: 20px; /* Spacing between images */
 }
 
-.pvp-mode{
-  width: 320px; /* Adjust for responsiveness */
-  height: auto;
-  transition: transform 0.3s ease, opacity 0.3s ease;
-  cursor: pointer;
-}
-.solo-mode, .lesson-mode, .practice-mode {
+.pvp-mode, .solo-mode, .lesson-mode, .practice-mode {
   width: 280px; /* Adjust for responsiveness */
   height: auto;
   transition: transform 0.3s ease, opacity 0.3s ease;
@@ -103,7 +97,7 @@ body {
 .typewriter-container {
   position: absolute;
   bottom: 2%;
-  right: 10%;
+  right: 20%;
   background-color: #032743; /* Fixed background */
   transform: skewX(-22deg);
   color: #fff;

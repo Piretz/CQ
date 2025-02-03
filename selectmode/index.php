@@ -30,7 +30,7 @@
                 🌐
               </span>
                 <div class="typewriter-text">
-                  Hi guys!! Let's playyyyyyyyyyyyyyyyyyyyyyyy
+                  Hi guys!! Let's playyyyyyyyyyyyyyyyyyyyyyyy!
                 </div>
               </div>
 

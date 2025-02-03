@@ -253,7 +253,7 @@
             <h2>Are you sure you want to logout?</h2>
             <div class="logout-modal-footer">
               <button class="cancel-btn" id="cancelBtn">Cancel</button>
-              <button class="logout-btn" id="logoutBtn">Logout</button>
+              <button class="logout-btn" id="logoutBtn" onclick="window.location.href='../../landingpage/index.php';">Logout</button>
             </div>
           </div>
         </div>
@@ -373,7 +373,7 @@
             // When the user clicks the logout button, trigger logout functionality
             logoutBtn.addEventListener("click", function() {
               // Implement your logout functionality here, e.g.:
-              window.location.href = '/logout'; // Redirect to logout page
+              window.location.href = '../auth/landingpage/index.php'; // Redirect to logout page
             });
 
             // Close the modal if the user clicks outside of it
