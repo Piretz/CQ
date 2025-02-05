@@ -586,6 +586,7 @@ body {
 .high img {
   width: 100%;
   height: auto;
+  max-width: 100%;
 }
 
 .badge-container {
@@ -616,6 +617,7 @@ body {
 .stats img {
   width: 100%; /* Ensures the image stretches across the panel */
   height: auto;
+  max-width: 100%;
 }
 
 .stats-data {
@@ -653,6 +655,7 @@ body {
 .achievement img {
   width: 100%;
   height: auto;
+  max-width: 100%;
 }
 
 .badges-container {
@@ -827,7 +830,7 @@ body {
 }
 
 .settings-modal-content h2{
-  color: #73FBFD;
+  color: #fff;
   text-align: center;
   font-size: 25px;
 }
@@ -848,7 +851,7 @@ body {
   align-items: center;
   gap: 10px;
   margin: 10px 0;
-  color: #73FBFD;
+  color: #fff;
   font-size: 25px;
 
 }
