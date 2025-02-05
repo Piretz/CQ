@@ -144,7 +144,7 @@ body {
   }
 
   .start img {
-    width: 20%; /* Adjust profile image size */
+    width: 16%; /* Adjust profile image size */
     height: auto;
   }
 
@@ -153,7 +153,7 @@ body {
   }
 
   .middle h1 {
-    font-size: 20px; /* Adjust text size */
+    font-size: 10px; /* Adjust text size */
     margin: 10px 0;
   }
 
@@ -180,7 +180,7 @@ body {
   }
 
   .middle h1 {
-    font-size: 20px; /* Adjust heading size */
+    font-size: 10px; /* Adjust heading size */
   }
 
   .middle span {
@@ -226,6 +226,8 @@ body {
     width: 70%;
     height: 70%;
     margin-right: 10px;
+    max-width: 100%;
+    max-height: auto;
     
   }
   
@@ -254,7 +256,7 @@ body {
     text-decoration: none;
     display: flex;
     align-items: center;
-    margin-bottom: 30px; /* Espasyo sa pagitan ng bawat item */
+    margin-bottom: 30px; 
   }
   
   .sidebar-footer a img.icon {
@@ -267,7 +269,7 @@ body {
     cursor: pointer;
   }
 
-  /* tooltip for navabar */
+  /* tooltip for navbar */
   /* Tooltip styles */
 .tooltip {
   position: relative;
@@ -329,7 +331,7 @@ body {
 .logout-modal-content h2 {
   color: #fff;
   text-align: center;
-  fofont-family: Poppins;
+  font-family: Poppins;
 }
 
 /* Close button */
@@ -827,6 +829,7 @@ body {
   width: 50%;
   border-radius: 8px;
   text-align: left;
+  box-shadow: 0 10px 20px #0286DF;
 }
 
 .settings-modal-content h2{

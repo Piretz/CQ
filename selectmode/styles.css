@@ -10,9 +10,9 @@ body {
   box-sizing: border-box;
   font-family: 'Poppins', sans-serif;
   background-image: url(../img/bgdashboard.png);
-  background-size: cover;
+  background-size: cover; /* Ensures the image covers the entire viewport */
   background-repeat: no-repeat;
-  background-attachment: fixed;
+  
 }
 
 /* Right-aligned images container */
@@ -81,6 +81,11 @@ body {
     max-width: 100%;
     height: auto;
   }
+
+  body {
+    background-size: cover; /* Keeps the image responsive */
+    background-position: top center; /* You can adjust position on small screens */
+  }
 }
 
 @media (max-width: 480px) {
@@ -88,6 +93,11 @@ body {
     width: 90px; /* Smaller size for mobile devices */
     max-width: 100%;
     height: auto;
+  }
+
+  body {
+    background-size: cover; /* Keeps the image responsive */
+    background-position: top center; /* You can adjust position on small screens */
   }
 }
 
@@ -97,13 +107,17 @@ body {
     max-width: 100%;
     height: auto;
   }
+  body {
+    background-size: cover; /* Keeps the image responsive */
+    background-position: top center; /* You can adjust position on small screens */
+  }
 }
 
 /* Typewriter Container */
 .typewriter-container {
   position: absolute;
   bottom: 2%;
-  right: 26%;
+  right: 20%;
   background-color: #032743; /* Fixed background */
   transform: skewX(-22deg);
   color: #fff;
