@@ -226,24 +226,87 @@
             </div>
           </div>
 
-        <!------------------------ Settings Modal ------------------------------->
+       <!------------------------ Settings Modal -------------------------------> 
         <div id="settingsModal" class="settings-modal">
-          <div class="settings-modal-content">
-            <span class="settings-close">&times;</span>
-            <h2>Settings</h2>
-            <div class="settings-options">
-              <label>
-                <input type="checkbox"> Enable Notifications
-              </label>
-              <label>
-                <input type="checkbox"> Dark Mode
-              </label>
-              <label>
-                <input type="checkbox"> Auto-update Lessons
-              </label>
+            <div class="settings-modal-content">
+                <span class="settings-close">&times;</span>
+                <h2>Settings</h2>
+                <div class="settings-options">
+                    <!-- Play Icon -->
+                    <label>
+                        <img id="playIcon" src="../img/Music.png" class="settings-icon" alt="Play Music">
+                        Music
+                    </label>
+
+                    <!-- Volume Icon with Slider -->
+                    <label>
+                        <img src="../img/speaker.png" class="settings-icon" alt="Volume">
+                        Sound
+                        <input type="range" id="volume" min="0" max="1" step="0.1">
+                    </label>
+
+                    <!-- Notification Icon -->
+                    <label>
+                        <img id="notifIcon" src="../img/notif-enable.png" class="settings-icon" alt="Notification">
+                        Notification
+                    </label>
+                </div>
             </div>
-          </div>
         </div>
+
+        <audio id="backgroundMusic" src="music.mp3" loop></audio>
+
+        <script>
+            const volumeSlider = document.getElementById("volume");
+            const playIcon = document.getElementById("playIcon");
+            const pauseIcon = document.getElementById("pauseIcon");
+            const notifIcon = document.getElementById("notifIcon");
+            const bgMusic = document.getElementById("backgroundMusic");
+
+            let isMusicOn = localStorage.getItem("music") === "true";
+            let isNotifOn = localStorage.getItem("notifications") === "true";
+            let volumeLevel = localStorage.getItem("volume") || 0.5;
+
+            // Set initial volume and music state
+            volumeSlider.value = volumeLevel;
+            bgMusic.volume = volumeLevel;
+            if (isMusicOn) {
+                bgMusic.play();
+                playIcon.style.display = "none";  // Hide play icon when music is playing
+                pauseIcon.style.display = "block";  // Show pause icon
+            }
+
+            volumeSlider.addEventListener("input", () => {
+                bgMusic.volume = volumeSlider.value;
+                localStorage.setItem("volume", volumeSlider.value);
+            });
+
+            // Play music
+            playIcon.addEventListener("click", () => {
+                isMusicOn = true;
+                bgMusic.play();
+                playIcon.style.display = "none";  // Hide play icon
+                pauseIcon.style.display = "block";  // Show pause icon
+                localStorage.setItem("music", isMusicOn);
+            });
+
+            // Pause music
+            pauseIcon.addEventListener("click", () => {
+                isMusicOn = false;
+                bgMusic.pause();
+                playIcon.style.display = "block";  // Show play icon
+                pauseIcon.style.display = "none";  // Hide pause icon
+                localStorage.setItem("music", isMusicOn);
+            });
+
+            // Notification Toggle
+            notifIcon.src = isNotifOn ? "../img/notif-enable.png" : "../img/notif-disable.png";
+            notifIcon.addEventListener("click", () => {
+                isNotifOn = !isNotifOn;
+                notifIcon.src = isNotifOn ? "../img/notif-enable.png" : "../img/notif-disable.png";
+                localStorage.setItem("notifications", isNotifOn);
+            });
+        </script>
 
 
             <!--------------------------------- Modal for logout confirmation ------------------------------------->

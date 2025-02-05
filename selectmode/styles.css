@@ -25,7 +25,13 @@ body {
   gap: 20px; /* Spacing between images */
 }
 
-.pvp-mode, .solo-mode, .lesson-mode, .practice-mode {
+.pvp-mode{
+  width: 310px;
+  height: auto;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  cursor: pointer;
+}
+.solo-mode, .lesson-mode, .practice-mode {
   width: 280px; /* Adjust for responsiveness */
   height: auto;
   transition: transform 0.3s ease, opacity 0.3s ease;
@@ -46,7 +52,7 @@ body {
 
 .pvp-mode{
   position: absolute;
-  top: 18%;
+  top: 16%;
 }
 
 .practice-mode{
@@ -97,7 +103,7 @@ body {
 .typewriter-container {
   position: absolute;
   bottom: 2%;
-  right: 20%;
+  right: 26%;
   background-color: #032743; /* Fixed background */
   transform: skewX(-22deg);
   color: #fff;

@@ -805,7 +805,7 @@ body {
 
 
 /* Settings Modal */
-#settingsModal {
+.settings-modal {
   display: none;
   position: fixed;
   z-index: 1000;
@@ -816,16 +816,21 @@ body {
   overflow: auto;
   background-color: rgba(0, 0, 0, 0.4);
 }
-
 .settings-modal-content {
-  background-color: #fff;
+  background-color: #172842;
   margin: 15% auto;
   padding: 20px;
   border: 1px solid #888;
-  width: 80%;
+  width: 50%;
   border-radius: 8px;
+  text-align: left;
 }
 
+.settings-modal-content h2{
+  color: #73FBFD;
+  text-align: center;
+  font-size: 25px;
+}
 .settings-close {
   color: #aaa;
   float: right;
@@ -833,14 +838,27 @@ body {
   font-weight: bold;
   cursor: pointer;
 }
-
 .settings-close:hover,
 .settings-close:focus {
   color: black;
   text-decoration: none;
 }
-
 .settings-options label {
-  display: block;
+  display: flex;
+  align-items: center;
+  gap: 10px;
   margin: 10px 0;
+  color: #73FBFD;
+  font-size: 25px;
+
+}
+.settings-options input[type="range"] {
+  flex-grow: 1;
+  background-color: #fff;
+  color: #073267;
+}
+.settings-icon {
+  width: 80px;
+  height: 80px;
+  cursor: pointer;
 }
