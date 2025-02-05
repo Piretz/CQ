@@ -574,8 +574,20 @@ body {
 
 .users-join-btn {
   display: flex;
-  justify-content: end;
+  justify-content: center;
+  cursor: pointer;
+  margin-top: 20px;
 }
+
+.join-lobby-row.selected {
+  background-color: #0286DF;  /* Highlight the selected row */
+  color: #fff;  /* Change text color to white */
+}
+.join-lobby-row.selected:hover{
+  background-color: #0286DF;
+  color: #fff;
+}
+
 
 .users-join-close:hover, .users-join-btn:hover {
   cursor: pointer;
@@ -637,6 +649,13 @@ body {
   text-align: center;
   margin: 5px 0; /* Add spacing */
 }
+
+/* Hover effect for clickable rows */
+.users-join-table tr:hover {
+  cursor: pointer;
+  background-color: rgba(0, 0, 0, 0.1); /* Light hover effect */
+}
+
 
 /* walkthrough */
 /* Example for the tutorial overlay */

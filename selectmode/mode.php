@@ -245,72 +245,115 @@
 
                     <!-- ---------------------------FOR CHOOSING/Joining LOBBY MODAL------------------------- -->
                       <!-- User's Lobby Modal -->
-                  <div id="usersJoinModal" class="users-join-modal">
-                    <div class="users-join-modal-content">
-                      <span class="users-back-close" id="usersJoinCloseModal">
-                        <img src="../img/btnback.png" alt="Close Button">
-                      </span>
-                      <h2 class="users-Join-title">Choose Lobby</h2>
-                      
+<div id="usersJoinModal" class="users-join-modal">
+  <div class="users-join-modal-content">
+    <span class="users-back-close" id="usersJoinCloseModal">
+      <img src="../img/btnback.png" alt="Close Button">
+    </span>
+    <h2 class="users-Join-title">Choose Lobby</h2>
 
-                      <!-- User's List Table -->
-                      <table class="users-join-table">
-                        <thead>
-                          <tr>
-                            <th>Lobby ID</th>
-                            <th>Lobby Master</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr>
-                            <td class="join-ID">12345</td>
-                            <td class="join-user-name">John Doe</td>
-                          </tr>
-                          <tr>
-                            <td class="join-ID">12345</td>
-                            <td class="join-user-name">Jane Smith</td>
-                          </tr>
-                          <tr>
-                            <td class="join-ID">12345</td>
-                            <td class="join-user-name">Alex Johnson</td>
-                          </tr>
-                          <tr>
-                            <td class="join-ID">12345</td>
-                            <td class="join-user-name">Chris Lee</td>
-                          </tr>
-                          <tr>
-                            <td class="join-ID">12345</td>
-                            <td class="join-user-name">Pat Morgan</td>
-                          </tr>
-                        </tbody>
-                      </table>
-                      <span class="users-join-btn" id="usersJoinCloseModal">
-                        <img src="../img/btnjoin.png" alt="Close Button">
-                      </span>
-                    </div>
-                  </div>
+    <!-- User's List Table -->
+    <table class="users-join-table">
+      <thead>
+        <tr>
+          <th>Lobby ID</th>
+          <th>Lobby Master</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="join-lobby-row">
+          <td class="join-ID">12345</td>
+          <td class="join-user-name">John Doe</td>
+        </tr>
+        <tr class="join-lobby-row">
+          <td class="join-ID">12346</td>
+          <td class="join-user-name">Jane Smith</td>
+        </tr>
+        <tr class="join-lobby-row">
+          <td class="join-ID">12347</td>
+          <td class="join-user-name">Alex Johnson</td>
+        </tr>
+        <tr class="join-lobby-row">
+          <td class="join-ID">12348</td>
+          <td class="join-user-name">Chris Lee</td>
+        </tr>
+        <tr class="join-lobby-row">
+          <td class="join-ID">12349</td>
+          <td class="join-user-name">Pat Morgan</td>
+        </tr>
+      </tbody>
+    </table>
+    
+    <!-- Join Button (Initially Hidden) -->
+    <span class="users-join-btn" id="usersJoinBtn" style="display:none;">
+      <img src="../img/btnjoin.png" alt="Join Button">
+    </span>
+  </div>
+</div>
+
 
                   <script>
-                    
-                    const JoinButton = document.getElementById("JoinButton");
                     // Show User's Lobby Modal when the 'Create Multiplayer' button is clicked
                     document.getElementById('joinMultiplayerBtn').addEventListener('click', function() {
-                    // Close the Multiplayer Mode Modal
-                    document.getElementById('multiplayerModeModal').style.display = 'none';
+                      // Close the Multiplayer Mode Modal
+                      document.getElementById('multiplayerModeModal').style.display = 'none';
 
-                    // Open the User's Lobby Modal
-                    document.getElementById('usersJoinModal').style.display = 'flex';
-                  });
+                      // Open the User's Lobby Modal
+                      document.getElementById('usersJoinModal').style.display = 'flex';
+                    });
 
-                  // Close the User's Lobby Modal
-                  document.getElementById('usersJoinCloseModal').addEventListener('click', function() {
-                    document.getElementById('usersJoinModal').style.display = 'none';
-                  });
+                    // Close the User's Lobby Modal
+                    document.getElementById('usersJoinCloseModal').addEventListener('click', function() {
+                      document.getElementById('usersJoinModal').style.display = 'none';
+                    });
 
-                  // Close the Multiplayer Mode Modal (if needed, added a listener for the close button in the modal)
-                  document.getElementById('multiplayerCloseModal').addEventListener('click', function() {
-                    document.getElementById('multiplayerModeModal').style.display = 'none';
-                  });
+                    // Close the Multiplayer Mode Modal (if needed, added a listener for the close button in the modal)
+                    document.getElementById('multiplayerCloseModal').addEventListener('click', function() {
+                      document.getElementById('multiplayerModeModal').style.display = 'none';
+                    });
+
+                    // Add click event for each lobby row
+                    document.querySelectorAll('.join-lobby-row').forEach(row => {
+                      row.addEventListener('click', function() {
+                        // Remove the 'selected' class from all rows
+                        document.querySelectorAll('.join-lobby-row').forEach(otherRow => {
+                          otherRow.classList.remove('selected');
+                        });
+
+                        // Add 'selected' class to the clicked row
+                        this.classList.add('selected');
+
+                        const lobbyId = this.querySelector('.join-ID').textContent;
+                        const lobbyMaster = this.querySelector('.join-user-name').textContent;
+
+                        // Show the "Join" button
+                        document.getElementById('usersJoinBtn').style.display = 'block';
+
+                        // Store the selected lobby information for later use
+                        this.setAttribute('data-lobby-id', lobbyId);
+                        this.setAttribute('data-lobby-master', lobbyMaster);
+                      });
+                    });
+
+                    // Add click event for the "Join" button
+                    document.getElementById('usersJoinBtn').addEventListener('click', function() {
+                      const selectedRow = document.querySelector('.join-lobby-row.selected');
+                      
+                      if (selectedRow) {
+                        const lobbyId = selectedRow.getAttribute('data-lobby-id');
+                        const lobbyMaster = selectedRow.getAttribute('data-lobby-master');
+
+                        // Perform the action of joining the lobby (e.g., show a confirmation message)
+                        console.log(`You have joined the lobby with ID: ${lobbyId}, hosted by ${lobbyMaster}`);
+
+                        // Close the modal
+                        document.getElementById('usersJoinModal').style.display = 'none';
+
+                        // Show a confirmation message
+                        alert(`You have joined the lobby with ID: ${lobbyId}, hosted by ${lobbyMaster}`);
+                      }
+                    });
+
 
                     </script>
 </body>

@@ -15,39 +15,35 @@
                 <?php
         if (isset($_GET['mode'])) {
           $mode = $_GET['mode'];
-          // Now, you can use $mode to load specific content or handle the selected mode
+          
         }
       ?>
 
             <!-- Main Content -->
         <main class="main-content">
-            <!-- Image at the top of the swiper slider -->
-          <!-- <div class="intro-image">
-            <img src="../img/lblcourse.png" alt="Intro Text">
-          </div> -->
           <div class="swiper-container">    
             <div class="swiper-wrapper">
               <div class="swiper-slide">
                 <div class="picture">
-                  <img src="../img/csscourse.png" alt="" id="">
+                  <img src="../img/csscourse.png" alt="CSS" id="">
                 </div>
               </div>
           
               <div class="swiper-slide">
                 <div class="picture">
-                  <img src="../img/html.png" alt="" id="">
+                  <img src="../img/html.png" alt="HTML" id="">
                 </div>
               </div>
           
               <div class="swiper-slide">
                 <div class="picture">
-                  <img src="../img/js.png" alt="" id="">
+                  <img src="../img/js.png" alt="JS" id="">
                 </div>
               </div>
 
               <div class="swiper-slide">
                 <div class="picture">
-                  <img src="../img/python.png" alt="" id="">
+                  <img src="../img/python.png" alt="PYTHON" id="">
                 </div>
               </div>
             </div>
@@ -61,6 +57,7 @@
               grabCursor: true,
               centeredSlides: true,
               slidesPerView: "auto",
+              initialSlide: 1, // Make sure the first slide (HTML) is visible on load
               coverflowEffect: {
                 rotate: 20,
                 stretch: 0,

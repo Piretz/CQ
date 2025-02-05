@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
 	<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.4.2/css/swiper.min.css'><link rel="stylesheet" href="styles.css">
 	<script src='https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.4.2/js/swiper.min.js'></script>
@@ -55,7 +56,7 @@
             <aside class="sidebar">
               <ul>
                 <li>
-                  <a href="../selectmode/index.php" class="nav-link">
+                  <a href="../selectmode/mode.php" class="nav-link">
                     <img src="../img/btnHome.png" alt="Home" class="icon"> 
                   </a>
                 </li>
@@ -80,7 +81,7 @@
                   </a>
                 </li>
               </ul>
-            
+
               <!-- Footer Section -->
               <footer class="sidebar-footer">
                 <a href="../info/information.php" class="nav-link">
@@ -91,6 +92,29 @@
                 </a>
               </footer>
             </aside>
+
+            <!-- Loading Spinner -->
+            <div id="loading" class="loading-container" style="display: none;">
+              <div class="spinner"></div>
+            </div>
+
+            <!-- JavaScript to Control Loading Spinner -->
+            <script>
+              function showLoading() {
+                document.getElementById("loading").style.display = "flex";
+              }
+
+              function hideLoading() {
+                document.getElementById("loading").style.display = "none";
+              }
+
+              // Example usage: Show loading spinner when something is being loaded
+              showLoading();
+              setTimeout(function() {
+                hideLoading();
+              }, 3000); // Example delay (3 seconds)
+            </script>
+
 
            <!-- ----------------------------------------------------------------FOR ALL POP UP MODAL ------------------------------------------------------------------------------------------------------------------------------------------------------ -->
             <!------------------------------------------------- Profile Modal --------------------------------------->
@@ -227,87 +251,63 @@
           </div>
 
        <!------------------------ Settings Modal -------------------------------> 
-        <div id="settingsModal" class="settings-modal">
-            <div class="settings-modal-content">
-                <span class="settings-close">&times;</span>
-                <h2>Settings</h2>
-                <div class="settings-options">
-                    <!-- Play Icon -->
-                    <label>
-                        <img id="playIcon" src="../img/Music.png" class="settings-icon" alt="Play Music">
-                        Music
-                    </label>
-
-                    <!-- Volume Icon with Slider -->
-                    <label>
-                        <img src="../img/speaker.png" class="settings-icon" alt="Volume">
-                        Sound
-                        <input type="range" id="volume" min="0" max="1" step="0.1">
-                    </label>
-
-                    <!-- Notification Icon -->
-                    <label>
-                        <img id="notifIcon" src="../img/notif-enable.png" class="settings-icon" alt="Notification">
-                        Notification
-                    </label>
+       <div id="settingsModal" class="settings-modal">
+        <div class="settings-modal-content">
+            <span class="settings-close">&times;</span>
+            <h2>Settings</h2>
+            <div class="settings-options">
+                <div class="setting-item">
+                    <span>Music</span>
+                    <i id="musicToggle" class="fa fa-play"></i>
+                </div>
+                <div class="setting-item">
+                    <span>Volume</span>
+                    <input type="range" id="volumeSlider" class="volume-slider" min="0" max="100" value="50">
+                </div>
+                <div class="setting-item">
+                    <span>Notifications</span>
+                    <i id="notificationToggle" class="fa fa-bell"></i>
                 </div>
             </div>
         </div>
+    </div>
 
-        <audio id="backgroundMusic" src="music.mp3" loop></audio>
+    <script>
+        
+        const closeSettings = document.querySelector(".settings-close");
+        const musicToggle = document.getElementById("musicToggle");
+        const notificationToggle = document.getElementById("notificationToggle");
+        const volumeSlider = document.getElementById("volumeSlider");
+        let audio = new Audio('../img/sample.mp3');
+        audio.loop = true;
 
-        <script>
-            const volumeSlider = document.getElementById("volume");
-            const playIcon = document.getElementById("playIcon");
-            const pauseIcon = document.getElementById("pauseIcon");
-            const notifIcon = document.getElementById("notifIcon");
-            const bgMusic = document.getElementById("backgroundMusic");
-
-            let isMusicOn = localStorage.getItem("music") === "true";
-            let isNotifOn = localStorage.getItem("notifications") === "true";
-            let volumeLevel = localStorage.getItem("volume") || 0.5;
-
-            // Set initial volume and music state
-            volumeSlider.value = volumeLevel;
-            bgMusic.volume = volumeLevel;
-            if (isMusicOn) {
-                bgMusic.play();
-                playIcon.style.display = "none";  // Hide play icon when music is playing
-                pauseIcon.style.display = "block";  // Show pause icon
+        
+        musicToggle.onclick = function() {
+            if (audio.paused) {
+                audio.play();
+                musicToggle.classList.remove("fa-play");
+                musicToggle.classList.add("fa-pause");
+            } else {
+                audio.pause();
+                musicToggle.classList.remove("fa-pause");
+                musicToggle.classList.add("fa-play");
             }
+        };
 
-            volumeSlider.addEventListener("input", () => {
-                bgMusic.volume = volumeSlider.value;
-                localStorage.setItem("volume", volumeSlider.value);
-            });
+        volumeSlider.oninput = function() {
+            audio.volume = this.value / 100;
+        };
 
-            // Play music
-            playIcon.addEventListener("click", () => {
-                isMusicOn = true;
-                bgMusic.play();
-                playIcon.style.display = "none";  // Hide play icon
-                pauseIcon.style.display = "block";  // Show pause icon
-                localStorage.setItem("music", isMusicOn);
-            });
-
-            // Pause music
-            pauseIcon.addEventListener("click", () => {
-                isMusicOn = false;
-                bgMusic.pause();
-                playIcon.style.display = "block";  // Show play icon
-                pauseIcon.style.display = "none";  // Hide pause icon
-                localStorage.setItem("music", isMusicOn);
-            });
-
-            // Notification Toggle
-            notifIcon.src = isNotifOn ? "../img/notif-enable.png" : "../img/notif-disable.png";
-            notifIcon.addEventListener("click", () => {
-                isNotifOn = !isNotifOn;
-                notifIcon.src = isNotifOn ? "../img/notif-enable.png" : "../img/notif-disable.png";
-                localStorage.setItem("notifications", isNotifOn);
-            });
-        </script>
-
+        notificationToggle.onclick = function() {
+            if (notificationToggle.classList.contains("fa-bell")) {
+                notificationToggle.classList.remove("fa-bell");
+                notificationToggle.classList.add("fa-bell-slash");
+            } else {
+                notificationToggle.classList.remove("fa-bell-slash");
+                notificationToggle.classList.add("fa-bell");
+            }
+        };
+    </script>
 
             <!--------------------------------- Modal for logout confirmation ------------------------------------->
         <div id="logoutModal" class="logout-modal">
@@ -316,7 +316,7 @@
             <h2>Are you sure you want to logout?</h2>
             <div class="logout-modal-footer">
               <button class="cancel-btn" id="cancelBtn">Cancel</button>
-              <button class="logout-btn" id="logoutBtn" onclick="window.location.href='../../landingpage/index.php';">Logout</button>
+              <button class="logout-btn" id="logoutBtn" onclick="window.location.href='../index.php';">Logout</button>
             </div>
           </div>
         </div>
@@ -436,7 +436,7 @@
             // When the user clicks the logout button, trigger logout functionality
             logoutBtn.addEventListener("click", function() {
               // Implement your logout functionality here, e.g.:
-              window.location.href = '../auth/landingpage/index.php'; // Redirect to logout page
+              window.location.href = '../index.php'; // Redirect to logout page
             });
 
             // Close the modal if the user clicks outside of it

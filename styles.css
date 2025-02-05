@@ -97,7 +97,7 @@ nav a:target {
     justify-content: center;
     align-items: center;
     text-align: center;
-    background-image: url(../../img/bghome.png);
+    background-image: url(./img/bghome.png);
     background-size: cover; /* Make the background image cover the entire section */
     background-position: center; /* Center the background image */
     background-repeat: no-repeat; /* Ensure the background image doesn't repeat */
@@ -128,7 +128,7 @@ nav a:target {
 .content-about {
     height: 100vh;
     text-align: center;
-    background-image: url('../../img/bgpanel.png');
+    background-image: url('./img/bgpanel.png');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -206,7 +206,7 @@ p {
     display: grid;
     grid-template-columns: repeat(4, 1fr); /* Four equal-width columns */
     height: 20vh; /* Set height */
-    background-image: url(../../img/bgtestimonial.png); /* Background image */
+    background-image: url('./img/bgtestimonial.png'); /* Background image */
     background-size: cover;
     background-position: center;
     padding: 20px;
@@ -245,7 +245,7 @@ p {
 /* Courses Section */
 .content-courses {
     height: 100vh;
-    background-image: url(../../img/bgcourse.png);
+    background-image: url('./img/bgcourse.png');
     background-size: cover;
     background-position: center;
     display: flex;
@@ -298,7 +298,7 @@ p {
 .content-feedback {
     height: 75vh; /* Set height */
     width: auto; /* Auto width */
-    background-image: url(../../img/bgfeedback.png);
+    background-image: url('./img/bgfeedback.png');
     background-size: cover; /* Cover the section */
     background-position: center; /* Center the image */
     background-repeat: no-repeat; /* Prevent repeat */
@@ -330,7 +330,7 @@ p {
 }
 
 .review-image {
-    background-image: url(../../img/review.png); /* Image for the review section */
+    background-image: url('./img/review.png'); /* Image for the review section */
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
@@ -386,7 +386,7 @@ p {
     transform: translate(-50%, -50%); /* Offset to center */
     width: 700px; /* Adjust ellipse width */
     height: 600px; /* Adjust ellipse height */
-    background-image: url(../../img/ellipseread.png);
+    background-image: url('./img/ellipseread.png');
     border-radius: 50%; /* Make it an ellipse */
 }
 
@@ -492,7 +492,7 @@ p {
     position: fixed;
     top: 2%;
     left: 0;
-    background-image: url(../../img/bgpanel.png);
+    background-image: url('./img/bgpanel.png');
     width: 100%;
     height: 100%;
     z-index: 9999;
@@ -502,7 +502,7 @@ p {
 
 /* Modal Content */
 .modal-content {
-    background-image: url(../../img/panel.png);
+    background-image: url('./img/panel.png');
     padding: 30px;
     border-radius: 10px;
     width: 100%;
@@ -641,7 +641,7 @@ p {
     position: fixed;
     top: 2%;
     left: 0;
-    background-image: url(../../img/bgpanel.png);
+    background-image: url('./img/bgpanel.png');
     width: 100%;
     height: 100%;
     z-index: 9999;
@@ -651,7 +651,7 @@ p {
 
 /* Modal Content */
 .signupmodal-content {
-    background-image: url(../../img/panel.png);
+    background-image: url('./img/panel.png');
     padding: 30px;
     border-radius: 10px;
     width: 100%;
