@@ -14,20 +14,92 @@
 </head>
 <body>
 
-              <?php include '../components/navbar.php'; ?>
-              
-               <!-- Joybee Character -->
-              <div class="joybee-container">
-                <img src="../img/joybee.png" alt="Joybee" class="joybee-character">
-              </div>
+          <?php include '../components/navbar.php'; ?>
+          
+            <!-- Walkthrough Overlay -->
+            <div id="walkthrough-overlay" class="walkthrough-overlay">
+                <div class="joybee-container">
+                    <img src="../img/joybee.png" alt="Joybee" class="joybee-character" id="joybeeImage">
+                    <div class="joybee-text-box">
+                        <p id="joybee-text">Hi User, Welcome to CodeV!</p>
+                        <div class="walkthrough-buttons">
+                            <button id="skip-btn">Skip</button>
+                            <button id="next-btn">Next</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-              <!-- Right-aligned images -->
-              <div class="select-mode-images">
-                <img src="../img/mdSolo.png" alt="Solo Mode" class="solo-mode" id="solomodeImage" class="locked">
-                <img src="../img/mdpvp.png" alt="PvP Mode" class="pvp-mode" id="multimodeImage" class="locked"> 
-                <img src="../img/mdLesson.png" alt="Lesson Mode" class="lesson-mode" id="lessonModeImage" class="unlocked">
-                <img src="../img/mdpractice.png" alt="Practice Mode" class="practice-mode" id="practiceModeImage" class="locked">
-              </div>
+            <!-- Right-aligned images -->
+            <div class="select-mode-images">
+                <img src="../img/mdSolo.png" alt="Solo Mode" class="solo-mode walkthrough-item" id="solomodeImage">
+                <img src="../img/mdpvp.png" alt="PvP Mode" class="pvp-mode walkthrough-item" id="multimodeImage"> 
+                <img src="../img/mdLesson.png" alt="Lesson Mode" class="lesson-mode walkthrough-item" id="lessonModeImage">
+                <img src="../img/mdpractice.png" alt="Practice Mode" class="practice-mode walkthrough-item" id="practiceModeImage">
+            </div>
+
+            <!-- FOR NEW USER WALKTHROUGH -->
+            <script>
+                  document.addEventListener("DOMContentLoaded", function () {
+                  const steps = [
+                      { text: "Hi User, Welcome to CoDev!", highlight: null },
+                      { text: "This is Solo Mode, where you can practice coding alone!", highlight: "solomodeImage" },
+                      { text: "This is Multiplayer Mode, where you can compete with others!", highlight: "multimodeImage" },
+                      { text: "Lesson Mode helps you learn new programming concepts!", highlight: "lessonModeImage" },
+                      { text: "Practice Mode lets you test your skills with exercises!", highlight: "practiceModeImage" }
+                  ];
+
+                  let currentStep = 0;
+
+                  const joybeeText = document.getElementById("joybee-text");
+                  const nextBtn = document.getElementById("next-btn");
+                  const skipBtn = document.getElementById("skip-btn");
+                  const overlay = document.getElementById("walkthrough-overlay");
+                  const images = document.querySelectorAll(".walkthrough-item");
+                  const joybeeTextBox = document.querySelector(".joybee-text-box");
+
+                  function updateStep() {
+                      // Remove previous highlights
+                      images.forEach(item => item.classList.remove("walkthrough-active"));
+
+                      // Update text
+                      joybeeText.innerText = steps[currentStep].text;
+
+                      // Highlight current element
+                      if (steps[currentStep].highlight) {
+                          document.getElementById(steps[currentStep].highlight).classList.add("walkthrough-active");
+                      }
+                  }
+
+                  // Move to next step
+                  nextBtn.addEventListener("click", function () {
+                      currentStep++;
+                      if (currentStep >= steps.length) {
+                          overlay.style.background = "transparent";
+                          overlay.style.backdropFilter = "none";
+                          overlay.style.pointerEvents = "none"; 
+                          overlay.style.removeProperty("z-index"); // Remove z-index after walkthrough ends
+                          images.forEach(item => item.classList.remove("walkthrough-item"));
+                          joybeeTextBox.style.display = "none";
+                      } else {
+                          updateStep();
+                      }
+                  });
+
+                  // Skip walkthrough
+                  skipBtn.addEventListener("click", function () {
+                      overlay.style.background = "transparent";
+                      overlay.style.backdropFilter = "none";
+                      overlay.style.pointerEvents = "none"; 
+                      overlay.style.removeProperty("z-index"); // Remove z-index when skipped
+                      images.forEach(item => item.classList.remove("walkthrough-item"));
+                      joybeeTextBox.style.display = "none";
+                  });
+
+                  updateStep();
+              });
+
+              </script>
 
               <!-- Typewriter Text -->
               <div class="typewriter-container">
@@ -39,17 +111,7 @@
                 </div>
               </div>
 
-              <!-- Loading Spinner -->
-              <!-- <div id="loading" class="d-flex justify-content-center align-items-center position-fixed top-0 start-0 w-100 h-100 bg-white" style="display: none; z-index: 1050;">
-                  <div class="spinner-border text-primary" role="status">
-                    <span class="visually-hidden">Loading...</span>
-                  </div>
-                </div> -->
-
-
-              <!-- ALL MODAL MODES (SOLO) (PVP) (PRACTICE) (CUSTOM)-->
-                
-
+              <!-- ALL MODAL MODES (SOLO) (PVP) (LESSON) (PRACTICE)-->
                 <!-- Solo Mode Modal -->
                 <div id="soloModeModal" class="solo-modal">
                   <div class="solo-modal-content">
@@ -70,10 +132,10 @@
                 <!-- JavaScript to Control Loading and Redirect -->
                 <script>
                   function showLoadingAndRedirect(url) {
-                    // Ipakita ang loading spinner
+                
                     document.getElementById("loading").style.display = "flex";
 
-                    // Maghintay ng 2 segundo bago lumipat sa bagong pahina
+                   
                     setTimeout(function() {
                       window.location.href = url;
                     }, 2000);

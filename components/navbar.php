@@ -95,8 +95,12 @@
 
             <!-- Loading Spinner -->
             <div id="loading" class="loading-container" style="display: none;">
-              <div class="spinner"></div>
+                <div class="spinner-box">
+                    <div class="neon-spinner"></div>
+                    <div class="pulse-wave"></div>
+                </div>
             </div>
+
 
             <!-- JavaScript to Control Loading Spinner -->
             <script>
@@ -318,9 +322,11 @@
                         <button class="cancel-btn" id="cancelBtn">Cancel</button>
                         <button class="logout-btn" id="logoutBtn">Logout</button>
                     </div>
-                    <!-- Loading Spinner -->
-                    <div id="loadingSpinner" class="loading-spinner" style="display:none;">
-                        <div class="logout-spinner"></div>
+                    <div id="loadingSpinner" class="loading-container-logout" style="display: none;">
+                        <div class="logout-spinner-box">
+                            <div class="logout-neon-spinner"></div>
+                            <div class="logout-pulse-wave"></div>
+                        </div>
                     </div>
                 </div>
             </div>

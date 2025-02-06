@@ -270,33 +270,60 @@ body {
   }
 
   /* Sidebar Loading Spinner Style */
+/* Fullscreen Background */
 .loading-container {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: #032743;
   display: flex;
   justify-content: center;
   align-items: center;
   z-index: 9999;
 }
 
-.spinner {
-  border: 8px solid #f3f3f3; /* Light gray */
-  border-top: 8px solid #3498db; /* Blue */
-  border-radius: 50%;
-  width: 60px;
-  height: 60px;
-  animation: spin 2s linear infinite;
+/* Spinner Box */
+.spinner-box {
+  position: relative;
+  width: 80px;
+  height: 80px;
 }
 
+/* Neon Glow Spinner */
+.neon-spinner {
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  border: 6px solid transparent;
+  border-top: 6px solid #00e1ff; /* Neon Blue */
+  border-radius: 50%;
+  animation: spin 1.5s linear infinite;
+  box-shadow: 0 0 10px #00e1ff, 0 0 30px #00e1ff;
+}
+
+/* Pulsing Wave Effect */
+.pulse-wave {
+  position: absolute;
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background: rgba(0, 225, 255, 0.2);
+  animation: pulse 1.5s infinite ease-in-out;
+}
+
+/* Spin Animation */
 @keyframes spin {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
 }
 
+/* Pulse Animation */
+@keyframes pulse {
+  0% { transform: scale(1); opacity: 1; }
+  100% { transform: scale(1.5); opacity: 0; }
+}
 
   /* tooltip for navbar */
   /* Tooltip styles */
@@ -426,41 +453,71 @@ body {
   }
 }
 
-.loading-spinner {
-  position: fixed;
-  top: 0;
-  left: 0;
+/* Logout Loading Container (Inside Modal) */
+.loading-container-logout {
+  position: absolute;  /* Keeps it inside the modal */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(3, 39, 67, 0.8); /* Slight transparency */
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 9999;
-  padding-top: 16%;
+  z-index: 10000; /* Ensures it's above modal content */
 }
 
-.logout-spinner{
-  border: 8px solid #f3f3f3;
-  border-top: 8px solid #3498db;
-  border-radius: 50%;
+/* Spinner Box */
+.logout-spinner-box {
+  display: flex;
+  width: 80px;
+  height: 80px;
+  position: relative;
+  top: 40%;
+  left: 45%;
+}
+
+/* Neon Glow Spinner */
+.logout-neon-spinner {
   width: 60px;
   height: 60px;
-  animation: spin 2s linear infinite;
-  margin: 0 auto;
+  border: 6px solid transparent;
+  border-top: 6px solid #00e1ff; /* Neon Blue */
+  border-radius: 50%;
+  animation: spin 1.5s linear infinite;
+  box-shadow: 0 0 10px #00e1ff, 0 0 30px #00e1ff;
 }
 
+/* Pulsing Wave Effect */
+.logout-pulse-wave {
+  position: absolute;
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background: rgba(0, 225, 255, 0.2);
+  animation: pulse 1.5s infinite ease-in-out;
+}
+
+/* Spin Animation */
 @keyframes spin {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
 }
+
+/* Pulse Animation */
+@keyframes pulse {
+  0% { transform: scale(1); opacity: 1; }
+  100% { transform: scale(1.5); opacity: 0; }
+}
+
 
 
 /* Profile Modal Styling */
 .profile-modal {
   display: none;
   position: fixed;
-  z-index: 100;
+  z-index: 99999;
   left: 0;
   top: 0;
   width: 100%;
@@ -741,7 +798,7 @@ body {
   display: none;
   color: #fff;
   position: fixed;
-  z-index: 1000;
+  z-index: 99999;
   left: 0;
   top: 0;
   width: 100%;
@@ -870,7 +927,7 @@ body {
 .settings-modal {
   display: none;
   position: fixed;
-  z-index: 1000;
+  z-index: 99999;
   left: 0;
   top: 0;
   width: 100%;
