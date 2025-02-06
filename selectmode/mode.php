@@ -16,6 +16,11 @@
 
               <?php include '../components/navbar.php'; ?>
               
+               <!-- Joybee Character -->
+              <div class="joybee-container">
+                <img src="../img/joybee.png" alt="Joybee" class="joybee-character">
+              </div>
+
               <!-- Right-aligned images -->
               <div class="select-mode-images">
                 <img src="../img/mdSolo.png" alt="Solo Mode" class="solo-mode" id="solomodeImage" class="locked">
@@ -34,15 +39,57 @@
                 </div>
               </div>
 
+              <!-- Loading Spinner -->
+              <!-- <div id="loading" class="d-flex justify-content-center align-items-center position-fixed top-0 start-0 w-100 h-100 bg-white" style="display: none; z-index: 1050;">
+                  <div class="spinner-border text-primary" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                  </div>
+                </div> -->
+
+
               <!-- ALL MODAL MODES (SOLO) (PVP) (PRACTICE) (CUSTOM)-->
+                
+
                 <!-- Solo Mode Modal -->
                 <div id="soloModeModal" class="solo-modal">
                   <div class="solo-modal-content">
-                    <span class="solo-close" id="soloCloseModal"><img src="../img/btnback.png" alt="Close Button"></span>
-                    <button id="TakeLesson" class="solo-start-btn"><img src="../img/btntklesson.png" alt="Close Button" onclick="window.location.href='../lesson/lesson.php'"></button>
-                    <button id="StartGame" class="solo-start-btn"><img src="../img/btnstart.png" alt="Close Button" onclick="window.location.href='../level1-15/level1-15.php'"></button>
+                    <span class="solo-close" id="soloCloseModal">
+                      <img src="../img/btnback.png" alt="Close Button">
+                    </span>
+                    
+                    <button id="TakeLesson" class="solo-start-btn">
+                      <img src="../img/btntklesson.png" alt="Take Lesson">
+                    </button>
+
+                    <button id="StartGame" class="solo-start-btn">
+                      <img src="../img/btnstart.png" alt="Start Game">
+                    </button>
                   </div>
                 </div>
+
+                <!-- JavaScript to Control Loading and Redirect -->
+                <script>
+                  function showLoadingAndRedirect(url) {
+                    // Ipakita ang loading spinner
+                    document.getElementById("loading").style.display = "flex";
+
+                    // Maghintay ng 2 segundo bago lumipat sa bagong pahina
+                    setTimeout(function() {
+                      window.location.href = url;
+                    }, 2000);
+                  }
+
+                  // Event listener para sa Take Lesson button
+                  document.getElementById("TakeLesson").addEventListener("click", function() {
+                    showLoadingAndRedirect('../lesson/lesson.php');
+                  });
+
+                  // Event listener para sa Start Game button
+                  document.getElementById("StartGame").addEventListener("click", function() {
+                    showLoadingAndRedirect('../level1-15/level1-15.php');
+                  });
+                </script>
+
 
                 <!-- JavaScript for Solo Mode Modal -->
                 <script>
@@ -135,41 +182,6 @@
                   });
                 </script>
 
-                  <!---------------------------------- Custom Mode Modal --------------------------->
-                <div id="customModeModal" class="custom-modal">
-                  <div class="custom-modal-content">
-                    <span class="custom-close" id="customCloseModal">&times;</span>
-                    <h2>Custom Mode</h2>
-                    <p>Welcome to Custom Mode! Personalize your game settings and start your challenge.</p>
-                    <button id="startCustomBtn" class="custom-start-btn">Start Game</button>
-                  </div>
-                </div>
-
-                <!-- JavaScript for Custom Mode Modal -->
-                <script>
-                  const customModeImage = document.getElementById("customModeImage");
-                  const customModeModal = document.getElementById("customModeModal");
-                  const customCloseModal = document.getElementById("customCloseModal");
-
-                  // Open Custom Mode Modal when clicking on the image
-                  customModeImage.addEventListener("click", () => {
-                    customModeModal.style.display = "block";
-                  });
-
-                  // Close Custom Mode Modal when clicking on the close button
-                  customCloseModal.addEventListener("click", () => {
-                    customModeModal.style.display = "none";
-                  });
-
-                  // Close Custom Mode Modal when clicking outside the modal
-                  window.addEventListener("click", (event) => {
-                    if (event.target === customModeModal) {
-                      customModeModal.style.display = "none";
-                    }
-                  });
-
-                   </script>
-
                     <!-- User's Lobby Modal -->
                     <div id="usersLobbyModal" class="users-lobby-modal">
                       <div class="users-lobby-modal-content">
@@ -245,51 +257,51 @@
 
                     <!-- ---------------------------FOR CHOOSING/Joining LOBBY MODAL------------------------- -->
                       <!-- User's Lobby Modal -->
-<div id="usersJoinModal" class="users-join-modal">
-  <div class="users-join-modal-content">
-    <span class="users-back-close" id="usersJoinCloseModal">
-      <img src="../img/btnback.png" alt="Close Button">
-    </span>
-    <h2 class="users-Join-title">Choose Lobby</h2>
+                  <div id="usersJoinModal" class="users-join-modal">
+                    <div class="users-join-modal-content">
+                      <span class="users-back-close" id="usersJoinCloseModal">
+                        <img src="../img/btnback.png" alt="Close Button">
+                      </span>
+                      <h2 class="users-Join-title">Choose Lobby</h2>
 
-    <!-- User's List Table -->
-    <table class="users-join-table">
-      <thead>
-        <tr>
-          <th>Lobby ID</th>
-          <th>Lobby Master</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr class="join-lobby-row">
-          <td class="join-ID">12345</td>
-          <td class="join-user-name">John Doe</td>
-        </tr>
-        <tr class="join-lobby-row">
-          <td class="join-ID">12346</td>
-          <td class="join-user-name">Jane Smith</td>
-        </tr>
-        <tr class="join-lobby-row">
-          <td class="join-ID">12347</td>
-          <td class="join-user-name">Alex Johnson</td>
-        </tr>
-        <tr class="join-lobby-row">
-          <td class="join-ID">12348</td>
-          <td class="join-user-name">Chris Lee</td>
-        </tr>
-        <tr class="join-lobby-row">
-          <td class="join-ID">12349</td>
-          <td class="join-user-name">Pat Morgan</td>
-        </tr>
-      </tbody>
-    </table>
-    
-    <!-- Join Button (Initially Hidden) -->
-    <span class="users-join-btn" id="usersJoinBtn" style="display:none;">
-      <img src="../img/btnjoin.png" alt="Join Button">
-    </span>
-  </div>
-</div>
+                      <!-- User's List Table -->
+                      <table class="users-join-table">
+                        <thead>
+                          <tr>
+                            <th>Lobby ID</th>
+                            <th>Lobby Master</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr class="join-lobby-row">
+                            <td class="join-ID">12345</td>
+                            <td class="join-user-name">John Doe</td>
+                          </tr>
+                          <tr class="join-lobby-row">
+                            <td class="join-ID">12346</td>
+                            <td class="join-user-name">Jane Smith</td>
+                          </tr>
+                          <tr class="join-lobby-row">
+                            <td class="join-ID">12347</td>
+                            <td class="join-user-name">Alex Johnson</td>
+                          </tr>
+                          <tr class="join-lobby-row">
+                            <td class="join-ID">12348</td>
+                            <td class="join-user-name">Chris Lee</td>
+                          </tr>
+                          <tr class="join-lobby-row">
+                            <td class="join-ID">12349</td>
+                            <td class="join-user-name">Pat Morgan</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                      
+                      <!-- Join Button (Initially Hidden) -->
+                      <span class="users-join-btn" id="usersJoinBtn" style="display:none;">
+                        <img src="../img/btnjoin.png" alt="Join Button">
+                      </span>
+                    </div>
+                  </div>
 
 
                   <script>
@@ -353,8 +365,6 @@
                         alert(`You have joined the lobby with ID: ${lobbyId}, hosted by ${lobbyMaster}`);
                       }
                     });
-
-
                     </script>
 </body>
 </html>

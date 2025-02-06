@@ -310,16 +310,21 @@
     </script>
 
             <!--------------------------------- Modal for logout confirmation ------------------------------------->
-        <div id="logoutModal" class="logout-modal">
-          <div class="logout-modal-content">
-            <span class="logout-close" id="logout-closeModal"></span>
-            <h2>Are you sure you want to logout?</h2>
-            <div class="logout-modal-footer">
-              <button class="cancel-btn" id="cancelBtn">Cancel</button>
-              <button class="logout-btn" id="logoutBtn" onclick="window.location.href='../index.php';">Logout</button>
+            <div id="logoutModal" class="logout-modal">
+                <div class="logout-modal-content">
+                    <span class="logout-close" id="logout-closeModal"></span>
+                    <h2>Are you sure you want to logout?</h2>
+                    <div class="logout-modal-footer">
+                        <button class="cancel-btn" id="cancelBtn">Cancel</button>
+                        <button class="logout-btn" id="logoutBtn">Logout</button>
+                    </div>
+                    <!-- Loading Spinner -->
+                    <div id="loadingSpinner" class="loading-spinner" style="display:none;">
+                        <div class="logout-spinner"></div>
+                    </div>
+                </div>
             </div>
-          </div>
-        </div>
+
 
         <!-- ------------------------------SCRIPT------------------------------------------ -->
         <!-- tooltip -->
@@ -360,8 +365,9 @@
             const closeModal = document.getElementById("logout-closeModal");
             const cancelBtn = document.getElementById("cancelBtn");
             const logoutBtn = document.getElementById("logoutBtn");
+            const loadingSpinner = document.getElementById("loadingSpinner");
 
-            // --------------------------------------Profile modal----------------------------------------------------------------------
+            // --------------------------------------Profile modal--------------
             const profileModal = document.getElementById("profileModal");
             const profileAvatar = document.getElementById("profile-avatar");
             const profileCloseModal = document.getElementById("profile-closeModal");
@@ -435,8 +441,14 @@
 
             // When the user clicks the logout button, trigger logout functionality
             logoutBtn.addEventListener("click", function() {
-              // Implement your logout functionality here, e.g.:
-              window.location.href = '../index.php'; // Redirect to logout page
+              // Show the loading spinner
+              loadingSpinner.style.display = "block";
+              
+              // Simulate some delay for the logout process (e.g., server request)
+              setTimeout(function() {
+                // Redirect to the index.php after the delay
+                window.location.href = '../index.php';
+              }, 2000); // Adjust delay as needed (e.g., 2 seconds)
             });
 
             // Close the modal if the user clicks outside of it

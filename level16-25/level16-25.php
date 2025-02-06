@@ -16,7 +16,7 @@
 
   <!-- Back Button -->
   <div class="btn-back">
-    <img src="../img/btnback.png" alt="Back Button" class="btn-back-image" onclick="window.location.href='../selectmode/index.php';">
+    <img src="../img/btnback.png" alt="Back Button" class="btn-back-image" onclick="window.location.href='../selectmode/mode.php';">
   </div>
 
   <!-- Prev Level Button -->

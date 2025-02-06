@@ -172,6 +172,43 @@ body {
   }
 }
 
+/* Joybee Character Styling */
+.joybee-container {
+  position: absolute;
+  top: 50%;
+  left: 20.5%; /* Align to the left */
+  transform: translateY(-50%); /* Center vertically */
+  
+}
+
+.joybee-character {
+  width: 300px; /* Adjust size */
+  height: auto;
+ 
+}
+
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+  .joybee-character {
+    width: 150px; /* Adjust size for tablets */
+  }
+}
+
+@media (max-width: 768px) {
+  .joybee-character {
+    width: 100px; /* Adjust size for smaller screens */
+  }
+}
+
+@media (max-width: 480px) {
+  .joybee-character {
+    width: 80px; /* Adjust size for mobile */
+    left: 3%; /* Slightly adjust position */
+  }
+}
+
+
 /* FOR ALL POPUP MODAL */
 /* Solo Mode Modal Styles */
 .solo-modal {
