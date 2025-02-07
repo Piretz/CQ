@@ -197,7 +197,7 @@
             <div class="notification-modal-content">
               <span class="notification-close">&times;</span>
               <h2>Notifications</h2>
-              <div class="box-container" id="box-container">
+              <div class="notifbox-container" id="box-container">
                 <div class="box">
                   <img src="../img/bronze.png" alt="Bronze Badge" class="badge-image" />
                   <div class="badge-details">

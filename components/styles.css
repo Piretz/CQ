@@ -792,7 +792,6 @@ body {
   margin: 0 80px; /* Spacing between badge images */
 }
 
-
 /* Notification Modal */
 #notificationModal {
   display: none;
@@ -835,7 +834,7 @@ body {
   text-decoration: none;
 }
 
-.box-container {
+.notifbox-container {
   display: flex;
   flex-direction: column;
   gap: 15px;

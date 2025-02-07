@@ -4,12 +4,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-	<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.4.2/css/swiper.min.css'><link rel="stylesheet" href="../components/styles.css">
 	<script src='https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.4.2/js/swiper.min.js'></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/shepherd.js/8.4.0/css/shepherd.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/shepherd.js/8.4.0/js/shepherd.min.js"></script>
-
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.4.2/css/swiper.min.css'><link rel="stylesheet" href="../components/styles.css">
   <title>CoDev</title>
 </head>
 <body>
@@ -21,7 +21,7 @@
                 <div class="joybee-container">
                     <img src="../img/joybee.png" alt="Joybee" class="joybee-character" id="joybeeImage">
                     <div class="joybee-text-box">
-                        <p id="joybee-text">Hi User, Welcome to CodeV!</p>
+                        <p id="joybee-text">Hi User, Welcome to CoDev!</p>
                         <div class="walkthrough-buttons">
                             <button id="skip-btn">Skip</button>
                             <button id="next-btn">Next</button>
@@ -30,74 +30,86 @@
                 </div>
             </div>
 
-            <!-- Right-aligned images -->
+            <!-- Mode Selection -->
             <div class="select-mode-images">
-                <img src="../img/mdSolo.png" alt="Solo Mode" class="solo-mode walkthrough-item" id="solomodeImage">
-                <img src="../img/mdpvp.png" alt="PvP Mode" class="pvp-mode walkthrough-item" id="multimodeImage"> 
-                <img src="../img/mdLesson.png" alt="Lesson Mode" class="lesson-mode walkthrough-item" id="lessonModeImage">
-                <img src="../img/mdpractice.png" alt="Practice Mode" class="practice-mode walkthrough-item" id="practiceModeImage">
+                <img src="../img/mdSolo.png" alt="Solo Mode" class="solo-mode walkthrough-item locked" id="solomodeImage">
+                <img src="../img/mdpvp.png" alt="PvP Mode" class="pvp-mode walkthrough-item locked" id="multimodeImage"> 
+                <img src="../img/mdLesson.png" alt="Lesson Mode" class="lesson-mode walkthrough-item unlocked" id="lessonModeImage" onclick="window.location.href='../lesson/lesson.php';">
+                <img src="../img/mdpractice.png" alt="Practice Mode" class="practice-mode walkthrough-item locked" id="practiceModeImage">
             </div>
 
             <!-- FOR NEW USER WALKTHROUGH -->
-            <script>
-                  document.addEventListener("DOMContentLoaded", function () {
-                  const steps = [
-                      { text: "Hi User, Welcome to CoDev!", highlight: null },
-                      { text: "This is Solo Mode, where you can practice coding alone!", highlight: "solomodeImage" },
-                      { text: "This is Multiplayer Mode, where you can compete with others!", highlight: "multimodeImage" },
-                      { text: "Lesson Mode helps you learn new programming concepts!", highlight: "lessonModeImage" },
-                      { text: "Practice Mode lets you test your skills with exercises!", highlight: "practiceModeImage" }
-                  ];
+              <script>
+                 document.addEventListener("DOMContentLoaded", function () {
+                    const steps = [
+                        { text: "Hi User, Welcome to CoDev!", highlight: null },
+                        { text: "This is Solo Mode, where you can practice coding alone!", highlight: "solomodeImage" },
+                        { text: "This is Multiplayer Mode, where you can compete with others!", highlight: "multimodeImage" },
+                        { text: "Lesson Mode helps you learn new programming concepts!", highlight: "lessonModeImage" },
+                        { text: "Practice Mode lets you test your skills with exercises!", highlight: "practiceModeImage" },
+                        { text: "Now, click on Lesson Mode to begin your learning journey!", highlight: "lessonModeImage" }
+                    ];
 
-                  let currentStep = 0;
+                    let currentStep = 0;
 
-                  const joybeeText = document.getElementById("joybee-text");
-                  const nextBtn = document.getElementById("next-btn");
-                  const skipBtn = document.getElementById("skip-btn");
-                  const overlay = document.getElementById("walkthrough-overlay");
-                  const images = document.querySelectorAll(".walkthrough-item");
-                  const joybeeTextBox = document.querySelector(".joybee-text-box");
+                    const joybeeText = document.getElementById("joybee-text");
+                    const nextBtn = document.getElementById("next-btn");
+                    const skipBtn = document.getElementById("skip-btn");
+                    const overlay = document.getElementById("walkthrough-overlay");
+                    const images = document.querySelectorAll(".walkthrough-item");
+                    const joybeeTextBox = document.querySelector(".joybee-text-box");
 
-                  function updateStep() {
-                      // Remove previous highlights
-                      images.forEach(item => item.classList.remove("walkthrough-active"));
+                    function updateStep() {
+                        images.forEach(item => item.classList.remove("walkthrough-active"));
+                        joybeeText.innerText = steps[currentStep].text;
 
-                      // Update text
-                      joybeeText.innerText = steps[currentStep].text;
+                        if (steps[currentStep].highlight) {
+                            document.getElementById(steps[currentStep].highlight).classList.add("walkthrough-active");
+                        }
+                    }
 
-                      // Highlight current element
-                      if (steps[currentStep].highlight) {
-                          document.getElementById(steps[currentStep].highlight).classList.add("walkthrough-active");
-                      }
-                  }
+                    nextBtn.addEventListener("click", function () {
+                        currentStep++;
+                        if (currentStep >= steps.length) {
+                            overlay.style.background = "transparent";
+                            overlay.style.backdropFilter = "none";
+                            overlay.style.pointerEvents = "none"; 
+                            overlay.style.removeProperty("z-index");
+                            images.forEach(item => item.classList.remove("walkthrough-item"));
+                            joybeeTextBox.style.display = "none";
+                            // After finishing walkthrough, show lesson mode image with guide
+                            document.getElementById("lessonModeImage").style.border = "2px solid red"; // Indicating to click
+                            document.getElementById("lessonModeImage").style.boxShadow = "0 10px 20px #0286DF";
+                        } else {
+                            updateStep();
+                        }
+                    });
 
-                  // Move to next step
-                  nextBtn.addEventListener("click", function () {
-                      currentStep++;
-                      if (currentStep >= steps.length) {
-                          overlay.style.background = "transparent";
-                          overlay.style.backdropFilter = "none";
-                          overlay.style.pointerEvents = "none"; 
-                          overlay.style.removeProperty("z-index"); // Remove z-index after walkthrough ends
-                          images.forEach(item => item.classList.remove("walkthrough-item"));
-                          joybeeTextBox.style.display = "none";
-                      } else {
-                          updateStep();
-                      }
-                  });
+                    skipBtn.addEventListener("click", function () {
+                        overlay.style.background = "transparent";
+                        overlay.style.backdropFilter = "none";
+                        overlay.style.pointerEvents = "none"; 
+                        overlay.style.removeProperty("z-index");
+                        images.forEach(item => item.classList.remove("walkthrough-item"));
+                        joybeeTextBox.style.display = "none";
+                        // After skipping walkthrough, show lesson mode image with guide
+                        document.getElementById("lessonModeImage").style.border = "2px solid red"; // Indicating to click
+                        document.getElementById("lessonModeImage").style.boxShadow = "0 10px 20px #0286DF";
+                    });
 
-                  // Skip walkthrough
-                  skipBtn.addEventListener("click", function () {
-                      overlay.style.background = "transparent";
-                      overlay.style.backdropFilter = "none";
-                      overlay.style.pointerEvents = "none"; 
-                      overlay.style.removeProperty("z-index"); // Remove z-index when skipped
-                      images.forEach(item => item.classList.remove("walkthrough-item"));
-                      joybeeTextBox.style.display = "none";
-                  });
+                    updateStep();
+                });
 
-                  updateStep();
-              });
+                // Apply Locked/Unlocked Styles
+                document.querySelectorAll(".locked").forEach(mode => {
+                    mode.style.opacity = "1";  // Locked modes appear faded
+                    mode.style.pointerEvents = "none";  // Disable interaction
+                });
+
+                document.querySelectorAll(".unlocked").forEach(mode => {
+                    mode.style.opacity = "1";  // Unlocked mode appears normal
+                    mode.style.pointerEvents = "auto";  // Enable interaction
+                });
 
               </script>
 

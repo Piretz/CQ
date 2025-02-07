@@ -1,35 +1,34 @@
+
+
+body {
+  font-family: 'Poppins' sans-serif;
+  box-sizing: border-box;
+  background-image: url(../img/background.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
 /* main content */
 .main-content {
   display: flex;
   flex-direction: column; /* Stack items vertically */
   align-items: center; /* Center items horizontally */
   gap: 20px; /* Space between top-box and box-container */
-  width: 100%; /* Ensure it takes the full width */
-  box-sizing: border-box;
-  max-height: 100vh;
-  height: 100%;
+  
 
-}
-
-body {
-  font-family: 'Poppins' sans-serif;
- box-sizing: border-box;
-  background-image: url(../img/background.png);
-  background-size: cover;
-  background-repeat: no-repeat;
 }
 
 /* Top Box */
 .top-box {
   position: relative;
-  top: 120px;
+  top: 130px;
   background: linear-gradient(to bottom, #035CC2, #073269);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Box shadow */
   border-left: 1px solid #019AEC;  /* Left border */
   border-right: 1px solid #019AEC; /* Right border */
   border-top: 1px solid #019AEC;   /* Top border */
   border-bottom:1px solid #019AEC;   /* bottom border */
-  width: 70%;
+  width: 90%;
   height: 50px; /* Adjust height of the top box */
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -94,7 +93,7 @@ body {
 }
 
 /* Box Container */
-.box-container {
+.lesson-box-container {
   display: grid;
   grid-template-columns: 0fr 0fr; /* Two equal columns */
   justify-content: center; /* Center horizontally */
@@ -104,7 +103,7 @@ body {
   height: calc(100vh - 6%); /* Adjust to make the container fill available space */
   padding: 40px; /* Add padding if needed */
   box-sizing: border-box; /* Include padding and border in the element's total width and height */
-  margin-top: 3%;
+  margin-top: 5%;
  
 }
 
@@ -125,7 +124,8 @@ body {
 /* Centered Box Styling */
 .centered-box {
   width: 90%; /* Adjust width of the centered box */
-  height: 24%; /* Adjust height of the centered box */
+  height: 30%; /* Adjust height of the centered box */
+  padding: 20px;
   background: linear-gradient(to bottom, #019AEC, #127CC3, #07152C);
   border: 1px solid #019AEC; /* Border styling */
   border-radius: 10px; /* Rounded corners */
@@ -144,10 +144,7 @@ body {
   color: #fff; /* Text color */
   max-height: 700px; /* Adjust as needed */
   overflow-y: auto; /* Enable vertical scrolling */
-  padding-right: 5px; /* Prevent content from being hidden behind scrollbar */
-  padding: 2%; /* Add padding */
-  padding-bottom: 3%;
-  padding-top: 2%;
+ 
 }
 
 .lesson-details h3 {
@@ -176,6 +173,11 @@ body {
   text-align: center;
 }
 
+.profile-icon{
+  width: 20px;
+  height: 20px;
+  border-radius: 10px;
+}
 /* Underline the last paragraph */
 .lesson-details p:last-child {
   text-decoration: underline; /* Adds an underline */
@@ -312,3 +314,16 @@ body {
   background: #0178BA;
 }
 
+.lesson-content {
+  text-align: center;
+}
+.lesson-preview {
+  width: 100%;
+  max-width: 1000px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+.lesson-description {
+  font-size: 16px;
+  font-weight: bold;
+}
