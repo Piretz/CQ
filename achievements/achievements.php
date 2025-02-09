@@ -154,6 +154,46 @@
           <p>Silver</p>
           <img src="../img/lock.png" class="lock-icon" alt="Lock Icon">
         </div>
+        <div class="badge locked">
+          <img src="../img/silver.png" alt="Badge 3">
+          <p>Silver</p>
+          <img src="../img/lock.png" class="lock-icon" alt="Lock Icon">
+        </div>
+        <div class="badge locked">
+          <img src="../img/silver.png" alt="Badge 3">
+          <p>Silver</p>
+          <img src="../img/lock.png" class="lock-icon" alt="Lock Icon">
+        </div>
+        <div class="badge locked">
+          <img src="../img/silver.png" alt="Badge 3">
+          <p>Silver</p>
+          <img src="../img/lock.png" class="lock-icon" alt="Lock Icon">
+        </div>
+        <div class="badge locked">
+          <img src="../img/silver.png" alt="Badge 3">
+          <p>Silver</p>
+          <img src="../img/lock.png" class="lock-icon" alt="Lock Icon">
+        </div>
+        <div class="badge locked">
+          <img src="../img/silver.png" alt="Badge 3">
+          <p>Silver</p>
+          <img src="../img/lock.png" class="lock-icon" alt="Lock Icon">
+        </div>
+        <div class="badge locked">
+          <img src="../img/silver.png" alt="Badge 3">
+          <p>Silver</p>
+          <img src="../img/lock.png" class="lock-icon" alt="Lock Icon">
+        </div>
+        <div class="badge locked">
+          <img src="../img/silver.png" alt="Badge 3">
+          <p>Silver</p>
+          <img src="../img/lock.png" class="lock-icon" alt="Lock Icon">
+        </div>
+        <div class="badge locked">
+          <img src="../img/silver.png" alt="Badge 3">
+          <p>Silver</p>
+          <img src="../img/lock.png" class="lock-icon" alt="Lock Icon">
+        </div>
       </div>
     </div>
 

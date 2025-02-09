@@ -38,7 +38,7 @@
                 <img src="../img/mdpractice.png" alt="Practice Mode" class="practice-mode walkthrough-item locked" id="practiceModeImage">
             </div>
 
-            <!-- FOR NEW USER WALKTHROUGH -->
+            <!-- FOR NEW USER WALKTHROUGH NewUserLoad DOMContentLoaded-->
               <script>
                  document.addEventListener("DOMContentLoaded", function () {
                     const steps = [

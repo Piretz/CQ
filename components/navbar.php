@@ -122,74 +122,71 @@
 
            <!-- ----------------------------------------------------------------FOR ALL POP UP MODAL ------------------------------------------------------------------------------------------------------------------------------------------------------ -->
             <!------------------------------------------------- Profile Modal --------------------------------------->
-            <div id="profileModal" class="profile-modal">
-                <div class="profile-modal-content">
-                    <span class="profile-close" id="profile-closeModal">
-                        <img src="../img/btnback.png" alt="Close Button" class="close-icon">
-                    </span>
-                    <h2>Profile</h2>
-                    <div class="profile-details">
-                        <img src="../img/avatar.png" alt="Profile Image" class="profile-image">
-                        <h3><strong></strong> Christopher Potter</h3>
-                        
-                        <!-- Achievements (Badge Images) -->
-                        <div class="profile-badges">
-                            <strong></strong>
-                            <div class="badges">
-                                <img src="../img/diamond.png" alt="Badge 1" class="badge">
-                            </div>
-                        </div>
+          <div id="profileModal" class="profile-modal">
+              <div class="profile-modal-content">
+                  <span class="profile-close" id="profile-closeModal">
+                      <img src="../img/btnback.png" alt="Close Button" class="close-icon">
+                  </span>
+                  
+                  <div class="profile-details">
+                      <!-- Section 1 -->
+                      <img src="../img/avatar.png" alt="Profile Image" class="profile-image">
+                      <h3>Christopher Potter</h3>
 
-                        <div class="profile-labels">
-                            <label for="text"><strong>Code Wizard</strong></label>
-                        </div>
+                      <div class="profile-labels">
+                          <label for="text"><strong>Code Wizard</strong></label>
+                      </div>
 
-                        <!-- Level Progress -->
-                        <div class="level-container">
-                            <progress id="exp-progress" value="3000" max="5000" class="profile-progress"></progress>
-                            <span>3000/5000</span>
-                        </div>
+                      <div class="profile-badges">
+                          <img src="../img/diamond.png" alt="Badge 1" class="badge">
+                      </div>
 
-                        <div class="profile-background">
-                            <div class="high">
-                                <img src="../img/highpanel.png" alt="High Panel">
-                                <div class="badge-container">
-                                    <img src="../img/diamond.png" alt="High Badge" class="high-badge">
-                                    <span class="badge-title">Master 1</span>
-                                </div>
-                            </div>
-                            <div class="stats">
-                                <img src="../img/statspanel.png" alt="Stats Panel">
-                                <div class="stats-data">
-                                    <div class="column">
-                                        <p><strong>Mastery:</strong> 85%</p>
-                                        <p><strong>QuestPoints:</strong> 12,450</p>
-                                        <p><strong>Bugs Fixed:</strong> 320</p>
-                                        <p><strong>Teamwork:</strong> 92%</p>
-                                    </div>
-                                    <div class="column">
-                                        <p><strong>Logic:</strong> 75%</p>
-                                        <p><strong>XP:</strong> 24,800</p>
-                                        <p><strong>Streak:</strong> 15 Days</p>
-                                        <p><strong>Badges:</strong> 18</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="achievement">
-                                <img src="../img/achievepanel.png" alt="Achievement Panel">
-                                <!-- Badge images added here -->
-                                <div class="badges-container">
-                                    <img src="../img/bronze.png" alt="Badge 1" class="badge-image">
-                                    <img src="../img/silver.png" alt="Badge 2" class="badge-image">
-                                    <img src="../img/platinum.png" alt="Badge 3" class="badge-image">
-                                    <img src="../img/gold.png" alt="Badge 4" class="badge-image">
-                                    <img src="../img/diamond.png" alt="Badge 5" class="badge-image">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+                      <div class="level-container">
+                          <progress id="exp-progress" value="3000" max="5000" class="profile-progress"></progress>
+                          <h4>3000/5000</h4>
+                      </div>
+                  </div>
+
+                  <!-- Section 2 -->
+                  <div class="profile-stats">
+                      <h1>Stats</h1>
+                      <div class="stats-high-container">
+                          <div class="column">
+                              <h2>Highest Rank</h2>
+                              <img src="../img/diamond.png" alt="Rank Badge" class="rank-badge">
+                              <p class="badge-type">Master 1</p>
+                          </div>
+
+                          <div class="column">
+                              <p><strong>Mastery:</strong> 85%</p>
+                              <p><strong>QuestPoints:</strong> 12,450</p>
+                              <p><strong>Bugs Fixed:</strong> 320</p>
+                              <p><strong>Teamwork:</strong> 92%</p>
+                          </div>
+
+                          <div class="column">
+                              <p><strong>Logic:</strong> 75%</p>
+                              <p><strong>XP:</strong> 24,800</p>
+                              <p><strong>Streak:</strong> 15 Days</p>
+                              <p><strong>Badges:</strong> 18</p>
+                          </div>
+                      </div>
+                  </div>
+
+                  <!-- Section 3 -->
+                  <div class="profile-achievements">
+                      <h1>Achievements</h1>
+                      <div class="badges-container">
+                          <img src="../img/bronze.png" alt="Badge 1" class="badge-images-achievement">
+                          <img src="../img/silver.png" alt="Badge 2" class="badge-images-achievement">
+                          <img src="../img/platinum.png" alt="Badge 3" class="badge-images-achievement">
+                          <img src="../img/gold.png" alt="Badge 4" class="badge-images-achievement">
+                          <img src="../img/diamond.png" alt="Badge 5" class="badge-images-achievement">
+                      </div>
+                  </div>
+              </div>
+          </div>
+
 
         
            <!---------------- Notification Modal ------------------>
@@ -257,8 +254,8 @@
        <!------------------------ Settings Modal -------------------------------> 
        <div id="settingsModal" class="settings-modal">
         <div class="settings-modal-content">
-            <span class="settings-close">&times;</span>
-            <h2>Settings</h2>
+            <span class="settings-close"><img src="../img/btnback.png"></span>
+          
             <div class="settings-options">
                 <div class="setting-item">
                     <span>Music</span>

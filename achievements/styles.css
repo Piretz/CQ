@@ -10,7 +10,7 @@ body {
 
 .Title {
     position: relative;
-    top: 5%;
+    top: 14%;
     text-align: center-middle;
     font-family: zen dots;
     font-size: xx-large;
@@ -48,12 +48,13 @@ body {
     justify-content: space-around;
     flex-wrap: wrap;
     gap: 40px;
-    margin-top: 10%;
+    margin-top: 6%;
+    padding: 30px;
     overflow-y: auto;
     height: 100%;
     width: 100%;
-    max-width: 65%;
-    max-height: 70%;
+    max-width: 100%;
+    max-height: 80%;
 }
 /* Badge Styling */
 .badge {
