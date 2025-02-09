@@ -6,7 +6,7 @@
 }
 
 body {
-  font-family: 'Zen dots', sans-serif;
+  font-family: 'Zen dots', serif;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -36,14 +36,17 @@ body {
 }
 
 .start img {
-  width: 30%;
-  height: 30%;
+  width: 60px; /* Fixed width */
+  height: 60px; /* Fixed height */
+  object-fit: cover; /* Ensures the image maintains aspect ratio */
   border-radius: 50%;
-  margin-right: 10px;
+  margin-right: 16px;
   cursor: pointer;
   position: relative;
   top: 40px;
   left: 20px;
+  border: 2px solid #fff;
+  background-color: #fff;
 }
 
 .start img:hover{
@@ -54,8 +57,8 @@ body {
   display: flex;
   flex-direction: column;
   position: relative;
-  top: 40px;
-  left: 10px;
+  top: 44px;
+  left: 12px;
   width: 100%;
 }
 
@@ -90,6 +93,8 @@ body {
   .middle {
     text-align: center;
     flex-grow: 1;
+    align-items: center;
+    justify-items: center;
   }
   
   .middle .badges {
@@ -100,11 +105,11 @@ body {
   
   .middle h1 {
     margin: 0;
-    font-size: 60px;
+    font-size: 3.65rem;
     position: relative;
-    right: 78px;
+    right: 84px;
     top: 10px;
-    font-family: Poppins;
+    font-family: zen dots;
   }
   .middle span {
     position: relative;
@@ -387,7 +392,7 @@ body {
 .logout-modal-content h2 {
   color: #fff;
   text-align: center;
-  font-family: Poppins;
+  font-family: zen dots;
 }
 
 /* Close button */
@@ -396,7 +401,7 @@ body {
   float: right;
   font-size: 28px;
   font-weight: bold;
-  font-family: Poppins;
+  font-family: zen dots;
   cursor: pointer;
 }
 
@@ -420,7 +425,7 @@ body {
   cursor: pointer;
   font-size: 20px;
   border-radius: 5px;
-  font-family: Poppins;
+  font-family: zen dots;
   background: linear-gradient(to bottom, #035CC2, #0190E6, #00B0FC); /* Gradient background */
   color: white;
   transition: transform 0.3s; /* Smooth hover effect */
@@ -544,7 +549,7 @@ body {
 
 h2 {
   color: #fff;
-  font-size: 24px;
+  font-size: 26px;
   font-family: zen dots;
 }
 
@@ -557,41 +562,43 @@ h2 {
 
 .profile-image {
   position: relative;
-  top: 100px;
-  width: 150px;
-  height: 150px;
+  top: 95px;
+  width: 160px; /* Fixed width */
+  height: 160px; /* Fixed height */
+  object-fit: cover; /* Ensures the image maintains aspect ratio */
   background-color: #FDAD56;
   border-left: 2px solid #170099; 
   border-right: 2px solid #170099;
   border-top: 2px solid #170099;
   border-bottom: 6px solid #170099;
-  border-radius: 10%;
   margin-bottom: 20px;
   box-shadow: 0 10px 20px #FDAD56;
+  border-radius: 2%; /* Makes it a circular image */
 }
+
 
 .profile-details h3 {
   position: relative;
-  bottom: 50px;
+  bottom: 60px;
   left: 200px;
   color: #fff;
-  font-size: 30px;
+  font-size: 25px;
   font-family: zen dots;
 }
 
 .profile-labels {
   position: relative;
-  bottom: 40px;
-  left: 270px;
+  bottom: 50px;
+  left: 300px;
   margin-top: 5px;
-  font-size: 22px;
+  font-size: 20px;
   color: #fff;
   font-family: zen dots;
 }
 
 .profile-badges {
   position: relative;
-  bottom: 68px;
+  bottom: 78px;
   left: 190px;
   margin-top: 10px;
 }
@@ -603,7 +610,7 @@ h2 {
 
 .level-container {
   position: relative;
-  bottom: 120px;
+  bottom: 130px;
   left: 290px;
   font-size: 18px;
   color: #fff;
@@ -623,7 +630,7 @@ h2 {
 
 h4 {
   position: relative;
-  left: 22%;
+  left: 18%;
   margin-top: 5px;
   font-family: zen dots;
 }
@@ -631,29 +638,29 @@ h4 {
 /* Profile Section 2 - Stats */
 .profile-stats {
   position: relative;
-  bottom: 10%;
+  bottom: 12%;
 }
 .profile-stats h1 {
   color: #fff;
-  font-size: 36px;
+  font-size: 32px;
   font-family: zen dots;
 }
 
 .stats-high-container {
   display: flex;
   justify-content: center;
-  gap: 180px;
+  gap: 100px;
 }
 
 .column {
   text-align: center;
   color: white;
-  font-size: 22px;
+  font-size: 20px;
   font-family: zen dots;
 }
 
 .column p{
-  margin-bottom: 8%;
+  margin-bottom: 10%;
 }
 .rank-badge {
   width: 110px;
@@ -667,7 +674,7 @@ h4 {
 /* Profile Section 3 - Achievements */
 .profile-achievements {
   position: relative;
-  bottom: 8%;
+  bottom: 10%;
 }
 
 .profile-achievements h1{
@@ -692,8 +699,8 @@ h4 {
   width: 60px;
   height: 60px;
   position: absolute;
-  top: 76px;
-  right: 440px;
+  top: 70px;
+  right: 455px;
   z-index: 1000;
 }
 .close-icon:hover{
@@ -817,7 +824,7 @@ h4 {
 .notification-modal-content h2 {
   font-size: 24px;
   font-weight: bold;
-  font-family: Poppins;
+  font-family: zen dots;
   color: #fff;
   position: sticky; /* Make the title sticky */
   top: -20px; /* Ensure it sticks near the top */
@@ -833,7 +840,7 @@ h4 {
   border: none;
   border-radius: 5px;
   font-size: 16px;
-  font-family: Poppins;
+  font-family: zen dots;
   cursor: pointer;
   position: sticky;
   left: 100%; /* Aligns it to the right */

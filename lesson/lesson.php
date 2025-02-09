@@ -3,6 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Zen+Dots&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
   <link rel="stylesheet" href='https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.4.2/css/swiper.min.css'><link rel="stylesheet" href="../components/styles.css">
@@ -31,82 +34,82 @@
 
           <!-- Container to hold the panels -->
           <div class="lesson-box-container">
-    <!-- Lesson 1 -->
-    <div class="box-box-1">
-              <div class="centered-box">
-                  <div class="lesson-details">
-                      <h3>Lesson 1: Introduction to Programming</h3>
-                      <h5>
-                          <img src="../img/john.png" alt="Profile Icon" style="width: 3%; height: 2%; margin-right: 8px; vertical-align: middle; border-radius: 10px;">
-                          <strong>Mr.</strong> John Doe
-                      </h5>
-                      <p>This lesson provides an overview of programming basics, including variables, data types, and control structures.</p>
-                      <button class="view-button" onclick="showLesson(1)">
-                          Watch Lesson
-                          <img src="../img/btnplay.png" alt="Play Icon" class="play-icon">
-                      </button>
-                  </div>
-              </div>
-               <!-- Lesson 2 -->
-              <div class="centered-box">
-                  <div class="lesson-details">
-                      <h3>Lesson 2: Variables and Data Types</h3>
-                      <h5>
-                          <img src="../img/john.png" alt="Profile Icon" style="width: 3%; height: 2%; margin-right: 8px; vertical-align: middle; border-radius: 10px;">
-                          <strong>Mr.</strong> John Doe
-                      </h5>
-                      <p>This lesson explores different types of variables and data types used in programming.</p>
-                      <button class="view-button" onclick="showLesson(2)">
-                          Watch Lesson
-                          <img src="../img/btnplay.png" alt="Play Icon" class="play-icon">
-                      </button>
-                  </div>
-              </div>
-             <!-- Lesson 3 -->
-             <div class="centered-box">
-                  <div class="lesson-details">
-                      <h3>Lesson 3: Control Structures</h3>
-                      <h5>
-                          <img src="../img/john.png" alt="Profile Icon" style="width: 3%; height: 2%; margin-right: 8px; vertical-align: middle; border-radius: 10px;">
-                          <strong>Mr.</strong> John Doe
-                      </h5>
-                      <p>This lesson explains how functions and methods are created and used in programming.</p>
-                      <button class="view-button" onclick="showLesson(3)">
-                          Watch Lesson
-                          <img src="../img/btnplay.png" alt="Play Icon" class="play-icon">
-                      </button>
-                  </div>
-              </div>
-              <!-- Lesson 4 -->
-              <div class="centered-box">
-                  <div class="lesson-details">
-                      <h3>Lesson 4: Functions and Methods</h3>
-                      <h5>
-                          <img src="../img/john.png" alt="Profile Icon" style="width: 3%; height: 2%; margin-right: 8px; vertical-align: middle; border-radius: 10px;">
-                          <strong>Mr.</strong> John Doe
-                      </h5>
-                      <p>This lesson explains how functions and methods are created and used in programming.</p>
-                      <button class="view-button" onclick="showLesson(4)">
-                          Watch Lesson
-                          <img src="../img/btnplay.png" alt="Play Icon" class="play-icon">
-                      </button>
-                  </div>
-              </div>
-              <!-- Lesson 5 -->
-              <div class="centered-box">
-                  <div class="lesson-details">
-                      <h3>Lesson 5: Object-Oriented Programming</h3>
-                      <h5>
-                          <img src="../img/john.png" alt="Profile Icon" style="width: 3%; height: 2%; margin-right: 8px; vertical-align: middle; border-radius: 10px;">
-                          <strong>Mr.</strong> John Doe
-                      </h5>
-                      <p>This lesson covers the basics of object-oriented programming, including classes and objects.</p>
-                      <button class="view-button" onclick="showLesson(5)">
-                          Watch Lesson
-                          <img src="../img/btnplay.png" alt="Play Icon" class="play-icon">
-                      </button>
-                  </div>
-              </div>
+                <!-- Lesson 1 -->
+                <div class="box-box-1">
+                        <div class="centered-box">
+                            <div class="lesson-details">
+                                <h3>Lesson 1: Introduction to Programming</h3>
+                                <h5>
+                                    <img src="../img/john.png" alt="Profile Icon" style="width: 3%; height: 2%; margin-right: 8px; vertical-align: middle; border-radius: 10px;">
+                                    <strong>Mr.</strong> John Doe
+                                </h5>
+                                <p>This lesson provides an overview of programming basics, including variables, data types, and control structures.</p>
+                                <button class="view-button" onclick="showLesson(1)">
+                                    Watch Lesson
+                                    <img src="../img/btnplay.png" alt="Play Icon" class="play-icon">
+                                </button>
+                            </div>
+                        </div>
+                        <!-- Lesson 2 -->
+                        <div class="centered-box">
+                            <div class="lesson-details">
+                                <h3>Lesson 2: Variables and Data Types</h3>
+                                <h5>
+                                    <img src="../img/john.png" alt="Profile Icon" style="width: 3%; height: 2%; margin-right: 8px; vertical-align: middle; border-radius: 10px;">
+                                    <strong>Mr.</strong> John Doe
+                                </h5>
+                                <p>This lesson explores different types of variables and data types used in programming.</p>
+                                <button class="view-button" onclick="showLesson(2)">
+                                    Watch Lesson
+                                    <img src="../img/btnplay.png" alt="Play Icon" class="play-icon">
+                                </button>
+                            </div>
+                        </div>
+                        <!-- Lesson 3 -->
+                        <div class="centered-box">
+                            <div class="lesson-details">
+                                <h3>Lesson 3: Control Structures</h3>
+                                <h5>
+                                    <img src="../img/john.png" alt="Profile Icon" style="width: 3%; height: 2%; margin-right: 8px; vertical-align: middle; border-radius: 10px;">
+                                    <strong>Mr.</strong> John Doe
+                                </h5>
+                                <p>This lesson explains how functions and methods are created and used in programming.</p>
+                                <button class="view-button" onclick="showLesson(3)">
+                                    Watch Lesson
+                                    <img src="../img/btnplay.png" alt="Play Icon" class="play-icon">
+                                </button>
+                            </div>
+                        </div>
+                        <!-- Lesson 4 -->
+                        <div class="centered-box">
+                            <div class="lesson-details">
+                                <h3>Lesson 4: Functions and Methods</h3>
+                                <h5>
+                                    <img src="../img/john.png" alt="Profile Icon" style="width: 3%; height: 2%; margin-right: 8px; vertical-align: middle; border-radius: 10px;">
+                                    <strong>Mr.</strong> John Doe
+                                </h5>
+                                <p>This lesson explains how functions and methods are created and used in programming.</p>
+                                <button class="view-button" onclick="showLesson(4)">
+                                    Watch Lesson
+                                    <img src="../img/btnplay.png" alt="Play Icon" class="play-icon">
+                                </button>
+                            </div>
+                        </div>
+                        <!-- Lesson 5 -->
+                        <div class="centered-box">
+                            <div class="lesson-details">
+                                <h3>Lesson 5: Object-Oriented Programming</h3>
+                                <h5>
+                                    <img src="../img/john.png" alt="Profile Icon" style="width: 3%; height: 2%; margin-right: 8px; vertical-align: middle; border-radius: 10px;">
+                                    <strong>Mr.</strong> John Doe
+                                </h5>
+                                <p>This lesson covers the basics of object-oriented programming, including classes and objects.</p>
+                                <button class="view-button" onclick="showLesson(5)">
+                                    Watch Lesson
+                                    <img src="../img/btnplay.png" alt="Play Icon" class="play-icon">
+                                </button>
+                            </div>
+                        </div>
 
 
 
@@ -162,14 +165,14 @@
                 <h3>Lesson: ${lesson.title}</h3>
                 <h5><img src="../img/john.png" alt="Profile Icon" style="width: 3%; height: 2%; margin-right: 8px; vertical-align: middle; border-radius: 10px;"><strong>Mr.</strong> John Doe</h5>
                 <p>${lesson.description}</p>
-                <div class="experience-bar">
+                <div class="box2experience-bar">
                     <div class="badge">
                         <img src="../img/bronze.png" alt="Badge Icon">
                     </div>
-                    <div class="progress-container">
-                        <div class="progress-bar">
-                            <div class="progress"></div>
-                            <div class="progress-text" style="position: absolute; left: calc(75% - 20px); top: -18px; font-size: 12px; color: #fff; font-weight: bold;">75%</div>
+                    <div class="box2progress-container">
+                        <div class="box2progress-bar">
+                            <div class="box2-progress"></div>
+                            <div class="box2progress-text" style="position: absolute; left: calc(100% - 20px); top: -18px; font-size: 12px; color: #fff;">100%</div>
                         </div>
                     </div>
                 </div>

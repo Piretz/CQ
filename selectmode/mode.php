@@ -78,8 +78,8 @@
                             images.forEach(item => item.classList.remove("walkthrough-item"));
                             joybeeTextBox.style.display = "none";
                             // After finishing walkthrough, show lesson mode image with guide
-                            document.getElementById("lessonModeImage").style.border = "2px solid red"; // Indicating to click
-                            document.getElementById("lessonModeImage").style.boxShadow = "0 10px 20px #0286DF";
+                            document.getElementById("lessonModeImage").style.backgroundColor = "transparent"; // Indicating to click
+                            document.getElementById("lessonModeImage").style.boxShadow = "0 10px 20px #fff";
                         } else {
                             updateStep();
                         }
@@ -93,8 +93,8 @@
                         images.forEach(item => item.classList.remove("walkthrough-item"));
                         joybeeTextBox.style.display = "none";
                         // After skipping walkthrough, show lesson mode image with guide
-                        document.getElementById("lessonModeImage").style.border = "2px solid red"; // Indicating to click
-                        document.getElementById("lessonModeImage").style.boxShadow = "0 10px 20px #0286DF";
+                        document.getElementById("lessonModeImage").style.backgroundColor = "transparent";
+                        document.getElementById("lessonModeImage").style.boxShadow = "0 10px 20px #fff";
                     });
 
                     updateStep();

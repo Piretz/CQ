@@ -1,0 +1,158 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Ensure the body takes full height of the viewport */
+    background-image: url(../img/background.png);
+}
+
+.leaderboard-container {
+    display: flex;
+    align-items: center;
+}
+
+/* Sidebar Buttons */
+.leaderboard-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-right: 20px;
+    
+}
+
+.filter-btn {
+    padding: 10px 20px;
+    border: none;
+    background: linear-gradient(to bottom, #011F2B, #127CC3);
+    color: white;
+    font-size: 38px;
+    border-radius: 5px;
+    border: 2px solid #FCAE00;
+}
+
+.filter-btn:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+}
+
+/* Leaderboard Box */
+.leaderboard-box {
+    position: relative;
+    top: 40px;
+    width: 1400px;
+    height: 800px;
+    background-color: #032743;
+    border-radius: 10px;
+    border-left: 1px solid #019AEC;  /* Left border */
+    border-right: 1px solid #019AEC; /* Right border */
+    border-top: 1px solid #019AEC;   /* Top border */
+    border-bottom: 4px solid #019AEC; /* Bottom border */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Header */
+.leaderboard-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #FDAD56;
+}
+
+.leaderboard-header h2 {
+    margin: 0;
+    text-align: center;
+    flex-grow: 1;
+    font-family: Poppins;
+    font-size: 48px;
+}
+
+.back-button {
+    width: 70px;
+    height: 70px;
+    cursor: pointer;
+}
+.back-button:hover{
+    transform: scale(1.1);
+}
+/* Scrollable Table */
+.leaderboard-table {
+    flex-grow: 1;
+    overflow-y: auto;
+    max-height: 900px;
+}
+
+table {
+    width: 100%;
+    border-collapse: separate; /* Allows spacing between rows */
+    border-spacing: 0 10px; /* Adds 10px vertical spacing between rows */
+}
+
+tr:not(:last-child) {
+    margin-bottom: 10px; /* Additional spacing between rows */
+}
+
+thead {
+    background-color: #170099;
+    color: white;
+    font-size: 44px;
+    border: 1px solid #5CACD7;
+}
+
+tr, th{
+    border: 1px solid #fff;
+}
+
+td {
+    color: #fff;
+    font-size: 24px;
+    padding: 12px;
+    text-align: center; 
+    background: linear-gradient(to bottom, #170099, #170099, #170099, #5CACD7);
+    border: 1px solid #fff;
+}
+
+/* Profile Image in Table */
+.profile-img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    margin-right: 5px;
+    vertical-align: middle;
+    border: 2px solid #fff;
+}
+
+/* Style for top 1 */
+tr:nth-child(1) td {
+    font-size: 32px; /* Big text */
+    font-weight: 700;
+    color: #FFD700; /* Gold color */
+}
+
+/* Style for top 2 */
+tr:nth-child(2) td {
+    font-size: 28px; /* Semi big text */
+    font-weight: 600;
+    color: #C0C0C0; /* Silver color */
+
+}
+
+/* Style for top 3 */
+tr:nth-child(3) td {
+    font-size: 26px; /* Extra semi big text */
+    font-weight: 500;
+    color: #CD7F32; /* Bronze color */
+   
+}
+
+/* Style for ranks 4-10 */
+tr:nth-child(n+4):nth-child(-n+10) td {
+    font-size: 20px;
+    font-weight: 400;
+    color: white;
+}

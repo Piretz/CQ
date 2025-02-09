@@ -3,6 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Zen+Dots&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
@@ -15,9 +18,9 @@
             <header class="header">
               <!-- Start Section -->
               <div class="start">
-                <img src="../img/avatar.png" alt="Profile" id="profile-avatar">
+                <img src="../img/lebron.png" alt="Profile" id="profile-avatar">
                 <div class="user-info">
-                  <span>Christopher Potter</span>
+                  <span>Lebron Raymone James</span>
                   <div class="level-bar">
                     <div class="progress" id="progress-bar"></div>
                   </div>
@@ -76,7 +79,7 @@
                   </a>
                 </li>
                 <li>
-                  <a href="#" class="nav-link">
+                  <a href="../leaderboards/leaderboard.php" class="nav-link">
                     <img src="../img/btnleaderboards.png" alt="Leaderboards" class="icon"> 
                   </a>
                 </li>
@@ -130,8 +133,8 @@
                   
                   <div class="profile-details">
                       <!-- Section 1 -->
-                      <img src="../img/avatar.png" alt="Profile Image" class="profile-image">
-                      <h3>Christopher Potter</h3>
+                      <img src="../img/lebron.png" alt="Profile Image" class="profile-image">
+                      <h3>Lebron Raymone James</h3>
 
                       <div class="profile-labels">
                           <label for="text"><strong>Code Wizard</strong></label>
