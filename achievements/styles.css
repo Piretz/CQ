@@ -1,5 +1,5 @@
 body {
-    font-family: 'Poppins' sans-serif, 'Zen dots' sans-serif;
+    font-family: 'Poppins', 'Zen dots', sans-serif;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -12,7 +12,7 @@ body {
     position: relative;
     top: 14%;
     text-align: center-middle;
-    font-family: zen dots;
+    font-family: Poppins;
     font-size: xx-large;
     font-weight: bold;
     background-image: linear-gradient(to right, #FFFFFF, #7CD8FF, #FFFFFF, #035CC2); /* Gradient colors */
@@ -28,19 +28,15 @@ body {
     max-height: 800px;
     border: 2px solid #ccc;
     border-radius: 10px;
-    background-color: #223F77;
-    border-left: 1px solid #019AEC;  /* Left border */
-    border-right: 1px solid #019AEC; /* Right border */
-    border-top: 1px solid #019AEC;   /* Top border */
-    border-bottom: 4px solid #019AEC; /* Bottom border */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #032743;
+    border-left: 1px solid #FCAE00;  /* Left border */
+    border-right: 1px solid #FCAE00; /* Right border */
+    border-top: 1px solid #FCAE00;   /* Top border */
+    border-bottom: 4px solid #FCAE00; /* Bottom border */
+    box-shadow: 0 4px 8px rgba(201, 185, 185, 0.966);
     text-align: center; /* Center content in the panel */
    
 }
-
-/* h2 {
-    margin-bottom: 10px;
-} */
 
 /* Badge Container Styling */
 .badge-container {
@@ -62,11 +58,11 @@ body {
     padding: 6px;
     border-radius: 8px;
     background-image: url(../img/bgbadge.png);
-    border-left: 1px solid #019AEC;  /* Left border */
-    border-right: 1px solid #019AEC; /* Right border */
-    border-top: 1px solid #019AEC;   /* Top border */
-    border-bottom: 4px solid #019AEC; /* Bottom border */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-left: 1px solid #FCAE00;  /* Left border */
+    border-right: 1px solid #FCAE00; /* Right border */
+    border-top: 1px solid #FCAE00;   /* Top border */
+    border-bottom: 4px solid #FCAE00; /* Bottom border */
+    box-shadow: 0 4px 8px rgba(201, 185, 185, 0.966);
     width: 150px;
     height: 120px;
     box-sizing: border-box;

@@ -1,3 +1,12 @@
+<?php
+include ("../connection/connection.php");
+$user_id = $_SESSION['ID'];
+
+$user_query = "SELECT * FROM users WHERE User_ID = $user_id";
+$user_result = mysqli_query($con, $user_query);
+$user_row = mysqli_fetch_assoc($user_result);
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,11 +29,11 @@
               <div class="start">
                 <img src="../img/lebron.png" alt="Profile" id="profile-avatar">
                 <div class="user-info">
-                  <span>Lebron Raymone James</span>
+                  <span><?php echo $user_row['First_Name'] ?></span>
                   <div class="level-bar">
                     <div class="progress" id="progress-bar"></div>
                   </div>
-                  <div class="level">Level <span id="user-level"></span></div>
+                  <div class="level">Level <?php echo $user_row['Level']; ?></div>
                 </div>
               </div>
 
@@ -44,8 +53,8 @@
 
             <script>
               document.addEventListener("DOMContentLoaded", function() {
-                const userLevel = 1; // Example user level
-                const maxLevel = 10;
+                const userLevel = <?php echo $user_row['level_progress']; ?>; // Example user level
+                const maxLevel = <?php echo $user_row['next_level'];?>;
                 const progressBar = document.getElementById("progress-bar");
                 const userLevelSpan = document.getElementById("user-level");
                 
@@ -134,7 +143,7 @@
                   <div class="profile-details">
                       <!-- Section 1 -->
                       <img src="../img/lebron.png" alt="Profile Image" class="profile-image">
-                      <h3>Lebron Raymone James</h3>
+                      <h3><?php echo $user_row['First_Name']." " . $user_row['Last_Name'] ?></h3>
 
                       <div class="profile-labels">
                           <label for="text"><strong>Code Wizard</strong></label>
@@ -453,7 +462,7 @@
               // Simulate some delay for the logout process (e.g., server request)
               setTimeout(function() {
                 // Redirect to the index.php after the delay
-                window.location.href = '../index.php';
+                window.location.href = '../components/logout.php';
               }, 2000); // Adjust delay as needed (e.g., 2 seconds)
             });
 

@@ -555,16 +555,17 @@ body {
 /* FOR USER'S LOBBY */
 /* -------------------User's Lobby Modal------------------------------ */
 .users-lobby-modal {
-  display: none;
+  display: none; /* Hidden by default */
   position: fixed;
-  top: 0;
+  z-index: 9999;
   left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: rgba(0, 0, 0, 0.5);
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.4); /* Black background with opacity */
   justify-content: center;
-  align-items: center;
-  z-index: 200;
+  align-items: center; /* Center the modal vertically */
 }
 
 .users-lobby-modal-content {
@@ -575,6 +576,7 @@ body {
   text-align: center;
   box-shadow: 0 8px 16px #0286DF;
   position: relative;
+  z-index: 99999;
 }
 
 .users-lobby-close {

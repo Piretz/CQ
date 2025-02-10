@@ -6,12 +6,13 @@ body {
 .panel-container {
     display: flex;
     justify-content: space-between;
-    gap: 4px;
+    gap: 10px;
     width: 100%;
-    max-width: 1500px;
-    height: 700px;
+    max-width: 1600px;
+    height: 750px;
     overflow: hidden;
     margin: 0 auto;
+    margin-top: 4%;
 }
 
 /* Messages List */
@@ -19,19 +20,21 @@ body {
     width: 100%;
     max-width: 500px; /* Fixed size */
     overflow: hidden;
-    background-color: #091A36;
+    background-color: #032743;
     padding: 10px;
     border-radius: 10px;
-    box-shadow: 4px 6px 8px #019AEC;
-    border-left: 1px solid #019AEC;
-    border-right: 1px solid #019AEC;
-    border-top: 1px solid #019AEC;
-    border-bottom: 4px solid #019AEC;
+    box-shadow: 0 4px 8px rgba(201, 185, 185, 0.966);
+    border-left: 1px solid #FCAE00;
+    border-right: 1px solid #FCAE00;
+    border-top: 1px solid #FCAE00;
+    border-bottom: 4px solid #FCAE00;
 }
 
 .messages-container {
     overflow-y: auto;
     height: 80%;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
 }
 
 .list-header h2{
@@ -57,11 +60,12 @@ body {
     display: flex;
     justify-content: space-between;
     margin-bottom: 10px;
-    background-color: #326993;
+    background-color: #032743;
     border-radius: 10px;
     height: 6%;
     width: 90%;
-    margin-bottom: 20px
+    margin-bottom: 20px;
+    border: 1px solid #FCAE00;
 }
 
 
@@ -141,13 +145,13 @@ body {
 /* Panel Box for Conversation Body */
 .conversation-body {
     width: 100%;
-    background-color: #091A36;
+    background-color: #032743;
     padding: 20px;
     border-radius: 8px;
-    border-left: 1px solid #019AEC;
-    border-right: 1px solid #019AEC;
-    border-top: 1px solid #019AEC;
-    border-bottom: 4px solid #019AEC;
+    border-left: 1px solid #FCAE00;
+    border-right: 1px solid #FCAE00;
+    border-top: 1px solid #FCAE00;
+    border-bottom: 4px solid #FCAE00;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -175,6 +179,8 @@ body {
 .conversation {
     max-height: 600px;
     overflow-y: auto;
+    -ms-overflow-style: none;
+    scrollbar-width:none;
     margin-bottom: 20px;
     flex-grow: 1;
 }
@@ -208,25 +214,27 @@ body {
 }
 
 .message.friend .message-text {
-    background-color: #326993;
+    background-color: #032743;
+    border: 1px solid #fff;
 }
 
 .message.me .message-text {
-    background-color: #019aec;
+    background-color: #032743;
     color: white;
     max-width: 70%;
     flex-wrap: wrap;
     overflow-wrap: break-word;
     word-wrap: break-word;
     white-space: normal;
+    border: 1px solid #FCAE00;
 }
 
 .message-time {
     font-size: 12px;
     font-family: Poppins;
     color: #aaa;
-    margin-top: 0px;
-    text-align: end;
+    margin: 10px;
+    
 }
 
 .bottom-box {
@@ -242,7 +250,7 @@ body {
     width: 100%;
     padding: 5px;
     border-radius: 5px;
-    border: 1px solid #ccc;
+    border: 1px solid #304F66;
     resize: none;
     background-color: #304F66;
 }
@@ -257,11 +265,12 @@ body {
 }
 
 .send-btn:hover{
-    background-color: #40617a;
+    background-color: #304F66;
 }
 
 .message-input{
     color: #fff;
+    font-family: Poppins;
 }
 
 /* Media Queries for Responsiveness */

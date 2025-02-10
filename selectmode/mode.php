@@ -1,3 +1,18 @@
+<?php
+include '../connection/connection.php';
+session_start();
+$user_id = $_SESSION['ID'];
+
+if(!isset($_SESSION['ID'])){
+  header("Location: ../index.php");
+}
+
+$user_query = "SELECT * FROM users WHERE User_ID = $user_id";
+$user_result = mysqli_query($con, $user_query);
+$user_row = mysqli_fetch_assoc($user_result);
+
+$user_type = $user_row['user_type'];
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,11 +30,15 @@
 <body>
 
           <?php include '../components/navbar.php'; ?>
-          
+
             <!-- Walkthrough Overlay -->
-            <div id="walkthrough-overlay" class="walkthrough-overlay">
+            <?php
+                if($user_type == "New"){
+            ?>
+                <div id="walkthrough-overlay" class="walkthrough-overlay">
                 <div class="joybee-container">
                     <img src="../img/joybee.png" alt="Joybee" class="joybee-character" id="joybeeImage">
+
                     <div class="joybee-text-box">
                         <p id="joybee-text">Hi User, Welcome to CoDev!</p>
                         <div class="walkthrough-buttons">
@@ -29,7 +48,17 @@
                     </div>
                 </div>
             </div>
-
+            <?php
+                } else {
+            ?>
+                <div id="walkthrough-overlay" class="walkthrough-overlay">
+                  <div class="joybee-container">
+                  <img src="../img/joybee.png" alt="Joybee" class="joybee-character" id="joybeeImage">
+                  </div>
+                </div> 
+            <?php
+                    }
+            ?>
             <!-- Mode Selection -->
             <div class="select-mode-images">
                 <img src="../img/mdSolo.png" alt="Solo Mode" class="solo-mode walkthrough-item locked" id="solomodeImage">
@@ -51,7 +80,17 @@
                     ];
 
                     let currentStep = 0;
-
+                    <?php
+                    if($user_type == "New"){
+                    ?>
+                      let shouldSkip = false;
+                    <?php
+                    } else {
+                    ?>
+                      let shouldSkip = true;
+                    <?php
+                    }
+                    ?>
                     const joybeeText = document.getElementById("joybee-text");
                     const nextBtn = document.getElementById("next-btn");
                     const skipBtn = document.getElementById("skip-btn");
@@ -68,24 +107,7 @@
                         }
                     }
 
-                    nextBtn.addEventListener("click", function () {
-                        currentStep++;
-                        if (currentStep >= steps.length) {
-                            overlay.style.background = "transparent";
-                            overlay.style.backdropFilter = "none";
-                            overlay.style.pointerEvents = "none"; 
-                            overlay.style.removeProperty("z-index");
-                            images.forEach(item => item.classList.remove("walkthrough-item"));
-                            joybeeTextBox.style.display = "none";
-                            // After finishing walkthrough, show lesson mode image with guide
-                            document.getElementById("lessonModeImage").style.backgroundColor = "transparent"; // Indicating to click
-                            document.getElementById("lessonModeImage").style.boxShadow = "0 10px 20px #fff";
-                        } else {
-                            updateStep();
-                        }
-                    });
-
-                    skipBtn.addEventListener("click", function () {
+                    function skipWalkthrough() {
                         overlay.style.background = "transparent";
                         overlay.style.backdropFilter = "none";
                         overlay.style.pointerEvents = "none"; 
@@ -95,21 +117,43 @@
                         // After skipping walkthrough, show lesson mode image with guide
                         document.getElementById("lessonModeImage").style.backgroundColor = "transparent";
                         document.getElementById("lessonModeImage").style.boxShadow = "0 10px 20px #fff";
+                    }
+                    if (shouldSkip) {
+                        skipWalkthrough();
+                    } else {
+                    skipBtn.addEventListener("click", function () {
+                      skipWalkthrough();
                     });
-
+                    nextBtn.addEventListener("click", function () {
+                      currentStep++;
+                      if (currentStep >= steps.length) {
+                          skipWalkthrough();
+                      } else {
+                          updateStep();
+                      }
+                    });
+                    }
                     updateStep();
                 });
 
                 // Apply Locked/Unlocked Styles
+                <?php
+                  if($user_type == "New"){
+                ?>
                 document.querySelectorAll(".locked").forEach(mode => {
                     mode.style.opacity = "1";  // Locked modes appear faded
                     mode.style.pointerEvents = "none";  // Disable interaction
                 });
-
+                <?php
+                  } else {
+                ?>
                 document.querySelectorAll(".unlocked").forEach(mode => {
                     mode.style.opacity = "1";  // Unlocked mode appears normal
                     mode.style.pointerEvents = "auto";  // Enable interaction
                 });
+                <?php
+                  }
+                ?>
 
               </script>
 

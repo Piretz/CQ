@@ -100,20 +100,20 @@ body {
   .middle .badges {
     position: relative;
     top: 10px;
-    left: 10%;
+    left: 14%;
   }
   
   .middle h1 {
     margin: 0;
     font-size: 3.65rem;
     position: relative;
-    right: 84px;
+    right: 36px;
     top: 10px;
     font-family: zen dots;
   }
   .middle span {
     position: relative;
-    right: 21%;
+    right: 18%;
     top: 10px;
     font-size: 50px;
     color: #221080;

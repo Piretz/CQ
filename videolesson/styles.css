@@ -11,9 +11,9 @@ body {
     position: relative;
     top: 10px;
     display: flex;
-    background: linear-gradient(to bottom, #035CC2, #073269);
+    background-color: #032743;
     border: 1px solid #167AFA;
-    border-bottom: 0 2px 4px solid #167AFA;
+    border-bottom: 0 2px 4px solid #FCAE00;
     max-height: 770px; /* Adjusted height */
     width: 85%; /* Adjusted width */
     margin-top: 80px; /* Moves the box-container down */
@@ -21,7 +21,7 @@ body {
     justify-content: center;
     align-items: center;
     border-radius: 15px;
-    box-shadow: 0 10px 20px #019AEC;
+    box-shadow: 0 10px 20px #FCAE00;
     overflow-y: hidden;
 }
 
@@ -38,12 +38,12 @@ body {
 }
 
 .panel {
-    background: linear-gradient(to bottom, #035CC2, #073269);
-    border-left: 1px solid #019AEC;  /* Left border */
-    border-right: 1px solid #019AEC; /* Right border */
-    border-top: 1px solid #019AEC;   /* Top border */
-    border-bottom: 4px solid #019AEC; /* Bottom border */
-    box-shadow: 0 8px 16px #019AEC;
+    background-color: #032743;
+    border-left: 1px solid #FCAE00;  /* Left border */
+    border-right: 1px solid #FCAE00; /* Right border */
+    border-top: 1px solid #FCAE00;   /* Top border */
+    border-bottom: 4px solid #FCAE00; /* Bottom border */
+    box-shadow: 0 8px 16px #FCAE00;
     border-radius: 10px;
     padding: 20px; /* Padding inside each panel */
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -58,13 +58,13 @@ body {
 }
 
 .video-panel {
-    border: 2px solid #019AEC;
+    border: 2px solid #FCAE00;
 }
 
 /* <!-- Second Panel: Comments --> */
 .comment-panel {
     color: #fff;
-    font-family: 'Poppins', sans-serif;
+    font-family: Poppins;
     font-size: 14px;
     display: flex;
     flex-direction: column;
@@ -72,10 +72,13 @@ body {
     height: 100%;
 }
 
+.comment-panel h2 {
+    font-family: Poppins;
+}
+
 .comment-panel #comment-section {
     height: 300px;
-    margin-top: 20px;
-    padding-top: 10px;
+    margin-top: 10px;
     padding-left: 20px;
     display: flex;
     flex-direction: column;
@@ -84,6 +87,8 @@ body {
     word-break: break-all;
     text-overflow: ellipsis;
     white-space: normal;
+    -ms-overflow-style: none;
+    scrollbar-width:none;
 
 }
 
@@ -99,7 +104,7 @@ body {
 .comment-panel button {
     height: 50px;
     padding: 12px 24px;
-    background-color: #035CC2;
+    background-color: #032743;
     color: white;
     border: none;
     border-radius: 8px;
@@ -108,7 +113,7 @@ body {
 }
 
 .comment-panel button:hover {
-    background-color: #0056b3;
+    background-color: #032743;
 }
 
 .comment-panel .input-area {
@@ -124,8 +129,8 @@ body {
     align-items: flex-start;
     gap: 10px;
     padding: 10px 0;
-    border: 1px solid #ddd;
-    background: linear-gradient(to right, #035CC2, #073267);
+    border: 1px solid #011F2B;
+    background-color: #011F2B;
     
 }
 
@@ -155,9 +160,10 @@ body {
 .lesson-info-panel button,
 .comment-panel button {
     padding: 10px;
-    background-color: #007BFF;
+    background-color: #032743;
     color: white;
-    border: none;
+    border: 1px solid #FCAE00;
+    border-bottom: 4px solid #FCAE00;
     border-radius: 8px;
     font-size: 1rem;
     cursor: pointer;
@@ -166,7 +172,7 @@ body {
 
 .lesson-info-panel button:hover,
 .comment-panel button:hover {
-    background-color: #0056b3;
+    background-color: #032743;
 }
 
 
@@ -185,6 +191,7 @@ body {
     word-break: break-all;
     text-overflow: ellipsis;
     white-space: normal;
+    font-family: Poppins;
 }
 
 /* FOURTH PANEL */
@@ -194,6 +201,8 @@ body {
     color: #000;
     max-height: 60%;
     overflow-y: auto;
+    -ms-overflow-style: none;
+    scrollbar-width:none;
 }
 
 .lesson-button {
@@ -203,16 +212,13 @@ body {
     width: 100%;
     padding: 10px;
     border: none;
-    background-color: #f5f5f5;
+    background-color: #011F2B;
+    color: #fff;
     cursor: pointer;
     text-align: left;
     border-radius: 10px;
     font-family: Poppins;
     margin-bottom: 10px; /* Adds gap between buttons */
-}
-
-.lesson-button:hover {
-    background-color: #e0e0e0;
 }
 
 .lesson-content {
@@ -235,7 +241,7 @@ body {
 
 .instructor {
     font-size: 20px;
-    color: #555;
+    color: #fff;
     margin-top: -20px; /* Moves the instructor name slightly upward */
     text-indent: 20px; /* Adds an indent to the left */
 }

@@ -1,5 +1,5 @@
 body {
-  font-family: 'Zen dots', 'Poppins' sans-serif;
+  font-family: 'Poppins', sans-serif;
   box-sizing: border-box;
   background-image: url(../img/background.png);
   background-size: cover;
@@ -16,18 +16,18 @@ body {
   .fixed-header {
     position: sticky;  /* Makes it fixed within the content container */
     top: 0; /* Sticks to the top of the content container */
-    background-color: #091A36;
+    background-color: #032743;
     padding: 10px 20px;
     color: white;
     text-align: start;
-    border-bottom: 2px solid #019AEC;
-    font-family: zen dots;
+    border-bottom: 2px solid #FCAE00;
+    font-family: Poppins;
   }
 
   .fixed-description {
     position: sticky; /* Sticks below the header */
     top: 50px; /* Space below the header */
-    background-color: #091A36;
+    background-color: #032743;
     padding: 15px 30px;
     color: white;
     text-align: start;
@@ -38,8 +38,8 @@ body {
   .content {
     width: 1700px;
     height: 900px;
-    background-color: #091A36;
-    border: 4px solid #019AEC;
+    background-color: #032743;
+    border: 4px solid #FCAE00;
     border-top: none;
     border-radius: 10px;
     align-items: center;
@@ -50,7 +50,7 @@ body {
   }
   
   .highlight {
-    color: #019AEC;
+    color: #FCAE00;
     text-decoration: none;
   }
   
@@ -59,14 +59,14 @@ body {
     top: 4.5rem;
     left: 0;
     width: 100%;
-    background-color: #091A36;
+    background-color: #032743;
     padding: 15px 30px;
     color: white;
   }
   
   .details {
-    /* border-left: 4px solid #019AEC; */
-    background-color: #326993;
+    /* border-left: 4px solid #FCAE00; */
+    background-color: #001B26;
     padding: 20px;
     border-radius: 8px;
     margin-bottom: 10px;
@@ -77,13 +77,14 @@ body {
     cursor: pointer;
     font-size: 1.2rem;
     font-weight: bold;
-    font-family: zen dots;
+    font-family:  Poppins;
     display: flex;
     justify-content: space-between;
     align-items: center;
   }
   
   .details-content {
+     background-color: #001B26;
     margin-top: 10px;
     margin-left: 15px;
     font-family: Poppins;
@@ -102,4 +103,5 @@ body {
     font-size: 1.2rem;
     margin-left: 10px;
     transition: transform 0.2s ease;
+    color: #FCAE00  ;
   }

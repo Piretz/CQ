@@ -1,3 +1,12 @@
+<?php
+include '../connection/connection.php';
+session_start();
+$id = $_SESSION['ID'];
+
+if(!isset($_SESSION['ID'])){
+  header("Location: ../index.php");
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -27,7 +36,7 @@
         <div class="leaderboard-box">
             <div class="leaderboard-header">
                 <h2>Leaderboard</h2>
-                <img src="../img/btnback.png" alt="Back Button" class="back-button">
+                <!-- <img src="../img/btnback.png" alt="Back Button" class="back-button"> -->
             </div>
 
             <!-- Scrollable Leaderboard Table -->

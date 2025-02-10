@@ -1,3 +1,57 @@
+<?php
+include("connection/connection.php");
+session_start();
+if (isset($_POST['login'])){
+
+    $username = $_POST['username'];
+    $password = $_POST['password'];
+
+    $query = "SELECT * FROM users WHERE Email='$username' AND User_Password='$password'";
+    $result = mysqli_query($con, $query);
+
+    if (mysqli_num_rows($result) == 1){
+        $rows = mysqli_fetch_array($result);
+        $_SESSION['ID'] = $rows['User_ID'];
+        header("Location: ../selectmode/mode.php");
+    } else {
+        echo "<script>alert('Invalid username or password. Please try again.')</script>";
+    }
+}
+
+if (isset($_POST['signup'])){
+
+    $firstName = $_POST['firstName'];
+    $lastName = $_POST['lastName'];
+    $email = $_POST['email'];
+    $birthday = $_POST['birthday'];
+    $password = $_POST['password'];
+    $confirmPassword = $_POST['confirmPassword'];
+    
+    if ($password != $confirmPassword){
+        echo "<script>alert('Passwords do not match. Please try again.')</script>";
+    } else {
+        $query = "INSERT INTO USERS (First_Name, Last_Name, Birth_Date, Email, Role, user_type, Level, level_progress, next_level, User_Password) VALUES ('$firstName', '$lastName', '$birthday', '$email', 'Student','New', 1, 0, 50, '$password')";
+        $result = mysqli_query($con, $query);
+        if ($result){
+            echo "<script>
+                    alert('Account successfully created.');
+                    document.addEventListener('DOMContentLoaded', function() {
+                        document.getElementById('signupModal').style.display = 'none'; // Hide signup modal
+                        document.getElementById('loginModal').style.display = 'flex'; // Show login modal
+                    });
+                  </script>";
+        } else {
+            echo "<script>alert('Error creating account: " . mysqli_error($con) . "')</script>";
+        }
+    }
+}    
+
+  
+
+if(isset($_SESSION['ID'])){
+    header("Location: selectmode/mode.php");
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -172,107 +226,133 @@
 
             </script>
 
-            <!-- Login Modal Structure -->
+          <!-- Login Modal -->
             <div class="login-modal" id="loginModal">
-                <div class="modal-content">
-                    <!-- Login Logo Image -->
+                <div class="loginmodal-content">
+                    
+                    <!-- Login Logo -->
                     <img src="./img/loginlogo.png" alt="Login Logo" class="login-logo">
                     
-                    <span class="close-btn" id="closeBtn"><img src="./img/btnbackcourse.png" alt="Close"></span>
+                    <!-- Close Button -->
+                    <span class="close-btn" id="closeBtn">
+                        <img src="./img/btnbackcourse.png" alt="Close">
+                    </span>
+
                     <h2>LOGIN</h2>
+
                     <div class="form-container">
-                        <form action="your-login-processing-url" method="POST">
+                        <form method="POST">
+                            
+                            <!-- Username Input -->
                             <div class="form-group">
                                 <label for="username">Username:</label>
                                 <div class="input-group">
-                                    <i class="fas fa-user input-icon"></i> <!-- User Icon -->
+                                    <i class="fas fa-user input-icon"></i>
                                     <input type="text" id="username" placeholder="Ex: John Doe" name="username" required>
                                 </div>
                             </div>
+                            
+                            <!-- Password Input -->
                             <div class="form-group">
                                 <label for="password">Password:</label>
                                 <div class="input-group">
-                                    <i class="fas fa-lock input-icon"></i> <!-- Password Icon -->
+                                    <i class="fas fa-lock input-icon"></i>
                                     <input type="password" id="password" placeholder="********" name="password" required>
-                                    <i class="fas fa-eye-slash eye-icon" id="togglePassword"></i> <!-- Show/Hide Icon -->
+                                    <i class="fas fa-eye-slash eye-icon" id="togglePassword"></i>
                                 </div>
                             </div>
-                            <input type="image" src="./img/btnlogin.png" alt="Submit" class="btn login-submit">
+
+                            <!-- Submit Button -->
+                            <button type="Submit" name="login" value="login" class="btn login-submit">
+                                <img src="./img/btnlogin.png" alt="Login" class="btn-img">
+                            </button>
                         </form>
                     </div>
                 </div>
             </div>
 
-            <!-- Sign Up Modal Structure -->
-            <div class="signup-modal" id="signupModal">
-                <div class="signupmodal-content">
-                    <img src="./img/signuplogo.png" alt="Login Logo" class="signup-logo">
-                    <span class="close-btn" id="closeSignupBtn"><img src="./img/btnbackcourse.png" alt="Close"></span>
+
+          <!-- Sign Up Modal Structure -->
+        <div class="signup-modal" id="signupModal">
+            <div class="signupmodal-content">
+                
+                <!-- Header Section -->
+                <div class="signupmodal-header">
+                    <!-- Close Button -->
+                 <span class="close-btn" id="closeSignupBtn"><img src="./img/btnbackcourse.png" alt="Close"></span>
                     <h2>SIGN UP</h2>
-                    <div class="signupform-container">
-                        <form action="your-signup-processing-url" method="POST">
-                            <!-- First Row -->
-                            <div class="signupform-row">
-                                <div class="signupform-group">
-                                    <label for="firstName">First Name:</label>
-                                    <input type="text" id="firstName" name="firstName" required placeholder="Ex: John">
-                                </div>
-                                <div class="signupform-group">
-                                    <label for="lastName">Last Name:</label>
-                                    <input type="text" id="lastName" name="lastName" required placeholder="Ex: Doe">
-                                </div>
-                                <div class="signupform-group">
-                                    <label for="username">Username:</label>
-                                    <input type="text" id="username" name="username" required placeholder="Ex: johndoe123">
-                                </div>
-                            </div>
+                </div>
 
-                            <!-- Second Row -->
-                            <div class="signupform-row">
-                                <div class="signupform-group">
-                                    <label for="email">Email Address:</label>
-                                    <input type="email" id="email" name="email" required placeholder="Ex: johndoe@example.com">
-                                </div>
-                                <div class="signupform-group">
-                                    <label for="birthday">Birthday:</label>
-                                    <input type="date" id="birthday" name="birthday" required>
-                                </div>
-                            </div>
+                <!-- Signup Logo -->
+                <img src="./img/signuplogo.png" alt="Login Logo" class="signup-logo">
 
-                            <!-- Third Row -->
-                            <div class="signupform-row">
-                                <!-- Password Field with Show/Hide Icon -->
-                                <div class="signupform-group">
-                                    <label for="password">Password:</label>
+                <!-- Form Container -->
+                <div class="signupform-container">
+                    <form method="POST">
+                        
+                        <!-- First Row -->
+                        <div class="signupform-row">
+                            <div class="signupform-group">
+                                <label for="firstName">First Name:</label>
+                                <input type="text" id="firstName" name="firstName" required placeholder="Ex: John">
+                            </div>
+                            <div class="signupform-group">
+                                <label for="lastName">Last Name:</label>
+                                <input type="text" id="lastName" name="lastName" required placeholder="Ex: Doe">
+                            </div>
+                            <div class="signupform-group">
+                                <label for="username">Username:</label>
+                                <input type="text" id="username" name="username" required placeholder="Ex: johndoe123">
+                            </div>
+                        </div>
+
+                        <!-- Second Row -->
+                        <div class="signupform-row">
+                            <div class="signupform-group">
+                                <label for="email">Email Address:</label>
+                                <input type="email" id="email" name="email" required placeholder="Ex: johndoe@example.com">
+                            </div>
+                            <div class="signupform-group">
+                                <label for="birthday">Birthday:</label>
+                                <input type="date" id="birthday" name="birthday" required>
+                            </div>
+                        </div>
+
+                        <!-- Third Row -->
+                        <div class="signupform-row">
+                            <div class="signupform-group">
+                                <label for="password">Password:</label>
+                                <div class="password-container">
                                     <input type="password" id="password" name="password" required placeholder="********">
                                     <i class="fas fa-eye-slash" id="togglePassword" onclick="togglePasswordVisibility('password')"></i>
                                 </div>
-
-                                <!-- Confirm Password Field with Show/Hide Icon -->
-                                <div class="signupform-group">
-                                    <label for="confirmPassword">Confirm Password:</label>
+                            </div>
+                            <div class="signupform-group">
+                                <label for="confirmPassword">Confirm Password:</label>
+                                <div class="password-container">
                                     <input type="password" id="confirmPassword" name="confirmPassword" required placeholder="********">
                                     <i class="fas fa-eye-slash" id="toggleConfirmPassword" onclick="togglePasswordVisibility('confirmPassword')"></i>
                                 </div>
                             </div>
+                        </div>
 
+                        <!-- Terms and Conditions -->
+                        <div class="signupform-group terms-container">
+                            <input type="checkbox" id="terms" name="terms" required>
+                            <label for="terms">I have read the Terms and Conditions</label>
+                        </div>
 
-                            <!-- Terms and Conditions -->
-                            <div class="signupform-group terms-container">
-                                <input type="checkbox" id="terms" name="terms" required>
-                                <label for="terms">I have read the Terms and Conditions</label>
-                            </div>
+                        <!-- Sign up button -->
+                        <div class="btnsignupform-group">
+                            <button type="Submit" name="signup" value="signup" class="btn signup-submit">
+                                <img src="./img/btnregister.png" alt="signup">
+                            </button>
+                        </div>
 
-                            <!-- Next Button with Image -->
-                            <div class="btnsignupform-group">
-                                <input type="image" src="./img/btnregister.png" alt="Next" class="btn signup-submit">
-                            </div>
-                        </form>
-                    </div>
+                    </form>
                 </div>
             </div>
-
-
+        </div>
 
             <script>
                 // Get the modal

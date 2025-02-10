@@ -61,7 +61,7 @@ body {
     justify-content: space-between;
     align-items: center;
     padding: 10px 20px;
-    background-color: #FDAD56;
+    background-color: #FCAE00;
 }
 
 .leaderboard-header h2 {
@@ -70,6 +70,7 @@ body {
     flex-grow: 1;
     font-family: Poppins;
     font-size: 48px;
+    color: black;
 }
 
 .back-button {
@@ -85,6 +86,8 @@ body {
     flex-grow: 1;
     overflow-y: auto;
     max-height: 900px;
+    -ms-overflow-style: none;
+    scrollbar-width:none;
 }
 
 table {
@@ -98,6 +101,9 @@ tr:not(:last-child) {
 }
 
 thead {
+    position: sticky;
+    top: 0;
+    z-index: 10; /* Para laging nasa ibabaw */
     background-color: #170099;
     color: white;
     font-size: 44px;

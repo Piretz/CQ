@@ -1,3 +1,12 @@
+<?php
+include '../connection/connection.php';
+session_start();
+$id = $_SESSION['ID'];
+
+if(!isset($_SESSION['ID'])){
+  header("Location: ../index.php");
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -128,7 +137,7 @@
                 <!-- Conversation will appear here -->
             </div>
             <div class="bottom-box">
-                <textarea id="message-input" placeholder="Type a message" class="message-input"></textarea>
+                <textarea id="message-input" placeholder="Type a message..." class="message-input"></textarea>
                 <button class="send-btn" onclick="sendMessage()">
                     <img src="../img/btnsend.png" alt="Send Icon">
                 </button>
