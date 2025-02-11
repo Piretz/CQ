@@ -56,12 +56,12 @@ if(!isset($_SESSION['ID'])){
                             <div class="lesson-details">
                                 <h3>Lesson: <?php echo $row['Lesson_Title']?></h3>
                                 <h5>
-                                    <img src="../img/john.png" alt="Profile Icon" style="width: 3%; height: 2%; margin-right: 8px; vertical-align: middle; border-radius: 10px;">
+                                    <img src="../img/joybee.png" alt="Profile Icon" style="width: 1.5; height: 1%; margin-right: 8px; vertical-align: middle; border-radius: 10px;">
                                     <strong><?php echo $row['Lesson_Creator'] ?></strong>
                                 </h5>
                                 <p><?php echo $row['Lesson_Description'] ?></p>
-                                <button class="view-button" onclick="showLesson(<?php echo $row['Lesson_ID'] ?>)">
-                                    View Lesson
+                                <button class="view-button" onclick="window.location.href='../videolesson/videolesson.php?id=<?php echo $row['Lesson_ID'] ?>'">
+                                    Watch Lesson
                                     <img src="../img/btnplay.png" alt="Play Icon" class="play-icon">
                                 </button>
                             </div>
@@ -70,7 +70,9 @@ if(!isset($_SESSION['ID'])){
                     <?php }?> 
                     <!-- end?? -->
                 </div>
-    <div class="box-box-2" id="lesson-display">
+
+
+    <!-- <div class="box-box-2" id="lesson-display">
     <script>
         function showLesson(lessonId) {
             const box2 = document.getElementById("lesson-display");
@@ -117,13 +119,13 @@ if(!isset($_SESSION['ID'])){
                         </div>
                     </div>
                 </div>
-                <button class="view-button" style="position: relative; top: 30px; left: 400px; border-left: 1px solid #FCAE00; border-right: 1px solid #FCAE00; border-top: 1px solid #FCAE00; border-bottom: 4px solid #FCAE00;" onclick="videolesson.php">
+                <button class="view-button" style="position: relative; top: 30px; left: 400px; border-left: 1px solid #FCAE00; border-right: 1px solid #FCAE00; border-top: 1px solid #FCAE00; border-bottom: 4px solid #FCAE00;" onclick="../videolesson/videolesson.php">
                     Watch Lesson
                     <img src="../img/btnplay.png" alt="Play Icon" class="box2-play-icon">
                 </button>
             `;
         }
-    </script>
+    </script> -->
 
     </div>
 </div>

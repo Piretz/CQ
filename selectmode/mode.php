@@ -31,6 +31,11 @@ $user_type = $user_row['user_type'];
 
           <?php include '../components/navbar.php'; ?>
 
+          <!-- dailyquest animated button image -->
+          <div class="dailyquest-container">
+            <img src="../img/dailyquest.png" alt="Daily Quest" class="dailyquest-image" onclick="window.location.href='../dailyquest/dailyquest.php';">
+            <div class="dailyquest-text">Daily Quest</div>
+          </div>
             <!-- Walkthrough Overlay -->
             <?php
                 if($user_type == "New"){
@@ -415,7 +420,7 @@ $user_type = $user_row['user_type'];
                       </table>
                       
                       <!-- Join Button (Initially Hidden) -->
-                      <span class="users-join-btn" id="usersJoinBtn" style="display:none;">
+                      <span class="users-join-btn" id="usersJoinBtn" style="display:none;" onclick="window.location.href='../pvp/multiplayer.php';"> >
                         <img src="../img/btnjoin.png" alt="Join Button">
                       </span>
                     </div>

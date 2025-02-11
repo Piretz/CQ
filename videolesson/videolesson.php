@@ -56,40 +56,32 @@ $description = isset($_GET['description']) ? $_GET['description'] : 'No Descript
                     <div class="panel lesson-info-panel">
                         <h2>Lesson 1</h2>
                         <p>This is a sample lesson description that will automatically break into the next line when necessary.</p>
-                        <button onclick="downloadFile()">Download File</button>
+                        <!-- <button onclick="downloadFile()">Download File</button> -->
                     </div>
 
                    <!-- Fourth Panel: Lesson Details -->
                     <div class="panel lesson-details-panel">
-                        <button onclick="showContent('Lesson 1: Introduction of HTML', 'qz0aGYrrlhU', 'This lesson covers the basics of HTML structure and syntax.')" class="lesson-button">
+                        <button onclick="showContent('Lesson 1: Introduction to Hypertext Markup Language (HTML)', 'CA_7yoGZg0M', 'This lesson covers the basics of HTML structure and syntax.')" class="lesson-button">
                             <div class="lesson-content">
                                 <div class="lesson-info">
-                                    <span id="lesson-title">Lesson 1: Introduction of HTML</span> <br>
-                                    <span class="instructor">Mr. John Doe</span>
+                                    <span id="lesson-title">Lesson 1: Introduction to Hypertext Markup Language (HTML)</span> <br>
+                                    <span class="instructor">Cipherion</span>
                                 </div>
-                                <span class="lesson-duration">(10:00)</span>
+                                <span class="lesson-duration">(1:15)</span>
                             </div>
                         </button>
 
-                        <button onclick="showContent('Lesson 2: HTML Elements', 'LXb3EKWsInQ', 'Learn about various HTML elements and their uses.')" class="lesson-button">
+                        <button onclick="showContent('Lesson 1: Introduction to Computing', '9A1TETDUMIo', 'Learn about various HTML elements and their uses.')" class="lesson-button">
                             <div class="lesson-content">
                                 <div class="lesson-info">
-                                    <span id="lesson-title">Lesson 2: HTML Elements</span> <br>
-                                    <span class="instructor">Ms. Jane Smith</span>
+                                    <span id="lesson-title">Lesson 1: Introduction to Computing</span> <br>
+                                    <span class="instructor">Cipherion</span>
                                 </div>
-                                <span class="lesson-duration">(15:00)</span>
+                                <span class="lesson-duration">(0:16)</span>
                             </div>
                         </button>
 
-                        <button onclick="showContent('Lesson 3: Advanced HTML', '1rbo_HHt5nw', 'Explore advanced HTML concepts including forms and multimedia integration.')" class="lesson-button">
-                            <div class="lesson-content">
-                                <div class="lesson-info">
-                                    <span id="lesson-title">Lesson 3: Advanced HTML</span> <br>
-                                    <span class="instructor">Mr. Alan Turing</span>
-                                </div>
-                                <span class="lesson-duration">(20:00)</span>
-                            </div>
-                        </button>
+                        
 
                     </div>
             </div>

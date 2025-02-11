@@ -30,18 +30,12 @@ if (isset($_POST['signup'])){
     if ($password != $confirmPassword){
         echo "<script>alert('Passwords do not match. Please try again.')</script>";
     } else {
-        $query = "INSERT INTO USERS (First_Name, Last_Name, Birth_Date, Email, Role, user_type, Level, level_progress, next_level, User_Password) VALUES ('$firstName', '$lastName', '$birthday', '$email', 'Student','New', 1, 0, 50, '$password')";
+        $query = "INSERT INTO users (First_Name, Last_Name, Birth_Date, Efmail, Role, user_type, Level, level_progress, next_level, User_Password) VALUES ('$firstName', '$lastName', '$birthday', '$email', 'Student','New', 1, 0, 50, '$password')";
         $result = mysqli_query($con, $query);
         if ($result){
-            echo "<script>
-                    alert('Account successfully created.');
-                    document.addEventListener('DOMContentLoaded', function() {
-                        document.getElementById('signupModal').style.display = 'none'; // Hide signup modal
-                        document.getElementById('loginModal').style.display = 'flex'; // Show login modal
-                    });
-                  </script>";
+            echo "<script>alert('success')</script>";
         } else {
-            echo "<script>alert('Error creating account: " . mysqli_error($con) . "')</script>";
+            echo "<script>alert('not success')</script>";
         }
     }
 }    
