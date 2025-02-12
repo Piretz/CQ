@@ -428,7 +428,7 @@ $user_type = $user_row['user_type'];
                       
                       <!-- Join Button -->
                       <span class="users-join-btn" id="usersJoinBtn" style="display:none;">
-                        <img src="../img/btnjoin.png" alt="Join Button">
+                        <img src="../img/btnjoin.png" alt="Join Button" onclick="window.location.href='../pvp/multiplayer.php'">
                       </span>
                     </div>
                   </div>

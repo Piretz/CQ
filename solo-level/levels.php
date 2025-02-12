@@ -229,7 +229,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     </div>
     <div class="top-bar">
       <div class="hint-btn"></div>
-      <div class="leave-btn"></div>
+      <div  onclick="window.location.href='../selectmode/mode.php'" class="leave-btn"></div>
     </div>
 
     <div class="task-output-container">

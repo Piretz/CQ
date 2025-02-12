@@ -1,0 +1,261 @@
+/* General Styling */
+body {
+    font-family: 'Zen Dots', sans-serif;
+    background-image: url(../img/bgdashboard.png);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    text-align: center;
+    color: white;
+    margin: 0;
+    padding: 0;
+}
+
+/* Quiz Panel Styling */
+.quiz-panel {
+    position: relative;
+    width: 90%; /* Adjusted for better responsiveness */
+    max-width: 600px;
+    background: url("../img/bgPanelQuiz.png") no-repeat center center;
+    background-size: cover;
+    padding: 30px; /* Increased padding for better spacing */
+    border-radius: 20px;
+    box-shadow: 0 10px 20px rgba(255, 174, 0, 0.5); /* Adjusted shadow color */
+    text-align: center;
+    color: white;
+    margin: 80px auto; /* Adjusted margin */
+    border: 2px solid #FCAE00; /* Futuristic glowing effect */
+}
+
+/* Back Button Styling */
+.btn-back {
+    position: absolute;
+    top: 40px;
+    right: 15px;
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out;
+}
+
+.btn-back:hover {
+    transform: scale(1.1);
+}
+
+.btn-back-image {
+    width: 45px; /* Slightly larger for visibility */
+    height: auto;
+}
+
+/* Quiz Content */
+.quiz-content {
+    margin-top: 25px;
+}
+
+.quiz-content h2 {
+    font-size: 20px;
+    margin-bottom: 20px;
+    color: #FCAE00; /* Emphasize question title */
+    text-shadow: 2px 2px 8px rgba(255, 174, 0, 0.8);
+}
+
+/* Quiz Choices */
+.quiz-content label {
+    display: flex;
+    align-items: center;
+    background: #032743;
+    padding: 12px;
+    border-radius: 10px;
+    margin: 8px 0;
+    cursor: pointer;
+    font-size: 16px;
+    transition: 0.3s;
+    border: 1px solid transparent;
+}
+
+.quiz-content label:hover {
+    background: #04496b;
+    border: 1px solid #FCAE00;
+    transform: scale(1.02);
+}
+
+.quiz-content input[type="radio"] {
+    margin-right: 10px;
+    transform: scale(1.2);
+    accent-color: #FCAE00;
+}
+
+/* Submit Button */
+.btn-submit {
+    background: none;
+    border: none;
+    cursor: pointer;
+    margin-top: 20px;
+    display: flex;
+    justify-content: center; /* Centers horizontally */
+    align-items: center; /* Centers vertically */
+    width: 100%; /* Ensures it spans the full container width */
+}
+
+.btn-submit img {
+    width: 140px; /* Increased size for better visibility */
+    height: auto;
+    transition: 0.3s ease-in-out;
+}
+
+.btn-submit img:hover {
+    transform: scale(1.1);
+}
+
+/* Quiz Completed Panel */
+.quiz-panel-completed {
+    position: relative;
+    width: 80%;
+    max-width: 690px;
+    background: url("../img/bgPanelQuizResult.png") no-repeat center center;
+    background-size: cover;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    color: white;
+    margin: 50px auto;
+}
+
+/* Quiz Completed Content */
+.quiz-content-completed {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Quiz Completed Heading */
+.quiz-completed {
+    font-size: 28px;
+    font-weight: bold;
+    font-family: zen dots;
+    margin-bottom: 10px;
+    color: #00E508;
+}
+
+/* Quiz Result */
+.quiz-result {
+    font-size: 20px;
+    font-weight: bold;
+    background-color: rgba(255, 255, 255, 0.2);
+    padding: 10px 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+/* Buttons Container (Aligns buttons in one row) */
+.quiz-buttons {
+    display: flex;
+    justify-content: space-between; /* Distributes buttons left & right */
+    width: 100%;
+    max-width: 400px; /* Limits button container width */
+    margin-top: 20px;
+}
+
+/* Buttons */
+.btn-exit {
+    background: linear-gradient(to top, #FF0000, #E50000, #E47575, #B80000, #000000);
+    color: black;   
+    font-size: 20px;
+    font-family: zen dots;
+    cursor: pointer;
+    padding: 12px 20px;
+    width: 48%; /* Each button takes half width */
+    transition: 0.3s ease-in-out;
+}
+
+.btn-back-lesson {
+    background: linear-gradient(to top, #37FF00, #00E508, #75E475, #00B816, #000000);
+    color: black;
+    font-size: 20px;
+    font-family: zen dots;
+    cursor: pointer;
+    padding: 12px 20px;
+    width: 48%; /* Each button takes half width */
+    transition: 0.3s ease-in-out;
+}
+
+/* Hover Effect */
+.btn-back-lesson:hover,
+.btn-exit:hover {
+    background-color: #011F2B;
+    transform: scale(1.05);
+}
+
+/* Quiz Panel Failed */
+.quiz-panel-failed {
+    position: relative;
+    width: 80%;
+    max-width: 690px;
+    background: url("../img/bgPanelQuizResult.png") no-repeat center center;
+    background-size: cover;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    color: white;
+    margin: 50px auto;
+}
+
+/* Quiz Failed Content */
+.quiz-content-failed {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Quiz Failed Heading */
+.quiz-failed {
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #E80000;
+    font-family: zen dots;
+}
+
+/* Quiz Failed Result */
+.quiz-result-failed {
+    font-size: 20px;
+    font-weight: bold;
+    background-color: rgba(255, 255, 255, 0.2);
+    padding: 10px 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+/* Buttons Container (Aligns buttons in one row) */
+.quiz-buttons-failed {
+    display: flex;
+    justify-content: space-between; /* Distributes buttons left & right */
+    width: 100%;
+    max-width: 400px; /* Limits button container width */
+    margin-top: 20px;
+}
+
+/* Buttons */
+.btn-retry,
+.btn-exit-failed {
+    background: #032743;
+    color: white;
+    border: 2px solid #FCAE00;
+    border-bottom: 4px solid #FCAE00;
+    border-radius: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    padding: 12px 20px;
+    width: 48%; /* Each button takes half width */
+    transition: 0.3s ease-in-out;
+}
+
+/* Hover Effect */
+.btn-retry:hover,
+.btn-exit-failed:hover {
+    background-color: #011F2B;
+    transform: scale(1.05);
+}

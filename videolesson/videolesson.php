@@ -28,38 +28,22 @@ $description = isset($_GET['description']) ? $_GET['description'] : 'No Descript
 
 
         <div class="box-container">
+            <!-- course title text-->
+            <h1 class="course-title">HTML</h1>
             <div class="grid-container">
                     <!-- First Panel: Video -->
                     <div class="panel video-panel">
                         <iframe 
                             id="lesson-video" 
                             width="100%" 
-                            height="400" 
+                            height="330" 
                             src="https://www.youtube.com/embed/default" 
                             frameborder="2" 
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
                             allowfullscreen>
                         </iframe>
                     </div>
-                    <!-- Second Panel: Comments -->
-                    <div class="panel comment-panel">
-                        <h2>COMMENTS:</h2>
-                        <div id="comment-section"></div>
-                        <div class="input-area"> <!-- Wrapper for textarea, button, and profile image -->
-                            <img src="../img/john.png" alt="User Profile" class="comment-profile-image">
-                            <textarea id="comment-input" placeholder="Add your comment"></textarea>
-                            <button onclick="addComment()"><img src="../img/btnsend.png" alt="Send Icon"></button>
-                        </div>
-                    </div>
-
-                    <!-- Third Panel: Lesson Info -->
-                    <div class="panel lesson-info-panel">
-                        <h2>Lesson 1</h2>
-                        <p>This is a sample lesson description that will automatically break into the next line when necessary.</p>
-                        <!-- <button onclick="downloadFile()">Download File</button> -->
-                    </div>
-
-                   <!-- Fourth Panel: Lesson Details -->
+                     <!-- Second Panel: Lesson Details --> 
                     <div class="panel lesson-details-panel">
                         <button onclick="showContent('Lesson 1: Introduction to Hypertext Markup Language (HTML)', 'CA_7yoGZg0M', 'This lesson covers the basics of HTML structure and syntax.')" class="lesson-button">
                             <div class="lesson-content">
@@ -80,9 +64,25 @@ $description = isset($_GET['description']) ? $_GET['description'] : 'No Descript
                                 <span class="lesson-duration">(0:16)</span>
                             </div>
                         </button>
+                    </div>
+                    
 
-                        
+                    <!-- Third Panel: Lesson Info -->
+                    <div class="panel lesson-info-panel">
+                        <h2>Lesson 1</h2>
+                        <p>This is a sample lesson description that will automatically break into the next line when necessary.</p>
+                        <!-- <button onclick="downloadFile()">Download File</button> -->
+                    </div>
 
+                  <!-- Fourth Panel: Comments -->
+                   <div class="panel comment-panel">
+                        <h2>COMMENTS:</h2>
+                        <div id="comment-section"></div>
+                        <div class="input-area"> <!-- Wrapper for textarea, button, and profile image -->
+                            <img src="../img/john.png" alt="User Profile" class="comment-profile-image">
+                            <textarea id="comment-input" placeholder="Add your comment"></textarea>
+                            <button onclick="addComment()"><img src="../img/btnsend.png" alt="Send Icon"></button>
+                        </div>
                     </div>
             </div>
         </div>

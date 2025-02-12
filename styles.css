@@ -497,7 +497,7 @@ p {
     z-index: 9999;
     background: rgba(30, 30, 30, 0.7);
     backdrop-filter: blur(10px);
-    display: flex;
+    
     justify-content: center;
     align-items: center;
 }
@@ -671,7 +671,7 @@ p {
     z-index: 9999;
     background: rgba(30, 30, 30, 0.7);
     backdrop-filter: blur(10px);
-    display: flex;
+    
     justify-content: center;
     align-items: center;
 }
