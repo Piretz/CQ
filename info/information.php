@@ -25,22 +25,31 @@ if(!isset($_SESSION['ID'])){
               <!-- REUSABLE SIDEBAR AND HEADER -->
             <?php include '../components/navbar.php'; ?>
 
-            <!-- Main Content -->
             <div class="container">
-              <div class="content">
+    <div class="content">
+      <h1 class="fixed-header">Welcome to <span class="highlight">CoDev</span> Help Center</h1>
+      <p class="fixed-description">
+        - Having trouble navigating CodeQuest? Don’t worry! This page will guide you through the most common questions and issues.
+      </p>
 
-               <!-- Fixed Welcome Header -->
-                <h1 class="fixed-header">Welcome to <span class="highlight">CoDev</span> Help Center</h1>
-                
-                <!-- Fixed Description Paragraph -->
-                <p class="fixed-description">
-                  - Having trouble navigating CodeQuest? Don’t worry! This page will guide you through the most common questions and issues.
-                </p>
-              
-                <!-- Getting Started -->
-                <details class="details">
-                  <summary>1. Getting started<span class="icon">&#x25B6;</span></summary>
-                  <div class="details-content">
+      <div class="information-body">
+        <div class="scrollable-content">
+          <details class="details">
+            <summary>1. Getting started<span class="icon">&#x25B6;</span></summary>
+            <div class="details-content">
+              <ul>
+                <li>
+                  <strong>How do I log in?</strong> <br>
+                  - Use your university email and the password provided during registration. Forgot your password? Click <b>"Forgot Password"</b> on the login page to reset it.
+                </li>
+                <li>
+                  <strong>How do I create my profile?</strong> <br>
+                  - Once logged in, <b>go to Profile</b> → <b>Edit Profile.</b> Fill out your details and upload an avatar.
+                </li>
+              </ul>
+            </div>
+
+            <div class="details-content">
                     <ul>
                       <li>
                         <strong>How do I log in?</strong> <br>
@@ -154,10 +163,13 @@ if(!isset($_SESSION['ID'])){
                       </li>
                     </ul>
                   </div>
-                </details>
-              </div>
-            </div>
-          </div>
+                  
+          </details>
+          <!-- More sections follow here... -->
+        </div>
+      </div>
+    </div>
+  </div>
            <!-- JavaScript for Toggling Icons -->
           <script>
             document.querySelectorAll('.details').forEach(details => {

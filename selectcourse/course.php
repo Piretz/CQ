@@ -30,7 +30,14 @@ if(!isset($_SESSION['ID'])){
 
             <!-- Main Content -->
         <main class="main-content">
-          <div class="swiper-container">    
+          <!-- back button and align at the top of right -->
+          
+            <a href="../selectmode/mode.php" class="back-button" style="position: absolute; top: 150px; right: 300px;">
+              <img src="../img/btnback.png" alt="Back Button" class="btnswiper-back-button">
+            </a>
+        
+          <div class="swiper-container">
+            
             <div class="swiper-wrapper">
               <div class="swiper-slide">
                 <div class="picture">

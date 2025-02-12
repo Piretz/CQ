@@ -49,31 +49,20 @@ if(!isset($_SESSION['ID'])){
                     
                 </div>
                 <!-- More message items can be added here -->
-                <div class="message-item" onclick="openConversation('Jane Smith', 'Hello, are you free to talk?', 'annette.png')">
-                    <img src="../img/annette.png" alt="Profile Image" class="profile-img">
+                <div class="message-item" onclick="openConversation('John', 'Hello, are you free to talk?', 'avatar.png')">
+                    <img src="../img/avatar.png" alt="Profile Image" class="profile-img">
                     <div class="message-details">
-                        <p class="user-name">Jane Smith</p>
+                        <p class="user-name">John</p>
                         <p class="message-text">Hello, are you free to talk?</p>
                         <p class="user-text"></p>
                         <span class="message-times">10:30 AM</span>
                     </div>
                 </div>
 
-                <div class="message-item" onclick="openConversation('Jane Smith', 'Hello, are you free to talk?', 'annette.png')">
-                    <img src="../img/annette.png" alt="Profile Image" class="profile-img">
+                <div class="message-item" onclick="openConversation('Chris', 'Hello, are you free to talk?', 'john.png')">
+                    <img src="../img/john.png" alt="Profile Image" class="profile-img">
                     <div class="message-details">
-                        <p class="user-name">Jane Smith</p>
-                        <p class="message-text">Hello, are you free to talk?</p>
-                        <p class="user-text"></p>
-                        <span class="message-times">10:30 AM</span>
-                    </div>
-                    
-                </div>
-
-                <div class="message-item" onclick="openConversation('Jane Smith', 'Hello, are you free to talk?', 'annette.png')">
-                    <img src="../img/annette.png" alt="Profile Image" class="profile-img">
-                    <div class="message-details">
-                        <p class="user-name">Jane Smith</p>
+                        <p class="user-name">Chris</p>
                         <p class="message-text">Hello, are you free to talk?</p>
                         <p class="user-text"></p>
                         <span class="message-times">10:30 AM</span>
@@ -81,10 +70,10 @@ if(!isset($_SESSION['ID'])){
                     
                 </div>
 
-                <div class="message-item" onclick="openConversation('Jane Smith', 'Hello, are you free to talk?', 'annette.png')">
-                    <img src="../img/annette.png" alt="Profile Image" class="profile-img">
+                <div class="message-item" onclick="openConversation('Lex', 'Hello, are you free to talk?', 'avatar.png')">
+                    <img src="../img/avatar.png" alt="Profile Image" class="profile-img">
                     <div class="message-details">
-                        <p class="user-name">Jane Smith</p>
+                        <p class="user-name">Lex</p>
                         <p class="message-text">Hello, are you free to talk?</p>
                         <p class="user-text"></p>
                         <span class="message-times">10:30 AM</span>
@@ -92,10 +81,10 @@ if(!isset($_SESSION['ID'])){
                     
                 </div>
 
-                <div class="message-item" onclick="openConversation('Jane Smith', 'Hello, are you free to talk?', 'annette.png')">
-                    <img src="../img/annette.png" alt="Profile Image" class="profile-img">
+                <div class="message-item" onclick="openConversation('Jan', 'Hello, are you free to talk?', 'avatar.png')">
+                    <img src="../img/avatar.png" alt="Profile Image" class="profile-img">
                     <div class="message-details">
-                        <p class="user-name">Jane Smith</p>
+                        <p class="user-name">Jan</p>
                         <p class="message-text">Hello, are you free to talk?</p>
                         <p class="user-text"></p>
                         <span class="message-times">10:30 AM</span>
@@ -103,10 +92,10 @@ if(!isset($_SESSION['ID'])){
                     
                 </div>
 
-                <div class="message-item" onclick="openConversation('Jane Smith', 'Hello, are you free to talk?', 'annette.png')">
-                    <img src="../img/annette.png" alt="Profile Image" class="profile-img">
+                <div class="message-item" onclick="openConversation('Luka', 'Hello, are you free to talk?', 'avatar.png')">
+                    <img src="../img/avatar.png" alt="Profile Image" class="profile-img">
                     <div class="message-details">
-                        <p class="user-name">Jane Smith</p>
+                        <p class="user-name">Luka</p>
                         <p class="message-text">Hello, are you free to talk?</p>
                         <p class="user-text"></p>
                         <span class="message-times">10:30 AM</span>
@@ -114,10 +103,21 @@ if(!isset($_SESSION['ID'])){
                     
                 </div>
 
-                <div class="message-item" onclick="openConversation('Jane Smith', 'Hello, are you free to talk?', 'annette.png')">
-                    <img src="../img/annette.png" alt="Profile Image" class="profile-img">
+                <div class="message-item" onclick="openConversation('Anthony', 'Hello, are you free to talk?', 'john.png')">
+                    <img src="../img/john.png" alt="Profile Image" class="profile-img">
                     <div class="message-details">
-                        <p class="user-name">Jane Smith</p>
+                        <p class="user-name">Anthony</p>
+                        <p class="message-text">Hello, are you free to talk?</p>
+                        <p class="user-text"></p>
+                        <span class="message-times">10:30 AM</span>
+                    </div>
+                    
+                </div>
+
+                <div class="message-item" onclick="openConversation('James', 'Hello, are you free to talk?', 'james.png')">
+                    <img src="../img/lebron.png" alt="Profile Image" class="profile-img">
+                    <div class="message-details">
+                        <p class="user-name">James</p>
                         <p class="message-text">Hello, are you free to talk?</p>
                         <p class="user-text"></p>
                         <span class="message-times">10:30 AM</span>

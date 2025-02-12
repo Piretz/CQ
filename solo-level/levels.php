@@ -62,8 +62,6 @@ $tasks = [
   <table>
       <tr>
           <td>Data
-      
-  
 </body>
 </html>",
 
@@ -227,54 +225,64 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <body>
   <div class="game-container">
     <div class="level-title">
-  <h2>Level <?php echo $level; ?></h2>
-  </div>
+      <h2>Level <?php echo $level; ?></h2>
+    </div>
     <div class="top-bar">
       <div class="hint-btn"></div>
       <div class="leave-btn"></div>
     </div>
 
     <div class="task-output-container">
-  
-  <!-- Task Panel Box -->
-  <div class="task-panel">
-      <p>Instruction: Insert the correct end tags for this HTML document:</p>
-      <pre><?php echo htmlspecialchars($task); ?></pre>
-      <form method="POST">
-        <input type="text" name="end_tags" placeholder="Enter missing end tags" required>
-        <button class="submit-btn" type="submit">Turn in</button>
-      </form>
+      <!-- Task Panel Box -->
+      <div class="task-panel">
+        <p>Instruction: Insert the correct end tags for this HTML document:</p>
+        <pre><?php echo htmlspecialchars($task); ?></pre>
+        <form method="POST">
+          <input type="text" name="end_tags" placeholder="Enter missing end tags" required>
+          <button class="submit-btn" type="submit">Turn in</button>
+        </form>
+      </div>
+
+      <!-- Output Container (Stacked Expected Output & Output Box) -->
+      <div class="output-container">
+        <!-- Lives -->
+        <div class="lives">
+          <!-- <img src="../img/0-lives.png" alt="lives Icon" class="lives-icon"> -->
+          <img src="../img/1-lives.png" alt="lives Icon" class="lives-icon">
+          <!-- <img src="../img/2-lives.png" alt="lives Icon" class="lives-icon">
+          <img src="../img/3-lives.png" alt="lives Icon" class="lives-icon">
+          <img src="../img/4-lives.png" alt="lives Icon" class="lives-icon">
+          <img src="../img/5-lives.png" alt="lives Icon" class="lives-icon"> -->
+        </div>
+        <!-- Expected Output Box -->
+        <div class="expected-output-box">
+          <strong>Expected Output:</strong>
+          <p><?php echo strip_tags($task . $correct_answers[$level]); ?></p>
+        </div>
+        
+        <!-- Output Box -->
+        <div class="output-box">
+          <strong>Output:</strong>
+          <p><?php echo strip_tags($user_output); ?></p>
+        </div>
+      </div>
     </div>
 
-  <!-- Output Container (Stacked Expected Output & Output Box) -->
-  <div class="output-container">
-    
-          <!-- Lives -->
-           <div class="lives">
-            <!-- <img src="../img/0-lives.png" alt="lives Icon" class="lives-icon"> -->
-            <img src="../img/1-lives.png" alt="lives Icon" class="lives-icon">
-            <!-- <img src="../img/2-lives.png" alt="lives Icon" class="lives-icon">
-            <img src="../img/3-lives.png" alt="lives Icon" class="lives-icon">
-            <img src="../img/4-lives.png" alt="lives Icon" class="lives-icon">
-            <img src="../img/5-lives.png" alt="lives Icon" class="lives-icon"> -->
-            </div>
-          <!-- Expected Output Box -->
-          <div class="expected-output-box">
-            <strong>Expected Output:</strong>
-            <p><?php echo strip_tags($task . $correct_answers[$level]); ?></p>
-          </div>
-          
-          <!-- Output Box -->
-          <div class="output-box">
-            <strong>Output:</strong>
-            <p><?php echo strip_tags($user_output); ?></p>
-          </div>
-
+    <?php if ($popup_class): ?>
+      <div class="popup <?php echo $popup_class; ?>">
+        <div class="popup-content">
+          <h2><?php echo $popup_class === 'popup-correct' ? 'Level Completed!' : 'Level Failed!'; ?></h2>
+          <p><?php echo $popup_class === 'popup-correct' ? 'Congratulations! You have completed this level.' : 'Sorry, you have failed this level. Try again!'; ?></p>
+          <button onclick="closePopup()">Close</button>
+        </div>
+      </div>
+    <?php endif; ?>
   </div>
 
-</div>
-<?php if ($popup_class): ?>
-    <div class="popup <?php echo $popup_class; ?>"><?php echo $popup_text; ?></div>
-<?php endif; ?>
+  <script>
+    function closePopup() {
+      document.querySelector('.popup').style.display = 'none';
+    }
+  </script>
 </body>
 </html>

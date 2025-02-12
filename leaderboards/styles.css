@@ -17,38 +17,54 @@ body {
 .leaderboard-buttons {
     display: flex;
     flex-direction: column;
-    gap: 10px;
-    margin-right: 20px;
-    
+    align-items: center; /* Center buttons inside the container */
+    gap: 30px; /* Spacing sa pagitan ng buttons */
+    background: url('../img/bgPanelLeaderboardButton.png') no-repeat center center;
+    background-size: contain; /* Para magkasya ang bg sa container */
+    background-repeat: no-repeat;
+    width: 350px; /* Adjusted for better fit */
+    height: 450px; /* Controlled height para magkasya lahat */
+    position: relative; 
+    bottom: 100px;
+    left: 70px;
+    padding: 40px 10px; /* May space para hindi dumikit sa edges */
+    border-radius: 15px; /* Smooth edges */
 }
 
+/* Filter Buttons */
 .filter-btn {
-    padding: 10px 20px;
+    position: relative;
+    top: 150px;
+    right: 20px;
+    padding: 12px 25px;
     border: none;
     background: linear-gradient(to bottom, #011F2B, #127CC3);
     color: white;
-    font-size: 38px;
-    border-radius: 5px;
+    font-size: 20px; /* Adjusted for better fit */
+    font-weight: bold;
+    font-family: zen dots;
+    border-radius: 8px;
     border: 2px solid #FCAE00;
+    text-align: center;
+    width: 180px; /* Fit sa loob ng background */
+    transition: all 0.3s ease-in-out;
 }
 
 .filter-btn:hover {
     cursor: pointer;
-    transform: scale(1.1);
+    transform: scale(1.05);
+    background: linear-gradient(to bottom, #127CC3, #011F2B);
 }
 
-/* Leaderboard Box */
+
 .leaderboard-box {
     position: relative;
     top: 40px;
     width: 1400px;
     height: 800px;
-    background-color: #032743;
+    background: url('../img/bgPanelLeaderboard.png') no-repeat center center;
+    background-size: 100% 100%;
     border-radius: 10px;
-    border-left: 1px solid #019AEC;  /* Left border */
-    border-right: 1px solid #019AEC; /* Right border */
-    border-top: 1px solid #019AEC;   /* Top border */
-    border-bottom: 4px solid #019AEC; /* Bottom border */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     overflow: hidden;
     display: flex;
@@ -85,9 +101,13 @@ body {
 .leaderboard-table {
     flex-grow: 1;
     overflow-y: auto;
-    max-height: 900px;
+    width: 100%;
+    max-height: 800px;
+    max-width: 1300px;
     -ms-overflow-style: none;
     scrollbar-width:none;
+    margin-top: 100px;
+    margin-left: 50px;
 }
 
 table {

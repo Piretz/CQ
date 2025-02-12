@@ -25,9 +25,9 @@ if(!isset($_SESSION['ID'])){
 
     <?php include '../components/navbar.php'; ?>
 
-    <div class="Title">
+    <!-- <div class="Title">
       <h1>My Achievements</h1>
-    </div>
+    </div> -->
 
     <div class="panel-box">
       <div class="badge-container">

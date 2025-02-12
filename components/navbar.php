@@ -204,62 +204,131 @@ $user_row = mysqli_fetch_assoc($user_result);
            <!---------------- Notification Modal ------------------>
           <div id="notificationModal" class="notification-modal">
             <div class="notification-modal-content">
-              <span class="notification-close">&times;</span>
-              <h2>Notifications</h2>
-              <div class="notifbox-container" id="box-container">
-                <div class="box">
-                  <img src="../img/bronze.png" alt="Bronze Badge" class="badge-image" />
-                  <div class="badge-details">
-                    <p class="badge-type">Bronze Badge</p>
-                    <ul class="badge-description">
-                      <li>Completed your first lesson</li>
-                      </ul>
-                    <p class="badge-time">5 minutes ago</p>
+              <div class="notification-body">
+                  <span class="notification-close"><img src="../img/btnback.png" alt="Close"></span>
+                  <!-- <h2>Notifications</h2> -->
+                  <div class="notifbox-container" id="box-container">
+                    <div class="box">
+                      <img src="../img/bronze.png" alt="Bronze Badge" class="badge-image" />
+                      <div class="badge-details">
+                        <p class="badge-type">Bronze Badge</p>
+                        <ul class="badge-description">
+                          <li>Completed your first lesson</li>
+                        </ul>
+                        <div class="badge-actions">
+                          <button class="claim-button">Claim</button>
+                          <!-- <button class="view-button">View</button> -->
+                        </div>
+                      </div>
+                    </div>
+                    <div class="box">
+                      <img src="../img/gold.png" alt="Silver Badge" class="badge-image" />
+                      <div class="badge-details">
+                        <p class="badge-type">Silver Badge</p>
+                        <ul class="badge-description">
+                          <li>Achieved Unlocked</li>
+                        </ul>
+                        <div class="badge-actions">
+                          <button class="claim-button">Claim</button>
+                          <!-- <button class="view-button">View</button> -->
+                        </div>
+                      </div>
+                    </div>
+                    <div class="box">
+                      <img src="../img/gold.png" alt="Silver Badge" class="badge-image" />
+                      <div class="badge-details">
+                        <p class="badge-type">Silver Badge</p>
+                        <ul class="badge-description">
+                          <li>Achieved Unlocked</li>
+                        </ul>
+                        <div class="badge-actions">
+                          <button class="claim-button">Claim</button>
+                          <!-- <button class="view-button">View</button> -->
+                        </div>
+                      </div>
+                    </div>
+                    <div class="box">
+                      <img src="../img/gold.png" alt="Silver Badge" class="badge-image" />
+                      <div class="badge-details">
+                        <p class="badge-type">Silver Badge</p>
+                        <ul class="badge-description">
+                          <li>Achieved Unlocked</li>
+                        </ul>
+                        <div class="badge-actions">
+                          <button class="claim-button">Claim</button>
+                          <!-- <button class="view-button">View</button> -->
+                        </div>
+                      </div>
+                    </div>
+                    <div class="box">
+                      <img src="../img/gold.png" alt="Silver Badge" class="badge-image" />
+                      <div class="badge-details">
+                        <p class="badge-type">Silver Badge</p>
+                        <ul class="badge-description">
+                          <li>Achieved Unlocked</li>
+                        </ul>
+                        <div class="badge-actions">
+                          <button class="claim-button">Claim</button>
+                          <!-- <button class="view-button">View</button> -->
+                        </div>
+                      </div>
+                    </div>
+                    <div class="box">
+                      <img src="../img/gold.png" alt="Silver Badge" class="badge-image" />
+                      <div class="badge-details">
+                        <p class="badge-type">Silver Badge</p>
+                        <ul class="badge-description">
+                          <li>Achieved Unlocked</li>
+                        </ul>
+                        <div class="badge-actions">
+                          <button class="claim-button">Claim</button>
+                          <!-- <button class="view-button">View</button> -->
+                        </div>
+                      </div>
+                    </div>
+                    <div class="box">
+                      <img src="../img/gold.png" alt="Silver Badge" class="badge-image" />
+                      <div class="badge-details">
+                        <p class="badge-type">Silver Badge</p>
+                        <ul class="badge-description">
+                          <li>Achieved Unlocked</li>
+                        </ul>
+                        <div class="badge-actions">
+                          <button class="claim-button">Claim</button>
+                          <!-- <button class="view-button">View</button> -->
+                        </div>
+                      </div>
+                    </div>
+                    <div class="box">
+                      <img src="../img/gold.png" alt="Silver Badge" class="badge-image" />
+                      <div class="badge-details">
+                        <p class="badge-type">Silver Badge</p>
+                        <ul class="badge-description">
+                          <li>Achieved Unlocked</li>
+                        </ul>
+                        <div class="badge-actions">
+                          <button class="claim-button">Claim</button>
+                          <!-- <button class="view-button">View</button> -->
+                        </div>
+                      </div>
+                    </div>
+                    <div class="box">
+                      <img src="../img/bronze.png" alt="Bronze Badge" class="badge-image" />
+                      <div class="badge-details">
+                        <p class="badge-type">Bronze Badge</p>
+                        <ul class="badge-description">
+                          <li>Completed your first lesson</li>
+                        </ul>
+                        <div class="badge-actions">
+                          <button class="claim-button">Claim</button>
+                          <!-- <button class="view-button">View</button> -->
+                        </div>
+                      </div>
+                    </div>
+                    
                   </div>
-                </div>
-                <div class="box">
-                  <img src="../img/gold.png" alt="Silver Badge" class="badge-image" />
-                  <div class="badge-details">
-                    <p class="badge-type">Silver Badge</p>
-                    <ul class="badge-description">
-                      <li>Achieved Unlocked</li>
-                      </ul>
-                    <p class="badge-time">2 hours ago</p>
-                  </div>
-                </div>
-                <div class="box">
-                  <img src="../img/gold.png" alt="Silver Badge" class="badge-image" />
-                  <div class="badge-details">
-                    <p class="badge-type">Silver Badge</p>
-                    <ul class="badge-description">
-                      <li>Achieved Unlocked</li>
-                      </ul>
-                    <p class="badge-time">2 hours ago</p>
-                  </div>
-                </div>
-                <div class="box">
-                  <img src="../img/gold.png" alt="Silver Badge" class="badge-image" />
-                  <div class="badge-details">
-                    <p class="badge-type">Silver Badge</p>
-                    <ul class="badge-description">
-                      <li>Achieved Unlocked</li>
-                      </ul>
-                    <p class="badge-time">2 hours ago</p>
-                  </div>
-                </div>
-                <div class="box">
-                  <img src="../img/gold.png" alt="Silver Badge" class="badge-image" />
-                  <div class="badge-details">
-                    <p class="badge-type">Silver Badge</p>
-                    <ul class="badge-description">
-                      <li>Achieved Unlocked</li>
-                      </ul>
-                    <p class="badge-time">2 hours ago</p>
-                  </div>
-                </div>
-                
               </div>
-              <button id="clearButton" class="clear-button">Clear All</button>
+                  <button id="clearButton" class="clear-button">Clear All</button>
             </div>
           </div>
 
@@ -285,6 +354,8 @@ $user_row = mysqli_fetch_assoc($user_result);
         </div>
     </div>
 
+
+    <!-- Setting modal script function -->
     <script>
         
         const closeSettings = document.querySelector(".settings-close");
@@ -373,8 +444,10 @@ $user_row = mysqli_fetch_assoc($user_result);
         });
 
         </script>
+
+          <!-- LOGOUT, PROFILE, NOTIFICATION, SETTINGS MODALS SCRIPT -->
           <script>
-            // Get modal, buttons, and close icon for logout
+           
             const modal = document.getElementById("logoutModal");
             const signoutBtn = document.getElementById("signout-btn");
             const closeModal = document.getElementById("logout-closeModal");
@@ -382,7 +455,7 @@ $user_row = mysqli_fetch_assoc($user_result);
             const logoutBtn = document.getElementById("logoutBtn");
             const loadingSpinner = document.getElementById("loadingSpinner");
 
-            // --------------------------------------Profile modal--------------
+            //  Get modal elements of Profile Modal//
             const profileModal = document.getElementById("profileModal");
             const profileAvatar = document.getElementById("profile-avatar");
             const profileCloseModal = document.getElementById("profile-closeModal");
@@ -400,7 +473,7 @@ $user_row = mysqli_fetch_assoc($user_result);
             const notificationClose = document.querySelector(".notification-close");
             const settingsClose = document.querySelector(".settings-close");
 
-                                  // Get the Clear All button and box container
+            // Get the Clear All button and box container
             const clearButton = document.getElementById("clearButton");
             const boxContainer = document.getElementById("box-container");
 
@@ -417,14 +490,11 @@ $user_row = mysqli_fetch_assoc($user_result);
               }
             });
 
- 
-
             // Add event listener to the Clear All button
             clearButton.addEventListener("click", () => {
               // Remove all the box elements inside the box container
               boxContainer.innerHTML = "";
             });
-
 
             // Settings Modal Events
             settingsIcon.addEventListener("click", () => {
@@ -438,6 +508,16 @@ $user_row = mysqli_fetch_assoc($user_result);
                 settingsModal.style.display = "none";
               }
             });
+
+             // Close modals if clicked outside
+          window.addEventListener('click', (event) => {
+            if (event.target === notificationModal) {
+              notificationModal.style.display = 'none';
+            }
+            if (event.target === settingsModal) {
+              settingsModal.style.display = 'none';
+            }
+          });
 
             // When the user clicks the signout button, show the modal
             signoutBtn.addEventListener("click", function() {
@@ -473,7 +553,7 @@ $user_row = mysqli_fetch_assoc($user_result);
               }
             });
 
-            // -----------------------------Open the profile modal-------------------------------------------------------------
+            // -----------------------------Open the profile modal----------------------------------//
             profileAvatar.addEventListener("click", function () {
               profileModal.style.display = "block";
             });
@@ -495,15 +575,7 @@ $user_row = mysqli_fetch_assoc($user_result);
               }
             });
 
-          // Close modals if clicked outside
-          window.addEventListener('click', (event) => {
-            if (event.target === notificationModal) {
-              notificationModal.style.display = 'none';
-            }
-            if (event.target === settingsModal) {
-              settingsModal.style.display = 'none';
-            }
-          });
+         
           </script>
 
                   

@@ -180,6 +180,65 @@ body {
   }
 }
 
+/* Global Chat Styling */
+.global-chat-container {
+  position: fixed;
+  bottom: 20px;
+  right: 400px;
+  display: flex;
+  align-items: center;
+  background: #032743;
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  width: 350px;
+  max-width: 90%;
+  
+}
+
+.global-chat-image {
+  width: 30px;
+  height: 30px;
+  margin-right: 10px;
+}
+
+.global-chat-input {
+  flex: 1;
+  border: none;
+  outline: none;
+  padding: 10px;
+  font-size: 14px;
+  border-radius: 6px;
+  background: #fff;
+}
+
+.global-chat-send {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 5px;
+}
+
+.global-chat-send img {
+  width: 30px;
+  height: 30px;
+}
+
+.global-chat-icon {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+}
+
+.global-chat-icon img {
+  width: 30px;
+  height: 30px;
+}
+
+
 
 /* Right-aligned images container */
 .select-mode-images {
@@ -280,64 +339,8 @@ body {
   }
 }
 
- /* Typewriter Container */
- .typewriter-container {
-  position: absolute;
-  bottom: 2%;
-  right: 20%;
-  background-color: #032743;
-  transform: skewX(-22deg);
-  color: #fff;
-  padding: 10px;
-  border-bottom: 2px solid #aaa;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  max-width: 100%;
-  text-align: left;
-  font-family: Poppins, sans-serif;
-}
 
-/* Icon Styling */
-.globe-icon {
-  font-size: 1.2rem;
-  display: flex;
-  align-items: center;
-  color: #fff;
-  background-color: #FCAE00;
-  padding: 5px;
-  border-radius: 50%;
-}
 
-/* Typewriter Text */
-.typewriter-text {
-  display: inline-block;
-  font-size: 1rem;
-  white-space: nowrap;
-  overflow: hidden;
-  border-right: 2px solid #fff;
-}
-
-/* Chat Input Box */
-.chat-input {
-  position: absolute;
-  bottom: 5%;
-  right: 20%;
-  display: flex;
-  gap: 5px;
-}
-
-input, button {
-  padding: 8px;
-  border-radius: 4px;
-  border: none;
-  font-size: 14px;
-}
-
-button {
-  background-color: #FCAE00;
-  cursor: pointer;
-}
 /* FOR ALL POPUP MODAL */
 /* Solo Mode Modal Styles */
 .solo-modal {
@@ -348,65 +351,67 @@ button {
   top: 0;
   width: 100%;
   height: 100%;
-  overflow: auto;
   background-color: rgba(0, 0, 0, 0.4); /* Black background with opacity */
+  
   justify-content: center;
   align-items: center; /* Center the modal vertically */
 }
 
 .solo-modal-content {
-  background-image: url(../img/bgpanel.png);
-  margin: 5% auto; /* Decrease margin for a larger modal */
-  padding: 10px; /* Increase padding for more space inside */
+  background-color: #00253E;
+  padding: 20px;
   border-radius: 8px;
-  width: 60%; /* Increase width for a larger modal */
-  max-width: 600px; /* Increase max-width */
-  height: 100%;
-  max-height: 300px;
+  border: 20px solid transparent;
+  border-image: url('../img/bgPanelModal.png') 50 stretch; /* Inayos para hindi umuulit */
+  width: 70%;
+  max-width: 700px;
+  height: 30%; /* Mas flexible na height */
   text-align: center;
-  box-shadow: 0 8px 16px #0286DF;
+  box-shadow: 0 8px 16px #FCAE00;
   display: flex;
-  flex-direction: row; /* Arrange content vertically */
+  flex-direction: row; /* I-arrange ang buttons sa row */
   align-items: center;
-  justify-content: center;
-  position: relative; /* To position the close button */
-  top: 20%;
+  justify-content: space-between; /* Ilagay ang buttons sa left at right */
+  position: relative;
+  top: 35%;
+  left: 30%;
 }
 
 /* Align the close button to the top right corner */
 .solo-close {
-  color: #aaa;
   position: absolute;
-  top: 0;
-  right: 10px;
+  top: -10px;
+  right: 15px;
   font-size: 30px;
   font-weight: bold;
   cursor: pointer;
 }
-
-.solo-close:hover,
-.solo-close:focus {
-  color: #000;
-  text-decoration: none;
-  scale: 1.1;
+.solo-close:hover{
+  transform: scale(1.1);
 }
 
-/* Styling for the button container to align buttons side by side */
-.solo-modal-content button {
-  display: inline-block; /* Align buttons next to each other */
- 
+/* Button Container */
+.solo-buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  gap: 20px;
 }
 
 /* Solo Start Button */
 .solo-start-btn {
   background: transparent;
-  border-color: transparent;
+  border: none;
   cursor: pointer;
-  padding: 4px 8px; /* Add padding to make buttons bigger */
-  width: auto; /* Let the width adjust based on the content */
+  padding: 4px 8px;
+  width: 400px;
 }
 
-/* Button Hover Effect */
+.solo-start-btn img {
+  width: 100%;
+  height: 100%;
+}
 .solo-start-btn:hover {
   scale: 1.1;
 }
@@ -428,21 +433,23 @@ button {
 }
 
 .multiplayer-modal-content {
-  background-image: url(../img/bgpanel.png);
-  margin: 5% auto; /* Decrease margin for a larger modal */
-  padding: 10px; /* Increase padding for more space inside */
+  background-color: #00253E; /* Fallback color */
+  margin: 5% auto;
+  padding: 20px;
   border-radius: 8px;
-  width: 60%; /* Increase width for a larger modal */
-  max-width: 600px; /* Increase max-width */
+  border: 20px solid transparent; /* Space for the border image */
+  border-image: url('../img/bgPanelModal.png') 50 stretch;
+  width: 65%;
+  max-width: 700px;
   height: 100%;
   max-height: 300px;
   text-align: center;
-  box-shadow: 0 8px 16px #0286DF;
+  box-shadow: 0 8px 16px #FCAE00;
   display: flex;
-  flex-direction: row; /* Arrange content vertically */
+  flex-direction: row;
   align-items: center;
   justify-content: center;
-  position: relative; /* To position the close button */
+  position: relative;
   top: 20%;
 }
 
@@ -472,7 +479,12 @@ button {
   border-color: transparent;
   cursor: pointer;
   padding: 4px 8px; /* Add padding to make buttons bigger */
-  width: auto; /* Let the width adjust based on the content */
+  width: 400px; /* Let the width adjust based on the content */
+}
+
+.multiplayer-start-btn img {
+  width: 100%;
+  height: 100%;
 }
 
 .multiplayer-start-btn:hover {
@@ -585,121 +597,122 @@ button {
 
 
 /* FOR USER'S LOBBY */
-/* -------------------User's Lobby Modal------------------------------ */
+/* Modal Styles */
 .users-lobby-modal {
-  display: none; /* Hidden by default */
+  display: flex;
   position: fixed;
-  z-index: 9999;
+  z-index: 1000;
   left: 0;
   top: 0;
   width: 100%;
   height: 100%;
-  overflow: auto;
-  background-color: rgba(0, 0, 0, 0.4); /* Black background with opacity */
+  background: rgba(0, 0, 0, 0.7);
   justify-content: center;
-  align-items: center; /* Center the modal vertically */
+  align-items: center;
 }
 
 .users-lobby-modal-content {
-  background-image: url(../img/bgpanel.png);
-  padding: 2rem;
+  background: url('../img/bgUsersLobby.png') no-repeat center center/contain;
+  background-size: cover;
+  padding: 20px;
   border-radius: 10px;
-  width: 1000px;
+  width: 1200px;
+  height: 620px;
   text-align: center;
-  box-shadow: 0 8px 16px #0286DF;
   position: relative;
-  z-index: 99999;
+ 
 }
 
-.users-lobby-close {
-  position: absolute;
-  top: 1rem;
-  right: 1rem;
-  cursor: pointer;
-}
-
-.users-lobby-close:hover {
-  transform: scale(1.1);
-
-}
+/* Title & Lobby ID */
 .users-lobby-title {
-  display: inline-block;
-  color: #fff;
-  font-family: Poppins;;
+  color: #FFD700;
   font-size: 2rem;
   font-weight: bold;
-  margin-bottom: 1rem;
 }
 
 .users-lobby-id {
   color: #fff;
-  font-family: Poppins;
   font-size: 1rem;
 }
 
-.users-lobby-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 0.5rem;
-}
-
-.users-lobby-table th, .users-lobby-table td {
-  padding: 5px;
-  text-align: center;
-}
-
-.users-lobby-table th {
-  visibility: hidden;
-  
-}
-
-.users-lobby-table td {
-  border: 1px solid #ddd;
-}
-
-.user-avatar {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-}
-
-.user-name {
-  color: #fff;
-  font-family: Poppins;
-  text-align: center;
-}
-
-.users-lobby-modal-content .users-lobby-reload .users-lobby-start {
-  display: flex;
-  justify-content: space-between; /* Align items to the start and end */
-  align-items: center /* Vertically align items if needed */
-  
-}
-
-.users-lobby-reload {
-  display: inline-block;
+/* Close Button */
+.users-lobby-close {
+  position: absolute;
+  top: 10px;
+  right: 30px;
   cursor: pointer;
-  transition: transform 0.7s ease; /* Optional hover effect */
 }
 
-.users-lobby-reload img:hover,
-.users-lobby-start img:hover {
-  transform: scale(1.1); /* Slight zoom-in effect on hover */
+.users-lobby-close img:hover {
+  transform: scale(1.1);
 }
 
-#usersLobbyReload {
-  float: left
+/* Player Slots */
+.lobby-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin: 20px 0;
+  margin-top: 10%;
 }
 
-#usersLobbyStart {
-  float: right;
+.team {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* 2 columns */
+  grid-template-rows: auto auto; /* Adjust rows */
+  gap: 10px;
+  justify-items: center; /* Center items */
 }
 
-/* Clear floats */
-.users-lobby-modal-content::after {
-  content: "";
-  display: table;
-  clear: both;
+.team .player-slot:nth-child(3) {
+  grid-column: span 2; /* Make the last player take full width */
+  justify-self: center; /* Center the last player */
+}
+
+.player-slot {
+  width: 120px;
+  height: 120px;
+  border: 3px solid;
+  border-radius: 10px;
+}
+
+.team-left .player-slot {
+  border-color: #FFD700;
+}
+
+.team-right .player-slot {
+  border-color: #FF0000;
+}
+
+
+/* Button Container */
+.button-container {
+  display: flex;
+  justify-content: center; /* Center the buttons */
+  align-items: center;
+  gap: 150px; /* Adds spacing between buttons */
+  margin-top: 50px;
+}
+
+/* Button Styling */
+.glow-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  width: 25%;
+  height: 100px;
+  transition: transform 0.2s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+/* Button Hover Effect */
+.glow-button:hover {
+  transform: scale(1.1); /* Slight zoom effect */
+}
+
+/* Image inside button */
+.glow-button img {
+  width: 100%;
+  height: 100%;
 }
 
 
@@ -711,119 +724,83 @@ button {
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.7);
   justify-content: center;
   align-items: center;
   z-index: 9999;
 }
 
 .users-join-modal-content {
-  background-image: url(../img/bgpanel.png);
-  padding: 2rem;
-  border-radius: 8px;
-  width: 900px;
+  background: url('../img/bgPanelChoose.png') no-repeat center center/contain;
+  background-size: cover;
+  padding: 20px;
+  border-radius: 10px;
+  width: 1200px;
+  height: 620px;
   text-align: center;
-  box-shadow: 0 8px 16px #0286DF;
   position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center content horizontally */
+  justify-content: center; /* Center content vertically */
 }
 
 .users-back-close {
   position: absolute;
-  top: 0;
-  right: 0;
+  top: 10px;
+  right: 30px;
 }
 
-.users-back-close:hover {
-  cursor: pointer;
+.users-back-close img:hover {
   transform: scale(1.1);
+  cursor: pointer;
 }
 
-/* Align btnjoin.png to the bottom-right */
+.users-Join-title {
+  color: cyan;
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.users-join-table {
+  width: 90%;
+  border-collapse: collapse;
+  margin: 0 auto; /* Center the table horizontally */
+  margin-top: 5%;
+}
+
+.users-join-table th {
+  padding: 12px;
+  text-align: center;
+  color: #fff;
+  border: 1px solid #0286DF;
+  font-size: 2.5rem;
+}
+
+.users-join-table td {
+  padding: 12px;
+  text-align: center;
+  color: #fff;
+  border: 1px solid #0286DF;
+  font-size: 2rem;
+}
+
+.join-lobby-row:hover {
+  cursor: pointer;
+  background: #011F2B;
+}
+
+.join-lobby-row.selected {
+  background: #011F2B;
+  color: #fff;
+}
 
 .users-join-btn {
   display: flex;
   justify-content: center;
-  cursor: pointer;
   margin-top: 20px;
-}
-
-.join-lobby-row.selected {
-  background-color: #0286DF;  /* Highlight the selected row */
-  color: #fff;  /* Change text color to white */
-}
-.join-lobby-row.selected:hover{
-  background-color: #0286DF;
-  color: #fff;
-}
-
-
-.users-join-close:hover, .users-join-btn:hover {
   cursor: pointer;
-  transform: scale(1.1);
 }
-
-.users-Join-title {
-  color: #fff;
-  font-family: Poppins;
-  font-size: 2rem;
-  font-weight: bold;
-  margin-bottom: 1rem;
-}
-
-.users-join-id {
-  color: #fff;
-  font-family: Poppins;
-  font-size: 1rem;
-  margin: 5px 0; /* Add spacing */
-}
-
-.users-join-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 2rem;
-  padding: 10px;
-}
-
-.users-join-table th, .users-join-table td {
-  padding: 10px;
-  text-align: center;
-  color: #fff; /* Set white font color */
-}
-
-.users-join-table th {
-  border: 1px solid #ddd;
-}
-
-.users-join-table td {
-  border: 1px solid #ddd;
-  margin: 5px 0; /* Add spacing between rows */
-}
-
-.join-user-avatar {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-}
-
-.join-user-name {
-  color: #fff;
-  font-family: Poppins;
-  text-align: center;
-}
-
-.join-ID {
-  color: #fff;
-  font-family: Poppins;
-  text-align: center;
-  margin: 5px 0; /* Add spacing */
-}
-
-/* Hover effect for clickable rows */
-.users-join-table tr:hover {
-  cursor: pointer;
-  background-color: rgba(0, 0, 0, 0.1); /* Light hover effect */
-}
-
 
 /* walkthrough */
 /* Example for the tutorial overlay */

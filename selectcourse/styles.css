@@ -27,6 +27,15 @@ body {
   padding: 10px;
 }
 
+.swiper-btn-close{
+  width: 200px;
+  height: 200px;
+}
+
+.btnswiper-back-button:hover{
+  transform: scale(1.1);
+}
+
 /* Style for the swiper-container */
 .swiper-container {
   width: 100%; /* Make it responsive */
