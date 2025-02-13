@@ -42,22 +42,37 @@ if(!isset($_SESSION['ID'])){
   <h1 class="course-level">HTML</h1>
 
  <!-- Level Cards Section -->
-<div class="level-cards">
-  <?php 
-    $currentLevel = 5; 
-    for ($i = 1; $i <= 15; $i++): 
+ <?php
+        $queryunlocked = "SELECT *
+          FROM unlocked_level
+          JOIN Solo_Level
+          ON unlocked_level.Level_ID = Solo_Level.Level_Id
+          WHERE unlocked_level.Users_ID = $id;";
+        $resultunlocked = mysqli_query($con, $queryunlocked);
+        while($rows = mysqli_fetch_array($resultunlocked)){
   ?>
-    <?php if ($i <= $currentLevel): ?>
-      <a href="../solo-level/levels.php?level=<?php echo $i; ?>" class="level-card">
-        <span class="level-number"><?php echo $i; ?></span>
+    <div class="level-cards">
+      <a href="../solo-level/levels.php?level=<?php echo $rows['Level_ID']?>" class="level-card">
+        <span class="level-number"><?php echo $rows['Level_ID']?></span>
       </a>
-    <?php else: ?>
+      <?php
+        }
+        $query = "SELECT * 
+          FROM Solo_Level
+          WHERE Solo_Level.Level_Id NOT IN (
+          SELECT Level_Id 
+          FROM unlocked_level
+          WHERE unlocked_level.Users_ID = $id);";
+        $result = mysqli_query($con, $query);
+        while($row = mysqli_fetch_array($result)){
+      ?>
       <div class="level-card">
-        <img src="../img/level-lock.png" alt="Level <?php echo $i; ?>" class="level-card-image">
+        <img src="../img/level-lock.png" alt="Level " class="level-card-image">
       </div>
-    <?php endif; ?>
-  <?php endfor; ?>
-</div>
+      <?php
+        }
+      ?>
+    </div>
 </div>
 
 </body>

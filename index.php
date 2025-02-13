@@ -179,7 +179,7 @@ if(isset($_SESSION['ID'])){
                     <div class="contact-column">
                         <h3>GET IN TOUCH</h3>
                         <p>
-                            <a href="mailto:example@gmail.com" class="contact-link">example@gmail.com</a>
+                            <a href="capstone.gamified@gmail.com" class="contact-link">capstone.gamified@gmail.com</a>
                         </p>
                         <div class="social-icons">
                             <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer">

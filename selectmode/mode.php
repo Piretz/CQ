@@ -213,7 +213,7 @@ $user_type = $user_row['user_type'];
 
                   // Event listener para sa Start Game button
                   document.getElementById("StartGame").addEventListener("click", function() {
-                    showLoadingAndRedirect('../solo-level/levels.php');
+                    showLoadingAndRedirect('../level1-15/level1-15.php');
                   });
                 </script>
 

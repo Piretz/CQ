@@ -7,208 +7,13 @@ if(!isset($_SESSION['ID'])){
   header("Location: ../index.php");
   exit();
 }
+$level_id = $_GET['level'];
+$_SESSION['level_id'] = $level_id;
 
-$level = isset($_GET['level']) ? (int)$_GET['level'] : 1;
-$tasks = [
-  1 => "<!DOCTYPE html>
-<html>
-<head>
-  <title>Document</title>
-</head>
-<body>
-  <p>Hello, world!
-</body>
-</html>",
+$query = "SELECT * FROM Solo_Level WHERE Level_Id = $level_id";
+$result = mysqli_query($con, $query);
+$row = mysqli_fetch_assoc($result);
 
-  2 => "<!DOCTYPE html>
-<html>
-<head>
-  <title>Document</title>
-</head>
-<body>
-  <div><span>Text here
-</body>
-</html>",
-
-  3 => "<!DOCTYPE html>
-<html>
-<head>
-  <title>Document</title>
-</head>
-<body>
-  <h1>Title
-</body>
-</html>",
-
-  4 => "<!DOCTYPE html>
-<html>
-<head>
-  <title>Document</title>
-</head>
-<body>
-  <ul>
-      <li>Item 1
-      <li>Item 2
-  
-</body>
-</html>",
-
-  5 => "<!DOCTYPE html>
-<html>
-<head>
-  <title>Document</title>
-</head>
-<body>
-  <table>
-      <tr>
-          <td>Data
-</body>
-</html>",
-
-  6 => "<!DOCTYPE html>
-<html>
-<head>
-  <title>Document</title>
-</head>
-<body>
-  <a href='#'>Link
-</body>
-</html>",
-
-  7 => "<!DOCTYPE html>
-<html>
-<head>
-  <title>Document</title>
-</head>
-<body>
-  <strong>Bold text
-</body>
-</html>",
-
-  8 => "<!DOCTYPE html>
-<html>
-<head>
-  <title>Document</title>
-</head>
-<body>
-  <em>Italic text
-</body>
-</html>",
-
-  9 => "<!DOCTYPE html>
-<html>
-<head>
-  <title>Document</title>
-</head>
-<body>
-  <section>Content
-</body>
-</html>",
-
-  10 => "<!DOCTYPE html>
-<html>
-<head>
-  <title>Document</title>
-</head>
-<body>
-  <blockquote>Quote
-</body>
-</html>",
-
-  11 => "<!DOCTYPE html>
-<html>
-<head>
-  <title>Document</title>
-</head>
-<body>
-  <form>
-      <input type='text'>
-  
-</body>
-</html>",
-
-  12 => "<!DOCTYPE html>
-<html>
-<head>
-  <title>Document</title>
-</head>
-<body>
-  <article>News
-</body>
-</html>",
-
-  13 => "<!DOCTYPE html>
-<html>
-<head>
-  <title>Page Title
-
-<body>
-</body>
-</html>",
-
-  14 => "<!DOCTYPE html>
-<html>
-<head>
-  <title>Document</title>
-  <style>.class { color: red; }
-</head>
-<body>
-</body>
-</html>",
-
-  15 => "<!DOCTYPE html>
-<html>
-<head>
-  <title>Document</title>
-  <script>console.log('Hello');
-</head>
-<body>
-</body>
-</html>"
-];
-
-
-$task = $tasks[$level] ?? 'Invalid Level';
-$correct_answers = [
-    1 => "</p>",
-    2 => "</span></div>",
-    3 => "</h1>",
-    4 => "</li></ul>",
-    5 => "</td></tr></table>",
-    6 => "</a>",
-    7 => "</strong>",
-    8 => "</em>",
-    9 => "</section>",
-    10 => "</blockquote>",
-    11 => "</form>",
-    12 => "</article>",
-    13 => "</title></head>",
-    14 => "</style>",
-    15 => "</script>"
-];
-
-$message = '';
-$user_output = '';
-$popup_class = '';
-$next_level = $level;
-$popup_text = '';
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-  $user_input = trim($_POST['end_tags']);
-  if ($user_input === $correct_answers[$level]) {
-      $popup_class = 'popup-correct';
-      $popup_text = '+1';
-      $next_level = $level + 1;
-      echo "<script>
-          setTimeout(() => {
-              window.location.href = 'levels.php?level=$next_level';
-          }, 1500);
-      </script>";
-  } else {
-      $popup_class = 'popup-incorrect';
-      $popup_text = '-1';
-  }
-  $user_output = $task . ($user_input === $correct_answers[$level] ? $correct_answers[$level] : '');
-}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -225,64 +30,99 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <body>
   <div class="game-container">
     <div class="level-title">
-      <h2>Level <?php echo $level; ?></h2>
-    </div>
+  <h2>Level - <?php echo $row['Level_Id'] ?></h2>
+  </div>
     <div class="top-bar">
       <div class="hint-btn"></div>
       <div  onclick="window.location.href='../selectmode/mode.php'" class="leave-btn"></div>
     </div>
 
     <div class="task-output-container">
-      <!-- Task Panel Box -->
-      <div class="task-panel">
-        <p>Instruction: Insert the correct end tags for this HTML document:</p>
-        <pre><?php echo htmlspecialchars($task); ?></pre>
-        <form method="POST">
-          <input type="text" name="end_tags" placeholder="Enter missing end tags" required>
-          <button class="submit-btn" type="submit">Turn in</button>
-        </form>
-      </div>
-
-      <!-- Output Container (Stacked Expected Output & Output Box) -->
-      <div class="output-container">
-        <!-- Lives -->
-        <div class="lives">
-          <!-- <img src="../img/0-lives.png" alt="lives Icon" class="lives-icon"> -->
-          <img src="../img/1-lives.png" alt="lives Icon" class="lives-icon">
-          <!-- <img src="../img/2-lives.png" alt="lives Icon" class="lives-icon">
-          <img src="../img/3-lives.png" alt="lives Icon" class="lives-icon">
-          <img src="../img/4-lives.png" alt="lives Icon" class="lives-icon">
-          <img src="../img/5-lives.png" alt="lives Icon" class="lives-icon"> -->
-        </div>
-        <!-- Expected Output Box -->
-        <div class="expected-output-box">
-          <strong>Expected Output:</strong>
-          <p><?php echo strip_tags($task . $correct_answers[$level]); ?></p>
-        </div>
-        
-        <!-- Output Box -->
-        <div class="output-box">
-          <strong>Output:</strong>
-          <p><?php echo strip_tags($user_output); ?></p>
-        </div>
-      </div>
+  
+  <!-- Task Panel Box -->
+  <div class="task-panel">
+      <p><?php echo $row['Task'] ?></p>
+      <pre><?php echo htmlspecialchars($row['Given_Code']) ?></pre>
+      <form method="POST">
+        <input type="text" id="anwser" name="asnwer" placeholder="Enter Answer" required>
+        <button class="submit-btn" id="check-answer">Turn in</button>
+      </form>
     </div>
 
-    <?php if ($popup_class): ?>
-      <div class="popup <?php echo $popup_class; ?>">
-        <div class="popup-content">
-          <h2><?php echo $popup_class === 'popup-correct' ? 'Level Completed!' : 'Level Failed!'; ?></h2>
-          <p><?php echo $popup_class === 'popup-correct' ? 'Congratulations! You have completed this level.' : 'Sorry, you have failed this level. Try again!'; ?></p>
-          <button onclick="closePopup()">Close</button>
-        </div>
-      </div>
-    <?php endif; ?>
-  </div>
+  <!-- Output Container (Stacked Expected Output & Output Box) -->
+  <div class="output-container">
+    
+          <!-- Lives -->
+           <div class="lives">
+            <!-- <img src="../img/0-lives.png" alt="lives Icon" class="lives-icon"> -->
+            <!-- <img src="../img/1-lives.png" alt="lives Icon" class="lives-icon"> -->
+            <!-- <img src="../img/2-lives.png" alt="lives Icon" class="lives-icon"> -->
+            <!-- <img src="../img/3-lives.png" alt="lives Icon" class="lives-icon"> -->
+            <!-- <img src="../img/4-lives.png" alt="lives Icon" class="lives-icon"> -->
+            <img id="life-image" src="../img/5-lives.png" alt="lives Icon" class="lives-icon">
+            </div>
+          <!-- Expected Output Box -->
+          <div class="expected-output-box">
+            <strong>Expected Output:</strong>
+            <p><?php echo $row['Display'] ?></p>
+          </div>
+          
+          <!-- Output Box -->
+          <div class="output-box">
+            <strong>Output:</strong>
+            <p id="result"></p>
+          </div>
 
-  <script>
-    function closePopup() {
-      document.querySelector('.popup').style.display = 'none';
-    }
-  </script>
+  </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+$(document).ready(function() {
+    $("#check-answer").click(function() {
+      event.preventDefault();
+        var userAnswer = $("#anwser").val();
+        console.log("User Answer: " + userAnswer); // Debugging
+
+        $.ajax({
+            url: "check_answer.php",
+            type: "POST",
+            data: { answer: userAnswer },
+            success: function(response) {
+              console.log("✅ Server Response:", response);
+
+              $("#result").html(response); // Show result text
+
+              if (response.trim() === "Incorrect! Try again.") {
+
+                  var currentImage = $("#life-image").attr("src");
+                  var match = currentImage.match(/(\d+)-lives\.png/);
+
+                  if (match) {
+                        var currentLife = parseInt(match[1]);
+
+                        if (currentLife > 0) {
+                            var newLife = currentLife - 1;
+                            var newLifeImage = "../img/" + newLife + "-lives.png";
+
+                            $("#life-image").attr("src", newLifeImage);
+                            if (newLife === 0) {
+                                // Game over: Show message & disable input/button
+                                $("#result").html("❌ Game Over! Better luck next time.");
+                                $("#answer").prop("readonly", true); // Prevent typing
+                                $("#check-answer").prop("disabled", true).css("cursor", "not-allowed");
+                            }
+                          }
+                      }
+              }
+            },
+            error: function(xhr, status, error) {
+                console.error("AJAX Error:", error); // Debugging
+                $("#result").text("Error checking answer.");
+            }
+        });
+    });
+});
+</script>
 </body>
 </html>

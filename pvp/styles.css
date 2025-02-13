@@ -3,319 +3,377 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-  }
-  
-  body {
-    position: relative;
-    box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
-    background-image: url(../img/bgPvp.png);
-    background-size: cover;
-    background-repeat: no-repeat;
-  
-    background-attachment: fixed;
-  }
+}
 
-/* Center the container in the middle of the screen */
+body {
+    font-family: 'Zen Dots', sans-serif;
+    background: url(../img/bgPvp.png) no-repeat center/cover;
+    overflow-y: hidden;
+}
+
 .container {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh; /* Full height of the viewport */
-    margin: 0;
-    padding-top: 150px;
-  }
-  
-  /* Game area styles */
-  .game-area {
+    height: 100vh;
+    padding-top: 1rem;
+    animation: fadeIn 1s ease-in-out; /* Fade-in effect for the container */
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* Game Area */
+.game-area {
     display: flex;
     justify-content: space-between;
-    align-items: first baseline;
-    width: 80%; /* Adjust the width as necessary */
-    max-width: 1500px; /* Optional: Limit the max width */
-  }
-  
+    width: 100%;
+    max-width: 1650px;
+    height: 100%;
+    max-height: 750px;
+}
 
-  .team {
-    height: 700px;
-    width: 30%;
-    background-image: url('../img/bgteam.png');
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    padding: 12px;
-    border-radius: 10px;
+.team {
+    background: url('../img/bgteam.png') no-repeat center/cover;
+    background-size: cover; /* Ensure the background image covers the entire container */
+    width: 100%;
+    max-width: 1000px;
+    height: auto;
+    min-height: 800px; /* Adjust as needed */
+    padding: 1.0rem;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    position: relative; /* Make sure to position the images relative to the team container */
+    text-align: center;
+    color: white;
+    position: relative;
+    animation: slideIn 1s ease-in-out; /* Slide-in effect for the team sections */
 }
 
-.team.team-1 .player-profiles {
-    position: absolute; /* Position outside the container */
-    top: 10%; /* Position in the vertical middle of the team */
-    left: -110px; /* Move the profile images to the left of the team */
+@keyframes slideIn {
+    from { transform: translateX(-100%); }
+    to { transform: translateX(0); }
+}
+
+.team h2 {
+    font-family: zen dots;
+    font-size: 26px;
+    font-weight: normal;
+}
+
+/* Player Profiles */
+.player-profiles {
+    position: absolute;
+    top: 10%;
     display: flex;
-    flex-direction: column; /* Stack the profile images vertically */
+    flex-direction: column;
     align-items: center;
 }
+
+.team-1 .player-profiles { left: -7rem; }
+.team-2 .player-profiles { right: -7rem; }
 
 .profile {
-    width: 100px; /* Adjust the width of the profile container */
-    height: 100px; /* Adjust the height of the profile container */
-    background-size: cover; /* Make sure the background image covers the container */
-    background-position: center; /* Position the background image in the center */
-    display: flex;
-    align-items: center; /* Center the image within the container */
-    justify-content: center; /* Center the image within the container */
-}
-
-
-.profile-img {
-    width: 50px;  /* Adjust the size of the profile images */
-    height: 50px;
-    border-radius: 50%;
-    margin-bottom: 10px; /* Space between images */
-    border: 2px solid #fff; /* Optional: border around the profile image */
-    
-}
-
-/* For Team 2, align profile images to the right */
-.team.team-2 .player-profiles {
-    position: absolute; /* Position outside the container */
-    top: 10%; /* Position in the vertical middle of the team */
-    right: -110px; /* Move the profile images to the left of the team */
-    display: flex;
-    flex-direction: column; /* Stack the profile images vertically */
-    align-items: center;
-}
-
-
-.team .buttons {
-    display: flex;
-    justify-content: space-between; /* Space buttons evenly */
-    width: 100%; /* Ensure the buttons take up the full width */
-  }
-
-.buttons .pass{
-    background: linear-gradient(to right, #FF0000, #E50000, #E47575, #B80000, #000000);
-    color: #fff;
-    font-family: Poppins;
-}
-
-.buttons .run{
-    background: linear-gradient(to right, #37FF00, #00E508, #75E475, #00B816, #000000);
-    color: #fff;
-    font-family: Poppins;
-    font-size: 30px;
-}
-
-.pass, .run {
-    width: 48%;
-    padding: 10px;
-    margin: 5px 1%;
-    border: none;
-    cursor: pointer;
-    font-size: 16px;
-    border-radius: 5px;
-}
-
-/* Style the buttons container to align them in a row */
-.team .pass, .team .run {
-    width: 48%; /* Maintain the width of each button */
-    padding: 10px;
-    margin: 5px 1%;
-    border: none;
-    cursor: pointer;
-    font-size: 16px;
-    border-radius: 5px;
-  }
-
-  .instruction-panel {
-    width: 30%;
-    background: linear-gradient(to right, #FCAE00, #FFE346, #FCAE00, #FCAE00, #FFE346);
-    padding: 15px;
-    border-radius: 10px;
-    border: 3px solid #ffcc00;
-    position: relative; /* Ensure the parent is positioned relative */
-    word-wrap: break-word;  /* Allow long words to break to the next line */
-    word-break: break-word; /* Prevent words from overflowing */
-}
-
-
-.instruction-panel h3{
-    text-align: center;
-    color: black;
-}
-
-.instruction-panel p{
-    color: black;
-    text-align: center;
-}
-
-.output-preview {
-    width: 100%;
-    height: 200px;
-    background-color: #032743;
-    margin: 10px 0;
-    border-radius: 5px;
+    width: 6.25rem;
+    height: 6.25rem;
+    background-size: cover;
+    background-position: center;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: black;
-    transition: background-color 0.9s ease;
+    margin-bottom: 0.625rem;
 }
 
-.output-preview p{
-    color: #fff;
+.profile-img {
+    width: 3.125rem;
+    height: 3.125rem;
+    border-radius: 50%;
+    border: 2px solid #fff;
 }
 
-.scoreboard {
-    position: absolute; /* Position scoreboard relative to .instruction-panel */
-    bottom: -165px;
-    width: 95%; /* Ensure scoreboard spans the full width */
+/* Buttons */
+.buttons {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-evenly;
 }
 
-.score {
-    background-color: #ffcc00;
-    padding:  30px;
+.pass, .run {
+    width: 35%;
+    padding: 0.800rem;
+    border: none;
+    cursor: pointer;
+    font-size: 1.5rem;
     border-radius: 5px;
-    font-size: 24px;
-    font-weight: bold;
-    color: black;
-    text-align: center;
-}
-
-.vs {
-    position: relative;
+    font-family: zen dots;
     color: #fff;
-    font-size: 30px;
-    font-weight: bold;
-    border: 3px solid #FFE346;
-    padding: 20px;
-    text-align: center;
-}
-.vs::before {
-    content: "";
-    position: absolute;
-    top: -110px; /* Adjust this value to control the distance from the top */
-    left: 50%; /* Align the image to the center of the vs */
-    transform: translateX(-50%);
-    width: 70px; /* Adjust the size of the image */
-    height: 100px; /* Adjust the size of the image */
-    background-image: url('../img/joybeePvp.png'); /* Set the image */
-    background-size: cover;
-    background-repeat: no-repeat;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    transition: transform 0.3s ease; /* Smooth transition for hover effect */
 }
 
-.team-1 h2, .team-2 h2{
+.pass:hover, .run:hover {
+    transform: scale(1.1); /* Scale up effect on hover */
+}
+
+.pass { background: linear-gradient(to right, #FF0000, #B80000); }
+.run { background: linear-gradient(to right, #37FF00, #00B816); }
+
+/* Instruction Panel */
+.instruction-panel {
+    width: 34%;
+    padding: 1rem;
+    text-align: center;
+    display: flex;
+    margin-right: 6%;
+    animation: slideIn 1s ease-in-out;
+}
+
+.instruction-box, .output-box, .expected-output-box {
+    background-color: #011F2B;
+    padding: 1rem;
+    border-radius: 10px;
+    border: 2px solid #D9D9D9;
+    color: #011F2B;
+}
+
+.output-box {
+    flex: 1;
+    height: 24.75rem;
+    width: 20.75rem;
+    background-color: #FCAE00;
+    overflow-y: auto;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    
+}
+
+.instruction-box, .expected-output-box {
+    flex: 2;
+    width: 18.625rem;
+    height: 12.375rem;
+    background-color: #FCAE00;
+    overflow-y: auto;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.instruction-box h3 {
+    font-size: 18px;
+}
+
+#task-area p {
+    font-size: 14px;
+    font-family: zen dots;
     color: #fff;
-    text-align: center;
 }
 
-.code-input {
-    width: 90%;
-    height: 550px;
-    font-family: monospace;
-    background-color: #fff;
-    color: black;
-    border: 1px solid #ffcc00;
-    padding: 10px;
+.expected-output-box h2 {
+    font-size: 14px;
+}
+
+#task-area {
+    width: 100%;
+    height: 9.25rem;
+    background-color: #032743;
+    border: 1px solid #ddd;
     border-radius: 5px;
-    resize: none;
-    display: block;
-    margin: 0 auto; /* Centers the textarea horizontally */
+    color: black;
+    padding: 0.625rem;
+    text-align: left;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    white-space: normal;
+    overflow-y: auto;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
 }
 
 #output-area {
-    width: 20%;
-    height: 40px;
-    border: 2px solid #ddd;
-    border-radius: 8px;
-    background-color: #fff;
-}
-
-/* CSS for the floating score animation */
-.floating-score {
-    position: absolute;border: 1px solid #888;
-    font-size: 40px;
-    font-weight: bold;
-    font-family: zen dots;
-    padding: 20px;
-    background-color: #032743; /* Orange color for +1 */
-    color: green;
-    animation: floatUp 1s ease-in-out forwards;
-    border: 1px solid #888;
-    border-radius: 10px;
-}
-
-/* Keyframes for the floating animation */
-@keyframes floatUp {
-    0% {
-        opacity: 1;
-        transform: translateY(0);
-    }
-    50% {
-        opacity: 1;
-        transform: translateY(-30px);
-    }
-    100% {
-        opacity: 0;
-        transform: translateY(-50px);
-    }
-}
-
-.floating-minus {
-    color: #FF0000; /* Red color for -1 */
-}
-
-/* Modal Styles */
-.modal {
-    display: none;
-    position: fixed;
-    z-index: 1;
-    left: 0;
-    top: 0;
     width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgba(0, 0, 0, 0.4);
-    padding-top: 60px;
-    color: #fff;
-  }
-
-  .modal-content {
+    height: 20.20rem;
     background-color: #032743;
-    margin: 5% auto;
-    padding: 10px;
-    border: 1px solid #888;
-    width: 80%;
-    max-width: 400px;
-    border-radius: 8px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    color: #fff;
+    padding: 0.625rem;
+    text-align: left;
+    margin-top: 0.625rem;
+    overflow-y: auto;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+#expected-output-area {
+    width: 100%;
+    height: 9.25rem;
+    background-color: #032743;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    color: #fff;
+    padding: 0.625rem;
+    text-align: left;
+    margin-top: 0.625rem;
+    overflow-y: auto;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+/* Scoreboard */
+.scoreboard {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    top: 34%;
+    left: 10%;
+    transform: translateX(-140%);
+    animation: fadeIn 1s ease-in-out; /* Fade-in effect for the scoreboard */
+}
+
+.team-score {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #011F2B;
+    border-radius: 10px;
+    border: 2px solid #FFE346;
+    width: 10rem;
+    height: 8rem;
+}
+
+.score {
+    font-size: 1.5rem;
+    font-family: 'Zen Dots';
+    color: #76D5FE;
     text-align: center;
-  }
+    margin-bottom: 0.3125rem;
+}
 
-  .close {
-    color: #ddd;
-    float: right;
-    font-size: 28px;
+.life {
+    width: 7.5rem;
+    height: 7.0rem;
+}
+
+.vs-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 120px;
+}
+
+.joybee-img {
+    width: 50px;  /* Adjust this size as needed */
+    height: auto;
+    margin-bottom: 5px; /* Adds space between the image and "VS" */
+}
+
+.vs {
+    font-size: 1.875rem;
     font-weight: bold;
+    color: white;
+    padding: 0.625rem;
+    border: 3px solid #FFE346;
+    text-align: center;
+}
+
+/* Code Input */
+.code-input {
+    width: 90%;
+    max-width: 500px;
+    height: 100%;
+    max-height: 800px;
+    font-family: 'Zen dots', Arial, Helvetica, sans-serif;
+    background-color: #fff;
+    color: black;
+    border: 1px solid #ffcc00;
+    padding: 0.625rem;
+    border-radius: 5px;
+    resize: none;
+    margin: auto;
+    overflow-y: auto;
+  
+}
+
+.code-input::-webkit-scrollbar {
+    padding-right: 5%;
+    width: 5px;
+  }
+  
+  .code-input::-webkit-scrollbar-thumb {
+    background-color: #FCAE00;
+    border-radius: 10px;
   }
 
-  .close:hover,
-  .close:focus {
-    color: #fff;
-    text-decoration: none;
+.chat-box {
+    display: flex;
+    flex-direction: column; /* I-arrange ang chat messages sa itaas */
+    align-items: stretch;
+    gap: 10px; /* Space between chat messages and input field */
+    width: 100%;
+}
+
+.chat-messages {
+    width: 100%;
+    max-width: 420px;
+    height: 60px;
+    overflow-y: auto;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    border: 1px solid #ccc;
+    padding: 1rem;
+    background-color: #011F2B;
+    border-radius: 5px;
+    text-align: left;
+    align-self: center;
+    font-family: Poppins;
+    animation: fadeIn 0.5s ease-in-out; /* Fade-in effect for chat messages */
+    
+    /* Para sa automatic word break */
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    white-space: normal;
+}
+
+.chat-input-container {
+    display: flex;
+    align-self: center;
+    justify-self: center;
+    gap: 10px; /* Space between input and button */
+    width: 75%;
+}
+
+.chat-box input[type="text"] {
+    flex: 1; /* Flexible width */
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-family: Poppins;
+}
+
+.chat-box button {
+    padding: 10px;
+    border: none;
+    background-color: #007bff;
+    color: white;
+    border-radius: 5px;
     cursor: pointer;
-  }
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease; /* Smooth transition for hover effect */
+}
 
-  .modal h2 {
-    margin-bottom: 20px;
-    color: #fff;
-  }
+.chat-box button:hover {
+    background-color: #0056b3;
+    transform: scale(1.1); /* Scale up effect on hover */
+}
 
-  .modal p {
-    font-size: 18px;
-  }
+.chat-box button img {
+    width: 20px;
+    height: 20px;
+}

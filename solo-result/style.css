@@ -1,0 +1,167 @@
+/* General Styling */
+body {
+    font-family: 'Zen Dots', sans-serif;
+    background-image: url(../img/bgdashboard.png);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    text-align: center;
+    color: white;
+    margin: 0;
+    padding: 0;
+}
+
+/* solo Completed Panel */
+.solo-panel-completed {
+    position: relative;
+    width: 80%;
+    max-width: 690px;
+    background: url("../img/bgPanelQuizResult.png") no-repeat center center;
+    background-size: cover;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    color: white;
+    margin: 50px auto;
+}
+
+/* solo Completed Content */
+.solo-content-completed {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* solo Completed Heading */
+.solo-completed {
+    font-size: 28px;
+    font-weight: bold;
+    font-family: zen dots;
+    margin-bottom: 10px;
+    color: #00E508;
+}
+
+/* solo Result */
+.solo-result {
+    font-size: 20px;
+    font-weight: bold;
+    background-color: rgba(255, 255, 255, 0.2);
+    padding: 10px 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+/* Buttons Container (Aligns buttons in one row) */
+.solo-buttons {
+    display: flex;
+    justify-content: space-between; /* Distributes buttons left & right */
+    width: 100%;
+    max-width: 400px; /* Limits button container width */
+    margin-top: 20px;
+}
+
+/* Buttons */
+.btn-exit {
+    background: linear-gradient(to top, #FF0000, #E50000, #E47575, #B80000, #000000);
+    color: black;   
+    font-size: 20px;
+    font-family: zen dots;
+    cursor: pointer;
+    padding: 12px 20px;
+    width: 48%; /* Each button takes half width */
+    transition: 0.3s ease-in-out;
+}
+
+.btn-back-lesson {
+    background: linear-gradient(to top, #37FF00, #00E508, #75E475, #00B816, #000000);
+    color: black;
+    font-size: 20px;
+    font-family: zen dots;
+    cursor: pointer;
+    padding: 12px 20px;
+    width: 48%; /* Each button takes half width */
+    transition: 0.3s ease-in-out;
+}
+
+/* Hover Effect */
+.btn-back-lesson:hover,
+.btn-exit:hover {
+    background-color: #011F2B;
+    transform: scale(1.05);
+}
+
+/* solo Panel Failed */
+.solo-panel-failed {
+    position: relative;
+    width: 80%;
+    max-width: 690px;
+    background: url("../img/bgPanelQuizResult.png") no-repeat center center;
+    background-size: cover;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    color: white;
+    margin: 50px auto;
+}
+
+/* Quiz Failed Content */
+.solo-content-failed {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* solo Failed Heading */
+.solo-failed {
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #E80000;
+    font-family: zen dots;
+}
+
+/* solo Failed Result */
+.solo-result-failed {
+    font-size: 20px;
+    font-weight: bold;
+    background-color: rgba(255, 255, 255, 0.2);
+    padding: 10px 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+/* Buttons Container (Aligns buttons in one row) */
+.solo-buttons-failed {
+    display: flex;
+    justify-content: space-between; /* Distributes buttons left & right */
+    width: 100%;
+    max-width: 400px; /* Limits button container width */
+    margin-top: 20px;
+}
+
+/* Buttons */
+.btn-retry,
+.btn-exit-failed {
+    background: #032743;
+    color: white;
+    border: 2px solid #FCAE00;
+    border-bottom: 4px solid #FCAE00;
+    border-radius: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    padding: 12px 20px;
+    width: 48%; /* Each button takes half width */
+    transition: 0.3s ease-in-out;
+}
+
+/* Hover Effect */
+.btn-retry:hover,
+.btn-exit-failed:hover {
+    background-color: #011F2B;
+    transform: scale(1.05);
+}
