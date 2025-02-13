@@ -1,0 +1,791 @@
+/* Global Styles */
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #000E2B;
+}
+
+/* Header Styles */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+    background: linear-gradient(to right, #09152B, #063977, #09152B);
+    color: white;
+    position: sticky;
+    top: 0;
+    z-index: 2000;
+}
+
+.logo img {
+    width: 70px;  /* Adjust the width as needed */
+    height: auto;  /* Maintain the aspect ratio */
+}
+
+header nav {
+    display: flex;
+    gap: 100px;
+}
+
+header nav a {
+    color: white;
+    text-decoration: none;
+    font-size: 20px;
+    font-family: Poppins;
+    padding: 10px 20px;
+    border-radius: 20px;
+}
+
+header nav a:hover {
+    background-color: #fff;
+    color: black;
+    border-radius: 20px;
+}
+
+/* Styling for the navigation links */
+/* Add active background color to selected link */
+nav .active {
+    background-color: #fff;
+    color: black;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+}
+
+/* Active link style when clicked or selected */
+nav a:target {
+    background-color: #007BFF; /* Active background */
+    color: white;
+}
+
+/* Button Styles */
+.btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 18px;
+    font-family: Poppins;
+}
+
+.login-btn {
+    background-color: #035CC2;
+    color: white;
+    margin-right: 10px;
+}
+
+.signup-btn {
+    background-color: #28A745;
+    color: white;
+}
+
+.btn:hover {
+    transform: scale(1.1);
+}
+
+/* Main Section */
+.main-section {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-image: url(./img/bghome.png);
+    background-size: cover; /* Make the background image cover the entire section */
+    background-position: center; /* Center the background image */
+    background-repeat: no-repeat; /* Ensure the background image doesn't repeat */
+}
+
+/* Container for Images */
+.images-container {
+    display: flex;
+    flex-direction: column; /* Stack images vertically */
+    align-items: center; /* Center images horizontally */
+}
+
+/* Cipherion Image */
+.cipherion-img {
+    width: 100%; /* Adjust width as needed */
+    height: auto;
+}
+
+/* Play Image */
+.play-img {
+    width: 60%; /* Adjust width as needed */
+    height: auto;
+    margin-top: 20px; /* Space between images */
+}
+
+
+/* Scrollable Content */
+.content-about {
+    height: 100vh;
+    text-align: center;
+    background-image: url('./img/bgpanel.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+/* Ellipse images */
+.ellipse-1, .ellipse-2 {
+    position: absolute;
+    top: 10px;
+    width: 500px;
+    height: auto;
+}
+
+.ellipse-1 {
+    left: 10px;
+}
+
+.ellipse-2 {
+    right: 10px;
+}
+
+/* Grid layout for logo and text */
+.grid-container {
+    display: grid;
+    grid-template-columns: 1fr 2fr; /* Two columns: 1 for logo, 1 for text */
+    align-items: center;
+    gap: 20px; /* Space between columns */
+    max-width: 1200px; /* Restrict the container width */
+    width: 100%;
+}
+
+/* Logo Container */
+.logo-container {
+    display: flex;
+    justify-content: center;
+}
+
+.logo-about {
+    width: 600px; /* Adjust size as needed */
+    height: auto;
+}
+
+/* Text Container */
+.text-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Align text to the left */
+    justify-content: center;
+}
+
+h1 {
+    font-size: 40px;
+    font-family: zendots;
+    color: white;
+    margin: 40px 0;
+    text-align: center;
+    margin-left: 40%;
+}
+
+p {
+    font-size: 22px;
+    color: white;
+    max-width: 600px;
+    margin: 0;
+    z-index: 1000;
+}
+
+/* Testimonial Section */
+.content-testimonial {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* Four equal-width columns */
+    height: 20vh; /* Set height */
+    background-image: url('./img/bgtestimonial.png'); /* Background image */
+    background-size: cover;
+    background-position: center;
+    padding: 20px;
+    position: relative;
+}
+
+/* Styling for each column */
+.testimonial-column {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* Align content to the bottom */
+    align-items: center;
+    padding: 20px 20px;
+    text-align: center;
+    position: relative; /* Positioning for custom alignment */
+    border-right: 1px solid #ccc; /* Border between columns */
+    color: white; /* Text color for better visibility */
+}
+
+.testimonial-column:last-child {
+    border-right: none; /* Remove border from the last column */
+}
+
+.testimonial-column h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.testimonial-column p {
+    font-size: 14px;
+    margin: 0;
+    line-height: 1.5;
+}
+
+/* Courses Section */
+.content-courses {
+    height: 100vh;
+    background-image: url('./img/bgcourse.png');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+/* Container for Text and Image */
+.courses-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Two equal columns */
+    align-items: center;
+    gap: 20%; /* Space between text and image */
+    max-width: 1600px;
+    width: 100%;
+}
+
+/* Text Content */
+.text-content {
+    text-align: left;
+    color: white;
+}
+
+.text-content h1 {
+    font-size: 36px;
+    margin-bottom: 20px;
+    transform: translateX(-40%);
+    
+}
+
+.text-content p {
+    font-size: 18px;
+    line-height: 1.6;
+}
+
+/* Image Content */
+.image-content {
+    display: flex;
+    justify-content: flex-end; /* Align image to the right */
+}
+
+.courses-img {
+    max-width: 150%;
+    height: auto;
+    border-radius: 10px; /* Optional: Rounded corners for the image */
+}
+
+/* Feedback Section */
+.content-feedback {
+    height: 75vh; /* Set height */
+    width: auto; /* Auto width */
+    background-image: url('./img/bgfeedback.png');
+    background-size: cover; /* Cover the section */
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Prevent repeat */
+    display: flex;
+    justify-content: center; /* Center container horizontally */
+    align-items: center; /* Center container vertically */
+}
+
+/* Feedback Container */
+.feedback-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%;
+    max-width: 1200px;
+    color: white;
+}
+
+/* Left Section */
+.feedback-left {
+    max-width: 40%; /* Limit width for left section */
+}
+
+.feedback-left h1 {
+    transform: translateX(-100%);
+    font-size: 36px;
+    margin-bottom: 20px;
+    z-index: 1000;
+}
+
+.review-image {
+    background-image: url('./img/review.png'); /* Image for the review section */
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 200px;
+    width: 900px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    transform: translateX(-40%);
+    border-radius: 10px; /* Optional: Rounded corners */
+    z-index: 1;
+}
+
+.review-image h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+
+}
+
+.review-image p {
+    font-size: 16px;
+}
+
+/* Right Section */
+.feedback-right {
+    max-width: 40%; /* Limit width for right section */
+    text-align: left; /* Align text to the right */
+}
+
+.feedback-right .quote {
+    font-size: 20px;
+    font-style: italic;
+    margin-bottom: 20px;
+}
+
+.feedback-right .author {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.review-wrapper {
+    position: relative; /* Enables positioning of child elements */
+    display: inline-block; /* Wrap content tightly */
+}
+
+/* Ellipse Background */
+.ellipse-read {
+    position: absolute;
+    top: 50%; /* Center vertically relative to parent */
+    left: 14%; /* Center horizontally relative to parent */
+    transform: translate(-50%, -50%); /* Offset to center */
+    width: 700px; /* Adjust ellipse width */
+    height: 600px; /* Adjust ellipse height */
+    background-image: url('./img/ellipseread.png');
+    border-radius: 50%; /* Make it an ellipse */
+}
+
+/* Contact Section */
+.content-contact {
+    height: 28vh;
+    text-align: center;
+    background-color: #09152B;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 20px;
+}
+
+/* Contact Container */
+.contact-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start; /* Align columns to the bottom */
+    height: 70%;
+    border-bottom: 2px solid white; /* Bottom border */
+}
+
+/* Contact Columns */
+.contact-column {
+    flex: 1; /* Equal width for each column */
+    text-align: center;
+    color: white;
+    padding: 10px;
+}
+
+.contact-column h3 {
+    font-size: 28px;
+    margin-bottom: 10px;
+}
+
+.contact-column p {
+    font-size: 14px;
+}
+
+/* Social Icons */
+.social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 26px;
+    margin-top: 20px;
+}
+
+.social-icons i {
+    font-size: 20px;
+    cursor: pointer;
+    color: white;
+}
+
+.social-icons i:hover {
+    color: rgb(255, 255, 255);
+    transform: scale(1.3);
+}
+
+/* Footer */
+.contact-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 4px 8px;
+    color: white;
+    font-size: 8px;
+}
+
+.footer-left {
+    text-align: left;
+}
+
+.footer-right {
+    text-align: right;
+}
+
+.footer-link {
+    color: white;
+    text-decoration: none;
+    margin-left: 15px;
+}
+
+.footer-link:hover {
+    text-decoration: underline;
+}
+
+/* Link Hover */
+.contact-link {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.contact-link:hover {
+    text-decoration: underline;
+}
+
+
+/* Modal Styles */
+.login-modal {
+    display: none; /* Hidden by default */
+    position: fixed;
+    top: 2%;
+    left: 0;
+    background-image: url('./img/bgpanel.png');
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Modal Content */
+.modal-content {
+    background-image: url('./img/panel.png');
+    padding: 30px;
+    border-radius: 10px;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    position: relative;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Login Logo */
+.login-logo {
+    position: absolute;
+    top: 44%;
+    right: 16%;
+    transform: translateY(-50%);
+    width: 700px; /* Adjust width as needed */
+    height: auto;
+}
+
+/* Title */
+.modal-content h2 {
+    position: relative;
+    bottom: 13%;
+    right: 24%;
+    margin-bottom: 20px;
+    color: white;
+    font-size: 70px;
+}
+
+/* Close Button */
+.close-btn {
+    position: absolute;
+    top: 11%;
+    left: 12%;
+    font-size: 30px;
+    color: white;
+    cursor: pointer;
+    width: 150px;
+    height: 150px;
+}
+
+.close-btn:hover {
+    transform: scale(1.1);
+}
+
+/* Form Container */
+.form-container {
+    width: 70%;
+    height: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+/* Form Elements */
+.form-group {
+    margin-bottom: 15px;
+    width: 80%;
+    height: 34%;
+}
+
+.form-group label {
+    text-align: start;
+    font-size: 20px;
+    display: block;
+    margin-bottom: 5px;
+    color: white;
+}
+
+.form-group input {
+    background-color: #273239;
+    color: white;
+    font-family: Poppins;
+    width: 600px;
+    padding: 20px;
+    font-size: 16px;
+    margin-top: 5px;
+    border: none;
+    border-radius: 5px;
+    padding-left: 35px; /* Space for the icon */
+}
+
+/* Input Icons */
+.input-group {
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+}
+
+.input-icon {
+    position: absolute;
+    left: 10px;
+    font-size: 20px;
+    color: white;
+    padding: 10px;
+}
+
+/* Eye Icon (Show/Hide Password) */
+.eye-icon {
+    position: absolute;
+    right: 10px;
+    font-size: 20px;
+    color: white;
+    cursor: pointer;
+    padding: 10px;
+    margin: auto;
+}
+
+/* Image Submit Button */
+.btn.login-submit {
+    position: relative;
+    right: 10%;
+    border: none;
+    padding: 0;
+    background: none;
+    width: 240px;
+    height: auto;
+}
+
+.btn.login-submit:hover {
+    transform: scale(1.1);
+}
+
+
+/* Sign Up Modal */
+.signup-modal {
+    display: none; /* Hidden by default */
+    position: fixed;
+    top: 2%;
+    left: 0;
+    background-image: url('./img/bgpanel.png');
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Modal Content */
+.signupmodal-content {
+    background-image: url('./img/panel.png');
+    padding: 30px;
+    border-radius: 10px;
+    width: 100%;
+    height: 100%;
+    text-align: start;
+    position: relative;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Title */
+.signupmodal-content h2 {
+    position: relative;
+    bottom: 12%;
+    right: 22%;
+    color: white;
+    font-size: 70px;
+    margin-bottom: 20px;
+}
+
+/* Close Button */
+.signupclose-btn {
+    position: absolute;
+    top: 10%;
+    right: 10%;
+    font-size: 30px;
+    color: white;
+    cursor: pointer;
+}
+
+/* Form Container */
+.signupform-container {
+    position: relative;
+    bottom: 8%;
+    right: 14%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Form Row */
+.signupform-row {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 20px; /* Increased margin between rows */
+}
+
+/* Form Group */
+.signupform-group {
+    width: 50%; /* Adjust based on your layout */
+    margin-bottom: 20px; /* Add spacing between form groups */
+    margin-inline-start: 10%;
+}
+
+.signupform-group label {
+    font-size: 18px;
+    color: white;
+    margin-bottom: 5px; /* Space between label and input */
+}
+
+.signupform-group input {
+    background-color: #273239;
+    color: white;
+    font-family: Poppins;
+    width: 100%;
+    padding: 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    margin-top: 5px;
+}
+
+/* Checkbox for Terms and Conditions */
+.terms-container {
+    position: relative;
+    top: 20%;
+    margin-top: 20px;
+    display: flex;
+    align-items: start;
+    margin-bottom: 20px; /* Space below the checkbox */
+}
+
+.terms-container label { 
+    color: white;
+    font-size: 16px;
+}
+
+.terms-container input {
+    margin-right: 10px; /* Space between checkbox and label */
+}
+
+/* Submit Button */
+.btnsignupform-group {
+    position: relative;
+}
+
+/* Add styling for the show/hide password icons */
+.signupform-group i {
+    position: relative;
+    bottom: 34%;
+    left: 100%;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.signupform-group .date{
+    color: #fff;
+}
+
+/* Image Submit Button */
+.btn.signup-submit {
+    width: 120px;
+    position: absolute;
+    left: 90%;
+}
+
+.signupbtn.signup-submit:hover {
+    transform: scale(1.1);
+}
+
+/*signup Logo */
+.signup-logo {
+    position: absolute;
+    top: 48%;
+    right: 10%;
+    transform: translateY(-50%);
+    width: 500px; /* Adjust width as needed */
+    height: auto;
+}

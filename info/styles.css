@@ -1,5 +1,6 @@
 body {
   font-family: 'Poppins' sans-serif;
+  background-image: url(../img/background.png);
 }
   .container {
     display: flex;
@@ -26,7 +27,7 @@ body {
     padding: 15px 30px;
     color: white;
     text-align: start;
-    
+    text-indent: 10%;
   }
 
   .content {

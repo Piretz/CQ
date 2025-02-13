@@ -1,58 +1,78 @@
 body {
-    font-family: 'Poppins', sans-serif; 
+    background-image: url(../img/background.png);
+    font-family: 'Poppins', sans-serif;
 }
-    
-
-
+/* Panel Container */
 .panel-container {
     display: flex;
     justify-content: space-between;
-    gap: 20px;
-    width: 70%;
-    height: 70%;
+    gap: 4px;
+    width: 100%;
+    max-width: 1500px;
+    height: 700px;
+    overflow: hidden;
+    margin: 0 auto;
 }
 
-/* Panel Box for Messages List */
+/* Messages List */
 .messages-list {
-    width: 50%;
+    width: 100%;
+    max-width: 500px; /* Fixed size */
+    overflow: hidden;
     background-color: #091A36;
-    padding: 20px;
+    padding: 10px;
     border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    border-left: 1px solid #019AEC;  /* Left border */
-    border-right: 1px solid #019AEC; /* Right border */
-    border-top: 1px solid #019AEC;   /* Top border */
-    border-bottom: 4px solid #019AEC; /* Bottom border */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 4px 6px 8px #019AEC;
+    border-left: 1px solid #019AEC;
+    border-right: 1px solid #019AEC;
+    border-top: 1px solid #019AEC;
+    border-bottom: 4px solid #019AEC;
 }
 
-.messages-list h2 {
-    margin-bottom: 10px;
+.messages-container {
+    overflow-y: auto;
+    height: 80%;
+}
+
+.list-header h2{
+    position: sticky;
+    top: 0;
+    background-color: #019AEC; /* Background color for the header */
+    color: white; /* White text color */
+    padding: 10px 0; /* Padding to give some space */
     font-family: Poppins;
     font-size: x-large;
     font-weight: bold;
-    background-image: linear-gradient(to right, #FFFFFF, #7CD8FF, #FFFFFF, #019AEC); /* Gradient colors */
-    -webkit-background-clip: text; /* Clip the background to the text */
-    color: transparent; /* Make the text color transparent to show the gradient */
+    text-align: center;
+    background-image: linear-gradient(to right, #FFFFFF, #7CD8FF, #FFFFFF, #019AEC);
+    -webkit-background-clip: text;
+    color: transparent;
+    z-index: 10; /* Ensure it stays above the search bar */
 }
 
-.search-bar {
+.list-header .search-bar {
+    position: sticky;
+    top: 50px;
+    left: 20px;
     display: flex;
     justify-content: space-between;
     margin-bottom: 10px;
     background-color: #326993;
     border-radius: 10px;
     height: 6%;
+    width: 90%;
+    margin-bottom: 20px
 }
 
-.search-bar input {
+
+.list-header .search-bar input {
     width: 90%;
     padding: 10px;
     border-radius: 10px;
     border: 1px solid #ccc;
 }
 
-.search-btn {
+.list-header .search-btn {
     width: 10%;
     background: transparent;
     border: none;
@@ -61,8 +81,12 @@ body {
 
 .message-item {
     display: flex;
-    align-items: center;
-    padding: 20px 0;  
+    align-items: flex-start;
+    padding: 10px;
+    justify-content: space-between; /* Spread out the content */
+    width: 100%; /* Fixed size */
+    overflow: hidden;
+    border-radius: 2px;
 }
 
 .profile-img {
@@ -73,44 +97,60 @@ body {
 }
 
 .message-details {
-    flex: 1;
+    display: flex;
+    flex-direction: column; /* Align user-name and message-text vertically */
+    width: 50%; /* Give enough space for user details */
     color: #fff;
+}
+
+.message-details .message-text {
+  white-space: nowrap;
+  max-width: 50%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.message-item:hover {
+    cursor: pointer;
+    background-color: #32353d;
+    max-width: 100%;
+    border-radius: 6px;
 }
 
 .user-name {
     font-size: 16px;
     font-weight: bold;
     font-family: Poppins;
+    margin-left: 2%;
 }
 
-.message-text {
+.message-times {
     font-size: 14px;
-    font-family: Poppins;
-    color: #000000;
+    color: #aaa;
+    margin-left: auto; /* This aligns the time to the right */
 }
 
-.message-time {
-    font-size: 12px;
-    font-family: Poppins;
-    color: #aaa;
-    text-align: end;
+.message-item .message-details {
+    display: flex;
+    align-items: start;
+    justify-content: space-between;
+    width: calc(100% - 60px); /* Adjusting for profile image */
 }
+
 
 /* Panel Box for Conversation Body */
 .conversation-body {
-    width: 90%;
+    width: 100%;
     background-color: #091A36;
     padding: 20px;
     border-radius: 8px;
-    border-left: 1px solid #019AEC;  /* Left border */
-    border-right: 1px solid #019AEC; /* Right border */
-    border-top: 1px solid #019AEC;   /* Top border */
-    border-bottom: 4px solid #019AEC; /* Bottom border */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    display: flex; /* Set flexbox for the container */
-    flex-direction: column; /* Stack children vertically */
-    justify-content: space-between; /* Align content between top and bottom */
-    height: 100%; /* Ensure the container takes full height of the parent */
+    border-left: 1px solid #019AEC;
+    border-right: 1px solid #019AEC;
+    border-top: 1px solid #019AEC;
+    border-bottom: 4px solid #019AEC;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .header-box {
@@ -133,10 +173,10 @@ body {
 }
 
 .conversation {
-    max-height: 400px;
+    max-height: 600px;
     overflow-y: auto;
     margin-bottom: 20px;
-    flex-grow: 1; /* Allow conversation area to take available space */
+    flex-grow: 1;
 }
 
 .message {
@@ -154,12 +194,17 @@ body {
 }
 
 .message-text {
-    max-width: 100%;
     padding: 10px;
     border-radius: 8px;
-    background-color: #091A36;
-    margin: 0;
     color: #fff;
+    font-size: 14px;
+    font-family: Poppins;
+    word-break: break-all;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    margin-bottom: 5px;
+    max-width: calc(100% - 100px); /* Adjust based on layout */
 }
 
 .message.friend .message-text {
@@ -169,6 +214,11 @@ body {
 .message.me .message-text {
     background-color: #019aec;
     color: white;
+    max-width: 70%;
+    flex-wrap: wrap;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    white-space: normal;
 }
 
 .message-time {
@@ -183,22 +233,125 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-top: auto; /* Push it to the bottom */
+    margin-top: auto;
+    gap: 10px;
+    color: #ccc;
 }
 
 .bottom-box textarea {
-    width: 85%;
-    padding: 10px;
+    width: 100%;
+    padding: 5px;
     border-radius: 5px;
     border: 1px solid #ccc;
     resize: none;
+    background-color: #304F66;
 }
 
 .send-btn {
     width: 10%;
-    background-color: #019aec;
+    background-color: #304F66;
     border-radius: 10px;
     cursor: pointer;
     border: none;
-    height: 80%;
+    height: 100%;
+}
+
+.send-btn:hover{
+    background-color: #40617a;
+}
+
+.message-input{
+    color: #fff;
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 1200px) {
+    .panel-container {
+        flex-direction: row; /* Stack the panels on smaller screens */
+        height: auto; /* Allow the height to adjust based on content */
+        width: auto;
+        overflow: hidden;
+    }
+
+    .messages-list, .conversation-body {
+        width: 100%; /* Make both panels take up the full width */
+        height: auto; /* Allow them to adjust based on content */
+        margin-bottom: 20px; /* Add spacing between panels */
+    }
+    
+    .message-item {
+        flex-direction: column; /* Stack profile image and text vertically */
+        align-items: flex-start;
+    }
+
+    .profile-img {
+        width: 35px; /* Reduce the size of profile images */
+        height: 35px;
+    }
+
+    .message-details {
+        width: 70%; /* Make the message details take up more width */
+    }
+}
+
+@media (max-width: 768px) {
+    .messages-list h2 {
+        font-size: large; /* Reduce the size of the header on smaller screens */
+    }
+
+    .search-bar input {
+        width: 80%; /* Make search bar input take more space */
+    }
+
+    .message-time {
+        font-size: 8px; /* Adjust the font size of the time */
+    }
+
+    .message-text {
+        font-size: 12px; /* Adjust message font size */
+    }
+
+    .bottom-box textarea {
+        width: 70%; /* Make the text area slightly smaller */
+    }
+
+    .send-btn {
+        width: 25%; /* Make the send button smaller */
+    }
+
+    .conversation {
+        max-height: 50px;
+        overflow-y: auto;
+        margin-bottom: 20px;
+        flex-grow: 1;
+    }
+}
+
+@media (max-width: 480px) {
+    .message-details .message-text {
+        font-size: 12px; /* Reduce font size on very small screens */
+    }
+
+    .messages-list, .conversation-body {
+        padding: 10px; /* Reduce padding for smaller screens */
+    }
+
+    .profile-img {
+        width: 30px; /* Make profile image smaller */
+        height: 30px;
+    }
+
+    .message-time {
+        font-size: 10px; /* Adjust message time font size */
+    }
+
+    .message-item {
+        padding: 10px 0; /* Adjust padding for smaller screens */
+    }
+    .conversation {
+        max-height: 50px;
+        overflow-y: auto;
+        margin-bottom: 20px;
+        flex-grow: 1;
+    }
 }
