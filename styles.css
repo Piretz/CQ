@@ -112,7 +112,7 @@ nav a:target {
 
 /* Cipherion Image */
 .cipherion-img {
-    width: 100%; /* Adjust width as needed */
+    width: 80%; /* Adjust width as needed */
     height: auto;
 }
 
@@ -121,7 +121,25 @@ nav a:target {
     width: 60%; /* Adjust width as needed */
     height: auto;
     margin-top: 20px; /* Space between images */
+    animation: bounce 1.5s infinite ease-in-out;
+    animation-delay: 0.3s; /* Delay para hindi sila sabay-sabay */
 }
+
+/* Hover Effect - Stop Animation */
+.play-img:hover {
+    animation: none;
+    cursor: pointer;
+}
+
+@keyframes bounce {
+    0%, 100% {
+        transform: scale(1.0);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+}
+
 
 
 /* Scrollable Content */
@@ -717,8 +735,7 @@ p {
 .signupmodal-header .close-btn {
     position: relative;
     left: 0;
-    bottom: 20px;
-    transform: translateY(-20%);
+    bottom: 60px;
     font-size: 30px;
     color: white;
     cursor: pointer;
@@ -837,6 +854,10 @@ p {
 }
 
 .btn.signup-submit:hover {
+    transform: scale(1.1);
+}
+
+.close-btn:hover{
     transform: scale(1.1);
 }
 

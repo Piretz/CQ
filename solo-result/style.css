@@ -4,164 +4,189 @@ body {
     background-image: url(../img/bgdashboard.png);
     background-size: cover;
     background-position: center;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
     text-align: center;
     color: white;
     margin: 0;
     padding: 0;
 }
 
-/* solo Completed Panel */
-.solo-panel-completed {
-    position: relative;
+/* Panels */
+.solo-result-panel-completed, 
+.solo-result-panel-failed {
     width: 80%;
-    max-width: 690px;
-    background: url("../img/bgPanelQuizResult.png") no-repeat center center;
-    background-size: cover;
+    max-width: 700px;
+    min-height: 100px;
+    background: url("../img/bgPanelSoloResult.png") no-repeat center;
+    background-size: contain; /* Ensure full image is visible */
+    background-position: center;
     padding: 30px;
     border-radius: 15px;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
-    text-align: center;
-    color: white;
+    box-shadow: none;
     margin: 50px auto;
-}
-
-/* solo Completed Content */
-.solo-content-completed {
     display: flex;
     flex-direction: column;
-    align-items: center;
     justify-content: center;
+    align-items: center;
 }
 
-/* solo Completed Heading */
-.solo-completed {
-    font-size: 28px;
-    font-weight: bold;
+.solo-result-content-completed{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    
+}
+
+/* Titles */
+.solo-result-completed {
+    font-size: 30px;
     font-family: zen dots;
-    margin-bottom: 10px;
     color: #00E508;
-}
-
-/* solo Result */
-.solo-result {
-    font-size: 20px;
-    font-weight: bold;
-    background-color: rgba(255, 255, 255, 0.2);
-    padding: 10px 20px;
-    border-radius: 10px;
-    margin-bottom: 20px;
-}
-
-/* Buttons Container (Aligns buttons in one row) */
-.solo-buttons {
-    display: flex;
-    justify-content: space-between; /* Distributes buttons left & right */
-    width: 100%;
-    max-width: 400px; /* Limits button container width */
-    margin-top: 20px;
-}
-
-/* Buttons */
-.btn-exit {
-    background: linear-gradient(to top, #FF0000, #E50000, #E47575, #B80000, #000000);
-    color: black;   
-    font-size: 20px;
-    font-family: zen dots;
-    cursor: pointer;
-    padding: 12px 20px;
-    width: 48%; /* Each button takes half width */
-    transition: 0.3s ease-in-out;
-}
-
-.btn-back-lesson {
-    background: linear-gradient(to top, #37FF00, #00E508, #75E475, #00B816, #000000);
-    color: black;
-    font-size: 20px;
-    font-family: zen dots;
-    cursor: pointer;
-    padding: 12px 20px;
-    width: 48%; /* Each button takes half width */
-    transition: 0.3s ease-in-out;
-}
-
-/* Hover Effect */
-.btn-back-lesson:hover,
-.btn-exit:hover {
-    background-color: #011F2B;
-    transform: scale(1.05);
-}
-
-/* solo Panel Failed */
-.solo-panel-failed {
     position: relative;
-    width: 80%;
-    max-width: 690px;
-    background: url("../img/bgPanelQuizResult.png") no-repeat center center;
-    background-size: cover;
-    padding: 30px;
-    border-radius: 15px;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
-    text-align: center;
-    color: white;
-    margin: 50px auto;
+    top: 22px;
 }
 
-/* Quiz Failed Content */
-.solo-content-failed {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-
-/* solo Failed Heading */
-.solo-failed {
-    font-size: 28px;
-    font-weight: bold;
-    margin-bottom: 10px;
-    color: #E80000;
+.title{
+    font-size: 12px;
     font-family: zen dots;
+    position: relative;
+    bottom: 2px;
 }
 
-/* solo Failed Result */
 .solo-result-failed {
-    font-size: 20px;
-    font-weight: bold;
-    background-color: rgba(255, 255, 255, 0.2);
-    padding: 10px 20px;
-    border-radius: 10px;
-    margin-bottom: 20px;
+    font-size: 30px;
+    font-family: zen dots;
+    color: #E80000;
+
 }
 
-/* Buttons Container (Aligns buttons in one row) */
-.solo-buttons-failed {
+/* Progress Section */
+.progress-container {
+    margin-bottom: 5px;
     display: flex;
-    justify-content: space-between; /* Distributes buttons left & right */
+    align-items: center;
+    justify-content: space-between;
     width: 100%;
-    max-width: 400px; /* Limits button container width */
-    margin-top: 20px;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+    color: #FCAE00;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 15px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    background: #00E508;
+    width: 0%;
+    transition: width 0.5s ease-in-out;
+}
+
+.progress-fill.failed {
+    background: #E80000;
+}
+
+/* Badge Section */
+.badge-container {
+    text-align: center;
+    margin-top: 8px;
+   
+}
+
+.badge-image {
+    width: 90px;
+    height: 50px;
+    margin-top: 5px;
+    margin-left: 10px;
+    border: 1px dotted #FCAE00;
 }
 
 /* Buttons */
-.btn-retry,
-.btn-exit-failed {
-    background: #032743;
-    color: white;
-    border: 2px solid #FCAE00;
-    border-bottom: 4px solid #FCAE00;
-    border-radius: 10px;
-    font-size: 16px;
-    cursor: pointer;
-    padding: 12px 20px;
-    width: 48%; /* Each button takes half width */
-    transition: 0.3s ease-in-out;
+.solo-result-buttons-completed {
+    display: flex;
+    justify-content: space-between;
+    width: 90%;
+    max-width: 400px;
+    position: relative;
+    top: 14px;
 }
 
-/* Hover Effect */
-.btn-retry:hover,
-.btn-exit-failed:hover {
-    background-color: #011F2B;
+/* Buttons */
+.solo-result-buttons-failed {
+    display: flex;
+    justify-content: space-between;
+    width: 90%;
+    max-width: 400px;
+    position: relative;
+    top: 30px;
+    
+}
+
+.btn-solo-exit, 
+.btn-solo-nextlevel {
+    position: relative;
+    top: 34px;
+    background: linear-gradient(to top, #FF0000, #B80000);
+    color: white;
+    font-size: 20px;
+    font-family: zen dots;
+    padding: 12px 20px;
+    width: 48%;
+    border: none;
+    border-radius: 10px;
+    transition: 0.3s;
+}
+
+.btn-solo-retry {
+    position: relative;
+    top: 34px;
+    color: white;
+    font-size: 20px;
+    font-family: zen dots;
+    padding: 12px 20px;
+    width: 48%;
+    border: none;
+    border-radius: 10px;
+    transition: 0.3s;
+}
+
+.btn-solo-nextlevel {
+    background: linear-gradient(to top, #37FF00, #00B816);
+}
+
+.btn-solo-retry {
+    background: linear-gradient(to top, #37FF00, #00B816);
+}
+
+.btn-solo-exit:hover, 
+.btn-solo-nextlevel:hover,
+.btn-solo-retry:hover {
+    cursor: pointer;
     transform: scale(1.05);
+}
+
+/* Responsive Sizing */
+@media (max-width: 768px) {
+    .solo-result-panel-completed, 
+    .solo-result-panel-failed {
+        width: 90%;
+        min-height: 300px;
+        padding: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .solo-result-panel-completed, 
+    .solo-result-panel-failed {
+        width: 95%;
+        min-height: 250px;
+        padding: 15px;
+        background-size: cover; /* Adjust for small screens */
+    }
 }

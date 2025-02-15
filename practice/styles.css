@@ -1,0 +1,379 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Zen Dots', sans-serif;
+    background: url(../img/bgPractice.png) no-repeat center/cover;
+    overflow-y: hidden;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    padding-top: 1rem;
+    animation: fadeIn 1s ease-in-out; /* Fade-in effect for the container */
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* Game Area */
+.game-area {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 1650px;
+    height: 100%;
+    max-height: 750px;
+}
+
+.team {
+    background: url('../img/bgteam.png') no-repeat center/cover;
+    background-size: cover; /* Ensure the background image covers the entire container */
+    width: 100%;
+    max-width: 1000px;
+    height: auto;
+    min-height: 800px; /* Adjust as needed */
+    padding: 1.0rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-align: center;
+    color: white;
+    position: relative;
+    animation: slideIn 1s ease-in-out; /* Slide-in effect for the team sections */
+}
+
+@keyframes slideIn {
+    from { transform: translateX(-100%); }
+    to { transform: translateX(0); }
+}
+
+.team h2 {
+    font-family: zen dots;
+    font-size: 26px;
+    font-weight: normal;
+}
+
+/* Player Profiles */
+.player-profiles {
+    position: absolute;
+    top: 10%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.team-1 .player-profiles { left: -7rem; }
+.team-2 .player-profiles { right: -7rem; }
+
+.profile {
+    width: 6.25rem;
+    height: 6.25rem;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 0.625rem;
+}
+
+.profile-img {
+    width: 3.125rem;
+    height: 3.125rem;
+    border-radius: 50%;
+    border: 2px solid #fff;
+}
+
+/* Buttons */
+.buttons {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.pass, .run {
+    width: 35%;
+    padding: 0.800rem;
+    border: none;
+    cursor: pointer;
+    font-size: 1.5rem;
+    border-radius: 5px;
+    font-family: zen dots;
+    color: #fff;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    transition: transform 0.3s ease; /* Smooth transition for hover effect */
+}
+
+.pass:hover, .run:hover {
+    transform: scale(1.1); /* Scale up effect on hover */
+}
+
+.pass { background: linear-gradient(to right, #FF0000, #B80000); }
+.run { background: linear-gradient(to right, #37FF00, #00B816); }
+
+/* Instruction Panel */
+.instruction-panel {
+    width: 34%;
+    padding: 1rem;
+    text-align: center;
+    display: flex;
+    margin-right: 6%;
+    animation: slideIn 1s ease-in-out;
+}
+
+.instruction-box, .output-box, .expected-output-box {
+    background-color: #011F2B;
+    padding: 1rem;
+    border-radius: 10px;
+    border: 2px solid #D9D9D9;
+    color: #011F2B;
+}
+
+.output-box {
+    flex: 1;
+    height: 24.75rem;
+    width: 20.75rem;
+    background-color: #FCAE00;
+    overflow-y: auto;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    
+}
+
+.instruction-box, .expected-output-box {
+    flex: 2;
+    width: 18.625rem;
+    height: 12.375rem;
+    background-color: #FCAE00;
+    overflow-y: auto;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.instruction-box h3 {
+    font-size: 18px;
+}
+
+#task-area p {
+    font-size: 14px;
+    font-family: zen dots;
+    color: #fff;
+}
+
+.expected-output-box h2 {
+    font-size: 14px;
+}
+
+#task-area {
+    width: 100%;
+    height: 9.25rem;
+    background-color: #032743;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    color: black;
+    padding: 0.625rem;
+    text-align: left;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    white-space: normal;
+    overflow-y: auto;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+#output-area {
+    width: 100%;
+    height: 20.20rem;
+    background-color: #032743;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    color: #fff;
+    padding: 0.625rem;
+    text-align: left;
+    margin-top: 0.625rem;
+    overflow-y: auto;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+#expected-output-area {
+    width: 100%;
+    height: 9.25rem;
+    background-color: #032743;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    color: #fff;
+    padding: 0.625rem;
+    text-align: left;
+    margin-top: 0.625rem;
+    overflow-y: auto;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+/* Scoreboard */
+.scoreboard {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    top: 34%;
+    left: 10%;
+    transform: translateX(-140%);
+    animation: fadeIn 1s ease-in-out; /* Fade-in effect for the scoreboard */
+}
+
+.team-score {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #011F2B;
+    border-radius: 10px;
+    border: 2px solid #FFE346;
+    width: 10rem;
+    height: 8rem;
+}
+
+.score {
+    font-size: 1.5rem;
+    font-family: 'Zen Dots';
+    color: #76D5FE;
+    text-align: center;
+    margin-bottom: 0.3125rem;
+}
+
+.life {
+    width: 7.5rem;
+    height: 7.0rem;
+}
+
+.vs-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 120px;
+}
+
+.joybee-img {
+    width: 50px;  /* Adjust this size as needed */
+    height: auto;
+    margin-bottom: 5px; /* Adds space between the image and "VS" */
+}
+
+.vs {
+    font-size: 1.875rem;
+    font-weight: bold;
+    color: white;
+    padding: 0.625rem;
+    border: 3px solid #FFE346;
+    text-align: center;
+}
+
+/* Code Input */
+.code-input {
+    width: 90%;
+    max-width: 500px;
+    height: 100%;
+    max-height: 800px;
+    font-family: 'Zen dots', Arial, Helvetica, sans-serif;
+    background-color: #fff;
+    color: black;
+    border: 1px solid #ffcc00;
+    padding: 0.625rem;
+    border-radius: 5px;
+    resize: none;
+    margin: auto;
+    overflow-y: auto;
+  
+}
+
+.code-input::-webkit-scrollbar {
+    padding-right: 5%;
+    width: 5px;
+  }
+  
+  .code-input::-webkit-scrollbar-thumb {
+    background-color: #FCAE00;
+    border-radius: 10px;
+  }
+
+.chat-box {
+    display: flex;
+    flex-direction: column; /* I-arrange ang chat messages sa itaas */
+    align-items: stretch;
+    gap: 10px; /* Space between chat messages and input field */
+    width: 100%;
+}
+
+.chat-messages {
+    width: 100%;
+    max-width: 420px;
+    height: 60px;
+    overflow-y: auto;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    border: 1px solid #ccc;
+    padding: 1rem;
+    background-color: #011F2B;
+    border-radius: 5px;
+    text-align: left;
+    align-self: center;
+    font-family: Poppins;
+    animation: fadeIn 0.5s ease-in-out; /* Fade-in effect for chat messages */
+    
+    /* Para sa automatic word break */
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    white-space: normal;
+}
+
+.chat-input-container {
+    display: flex;
+    align-self: center;
+    justify-self: center;
+    gap: 10px; /* Space between input and button */
+    width: 75%;
+}
+
+.chat-box input[type="text"] {
+    flex: 1; /* Flexible width */
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-family: Poppins;
+}
+
+.chat-box button {
+    padding: 10px;
+    border: none;
+    background-color: #007bff;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease; /* Smooth transition for hover effect */
+}
+
+.chat-box button:hover {
+    background-color: #0056b3;
+    transform: scale(1.1); /* Scale up effect on hover */
+}
+
+.chat-box button img {
+    width: 20px;
+    height: 20px;
+}

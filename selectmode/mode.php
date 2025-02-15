@@ -18,6 +18,9 @@ $user_type = $user_row['user_type'];
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Zen+Dots&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
@@ -69,7 +72,7 @@ $user_type = $user_row['user_type'];
                 <img src="../img/mdSolo.png" alt="Solo Mode" class="solo-mode walkthrough-item locked" id="solomodeImage">
                 <img src="../img/mdpvp.png" alt="PvP Mode" class="pvp-mode walkthrough-item locked" id="multimodeImage"> 
                 <img src="../img/mdLesson.png" alt="Lesson Mode" class="lesson-mode walkthrough-item unlocked" id="lessonModeImage" onclick="window.location.href='../lesson/lesson.php';">
-                <img src="../img/mdpractice.png" alt="Practice Mode" class="practice-mode walkthrough-item locked" id="practiceModeImage">
+                <img src="../img/mdpractice.png" alt="Practice Mode" class="practice-mode walkthrough-item locked" id="practiceModeImage" onclick="window.location.href='../selectcourse/course.php';">
             </div>
 
             <!-- FOR NEW USER WALKTHROUGH NewUserLoad DOMContentLoaded-->
@@ -121,7 +124,19 @@ $user_type = $user_row['user_type'];
                         joybeeTextBox.style.display = "none";
                         // After skipping walkthrough, show lesson mode image with guide
                         document.getElementById("lessonModeImage").style.backgroundColor = "transparent";
-                        document.getElementById("lessonModeImage").style.boxShadow = "0 10px 20px #fff";
+                        
+
+                       // Apply bounce animation
+                        lessonModeImage.style.transform = "scale(1.2)";
+                        lessonModeImage.animate([
+                            { transform: "scale(1.2)" }, 
+                            { transform: "scale(1.4)" }, 
+                            { transform: "scale(1.2)" }
+                        ], {
+                            duration: 1200, // Animation duration in milliseconds
+                            iterations: Infinity, // Play animation once
+                            easing: "ease-in-out" // Smooth bounce effect
+                        });
                     }
                     if (shouldSkip) {
                         skipWalkthrough();
@@ -162,16 +177,68 @@ $user_type = $user_row['user_type'];
 
               </script>
 
-                  <!-- global chat input text  with global icon  and send button-->
-                  <div class="global-chat-container">
-                    <button class="global-chat-icon">
-                        <img src="../img/global.png" alt="Global Chat" class="global-chat-image">
-                    </button>
-                    <input type="text" placeholder="Type your message here..." class="global-chat-input">
-                    <button class="global-chat-send">
-                        <img src="../img/btnGsend.png" alt="Send">
-                    </button>
-                </div>
+          <!-- Global Chat Input Text with Global Icon and Send Button -->
+          <div class="global-chat-container">
+              <button class="global-chat-icon" onclick="toggleChatPanel()">
+                  <img src="../img/global.png" alt="Global Chat" class="global-chat-image">
+              </button>
+              <input type="text" placeholder="Type your message here..." class="global-chat-input" id="chatInput">
+              <button class="global-chat-send" onclick="sendMessage()">
+                  <img src="../img/btnGsend.png" alt="Send">
+              </button>
+          </div>
+
+          <!-- Chat Panel Box Conversation -->
+          <div class="chat-panel-box" id="chatPanelBox">
+              <!-- Header Title -->
+              <div class="chat-header">
+                  <img src="../img/logo.png" alt="User Icon" class="user-icon">
+                  <h2>Welcome to Code Quest!</h2>
+              </div>
+              <!-- Add your chat messages here -->
+              <div class="chat-message">
+
+              </div>
+              <!-- Add more chat messages as needed -->
+          </div>
+
+          <script>
+            function toggleChatPanel() {
+                var chatPanelBox = document.getElementById('chatPanelBox');
+                if (chatPanelBox.style.display === 'none' || chatPanelBox.style.display === '') {
+                    chatPanelBox.style.display = 'block';
+                } else {
+                    chatPanelBox.style.display = 'none';
+                }
+            }
+
+            function sendMessage() {
+                var chatInput = document.getElementById('chatInput');
+                var chatPanelBox = document.getElementById('chatPanelBox');
+                var message = chatInput.value.trim();
+
+                if (message) {
+                    var newMessage = document.createElement('div');
+                    newMessage.className = 'chat-message';
+
+                    var userIcon = document.createElement('img');
+                    userIcon.src = '../img/avatar.png';
+                    userIcon.alt = 'User Icon';
+                    userIcon.className = 'user-icon';
+
+                    var messageText = document.createElement('span');
+                    messageText.textContent = message;
+
+                    newMessage.appendChild(userIcon);
+                    newMessage.appendChild(messageText);
+                    chatPanelBox.appendChild(newMessage); // Append at the bottom
+                    chatInput.value = ''; // Clear the input field
+
+                    // Scroll to the bottom of the chat panel box
+                    chatPanelBox.scrollTop = chatPanelBox.scrollHeight;
+                }
+            }
+          </script>
 
                   
               <!-- ALL MODAL MODES (SOLO) (PVP) (LESSON) (PRACTICE)-->
@@ -199,19 +266,17 @@ $user_type = $user_row['user_type'];
                   function showLoadingAndRedirect(url) {
                 
                     document.getElementById("loading").style.display = "flex";
-
-                   
                     setTimeout(function() {
                       window.location.href = url;
                     }, 2000);
                   }
 
-                  // Event listener para sa Take Lesson button
+                  // Event listener for Take Lesson button
                   document.getElementById("TakeLesson").addEventListener("click", function() {
                     showLoadingAndRedirect('../lesson/lesson.php');
                   });
 
-                  // Event listener para sa Start Game button
+                  // Event listener for Start Game button
                   document.getElementById("StartGame").addEventListener("click", function() {
                     showLoadingAndRedirect('../level1-15/level1-15.php');
                   });
@@ -276,38 +341,38 @@ $user_type = $user_row['user_type'];
                 </script>
 
                 <!---------------------- Practice Mode Modal ------------------------------->
-                <div id="practiceModeModal" class="practice-modal">
+                <!-- <div id="practiceModeModal" class="practice-modal">
                   <div class="practice-modal-content">
                     <span class="practice-close" id="practiceCloseModal">&times;</span>
                     <h2>Practice Mode</h2>
                     <p>Welcome to Practice Mode! Personalize your game settings and start your challenge.</p>
                     <button id="startPracticeBtn" class="practice-start-btn">Start Game</button>
                   </div>
-                </div>
+                </div> -->
 
                 <!-- JavaScript for Practice Mode Modal -->
-                <script>
+                <!-- <script>
                   const practiceModeImage = document.getElementById("practiceModeImage");
                   const practiceModeModal = document.getElementById("practiceModeModal");
-                  const practiceCloseModal = document.getElementById("practiceCloseModal");
+                  const practiceCloseModal = document.getElementById("practiceCloseModal"); -->
 
-                  // Open Practice Mode Modal when clicking on the image
-                  practiceModeImage.addEventListener("click", () => {
+                  <!-- // Open Practice Mode Modal when clicking on the image -->
+                  <!-- practiceModeImage.addEventListener("click", () => {
                     practiceModeModal.style.display = "block";
-                  });
+                  }); -->
 
-                  // Close Practice Mode Modal when clicking on the close button
-                  practiceCloseModal.addEventListener("click", () => {
+                  <!-- // Close Practice Mode Modal when clicking on the close button -->
+                  <!-- practiceCloseModal.addEventListener("click", () => {
                     practiceModeModal.style.display = "none";
-                  });
+                  }); -->
 
-                  // Close Practice Mode Modal when clicking outside the modal
-                  window.addEventListener("click", (event) => {
+                  <!-- // Close Practice Mode Modal when clicking outside the modal -->
+                  <!-- window.addEventListener("click", (event) => {
                     if (event.target === practiceModeModal) {
                       practiceModeModal.style.display = "none";
                     }
-                  });
-                </script>
+                  }); -->
+                <!-- </script> -->
 
                 <!-- User's Lobby Modal -->
                   <div id="usersLobbyModal" class="users-lobby-modal">
@@ -453,5 +518,18 @@ $user_type = $user_row['user_type'];
                       });
                     });
                   </script>
+
+                  <!-- FULL SCREEN MODE -->
+                   <script>
+                    function goFullscreen() {
+    if (document.documentElement.requestFullscreen) {
+        document.documentElement.requestFullscreen();
+    }
+}
+
+document.addEventListener("DOMContentLoaded", function() {
+    goFullscreen();
+});
+</script>
 </body>
 </html>

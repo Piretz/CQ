@@ -1,10 +1,10 @@
 body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: url(../img/bgALL.png) no-repeat center/cover;
     font-family: 'Poppins', sans-serif;
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    background-image: url(../img/background.png);
-   
 }
 
 .box-container {
@@ -23,7 +23,7 @@ body {
     justify-content: center;
     align-items: center;
     border-radius: 15px;
-    box-shadow: 0 10px 20px #FCAE00;
+    box-shadow: 0px 5px 15px #FCAE00;
     overflow-y: hidden;
 }
 
@@ -34,7 +34,7 @@ body {
     left: 50%;
     transform: translateX(-50%);
     text-align: center;
-    color: #fff;
+    color: black;
     font-size: 2.5rem;
     font-weight: bold;
     margin-bottom: 20px;
@@ -274,3 +274,342 @@ body {
 }
 
 
+/* Quiz Modal */
+.quiz-modal {
+    display: none; /* Hidden by default */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+}
+
+.quiz-content {
+    position: relative;
+    top: 20px;
+    width: 100%; /* Adjusted for better responsiveness */
+    max-width: 800px;
+    height: auto;
+    min-height: 500px;
+    background: url("../img/bgPanelQuiz.png") center/cover no-repeat;
+    background-size: 100%;
+    padding: 30px; /* Increased padding for better spacing */
+    border-radius: 20px;
+    box-shadow: 0 10px 20px rgba(255, 174, 0, 0.5); /* Adjusted shadow color */
+    text-align: center;
+    color: white;
+    margin: 80px auto; /* Adjusted margin */
+    border: 2px solid #FCAE00; /* Futuristic glowing effect */
+}
+
+/* Back Button Styling */
+.btn-back {
+    position: absolute;
+    top: 40px;
+    right: 15px;
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out;
+}
+
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 25px;
+    cursor: pointer;
+}
+
+.btn-back:hover {
+    transform: scale(1.1);
+}
+
+.btn-back-image {
+    width: 45px; /* Slightly larger for visibility */
+    height: auto;
+}
+
+
+.quiz-content h2 {
+    font-size: 20px;
+    color: #FCAE00; /* Emphasize question title */
+    text-shadow: 2px 2px 8px rgba(255, 174, 0, 0.8);
+    margin-top: 10%;
+}
+
+/* Quiz Choices */
+.quiz-content label {
+    display: flex;
+    align-items: center;
+    background: #032743;
+    padding: 12px;
+    border-radius: 10px;
+    margin: 8px 0;
+    cursor: pointer;
+    font-size: 16px;
+    transition: 0.3s;
+    border: 1px solid transparent;
+}
+
+.quiz-content label:hover {
+    background: #04496b;
+    border: 1px solid #FCAE00;
+    transform: scale(1.02);
+}
+
+.quiz-content input[type="radio"] {
+    margin-right: 10px;
+    transform: scale(1.2);
+    accent-color: #FCAE00;
+}
+
+/* Submit Button */
+.btn-submit {
+    background: none;
+    border: none;
+    cursor: pointer;
+    margin-top: 20px;
+    display: flex;
+    justify-content: center; /* Centers horizontally */
+    align-items: center; /* Centers vertically */
+    width: 100%; /* Ensures it spans the full container width */
+}
+
+.btn-submit img {
+    width: 300px; /* Increased size for better visibility */
+    height: auto;
+    transition: 0.3s ease-in-out;
+}
+
+.btn-submit img:hover {
+    transform: scale(1.1);
+}
+
+
+
+
+/* --------------------------------CORRECT MODAL--------------------- */
+.quiz-correct {
+    display: none; /* Hidden by default */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.quiz-content-completed {
+    position: relative;
+    width: 80%;
+    height: auto;
+    max-height: 80vh; /* Gamitin ang 90% ng viewport height */
+    max-width: 800px; /* Mas malaking width */
+    background: url("../img/bgPanelQuizResult.png") no-repeat center;
+    background-size: 100% 100%; /* Gamitin cover para palaging sakto sa container */
+    padding: 100px; /* Bahagyang mas malaki */
+    border-radius: 15px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 10px;
+}
+
+
+.quiz-completed {
+    font-family: zen dots;
+    font-size: 30px;
+    position: relative;
+    bottom: 20px;
+}
+
+.quiz-result {
+    font-size: 22px;
+    font-family: zen dots;
+}
+
+.quiz-rewards {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+.progress-container {
+    display: flex;
+    align-items: center;
+    width: 50%;
+    gap: 0 15px;
+}
+
+.progress-label {
+    color: #FCAE00;
+    font-size: 18px;
+    font-weight: normal;
+    font-family: zen dots;
+    
+    white-space: nowrap;
+    position: relative;
+    top: 10px;
+}
+
+.progress-bar {
+    flex-grow: 1;
+    height: 20px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+    top: 10px;
+}
+
+.progress-fill {
+    height: 100%;
+    background: #00E508;
+    width: 50%; /* Placeholder width */
+    transition: width 0.5s ease-in-out;
+}
+
+.quiz-badge-container {
+    text-align: center;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    position: relative;
+    top: 30px;
+}
+
+.quiz-badges {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 50px;
+}
+
+.quiz-badge-image {
+    width: 60px;
+    height: 60px;
+}
+
+.quiz-buttons-completed {
+    display: flex;
+    justify-content: space-around;
+    width: 80%;
+    position: relative;
+    top: 50px;
+}
+
+.btn-exit, 
+.btn-back-lesson {
+    background: linear-gradient(to top, #FF0000, #B80000);
+    color: white;
+    font-size: 16px;
+    padding: 20px;
+    width: 45%;
+    border: none;
+    border-radius: 10px;
+    transition: 0.3s;
+    font-family: 'Zen Dots', sans-serif;
+    gap: 10px;
+}
+
+.btn-back-lesson {
+    background: linear-gradient(to top, #37FF00, #00B816);
+}
+
+.btn-exit:hover, 
+.btn-back-lesson:hover {
+    transform: scale(1.05);
+}
+
+/* -------------- INCORRECT ----------------- */
+.quiz-incorrect {
+    display: none; /* Hidden by default */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.quiz-content-failed {
+    position: relative;
+    width: 80%;
+    height: auto;
+    max-height: 80vh; /* Gamitin ang 90% ng viewport height */
+    max-width: 800px; /* Mas malaking width */
+    background: url("../img/bgPanelQuizResult.png") no-repeat center;
+    background-size: 100% 100%; /* Gamitin cover para palaging sakto sa container */
+    padding: 100px; /* Bahagyang mas malaki */
+    border-radius: 15px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Quiz Failed Heading */
+.quiz-failed {
+    font-size: 30px;
+    font-family: 'Zen Dots', sans-serif;
+    margin-bottom: 10px;
+    color: #E80000;
+}
+
+/* Quiz Failed Result */
+.quiz-result {
+    font-size: 26px;
+    font-family: 'Zen Dots', sans-serif;
+    padding: 10px 20px;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.2);
+    margin-bottom: 20px;
+}
+
+/* Buttons */
+.quiz-buttons-failed {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 350px;
+    margin-top: 20px;
+}
+
+.btn-exit, 
+.btn-retake {
+    background: linear-gradient(to top, #FF0000, #B80000);
+    color: white;
+    font-size: 18px;
+    padding: 12px 20px;
+    width: 48%;
+    border: none;
+    border-radius: 10px;
+    transition: 0.3s;
+    font-family: 'Zen Dots', sans-serif;
+}
+
+.btn-retake {
+    background: linear-gradient(to top, #37FF00, #00B816);
+}
+
+.btn-exit:hover, 
+.btn-retake:hover {
+    transform: scale(1.05);
+}

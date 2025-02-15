@@ -1,11 +1,11 @@
 body {
-    font-family: 'Poppins', sans-serif;
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 100vh; /* Ensure the body takes full height of the viewport */
-    background-image: url(../img/background.png);
+    height: 100vh;
+    background: url(../img/bgALL.png) no-repeat center/cover;
+    font-family: 'Poppins', sans-serif;
+    flex-direction: column;
 }
 
 .leaderboard-container {

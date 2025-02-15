@@ -1,5 +1,9 @@
 body {
-    background-image: url(../img/background.png);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: url(../img/bgALL.png) no-repeat center/cover;
     font-family: 'Poppins', sans-serif;
 }
 /* Panel Container */
@@ -18,17 +22,12 @@ body {
 /* Messages List */
 .messages-list {
     width: 100%;
-    max-width: 500px; /* Fixed size */
+    max-width: 580px; /* Fixed size */
     overflow: hidden;
-    background-color: #032743;
+    background: url(../img/bgPanelMessageList.png) no-repeat center/cover;
     padding: 10px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(201, 185, 185, 0.966);
-    border-left: 1px solid #FCAE00;
-    border-right: 1px solid #FCAE00;
-    border-top: 1px solid #FCAE00;
-    border-bottom: 4px solid #FCAE00;
 }
+
 
 .messages-container {
     overflow-y: auto;
@@ -51,6 +50,7 @@ body {
     -webkit-background-clip: text;
     color: transparent;
     z-index: 10; /* Ensure it stays above the search bar */
+    margin-top: 20px;
 }
 
 .list-header .search-bar {
@@ -97,7 +97,7 @@ body {
     width: 40px;
     height: 40px;
     border-radius: 50%;
-    margin-right: 10px;
+    margin-left: 10px;
 }
 
 .message-details {
@@ -116,7 +116,7 @@ body {
 
 .message-item:hover {
     cursor: pointer;
-    background-color: #32353d;
+    background-color: #053052;
     max-width: 100%;
     border-radius: 6px;
 }
@@ -132,6 +132,7 @@ body {
     font-size: 14px;
     color: #aaa;
     margin-left: auto; /* This aligns the time to the right */
+    margin-right: 20px;
 }
 
 .message-item .message-details {
@@ -145,13 +146,12 @@ body {
 /* Panel Box for Conversation Body */
 .conversation-body {
     width: 100%;
-    background-color: #032743;
-    padding: 20px;
-    border-radius: 8px;
-    border-left: 1px solid #FCAE00;
-    border-right: 1px solid #FCAE00;
-    border-top: 1px solid #FCAE00;
-    border-bottom: 4px solid #FCAE00;
+    height: auto;
+    max-height: 80vh; /* Gamitin ang 90% ng viewport height */
+    max-width: 9000px; /* Mas malaking width */
+    background: url("../img/bgPanelChatBody.png") no-repeat center;
+    background-size: 100% 100%; /* Gamitin cover para palaging sakto sa container */
+    padding: 10px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -160,13 +160,15 @@ body {
 .header-box {
     display: flex;
     align-items: center;
-    margin-bottom: 20px;
+    justify-content: center;
+    margin-bottom: 15px;
+    border-bottom: #d5d6d8;
 }
 
 .header-box .profile-img {
     width: 50px;
     height: 50px;
-    margin-right: 10px;
+    
 }
 
 .header-box .user-name {
@@ -239,15 +241,15 @@ body {
 
 .bottom-box {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
     align-items: center;
-    margin-top: auto;
+    margin-bottom: 26px;
     gap: 10px;
     color: #ccc;
 }
 
 .bottom-box textarea {
-    width: 100%;
+    width: 80%;
     padding: 5px;
     border-radius: 5px;
     border: 1px solid #304F66;

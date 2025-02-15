@@ -48,7 +48,7 @@ body {
 
 /* Quiz Content */
 .quiz-content {
-    margin-top: 25px;
+    margin-top: 35px;
 }
 
 .quiz-content h2 {
@@ -97,7 +97,7 @@ body {
 }
 
 .btn-submit img {
-    width: 140px; /* Increased size for better visibility */
+    width: 200px; /* Increased size for better visibility */
     height: auto;
     transition: 0.3s ease-in-out;
 }
@@ -106,95 +106,151 @@ body {
     transform: scale(1.1);
 }
 
+
+
+/* --------------------------------------------------------------------- */
 /* Quiz Completed Panel */
 .quiz-panel-completed {
     position: relative;
-    width: 80%;
+    width: 100%;
     max-width: 690px;
-    background: url("../img/bgPanelQuizResult.png") no-repeat center center;
-    background-size: cover;
-    padding: 30px;
+    background: url("../img/bgPanelQuizResult.png") no-repeat center;
+    background-size: contain;
+    padding: 80px;
     border-radius: 15px;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
     text-align: center;
     color: white;
     margin: 50px auto;
-}
-
-/* Quiz Completed Content */
-.quiz-content-completed {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
 }
 
-/* Quiz Completed Heading */
-.quiz-completed {
-    font-size: 28px;
-    font-weight: bold;
-    font-family: zen dots;
-    margin-bottom: 10px;
-    color: #00E508;
-}
-
-/* Quiz Result */
-.quiz-result {
-    font-size: 20px;
-    font-weight: bold;
-    background-color: rgba(255, 255, 255, 0.2);
-    padding: 10px 20px;
-    border-radius: 10px;
-    margin-bottom: 20px;
-}
-
-/* Buttons Container (Aligns buttons in one row) */
-.quiz-buttons {
-    display: flex;
-    justify-content: space-between; /* Distributes buttons left & right */
+/* Quiz Rewards Section */
+.quiz-rewards {
     width: 100%;
-    max-width: 400px; /* Limits button container width */
-    margin-top: 20px;
+    max-width: 700px;
+    position: relative;
+    display: flex;
+    justify-content: space-between; /* Distributes items left and right */
+    align-items: center;
+    flex-wrap: wrap; /* Ensures responsiveness */
 }
+
+.quiz-completed{
+    font-family: zen dots;
+    font-size: 30px;
+}
+
+/* Rank and Level progress bar container */
+.progress-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 48%; /* Ensures two progress bars fit in a row */
+   
+}
+
+.progress-label {
+    font-size: 18px;
+    font-weight: bold;
+    margin-right: 10px;
+    white-space: nowrap; /* Prevents text wrapping */
+    position: relative;
+    bottom: 34px;
+}
+
+.progress-bar {
+    flex-grow: 1; /* Ensures progress bar takes remaining space */
+    height: 20px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+    bottom: 34px;
+}
+
+.progress-fill {
+    height: 100%;
+    background: #00E508;
+    width: 50%; /* Placeholder width */
+    transition: width 0.5s ease-in-out;
+}
+
+
+/* Badge Section */
+/* Badge Section */
+.quiz-badge-container {
+    text-align: center;
+    display: flex;
+    justify-content: center; /* Centers horizontally */
+    align-items: center; /* Centers vertically */
+    width: 100%;
+}
+
+/* Align badge images in the center */
+.quiz-badges {
+    display: flex;
+    justify-content: center; /* Ensures badges are centered */
+    align-items: center;
+    flex-wrap: wrap; /* Allows responsiveness */
+    gap: 10px; /* Adds spacing between badges */
+    position: relative;
+    bottom: 24px;
+}
+
+.quiz-badge-image {
+    width: 50px;
+    height: 50px;
+}
+
 
 /* Buttons */
-.btn-exit {
-    background: linear-gradient(to top, #FF0000, #E50000, #E47575, #B80000, #000000);
-    color: black;   
-    font-size: 20px;
-    font-family: zen dots;
-    cursor: pointer;
+.quiz-buttons-completed {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 400px;
+    position: relative;
+    bottom: 10px;
+}
+
+.btn-exit, 
+.btn-back-lesson {
+    background: linear-gradient(to top, #FF0000, #B80000);
+    color: white;
+    font-size: 16px;
     padding: 12px 20px;
-    width: 48%; /* Each button takes half width */
-    transition: 0.3s ease-in-out;
+    width: 48%;
+    border: none;
+    border-radius: 10px;
+    transition: 0.3s;
+    font-family: zen dots;
 }
 
 .btn-back-lesson {
-    background: linear-gradient(to top, #37FF00, #00E508, #75E475, #00B816, #000000);
-    color: black;
-    font-size: 20px;
-    font-family: zen dots;
-    cursor: pointer;
-    padding: 12px 20px;
-    width: 48%; /* Each button takes half width */
-    transition: 0.3s ease-in-out;
+    background: linear-gradient(to top, #37FF00, #00B816);
+    width: 50%;
 }
 
-/* Hover Effect */
-.btn-back-lesson:hover,
-.btn-exit:hover {
-    background-color: #011F2B;
+.btn-exit:hover, 
+.btn-back-lesson:hover {
     transform: scale(1.05);
 }
 
+
+
+
+/* -------------------------------------------- */
 /* Quiz Panel Failed */
 .quiz-panel-failed {
     position: relative;
-    width: 80%;
+    width: 100%;
     max-width: 690px;
-    background: url("../img/bgPanelQuizResult.png") no-repeat center center;
-    background-size: cover;
-    padding: 30px;
+    background: url("../img/bgPanelQuizResult.png") no-repeat center;
+    background-size: contain;
+    padding: 80px;
     border-radius: 15px;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
     text-align: center;
@@ -212,11 +268,10 @@ body {
 
 /* Quiz Failed Heading */
 .quiz-failed {
-    font-size: 28px;
-    font-weight: bold;
+    font-size: 30px;
+    font-family: zen dots;
     margin-bottom: 10px;
     color: #E80000;
-    font-family: zen dots;
 }
 
 /* Quiz Failed Result */
@@ -229,33 +284,44 @@ body {
     margin-bottom: 20px;
 }
 
-/* Buttons Container (Aligns buttons in one row) */
+/* Buttons */
+/* Buttons */
 .quiz-buttons-failed {
     display: flex;
-    justify-content: space-between; /* Distributes buttons left & right */
+    justify-content: space-between;
+    align-items: center;
     width: 100%;
-    max-width: 400px; /* Limits button container width */
+    max-width: 400px;
     margin-top: 20px;
+    margin-left: 20%;
 }
 
-/* Buttons */
-.btn-retry,
-.btn-exit-failed {
-    background: #032743;
+.btn-exit, 
+.btn-retake {
+    background: linear-gradient(to top, #FF0000, #B80000);
     color: white;
-    border: 2px solid #FCAE00;
-    border-bottom: 4px solid #FCAE00;
-    border-radius: 10px;
-    font-size: 16px;
-    cursor: pointer;
+    font-size: 18px;
     padding: 12px 20px;
-    width: 48%; /* Each button takes half width */
-    transition: 0.3s ease-in-out;
+    width: 48%;
+    border: none;
+    border-radius: 10px;
+    transition: 0.3s;
+    font-family: zen dots;
 }
 
-/* Hover Effect */
-.btn-retry:hover,
-.btn-exit-failed:hover {
-    background-color: #011F2B;
+.btn-retake{
+    background: linear-gradient(to top, #37FF00, #00B816);
+}
+
+.btn-exit:hover, 
+.btn-retake:hover {
     transform: scale(1.05);
+}
+
+/* -------------Result Total Score -------------------------*/
+.quiz-result{
+    font-size: 26px;
+    font-family: zen dots;
+    position: relative;
+    bottom: 20px;
 }

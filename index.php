@@ -75,7 +75,7 @@ if(isset($_SESSION['ID'])){
             <div class="main-section" id="home">
                 <div class="images-container">
                 <img src="./img/Cipherion.png" alt="Cipherion Image" class="cipherion-img">
-                <img src="./img/play.png" alt="Play Image" class="play-img">
+                <img src="./img/play.png" alt="Play Image" class="play-img" id="playBtn" >
                 </div>
             </div>
 
@@ -273,7 +273,7 @@ if(isset($_SESSION['ID'])){
                 <!-- Header Section -->
                 <div class="signupmodal-header">
                     <!-- Close Button -->
-                 <span class="close-btn" id="closeSignupBtn"><img src="./img/btnbackcourse.png" alt="Close"></span>
+                    <span class="close-btn" id="closeSignupBtn"><img src="./img/btnbackcourse.png" alt="Close"></span>
                     <h2>SIGN UP</h2>
                 </div>
 
@@ -352,9 +352,11 @@ if(isset($_SESSION['ID'])){
                 // Get the modal
                 var modal = document.getElementById("loginModal");
                 var closeBtn = document.getElementById("closeBtn");
+                
 
                 // Get the button that opens the modal
                 var btn = document.getElementById("loginBtn");
+                
 
                 // Get the <span> element that closes the modal
                 var closeBtn = document.getElementById("closeBtn");
@@ -362,6 +364,7 @@ if(isset($_SESSION['ID'])){
                 // When the user clicks the button, open the modal
                 btn.onclick = function() {
                     modal.style.display = "flex";  // Show the modal
+                    
                 }
 
                 // When the user clicks on <span> (x), close the modal
@@ -376,6 +379,17 @@ if(isset($_SESSION['ID'])){
                     }
                 }
             </script>
+
+            <script>
+                var playmodal = document.getElementById("loginModal");
+                
+                var btn = document.getElementById("playBtn");
+
+                btn.onclick = function() {
+                    playmodal.style.display = "flex";  // Show the modal
+                    
+                }
+                </script>
 
             <script>
                 // Show/Hide password functionality

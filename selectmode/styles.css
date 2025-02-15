@@ -5,10 +5,16 @@
   box-sizing: border-box;
 }
 
+html, body {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
 body {
   position: relative;
   box-sizing: border-box;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Poppins', 'Zen dots', sans-serif;
   background-image: url(../img/bgdashboard.png);
   background-size: cover; /* Ensures the image covers the entire viewport */
   background-repeat: no-repeat;
@@ -238,7 +244,59 @@ body {
   height: 30px;
 }
 
+/* Chat Panel Box Conversation */
+.chat-panel-box {
+  display: none; /* Hidden by default */
+  position: fixed;
+  bottom: 80px; /* Adjust as needed */
+  right: 400px; /* Align with the chat container */
+  width: 350px;
+  max-width: 90%;
+  height: 300px; /* Set a fixed height */
+  overflow-y: auto; /* Enable vertical scrolling */
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  background: #032743;
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  padding: 10px;
+  z-index: 1000; /* Ensure it appears above other elements */
+  flex-direction: column; /* Ensure messages are added from the top */
+}
 
+.chat-header {
+  position: sticky;
+  top: -10px;
+  background: #032743;
+  padding: 10px;
+  z-index: 1001; /* Ensure it appears above other elements */
+  border-bottom: 1px solid #fff;
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  font-size: 14px;
+  color: #fff;
+}
+
+.chat-header h2 {
+  margin: 0;
+  font-size: 16px;
+  color: #fff;
+}
+
+.chat-message {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  font-size: 14px;
+  color: #fff;
+}
+
+.user-icon {
+  width: 30px;
+  height: 30px;
+  margin-right: 10px;
+}
 
 /* Right-aligned images container */
 .select-mode-images {
@@ -627,7 +685,8 @@ body {
 .users-lobby-title {
   color: #FFD700;
   font-size: 2rem;
-  font-weight: bold;
+  font-weight: normal;
+  font-family: zen dots;
 }
 
 .users-lobby-id {

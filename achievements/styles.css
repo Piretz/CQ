@@ -5,10 +5,7 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh; /* Ensure full viewport height */
-    background-image: url(../img/background.png);
-    background-size: cover;
-    background-position: top;
-    margin: 0;
+    background: url(../img/bgALL.png) no-repeat center/cover;
 }
 
 /* Panel Box Styling */

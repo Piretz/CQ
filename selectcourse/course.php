@@ -47,7 +47,7 @@ if(!isset($_SESSION['ID'])){
           
               <div class="swiper-slide">
                 <div class="picture">
-                  <img src="../img/html.png" alt="HTML" id="">
+                  <img src="../img/html.png" alt="HTML" id="" onclick="window.location.href='../practice/practice.php';">
                 </div>
               </div>
           
