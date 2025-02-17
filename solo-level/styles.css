@@ -31,6 +31,14 @@ body {
   font-size: 3.5rem; /* Mas malaking size */
   color: #fff;
   font-weight: 100;
+  margin-bottom: 1%;
+}
+
+.level-failed-title h2{
+  font-size: 3.5rem; /* Mas malaking size */
+  color: #fff;
+  font-weight: 100;
+  margin-bottom: 4%;
 }
 
 
@@ -220,5 +228,169 @@ input[type="text"] {
   100% {
       opacity: 0;
       transform: translate(-50%, -40%);
+  }
+}
+
+
+/* General Modal Styling */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 10;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  align-items: center;
+  justify-content: center;
+}
+
+/* Modal Content Box */
+.modal-content {
+  background: url("../img/bgPanelSoloResult.png") no-repeat center;
+  background-size: 100% 100%;
+  padding: 26px;
+  border-radius: 15px;
+  width: 80%;
+  max-width: 800px;
+  min-height: 450px;
+  text-align: center;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.completed-container{
+  position: relative;
+  top: 15px;
+}
+
+.title-result{
+  margin-bottom: 20px;
+  font-family: zen dots;
+  font-size: 30px;
+}
+
+.title{
+  margin-bottom: 20px;
+  font-size: 20px;
+}
+
+/* Progress Section */
+.progress-container {
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 500px;
+  color: #FCAE00;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 25px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: #00E508;
+  width: 0%;
+  transition: width 0.5s ease-in-out;
+}
+
+.progress-fill.failed {
+  background: #E80000;
+}
+
+/* Badge Section */
+.badge-container {
+  text-align: center;
+  margin-top: 8px;
+}
+
+.badge-image {
+  width: 90px;
+  height: 50px;
+  margin: 10px;
+  border: 1px dotted #FCAE00;
+}
+
+/* Buttons Section - Centered at Bottom */
+.solo-result-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 80px;
+  width: 100%;
+  max-width: 400px;
+  margin-top: auto;
+  padding-bottom: 20px;
+}
+
+.btn-solo-exit, 
+.btn-solo-nextlevel, 
+.btn-solo-retry {
+  background: linear-gradient(to top, #FF0000, #B80000);
+  color: white;
+  font-size: 18px;
+  font-family: 'Zen Dots', sans-serif;
+  padding: 12px 20px;
+  width: 50%;
+  border: none;
+  border-radius: 10px;
+  transition: 0.3s;
+  text-align: center;
+  cursor: pointer;
+}
+
+.btn-solo-nextlevel,
+.btn-solo-retry {
+  background: linear-gradient(to top, #37FF00, #00B816);
+}
+
+.btn-solo-exit:hover, 
+.btn-solo-nextlevel:hover,
+.btn-solo-retry:hover {
+  transform: scale(1.05);
+}
+
+/* Responsive Sizing */
+@media (max-width: 768px) {
+  .modal-content {
+      width: 95%;
+      min-height: 350px;
+      padding: 20px;
+  }
+
+  .btn-solo-exit, 
+  .btn-solo-nextlevel, 
+  .btn-solo-retry {
+      width: 48%;
+      font-size: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .modal-content {
+      min-height: 300px;
+      padding: 15px;
+  }
+
+  .solo-result-buttons {
+      flex-direction: column;
+      align-items: center;
+  }
+
+  .btn-solo-exit, 
+  .btn-solo-nextlevel, 
+  .btn-solo-retry {
+      width: 80%;
+      margin-bottom: 10px;
   }
 }

@@ -12,62 +12,86 @@ body {
   position: relative;
   width: 90%;
   max-width: 1200px;
-  height: 70vh;
+  height: 80vh; /* Increased height to provide more room */
   background: url(../img/levelPanel.png) no-repeat center;
-  background-size: contain; /* Ensures the image always fits */
+  background-size: contain;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start; /* Align items to top */
   padding: 20px;
 }
 
-
 /* Navigation Buttons */
 .btn-container {
-  position: relative;
+  position: absolute;
+  top: 20px; /* Adjust position */
+  left: 50%;
+  transform: translateX(-50%);
   display: flex;
-  align-items: center;
   justify-content: space-between;
-  width: 100%;
+  width: 80%; /* Ensure they are within the level panel */
+  max-width: 900px;
 }
 
 .btn-back, .btn-prev-level, .btn-next-level {
-  width: 80px;
+  width: 100px; /* Reduced size for consistency */
   height: 80px;
   cursor: pointer;
   background-size: contain;
   background-repeat: no-repeat;
 }
 
-.btn-back { background-image: url('../img/btnback.png'); }
-.btn-prev-level { background-image: url('../img/btnprev-level.png'); }
-.btn-next-level { background-image: url('../img/btnnext-level.png'); }
+.btn-back {
+  position: absolute;
+  top: 50px;
+  right: 100px;
+  background-image: url('../img/btnback.png');
+}
 
-.btn-back:hover, .btn-prev-level:hover, .btn-next-level:hover{
+.btn-prev-level {
+  background-image: url('../img/btnprev-level.png');
+  position: absolute;
+  top: 315px;
+  left: -55px;
+}
+
+.btn-next-level {
+  background-image: url('../img/btnnext-level.png');
+  position: absolute;
+  top: 315px;
+  right: -65px;
+}
+
+.btn-back:hover, .btn-prev-level:hover, .btn-next-level:hover {
   transform: scale(1.1);
 }
+
 /* Course Title */
 .course-level {
   font-size: 3rem;
   font-weight: bold;
   color: #FCAE00;
   text-transform: uppercase;
-  margin-bottom: 20px;
+  position: relative;
+  top: 50px;
+  text-align: center;
 }
 
 /* Level Cards */
 .level-cards {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  grid-template-columns: repeat(5, 1fr); /* 5 cards per row */
   gap: 15px;
   justify-content: center;
-  max-width: 700px;
-  padding: 20px;
+  align-items: start;
+  max-width: 900px;
+  margin: 0 auto;
   position: relative;
-  bottom: 150px;
+  top: 50px;
 }
 
+/* Level Card Style */
 .level-card {
   background: url(../img/bg-level-card.png) no-repeat center/cover;
   border-radius: 8px;
@@ -91,31 +115,83 @@ body {
   width: 80px;
 }
 
-.btn-back{
-  position: relative;
-  bottom: 75px;
-  left: 390px;
-}
-.btn-prev-level{
-  position: relative;
-  top: 100px;
-  left: 140px;
-}
-
-.btn-next-level{
-  position: relative;
-  top: 100px;
-  right: 140px;
+/* Fullscreen Background */
+.loading-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #032743;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
 }
 
-.course-level{
+/* Spinner Box */
+.spinner-box {
   position: relative;
-  bottom: 200px;
+  width: 80px;
+  height: 80px;
+}
+
+/* Neon Glow Spinner */
+.neon-spinner {
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  border: 6px solid transparent;
+  border-top: 6px solid #00e1ff;
+  border-radius: 50%;
+  animation: spin 1.5s linear infinite;
+  box-shadow: 0 0 10px #00e1ff, 0 0 30px #00e1ff;
+}
+
+/* Pulsing Wave Effect */
+.pulse-wave {
+  position: absolute;
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background: rgba(0, 225, 255, 0.2);
+  animation: pulse 1.5s infinite ease-in-out;
+}
+
+/* Spin Animation */
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Pulse Animation */
+@keyframes pulse {
+  0% { transform: scale(1); opacity: 1; }
+  100% { transform: scale(1.5); opacity: 0; }
 }
 
 /* Responsive Design */
 @media (max-width: 768px) {
-  .course-level { font-size: 2rem; }
-  .level-cards { grid-template-columns: repeat(3, 1fr); }
-  .btn-container { flex-direction: column; align-items: center; }
+  .course-level {
+    font-size: 2rem;
+  }
+  
+  .level-cards {
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    gap: 10px;
+    justify-content: center;
+  }
+
+  .btn-container {
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    position: absolute;
+    top: 20px;
+  }
+
+  .btn-back, .btn-prev-level, .btn-next-level {
+    width: 50px;
+    height: 50px;
+  }
 }

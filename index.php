@@ -30,12 +30,12 @@ if (isset($_POST['signup'])){
     if ($password != $confirmPassword){
         echo "<script>alert('Passwords do not match. Please try again.')</script>";
     } else {
-        $query = "INSERT INTO users (First_Name, Last_Name, Birth_Date, Efmail, Role, user_type, Level, level_progress, next_level, User_Password) VALUES ('$firstName', '$lastName', '$birthday', '$email', 'Student','New', 1, 0, 50, '$password')";
+        $query = "INSERT INTO users (First_Name, Last_Name, Birth_Date, Email, Role, user_type, Level, level_progress, next_level, User_Password) VALUES ('$firstName', '$lastName', '$birthday', '$email', 'Student','New', 1, 0, 50, '$password')";
         $result = mysqli_query($con, $query);
         if ($result){
             echo "<script>alert('success')</script>";
         } else {
-            echo "<script>alert('not success')</script>";
+            echo $query;
         }
     }
 }    

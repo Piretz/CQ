@@ -311,7 +311,7 @@ $user_type = $user_row['user_type'];
                 <div id="multiplayerModeModal" class="multiplayer-modal">
                   <div class="multiplayer-modal-content">
                     <span class="multiplayer-close" id="multiplayerCloseModal"><img src="../img/btnback.png" alt="Close Button"></span>
-                    <button id="createMultiplayerBtn" class="multiplayer-start-btn"><img src="../img/btncreate.png" alt="Close Button"></button>
+                    <button id="createMultiplayerBtn"  onclick="window.location.href='course.php'" class="multiplayer-start-btn"><img src="../img/btncreate.png" alt="Close Button"></button>
                     <button id="joinMultiplayerBtn" class="multiplayer-start-btn"><img src="../img/btnjoin.png" alt="Close Button"></button>
                   </div>
                 </div>
@@ -373,44 +373,9 @@ $user_type = $user_row['user_type'];
                     }
                   }); -->
                 <!-- </script> -->
+                <!-- For Lobby Creation Design -->
 
-                <!-- User's Lobby Modal -->
-                  <div id="usersLobbyModal" class="users-lobby-modal">
-                      <div class="users-lobby-modal-content">
-                          
-                          <h2 class="users-lobby-title">User's Lobby</h2>
-                          <!-- <h3 class="users-lobby-id">Lobby ID: 123456</h3> -->
-                          
-                          <!-- Close Button -->
-                          <span class="users-lobby-close" id="usersLobbyCloseModal">
-                              <img src="../img/btnback.png" alt="Close">
-                          </span>
-
-                          <!-- Player Slots -->
-                          <div class="lobby-container">
-                              <div class="team team-left">
-                                  <div class="player-slot"></div>
-                                  <div class="player-slot"></div>
-                                  <div class="player-slot"></div>
-                              </div>
-                              
-                              <div class="vs-text"><img src="../img/VS.png"></div>
-
-                              <div class="team team-right">
-                                  <div class="player-slot"></div>
-                                  <div class="player-slot"></div>
-                                  <div class="player-slot"></div>
-                              </div>
-                          </div>
-
-                          <!-- Buttons -->
-                          <div class="button-container">
-                              <button id="usersLobbyReload" class="glow-button"><img src="../img/btnreload.png" alt="Reload"></button>
-                              <button id="usersLobbyStart" class="glow-button"><img src="../img/btnstart.png" alt="Start"></button>
-                          </div>
-                      </div>
-                  </div>
-
+                  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
                   <script>
                       document.addEventListener("DOMContentLoaded", function () {
                           // Get the modal elements
@@ -420,92 +385,53 @@ $user_type = $user_row['user_type'];
                           
                           // Ensure the modal is hidden when the page loads
                           usersLobbyModal.style.display = "none";
-
-                          // Show User's Lobby Modal when 'Create Multiplayer' button is clicked
-                          createMultiplayerBtn.addEventListener("click", function () {
-                              // Hide the Multiplayer Mode Modal
-                              document.getElementById("multiplayerModeModal").style.display = "none";
-
-                              // Show the User's Lobby Modal
-                              usersLobbyModal.style.display = "flex";
-                          });
-
-                          // Close the User's Lobby Modal when clicking the close button
-                          usersLobbyCloseModal.addEventListener("click", function () {
-                              usersLobbyModal.style.display = "none";
-                          });
-
-                          // Close the Multiplayer Mode Modal if another close button exists
-                          const multiplayerCloseModal = document.getElementById("multiplayerCloseModal");
-                          if (multiplayerCloseModal) {
-                              multiplayerCloseModal.addEventListener("click", function () {
-                                  document.getElementById("multiplayerModeModal").style.display = "none";
-                              });
-                          }
                       });
                     </script>
 
                   <!-- ---------------------------FOR CHOOSING/Joining LOBBY MODAL------------------------- -->
                   <div id="usersJoinModal" class="users-join-modal">
-                    <div class="users-join-modal-content">
-                      <span class="users-back-close" id="usersJoinCloseModal">
+                  <div class="users-join-modal-content">
+                    <span class="users-back-close" id="usersJoinCloseModal">
                         <img src="../img/btnback.png" alt="Close Button">
-                      </span>
-                      <!-- <h2 class="users-Join-title">Choose Lobby</h2> -->
+                    </span>
+                    <!-- <h2 class="users-Join-title">Choose Lobby</h2> -->
 
-                      <!-- User's List Table -->
-                      <table class="users-join-table">
-                        <thead>
-                          <tr>
-                            <th>Status</th>
-                            <th>Lobby ID</th>
-                            <th>Lobby Master</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr class="join-lobby-row">
-                            <td class="join-Status">Matching...</td>
-                            <td class="join-ID">12345</td>
-                            <td class="join-user-name">John Doe</td>
-                          </tr>
-                          <tr class="join-lobby-row">
-                            <td class="join-Status">5/6</td>
-                            <td class="join-ID">12346</td>
-                            <td class="join-user-name">Jane Smith</td>
-                          </tr>
-                          <tr class="join-lobby-row">
-                            <td class="join-Status">2/6</td>
-                            <td class="join-ID">12347</td>
-                            <td class="join-user-name">Alex Johnson</td>
-                          </tr>
-                          <tr class="join-lobby-row">
-                            <td class="join-Status">Matching...</td>
-                            <td class="join-ID">12348</td>
-                            <td class="join-user-name">Chris Lee</td>
-                          </tr>
-                          <tr class="join-lobby-row">
-                            <td class="join-Status">1/6</td>
-                            <td class="join-ID">12349</td>
-                            <td class="join-user-name">Pat Morgan</td>
-                          </tr>
-                        </tbody>
-                      </table>
-                      
-                      <!-- Join Button -->
-                      <span class="users-join-btn" id="usersJoinBtn" style="display:none;">
-                        <img src="../img/btnjoin.png" alt="Join Button" onclick="window.location.href='../pvp/multiplayer.php'">
-                      </span>
-                    </div>
+                    <!-- User's List Table -->
+                <table id = "lobby-list" class="users-join-table">
+
+                </table>
+                                      
+                    <!-- Join Button -->
+                <span class="users-join-btn" id="usersJoinBtn" style="display:none;">
+                <img src="../img/btnjoin.png" alt="Join Button" onclick="window.location.href='../pvp/multiplayer.php'">
+                </span>
+                </div>
                   </div>
-
+                    <!-- Open Join Modal -->
                   <script>
-                    document.getElementById('joinMultiplayerBtn').addEventListener('click', function() {
+                    document.getElementById('joinMultiplayerBtn').addEventListener('click', async function() {
                       document.getElementById('multiplayerModeModal').style.display = 'none';
                       document.getElementById('usersJoinModal').style.display = 'flex';
+                      try {
+                      const response3 = await fetch("lobby_list.php", {
+                      method: "POST"
+                      });
+                        $(document).ready (function(){
+                          setInterval(function(){
+                          $("#lobby-list").load("lobby_list.php");
+                        }, 1000 );
+                          $("#lobby-list").load("lobby_list.php");
+                        })
+                        const text = await response3.text(); // Read as plain text
+                        console.log("Response from PHP:", text); // Log response for debugging     
+                      } catch (error) {
+                        console.error("Error:", error);
+                        alert("An error occurred.");
+                      }                  
                     });
-
-                    document.getElementById('usersJoinCloseModal').addEventListener('click', function() {
-                      document.getElementById('usersJoinModal').style.display = 'none';
+                    
+                    document.getElementById('usersJoinCloseModal').addEventListener('click', async function() {
+                      document.getElementById('usersJoinModal').style.display = 'none';   
                     });
 
                     document.querySelectorAll('.join-lobby-row').forEach(row => {

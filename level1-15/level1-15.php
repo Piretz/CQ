@@ -32,7 +32,9 @@ if (!isset($_SESSION['ID'])) {
         <h1 class="course-level">HTML</h1>
 
         <!-- Level Cards Section -->
-      <?php
+      
+          <div class="level-cards">
+          <?php
               $queryunlocked = "SELECT *
                 FROM unlocked_level
                 JOIN Solo_Level
@@ -40,8 +42,7 @@ if (!isset($_SESSION['ID'])) {
                 WHERE unlocked_level.Users_ID = $id;";
               $resultunlocked = mysqli_query($con, $queryunlocked);
               while($rows = mysqli_fetch_array($resultunlocked)){
-        ?>
-          <div class="level-cards">
+        ?>  
             <a href="../solo-level/levels.php?level=<?php echo $rows['Level_ID']?>" class="level-card">
               <span class="level-number"><?php echo $rows['Level_ID']?></span>
             </a>

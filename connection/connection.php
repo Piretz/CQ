@@ -1,13 +1,13 @@
 <?php
-$dbhost = "localhost";
-$dbuser = "root";
-$dbpass = "";
-$dbname = "cq";
+// $dbhost = "localhost";
+// $dbuser = "root";
+// $dbpass = "";
+// $dbname = "cq";
 
-// $dbhost = "sql12.freesqldatabase.com";
-// $dbuser = "sql12762129";
-// $dbpass = "Rcf2xaDFC4";
-// $dbname = "sql12762129";
+$dbhost = "sql12.freesqldatabase.com";
+$dbuser = "sql12762129";
+$dbpass = "Rcf2xaDFC4";
+$dbname = "sql12762129";
 
 
 $con = mysqli_connect($dbhost, $dbuser, $dbpass,$dbname);

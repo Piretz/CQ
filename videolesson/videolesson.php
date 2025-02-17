@@ -5,6 +5,20 @@ $id = $_SESSION['ID'];
 
 $video_id = $_GET['id'];
 
+$user = "SELECT * FROM users WHERE User_ID = $id";
+$result = mysqli_query($con,$user);
+$row = mysqli_fetch_assoc($result);
+
+$user_type = $row['user_type'];
+
+if($user_type == 'New'){
+    $new_type = "UPDATE users SET  user_type = 'Old' WHERE User_ID = $id";
+    $new_result = mysqli_query($con, $new_type);
+
+    $unlock_level = "INSERT INTO unlocked_level(Level_ID, Users_ID) VALUES (1,$id)";
+    $unlock = mysqli_query($con, $unlock_level);
+}
+
 $query = "SELECT * FROM lesson where Lesson_ID = $video_id";
 $result = mysqli_query($con,$query);
 
@@ -29,7 +43,7 @@ if(!isset($_SESSION['ID'])){
 
         <div class="box-container">
             <!-- course title text-->
-            <h1 class="course-title">HTML</h1>
+            <h1 class="course-title"><?php echo $row['Lesson_Title'] ?></h1>
             <div class="grid-container">
                     <!-- First Panel: Video -->
                     <div class="panel video-panel">
@@ -48,13 +62,13 @@ if(!isset($_SESSION['ID'])){
                         <?php
                         $video_list = "SELECT * FROM lesson WHERE Lesson_ID != $video_id";
                         $result = mysqli_query($con, $video_list);
-                        while($row = mysqli_fetch_assoc($result)){
+                        while($rows = mysqli_fetch_assoc($result)){
                         ?>
                         <button onclick="window.location.href='videolesson.php?id=<?php echo $row['Lesson_ID']?>'" class="lesson-button">
                             <div class="lesson-content">
                                 <div class="lesson-info">
-                                    <span id="lesson-title"><?php echo $row['Lesson_Title'] ?></span> <br>
-                                    <span class="instructor"><?php echo $row['Lesson_Creator'] ?></span>
+                                    <span id="lesson-title"><?php echo $rows['Lesson_Title'] ?></span> <br>
+                                    <span class="instructor"><?php echo $rows['Lesson_Creator'] ?></span>
                                 </div>
                             </div>
                         </button>
@@ -65,11 +79,11 @@ if(!isset($_SESSION['ID'])){
 
                     <!-- Third Panel: Lesson Info -->
                     <div class="panel lesson-info-panel">
-                        <h2>Lesson 1</h2>
-                        <p>This is a sample lesson description that will automatically break into the next line when necessary.</p>
+                        <h2><?php echo $row['Lesson_Title'] ?></h2>
+                        <p><?php echo $row['Lesson_Description'] ?></p>
                         <button onclick="openQuiz()">Open Quiz</button>
-                        <button onclick="openCorrect()">Open Correct</button>
-                        <button onclick="openIncorrect()">Open Incorrect</button>
+                        <!-- <button onclick="openCorrect()">Open Correct</button>
+                        <button onclick="openIncorrect()">Open Incorrect</button> -->
 
                     </div>
 
@@ -98,7 +112,7 @@ if(!isset($_SESSION['ID'])){
                         <label><input type="radio" name="answer" value="d"> d. Hyper Transfer Markup Logic</label>
 
                         <!-- Submit Button -->
-                        <button type="submit" class="btn-submit" onclick="checkAnswer()">
+                        <button type="button" class="btn-submit" onclick="checkAnswer()">
                             <img src="../img/btnSubmitAnswer.png" alt="Submit Answer">
                         </button>
                     </form>
@@ -118,6 +132,7 @@ if(!isset($_SESSION['ID'])){
                         <span class="progress-label">Rank:</span>
                         <div class="progress-bar">
                             <div class="progress-fill"></div>
+                            <span class="progress-points">+15</span> <!-- Added +15 -->
                         </div>
                     </div>
 
@@ -126,6 +141,7 @@ if(!isset($_SESSION['ID'])){
                         <span class="progress-label">Level:</span>
                         <div class="progress-bar">
                             <div class="progress-fill"></div>
+                            <span class="progress-points">+15</span> <!-- Added +15 -->
                         </div>
                     </div>
                 </div>
@@ -145,7 +161,7 @@ if(!isset($_SESSION['ID'])){
                     <button class="btn-exit" onclick="window.location.href='../lesson/lesson.php';">
                         Exit
                     </button>
-                    <button class="btn-back-lesson" onclick="window.location.href='../videolesson/videolesson.php';">
+                    <button class="btn-back-lesson">
                         Back to Lesson
                     </button>
                 </div>
@@ -160,16 +176,34 @@ if(!isset($_SESSION['ID'])){
 
                 <!-- BUTTONS -->
                 <div class="quiz-buttons-failed">
-                    <button class="btn-exit" onclick="window.location.href='../selectcourse/course.php';">
+                    <button class="btn-exit" onclick="window.location.href='../lesson/lesson.php';">
                         Exit
                     </button>
-                    <button class="btn-retake" onclick="window.location.href='../videolesson/videolesson.php';">
+                    <button class="btn-retake">
                         Retake Quiz
                     </button>
                 </div>
             </div>
         </div>
 
+        <script>
+    function checkAnswer() {
+        var correctAnswer = "b";
+        var selectedAnswer = document.querySelector('input[name="answer"]:checked');
+        
+        if (selectedAnswer) {
+            if (selectedAnswer.value === correctAnswer) {
+                document.getElementById("quiz-modal").style.display = "none";
+                document.getElementById("quiz-correct").style.display = "flex";
+            } else {
+                document.getElementById("quiz-modal").style.display = "none";
+                document.getElementById("quiz-incorrect").style.display = "flex";
+            }
+        } else {
+            alert("Please select an answer before submitting.");
+        }
+    }
+</script>
                 
         <script>
             // quiz

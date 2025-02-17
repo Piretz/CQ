@@ -1,0 +1,162 @@
+/* General Styling */
+body {
+  font-family: 'Zen Dots', sans-serif;
+  background: url('../img/bgBodyUsersLobby.png') no-repeat center center fixed;
+  background-size: cover;
+  text-align: center;
+  color: white;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  position: relative;
+}
+
+/* Blurred Background Effect */
+body::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: inherit; /* Gamitin ang original na background */
+  filter: blur(10px); /* Adjust blur effect */
+  z-index: -1; /* Ensure it's behind content */
+}
+
+
+/* USERS LOBBY MODAL - CENTERED */
+.users-lobby-modal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+/* USERS LOBBY CONTENT - CENTERED */
+.users-lobby-modal-content {
+    background: url('../img/bgUsersLobby.png') no-repeat center center/contain;
+    background-size: cover;
+    padding: 20px;
+    border-radius: 10px;
+    width: 1200px;
+    height: 620px;
+    text-align: center;
+    position: relative;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.5);
+}
+
+/* Title & Lobby ID */
+.users-lobby-title {
+    position: relative;
+    bottom: 2%;
+    color: #FFD700;
+    font-size: 2rem;
+    font-weight: normal;
+    font-family: zen dots;
+  }
+  
+  .users-lobby-id {
+    color: #fff;
+    font-size: 1rem;
+  }
+  
+  /* Close Button */
+  .users-lobby-close {
+    position: absolute;
+    top: 30px;
+    right: 50px;
+    cursor: pointer;
+  }
+  
+  .users-lobby-close img:hover {
+    transform: scale(1.1);
+  }
+  
+  /* Player Slots */
+  .lobby-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 20px 0;
+    margin-top: 10%;
+  }
+  
+  .team {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2 columns */
+    grid-template-rows: auto auto; /* Adjust rows */
+    gap: 10px;
+    justify-items: center; /* Center items */
+  }
+  
+  .team .player-slot:nth-child(3) {
+    grid-column: span 2; /* Make the last player take full width */
+    justify-self: center; /* Center the last player */
+  }
+  
+  .player-slot {
+    width: 100px;
+    height: 100px;
+    border-radius: 20%;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+  }
+  
+  /* Para sa images sa loob ng player slot */
+  .player-slot img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+  }
+  
+  
+  .team-left .player-slot {
+    border: 2px solid #FFD700;
+  }
+  
+  .team-right .player-slot {
+    border: 2px solid #FF0000;
+  }
+  
+  
+  /* Button Container */
+  .button-container {
+    display: flex;
+    justify-content: center; /* Center the buttons */
+    align-items: center;
+    gap: 150px; /* Adds spacing between buttons */
+    margin-top: 50px;
+  }
+  
+  /* Button Styling */
+  .glow-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    width: 25%;
+    height: 100px;
+    transition: transform 0.2s ease-in-out, box-shadow 0.3s ease-in-out;
+  }
+  
+  /* Button Hover Effect */
+  .glow-button:hover {
+    transform: scale(1.1); /* Slight zoom effect */
+  }
+  
+  /* Image inside button */
+  .glow-button img {
+    width: 100%;
+    height: 100%;
+  }

@@ -20,6 +20,26 @@ body {
     animation: fadeIn 1s ease-in-out; /* Fade-in effect for the container */
 }
 
+.leave-button {
+    position: absolute;
+    top: 15px;
+    right: 30px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.leave-button img {
+    width: 490px; /* I-adjust ayon sa laki ng button */
+    height: auto;
+}
+
+.leave-button:hover {
+   cursor: pointer;
+}
+
+
 @keyframes fadeIn {
     from { opacity: 0; }
     to { opacity: 1; }
@@ -32,7 +52,7 @@ body {
     width: 100%;
     max-width: 1650px;
     height: 100%;
-    max-height: 750px;
+    max-height: 650px;
 }
 
 .team {
@@ -226,7 +246,7 @@ body {
     justify-content: center;
     align-items: center;
     position: relative;
-    top: 34%;
+    top: 48%;
     left: 10%;
     transform: translateX(-140%);
     animation: fadeIn 1s ease-in-out; /* Fade-in effect for the scoreboard */
@@ -376,4 +396,101 @@ body {
 .chat-box button img {
     width: 20px;
     height: 20px;
+}
+
+/* General Modal Styling */
+.victory-modal {
+    display: none; /* Hidden by default */
+    position: fixed;
+    z-index: 10;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    align-items: center;
+    justify-content: center;
+}
+
+/* Modal Content Box */
+.victorymodal-content {
+    background: url("../img/bgPanelSoloResult.png") no-repeat center;
+    background-size: 100% 100%;
+    border-radius: 15px;
+    width: 80%;
+    max-width: 850px;
+    min-height: 600px;
+    text-align: center;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+    /* Ensure it appears in the center */
+    position: relative;
+}
+
+/* Close Button */
+.close {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 24px;
+    cursor: pointer;
+    color: white;
+}
+
+/* Player Info */
+.player-info {
+    display: flex;
+    justify-content: space-around;
+    margin: 10px 0;
+    width: 100%;
+}
+
+.player, .mvp {
+    text-align: center;
+}
+
+.player img, .mvp img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 2px solid white;
+}
+
+.mvp h2 {
+    color: yellow;
+}
+
+/* Buttons */
+.buttons {
+    margin-top: 20px;
+    display: flex;
+    gap: 15px;
+}
+
+.exit {
+    background: linear-gradient(to top, #FF0000, #B80000);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 20px;
+    font-family: zen dots;
+}
+
+.play-again {
+    background: linear-gradient(to top, #37FF00, #00B816);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 20px;
+    font-family: zen dots;
+}
+
+.exit:hover, .play-again:hover{
+    transform: scale(1.1);
 }

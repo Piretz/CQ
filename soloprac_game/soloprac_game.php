@@ -28,18 +28,16 @@ if(!isset($_SESSION['ID'])){
 </audio>
 
 <div class="container">    
+<button class="leave-button">
+    <img src="../img/btnLeave.png" alt="Leave" onclick="window.location.href='../practicemode_carousel/practice_mode.php';">
+</button>
+
   <div class="game-area">
     <!-- Team 1 -->
     <div class="team team-1">
       <div class="player-profiles">
         <div class="profile" style="background-image: url('../img/bgUnactivePlay.png');">
           <img src="../img/jane.png" alt="Player 1" class="profile-img">
-        </div>
-        <div class="profile" style="background-image: url('../img/bgUnactivePlay.png');">
-          <img src="../img/john.png" alt="Player 2" class="profile-img">
-        </div>
-        <div class="profile" style="background-image: url('../img/bgUnactivePlay.png');">
-          <img src="../img/annette.png" alt="Player 3" class="profile-img">
         </div>
       </div>
       <h2>Team 1</h2>
@@ -108,6 +106,7 @@ if(!isset($_SESSION['ID'])){
             <img src="../img/pvpLives-5.png" class="life"> 
           </div>
         </div>
+        <button id="openModal">VICTORY</button>
       </div>
     </div>
 
@@ -116,12 +115,6 @@ if(!isset($_SESSION['ID'])){
       <div class="player-profiles">
         <div class="profile" style="background-image: url('../img/bgUnactivePlay.png');">
           <img src="../img/jane.png" alt="Player 1" class="profile-img">
-        </div>
-        <div class="profile" style="background-image: url('../img/bgUnactivePlay.png');">
-          <img src="../img/john.png" alt="Player 2" class="profile-img">
-        </div>
-        <div class="profile" style="background-image: url('../img/bgUnactivePlay.png');">
-          <img src="../img/annette.png" alt="Player 3" class="profile-img">
         </div>
       </div>
       <h2>Team 2</h2>
@@ -139,7 +132,6 @@ if(!isset($_SESSION['ID'])){
                 <img src="../img/btnsend.png" alt="Send">
             </button>
         </div>
-
     </div>
   </div>
 </div>
@@ -171,7 +163,7 @@ document.addEventListener("DOMContentLoaded", function() {
   timerElement.style.backgroundSize = "contain";
   timerElement.style.backgroundRepeat = "no-repeat";
   timerElement.style.position = "absolute";
-  timerElement.style.bottom = "34%";
+  timerElement.style.bottom = "24%";
   timerElement.style.left = "60%";
   timerElement.style.color = "#fff";
   timerElement.style.fontSize = "clamp(20px, 4vw, 40px)";
@@ -212,6 +204,66 @@ function sendMessage(team) {
     });
   };
 </script>
+
+<!-- Victory Modal Container -->
+<div id="victoryModal" class="victory-modal">
+        <div class="victorymodal-content">
+            <!-- <span class="close" id="closeVictory">&times;</span> -->
+
+            <div class="header">
+                <h1>VICTORY</h1>
+            </div>
+
+            <!-- Player Stats Section -->
+            <div class="player-info">         
+                <div class="mvp">
+                    <img src="../img/lebron.png" alt="MVP">
+                    <h2>MVP</h2>
+                    <p><strong>Time:</strong> 1 Min</p>
+                    <p><strong>Error:</strong> 2</p>
+                    <p><strong>Efficiency:</strong> 70%</p>
+                </div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="buttons">
+                <button class="exit" id="closeModal">Exit</button>
+                <button class="play-again">Play Again</button>
+            </div>
+        </div>
+    </div>
+
+     <!-- VICTORY SCRIPT -->
+      <script>
+      // Get elements
+      const modal = document.getElementById("victoryModal");
+      const openModalBtn = document.getElementById("openModal");
+      const closeModalBtn = document.getElementById("closeModal");
+      const closeSpan = document.querySelector(".close");
+
+      // Open modal when clicking the button
+      openModalBtn.addEventListener("click", function () {
+          modal.style.display = "flex"; // Ipakita ang modal
+      });
+
+      // Close modal when clicking "Exit" button
+      closeModalBtn.addEventListener("click", function () {
+          modal.style.display = "none"; // Itago ang modal
+      });
+
+      // Close modal when clicking the close icon (X)
+      closeSpan.addEventListener("click", function () {
+          modal.style.display = "none";
+      });
+
+      // Close modal when clicking outside the modal content
+      window.addEventListener("click", function (event) {
+          if (event.target == modal) {
+              modal.style.display = "none";
+          }
+      });
+
+      </script>
 
 </body>
 </html>

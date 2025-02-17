@@ -13,7 +13,8 @@ if(!isset($_SESSION['ID'])){
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
-	<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.4.2/css/swiper.min.css'><link rel="stylesheet" href="../components/styles.css">
+	<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.4.2/css/swiper.min.css'>
+  <link rel="stylesheet" href="../components/styles.css">
 	<script src='https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.4.2/js/swiper.min.js'></script>
   <title>CoDev</title>
 </head>
@@ -21,10 +22,9 @@ if(!isset($_SESSION['ID'])){
 
           <?php include '../components/navbar.php'; ?>
 
-                <?php
+      <?php
         if (isset($_GET['mode'])) {
           $mode = $_GET['mode'];
-          
         }
       ?>
 
@@ -32,7 +32,7 @@ if(!isset($_SESSION['ID'])){
         <main class="main-content">
           <!-- back button and align at the top of right -->
           
-            <a href="../selectmode/mode.php" class="back-button" style="position: absolute; top: 150px; right: 300px;">
+            <a href="mode.php" class="back-button" style="position: absolute; top: 150px; right: 300px;">
               <img src="../img/btnback.png" alt="Back Button" class="btnswiper-back-button">
             </a>
         

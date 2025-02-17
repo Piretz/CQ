@@ -1,0 +1,177 @@
+/* General Styling */
+body {
+    font-family: 'Zen Dots', sans-serif;
+    background: url('../img/bgBodyUsersLobby.png') no-repeat center center fixed;
+    background-size: cover;
+    text-align: center;
+    color: white;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    position: relative;
+  }
+  
+  /* Blurred Background Effect */
+  body::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: inherit; /* Gamitin ang original na background */
+    filter: blur(10px); /* Adjust blur effect */
+    z-index: -1; /* Ensure it's behind content */
+  }
+
+
+/* General Modal Styling */
+.victory-modal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+/* Modal Content Box */
+.victorymodal-content {
+    background: url("../img/bgPanelSoloResult.png") no-repeat center;
+    background-size: 100% 100%;
+    border-radius: 15px;
+    width: 80%;
+    max-width: 850px;
+    min-height: 600px;
+    text-align: center;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+    /* Ensure it appears in the center */
+    position: relative;
+}
+
+/* Close Button */
+.close {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 24px;
+    cursor: pointer;
+    color: white;
+}
+
+/* Player Info */
+.player-info {
+    display: flex;
+    justify-content: space-around;
+    margin: 10px 0;
+    width: 100%;
+}
+
+.player, .mvp {
+    text-align: center;
+}
+
+.player img, .mvp img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 2px solid white;
+}
+
+.mvp h2 {
+    color: yellow;
+}
+
+/* Progress Bars Container */
+.progress-container {
+    display: flex;
+    justify-content: space-around;
+    width: 80%;
+    margin: 20px auto;
+    gap: 20px;
+}
+
+/* Individual Progress Box */
+.progress-box {
+    text-align: center;
+    width: 45%;
+}
+
+/* Progress Bar */
+.progress-bar {
+    width: 100%;
+    height: 15px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+}
+
+/* Progress Fill (Dynamic) */
+.progress-fill {
+    height: 100%;
+    background: #00D819;
+    width: 0%;
+    transition: width 1s ease-in-out;
+}
+
+/* Rewards Section */
+.rewards {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.reward img {
+    width: 60px;
+    height: 60px;
+    border-radius: 5px;
+    border: 2px solid white;
+    padding: 5px;
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.new-lesson img {
+    border-color: purple;
+}
+
+/* Buttons */
+.buttons {
+    margin-top: 20px;
+    display: flex;
+    gap: 15px;
+}
+
+.exit {
+    background: linear-gradient(to top, #FF0000, #B80000);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 20px;
+    font-family: zen dots;
+}
+
+.play-again {
+    background: linear-gradient(to top, #37FF00, #00B816);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 20px;
+    font-family: zen dots;
+}
+
+.exit:hover, .play-again:hover{
+    transform: scale(1.1);
+}

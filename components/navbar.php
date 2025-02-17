@@ -189,11 +189,18 @@ $user_row = mysqli_fetch_assoc($user_result);
                   <div class="profile-achievements">
                       <h1>Achievements</h1>
                       <div class="badges-container">
-                          <img src="../img/bronze.png" alt="Badge 1" class="badge-images-achievement">
-                          <img src="../img/silver.png" alt="Badge 2" class="badge-images-achievement">
-                          <img src="../img/platinum.png" alt="Badge 3" class="badge-images-achievement">
-                          <img src="../img/gold.png" alt="Badge 4" class="badge-images-achievement">
-                          <img src="../img/diamond.png" alt="Badge 5" class="badge-images-achievement">
+                        <?php
+                          $queryunlocked = "SELECT * FROM unlocked_badges 
+                          JOIN badges
+                          ON badges.Badge_ID = unlocked_badges.Badge_ID
+                          WHERE unlocked_badges.User_ID = $user_id";
+                          $resultunlocked = mysqli_query($con, $queryunlocked); 
+                          while($badges = mysqli_fetch_array($resultunlocked)){
+                        ?>
+                          <img src="../img/<?php echo $badges['Badge_Pic'] ?>.png" alt="Badge 1" class="badge-images-achievement">
+                        <?php
+                          }
+                        ?>
                       </div>
                   </div>
               </div>

@@ -1,0 +1,111 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    height: 100vh;
+    background: url(../img/bgALL.png) no-repeat center/cover;
+  }
+  
+  /* Main Content Styles */
+  .main-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 60%;
+    height: 70%;
+    padding: 10px;
+  }
+
+.back-course {
+    position: absolute;
+    top: 200px;
+    right: 420px;
+}
+
+.back-course .btnswiper-back-button {
+    width: 80px; /* Adjust size */
+    height: auto;
+    transition: transform 0.2s ease-in-out;
+}
+
+.back-course .btnswiper-back-button:hover {
+    transform: scale(1.1);
+}
+
+/* Course Container */
+.course-container {
+    display: flex;
+    gap: 20px; /* Space between cards */
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 800px;
+    perspective: 1000px; /* Enables 3D Effect */
+}
+
+/* Individual Course Cards */
+.course-card {
+    width: 250px;
+    height: auto;
+    position: relative;
+    cursor: pointer;
+    transition: transform 0.4s ease, box-shadow 0.4s ease-in-out;
+    transform-style: preserve-3d;
+}
+
+/* Add Image Styling */
+.course-card img {
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+    transition: box-shadow 0.4s ease-in-out, transform 0.4s ease-in-out;
+}
+
+/* 3D Tilt Effect */
+.course-card:hover {
+    animation: infiniteHover 3s infinite linear; /* Infinite rotation animation */
+    box-shadow: 0px 0px 30px rgba(0, 191, 255, 1); /* Neon Glow */
+}
+
+/* Glowing Edge Effect */
+.course-card::before {
+    content: "";
+    position: absolute;
+    inset: -5px;
+    border-radius: 15px;
+    background: linear-gradient(45deg, #ff0000, #ff7300, #ffeb00, #00ff22, #00eaff, #1700ff, #a200ff);
+    background-size: 300%;
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.4s ease-in-out;
+}
+
+/* Activate Edge Glow on Hover */
+.course-card:hover::before {
+    opacity: 1;
+    animation: pulseGlow 1.5s infinite alternate;
+}
+
+/* Pulsating Glow Effect */
+@keyframes pulseGlow {
+    0% { box-shadow: 0px 0px 15px rgba(0, 191, 255, 0.6); }
+    100% { box-shadow: 0px 0px 35px rgba(0, 191, 255, 1); }
+}
+
+/* Infinity Rotation Animation */
+@keyframes infiniteHover {
+    0% { transform: rotateY(0deg) rotateX(0deg) scale(1.1); }
+    25% { transform: rotateY(15deg) rotateX(15deg) scale(1.1); }
+    50% { transform: rotateY(0deg) rotateX(0deg) scale(1.1); }
+    75% { transform: rotateY(-15deg) rotateX(-15deg) scale(1.1); }
+    100% { transform: rotateY(0deg) rotateX(0deg) scale(1.1); }
+}
