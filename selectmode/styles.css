@@ -802,6 +802,9 @@ body {
   flex-direction: column;
   align-items: center; /* Center content horizontally */
   justify-content: center; /* Center content vertically */
+  overflow-y:auto ;
+  -ms-overflow-style: none; 
+    scrollbar-width:none;
 }
 
 .users-back-close {

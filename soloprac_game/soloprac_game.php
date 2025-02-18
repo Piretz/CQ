@@ -22,10 +22,7 @@ if(!isset($_SESSION['ID'])){
 </head>
 <body>
 
-<audio id="bg-music" autoplay>
-  <source src="../audio/Voice.mp3" type="audio/mp3">
-  Your browser does not support the audio element.
-</audio>
+
 
 <div class="container">    
 <button class="leave-button">
@@ -196,14 +193,6 @@ function sendMessage(team) {
 }
 </script>
 
-<script>
-  window.onload = function() {
-    let audio = document.getElementById("bg-music");
-    audio.play().catch(error => {
-      console.log("Autoplay failed due to browser restrictions: ", error);
-    });
-  };
-</script>
 
 <!-- Victory Modal Container -->
 <div id="victoryModal" class="victory-modal">

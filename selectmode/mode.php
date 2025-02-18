@@ -35,10 +35,10 @@ $user_type = $user_row['user_type'];
           <?php include '../components/navbar.php'; ?>
 
           <!-- dailyquest animated button image -->
-          <div class="dailyquest-container">
+          <!-- <div class="dailyquest-container">
             <img src="../img/dailyquest.png" alt="Daily Quest" class="dailyquest-image" onclick="window.location.href='../dailyquest/dailyquest.php';">
             <div class="dailyquest-text">Daily Quest</div>
-          </div>
+          </div> -->
             <!-- Walkthrough Overlay -->
             <?php
                 if($user_type == "New"){
@@ -72,14 +72,14 @@ $user_type = $user_row['user_type'];
                 <img src="../img/mdSolo.png" alt="Solo Mode" class="solo-mode walkthrough-item locked" id="solomodeImage">
                 <img src="../img/mdpvp.png" alt="PvP Mode" class="pvp-mode walkthrough-item locked" id="multimodeImage"> 
                 <img src="../img/mdLesson.png" alt="Lesson Mode" class="lesson-mode walkthrough-item unlocked" id="lessonModeImage" onclick="window.location.href='../lesson/lesson.php';">
-                <img src="../img/mdpractice.png" alt="Practice Mode" class="practice-mode walkthrough-item locked" id="practiceModeImage" onclick="window.location.href='../selectcourse/course.php';">
+                <img src="../img/mdpractice.png" alt="Practice Mode" class="practice-mode walkthrough-item locked" id="practiceModeImage" onclick="window.location.href='../practicemode_carousel/practice_mode.php';">
             </div>
 
             <!-- FOR NEW USER WALKTHROUGH NewUserLoad DOMContentLoaded-->
               <script>
                  document.addEventListener("DOMContentLoaded", function () {
                     const steps = [
-                        { text: "Hi User, Welcome to CoDev!", highlight: null },
+                        { text: "Hi User's, Welcome to Cipherion! Get ready to learn coding in a fun and exciting way. Face challenges, solve puzzles, and become a coding hero. Ready to begin your adventure? Let’s go!", highlight: null },
                         { text: "This is Solo Mode, where you can practice coding alone!", highlight: "solomodeImage" },
                         { text: "This is Multiplayer Mode, where you can compete with others!", highlight: "multimodeImage" },
                         { text: "Lesson Mode helps you learn new programming concepts!", highlight: "lessonModeImage" },

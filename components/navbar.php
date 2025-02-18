@@ -6,6 +6,14 @@ $user_query = "SELECT * FROM users WHERE User_ID = $user_id";
 $user_result = mysqli_query($con, $user_query);
 $user_row = mysqli_fetch_assoc($user_result);
 
+$stats = "SELECT * FROM user_stats WHERE User_id = $user_id";
+$result_stat = mysqli_query($con, $stats);
+$stat_row = mysqli_fetch_assoc($result_stat);
+
+$badge_count_query = "SELECT * FROM unlocked_badges WHERE User_ID = $user_id";
+$badge_count_result = mysqli_query($con, $badge_count_query);
+$badge_count = mysqli_num_rows($badge_count_result);
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -171,17 +179,18 @@ $user_row = mysqli_fetch_assoc($user_result);
 
                           <div class="column">
                               <p><strong>Mastery:</strong> 85%</p>
-                              <p><strong>QuestPoints:</strong> 12,450</p>
-                              <p><strong>Bugs Fixed:</strong> 320</p>
+                              <p><strong>Logic:</strong> 320</p>
                               <p><strong>Teamwork:</strong> 92%</p>
+                               <p><strong>Streak:</strong> 15Days</p>
                           </div>
 
                           <div class="column">
-                              <p><strong>Logic:</strong> 75%</p>
-                              <p><strong>XP:</strong> 24,800</p>
-                              <p><strong>Streak:</strong> 15 Days</p>
-                              <p><strong>Badges:</strong> 18</p>
+                              <p><strong>MVP:</strong><?php echo $stat_row['Game_mvp'] ?></p>
+                              <p><strong>XP:</strong><?php echo $user_row['level_progress'] ?> / <?php echo $user_row['next_level'] ?></p>
+                              <p><strong>Badges:</strong><?php echo $badge_count ?></p>
+                              <p><strong>QuestPoints:</strong><?php echo $stat_row['questPoints'] ?></p>
                           </div>
+                          <br>
                       </div>
                   </div>
 
@@ -197,7 +206,7 @@ $user_row = mysqli_fetch_assoc($user_result);
                           $resultunlocked = mysqli_query($con, $queryunlocked); 
                           while($badges = mysqli_fetch_array($resultunlocked)){
                         ?>
-                          <img src="../img/<?php echo $badges['Badge_Pic'] ?>.png" alt="Badge 1" class="badge-images-achievement">
+                          <img src="../img/<?php echo $badges['Badge_Pic'] ?>" alt="Badge 1" class="badge-images-achievement">
                         <?php
                           }
                         ?>
@@ -215,124 +224,22 @@ $user_row = mysqli_fetch_assoc($user_result);
                   <span class="notification-close"><img src="../img/btnback.png" alt="Close"></span>
                   <!-- <h2>Notifications</h2> -->
                   <div class="notifbox-container" id="box-container">
-                    <div class="box">
-                      <img src="../img/bronze.png" alt="Bronze Badge" class="badge-image" />
-                      <div class="badge-details">
-                        <p class="badge-type">Bronze Badge</p>
-                        <ul class="badge-description">
-                          <li>Completed your first lesson</li>
-                        </ul>
-                        <div class="badge-actions">
-                          <button class="claim-button">Claim</button>
-                          <!-- <button class="view-button">View</button> -->
+                    <?php
+                    $notif_query = "SELECT * FROM notificatiion";
+                    $result = mysqli_query($con,$notif_query);
+                    while ($notif = mysqli_fetch_assoc($result)){
+                    ?>
+                    <div id="notification" class="box">
+                        <div class="badge-details">
+                          <p class="badge-type">Message From Admin</p>
+                          <ul class="badge-description">
+                            <li><?php echo $notif['Notification_Message'] ?></li>
+                          </ul>
                         </div>
-                      </div>
                     </div>
-                    <div class="box">
-                      <img src="../img/gold.png" alt="Silver Badge" class="badge-image" />
-                      <div class="badge-details">
-                        <p class="badge-type">Silver Badge</p>
-                        <ul class="badge-description">
-                          <li>Achieved Unlocked</li>
-                        </ul>
-                        <div class="badge-actions">
-                          <button class="claim-button">Claim</button>
-                          <!-- <button class="view-button">View</button> -->
-                        </div>
-                      </div>
-                    </div>
-                    <div class="box">
-                      <img src="../img/gold.png" alt="Silver Badge" class="badge-image" />
-                      <div class="badge-details">
-                        <p class="badge-type">Silver Badge</p>
-                        <ul class="badge-description">
-                          <li>Achieved Unlocked</li>
-                        </ul>
-                        <div class="badge-actions">
-                          <button class="claim-button">Claim</button>
-                          <!-- <button class="view-button">View</button> -->
-                        </div>
-                      </div>
-                    </div>
-                    <div class="box">
-                      <img src="../img/gold.png" alt="Silver Badge" class="badge-image" />
-                      <div class="badge-details">
-                        <p class="badge-type">Silver Badge</p>
-                        <ul class="badge-description">
-                          <li>Achieved Unlocked</li>
-                        </ul>
-                        <div class="badge-actions">
-                          <button class="claim-button">Claim</button>
-                          <!-- <button class="view-button">View</button> -->
-                        </div>
-                      </div>
-                    </div>
-                    <div class="box">
-                      <img src="../img/gold.png" alt="Silver Badge" class="badge-image" />
-                      <div class="badge-details">
-                        <p class="badge-type">Silver Badge</p>
-                        <ul class="badge-description">
-                          <li>Achieved Unlocked</li>
-                        </ul>
-                        <div class="badge-actions">
-                          <button class="claim-button">Claim</button>
-                          <!-- <button class="view-button">View</button> -->
-                        </div>
-                      </div>
-                    </div>
-                    <div class="box">
-                      <img src="../img/gold.png" alt="Silver Badge" class="badge-image" />
-                      <div class="badge-details">
-                        <p class="badge-type">Silver Badge</p>
-                        <ul class="badge-description">
-                          <li>Achieved Unlocked</li>
-                        </ul>
-                        <div class="badge-actions">
-                          <button class="claim-button">Claim</button>
-                          <!-- <button class="view-button">View</button> -->
-                        </div>
-                      </div>
-                    </div>
-                    <div class="box">
-                      <img src="../img/gold.png" alt="Silver Badge" class="badge-image" />
-                      <div class="badge-details">
-                        <p class="badge-type">Silver Badge</p>
-                        <ul class="badge-description">
-                          <li>Achieved Unlocked</li>
-                        </ul>
-                        <div class="badge-actions">
-                          <button class="claim-button">Claim</button>
-                          <!-- <button class="view-button">View</button> -->
-                        </div>
-                      </div>
-                    </div>
-                    <div class="box">
-                      <img src="../img/gold.png" alt="Silver Badge" class="badge-image" />
-                      <div class="badge-details">
-                        <p class="badge-type">Silver Badge</p>
-                        <ul class="badge-description">
-                          <li>Achieved Unlocked</li>
-                        </ul>
-                        <div class="badge-actions">
-                          <button class="claim-button">Claim</button>
-                          <!-- <button class="view-button">View</button> -->
-                        </div>
-                      </div>
-                    </div>
-                    <div class="box">
-                      <img src="../img/bronze.png" alt="Bronze Badge" class="badge-image" />
-                      <div class="badge-details">
-                        <p class="badge-type">Bronze Badge</p>
-                        <ul class="badge-description">
-                          <li>Completed your first lesson</li>
-                        </ul>
-                        <div class="badge-actions">
-                          <button class="claim-button">Claim</button>
-                          <!-- <button class="view-button">View</button> -->
-                        </div>
-                      </div>
-                    </div>
-                    
+                    <?php
+                    }
+                    ?>
                   </div>
               </div>
                   <button id="clearButton" class="clear-button">Clear All</button>
@@ -360,7 +267,6 @@ $user_row = mysqli_fetch_assoc($user_result);
             </div>
         </div>
     </div>
-
 
     <!-- Setting modal script function -->
     <script>

@@ -69,5 +69,6 @@ $user_id = $_SESSION['ID'];
             </div>
         </div>
     </main>
+    
 </body>
 </html>

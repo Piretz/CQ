@@ -11,7 +11,7 @@
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background-image: url(../img/bglevel.png);
+    background: url(../img/bg-levels.png) no-repeat center/cover;
     background-size: cover;
     background-repeat: no-repeat;
   }
@@ -26,7 +26,7 @@
   
   .level-panel-image {
     position: relative;
-    top: 50px;
+    top: 20px;
     left: 100px;
     width: 80%;
     height: auto;
@@ -37,7 +37,7 @@
   /* Back Button */
 .btn-back {
   position: fixed;
-  top: 24%;
+  top: 20%;
   right: 28%;
   z-index: 2;
 }
@@ -52,7 +52,7 @@
 .btn-prev-level {
   position: fixed;
   left: 24.2%;
-  top: 50%;
+  top: 47%;
   z-index: 2;
 }
 
@@ -66,7 +66,7 @@
 .btn-next-level {
   position: fixed;
   right: 26.2%;
-  top: 50%;
+  top: 47%;
   z-index: 2;
 }
 

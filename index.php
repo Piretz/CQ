@@ -12,7 +12,13 @@ if (isset($_POST['login'])){
     if (mysqli_num_rows($result) == 1){
         $rows = mysqli_fetch_array($result);
         $_SESSION['ID'] = $rows['User_ID'];
-        header("Location: ../selectmode/mode.php");
+
+        if($rows['user_type'] == 'New'){
+            $stats = "INSERT INTO user_stats (User_id) VALUES ($id)";
+            $stat_make = mysqli_query($con, $stats);
+        }
+
+        header(header: "Location: ../selectmode/mode.php");
     } else {
         echo "<script>alert('Invalid username or password. Please try again.')</script>";
     }

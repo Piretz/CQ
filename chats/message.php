@@ -39,12 +39,12 @@ if(!isset($_SESSION['ID'])){
 
             <div class="messages-container">
                 <div class="message-item" onclick="openConversation('Jane Smith', 'Hello, are you free to talk?', 'annette.png')">
-                    <img src="../img/annette.png" alt="Profile Image" class="profile-img">
+                    <img src="../img/annette.png" alt="Profile Image" class="profile-img">  
                     <div class="message-details">
                         <p class="user-name">Jane Smith</p>
                         <p class="message-text">Hello, are you free to talk?</p>
                         <p class="user-text"></p>
-                        <span class="message-times">10:30 AM</span>
+                        <span class="message-times">10:30 AM</span> 
                     </div>
                     
                 </div>

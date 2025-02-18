@@ -4,13 +4,14 @@ body {
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background: url(../img/bgALL.png) no-repeat center/cover;
+  background: url(../img/bg-levels.png) no-repeat center/cover;
 }
 
 /* Level Panel */
 .level-panel {
   position: relative;
-  width: 90%;
+  top: 20px;
+  width: 80%;
   max-width: 1200px;
   height: 80vh; /* Increased height to provide more room */
   background: url(../img/levelPanel.png) no-repeat center;
@@ -20,6 +21,9 @@ body {
   align-items: center;
   justify-content: flex-start; /* Align items to top */
   padding: 20px;
+  overflow-y: auto;
+  -ms-overflow-style: none;
+    scrollbar-width:none;
 }
 
 /* Navigation Buttons */
@@ -36,7 +40,7 @@ body {
 
 .btn-back, .btn-prev-level, .btn-next-level {
   width: 100px; /* Reduced size for consistency */
-  height: 80px;
+  height: 100px;
   cursor: pointer;
   background-size: contain;
   background-repeat: no-repeat;
@@ -52,15 +56,15 @@ body {
 .btn-prev-level {
   background-image: url('../img/btnprev-level.png');
   position: absolute;
-  top: 315px;
-  left: -55px;
+  top: 325px;
+  left: -80px;
 }
 
 .btn-next-level {
   background-image: url('../img/btnnext-level.png');
   position: absolute;
-  top: 315px;
-  right: -65px;
+  top: 320px;
+  right: -80px;
 }
 
 .btn-back:hover, .btn-prev-level:hover, .btn-next-level:hover {

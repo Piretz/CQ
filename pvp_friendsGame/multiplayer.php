@@ -59,7 +59,7 @@ $team = $_SESSION['team'];
       </div>
       <h2>Team 1</h2>
       <textarea class="code-input" id="team1-code" placeholder="Enter your code here..."></textarea>
-      <div class="buttons">
+      <div id="team1-button" class="buttons">
         <button id="team1-pass" class="pass">PASS</button>
         <button id="team1-run" class="run">RUN</button>
       </div>
@@ -78,8 +78,8 @@ $team = $_SESSION['team'];
     <div class="instruction-panel">
       <!-- Output -->
       <div class="column-1">
-        <div class="output-box">
-          <h3>OUTPUT:</h3>
+        <div id="output" class="output-box">
+        <h3>OUTPUT:</h3>
           <div id="output-area">Change the background color into green</div>
         </div>
       </div>
@@ -134,7 +134,7 @@ $team = $_SESSION['team'];
       </div>
       <h2>Team 2</h2>
       <textarea class="code-input" id="team2-code" placeholder="Enter your code here..."></textarea>
-      <div class="buttons">
+      <div id="team2-button" class="buttons">
         <button id="team2-pass" class="pass">PASS</button>
         <button id="team2-run" class="run">RUN</button>
       </div>
@@ -153,6 +153,8 @@ $team = $_SESSION['team'];
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
+  var scoreInterval;
+
     document.addEventListener("DOMContentLoaded", function () {
         let userTeam = "<?php echo $team; ?>"; // Get the team from PHP
 
@@ -186,43 +188,115 @@ $team = $_SESSION['team'];
             }
 
             function loadNewQuestion() {
-              $.ajax({
-                url: 'questions.php',
-                type: 'GET',
-                dataType: 'json',
-                success: function(data) {
-                  if (data.error) {
-                    console.error(data.error);
-                    return;
-                  }
-                  $("#output-area").text(data.Given_Code);
-                  $("#task-area p").text(data.Task);
-                  $("#expected-output-area").text(data.Display);
-                  currentQuestionId = data.Level_Id;
-                },
-                error: function(xhr, status, error) {
-                  console.error("Error fetching question:", error);
-                }
-              })
+    $.ajax({
+        url: 'fetch_new_question.php',  // Your updated PHP endpoint
+        type: 'GET',
+        dataType: 'json',
+        success: function(response) {
+            if (response.success) {
+                // Update the UI with the new question
+                $("#output-area").text(response.Given_Code);
+                $("#task-area p").text(response.Task);
+                $("#expected-output-area").text(response.Display);
+
+                // Update currentQuestionId for the next round
+                currentQuestionId = response.Level_Id;
+            } else {
+                console.error("Error fetching new question:", response.error);
+            }
+        },
+        error: function(xhr, status, error) {
+            console.error("Error fetching new question:", error);
+        }
+    });
+}
+
+function checkTurnAndUpdateUI() {
+    $.ajax({
+        url: 'check_turn.php',  // File to get the current turn for each team
+        type: 'GET',
+        dataType: 'json',
+        success: function(data) {
+            if (data.error) {
+                console.error(data.error);
+                return;
             }
 
-            function fetchScores() {
-                $.ajax({
-                    url: 'get_scores.php',
-                    type: 'GET',
-                    dataType: 'json',
-                    success: function (data) {
-                      console.log("Server Response:", data); // Debugging log
-                        $(".team-1-score").text(data.team1 + "pts");
-                        $(".team-2-score").text(data.team2 + "pts");
+            // Get the current turn (1, 2, or 3) for the team
+            let currentPlayerTurn = data.current_turn;
 
-                        // Update images
-                        $("#team-1-life").attr("src", `../img/pvpLives-${data.team1}.png`);
-                        $("#team-2-life").attr("src", `../img/pvpLives-${data.team2}.png`);
-                    }
-                });
+            // Enable/Disable buttons based on the player's turn
+            if (currentPlayerTurn === 1) {
+                enableButtonsForPlayer(1);
+            } else if (currentPlayerTurn === 2) {
+                enableButtonsForPlayer(2);
+            } else if (currentPlayerTurn === 3) {
+                enableButtonsForPlayer(3);
             }
+        },
+        error: function(xhr, status, error) {
+            console.error("Error checking turn:", error);
+        }
+    });
+}
 
+function enableButtonsForPlayer(playerTurn) {
+    // Enable buttons for the player whose turn it is
+    if (playerTurn === 1) {
+        $("#submit-button").prop("disabled", false);
+        $("#pass-button").prop("disabled", false);
+    } else {
+        $("#submit-button").prop("disabled", true);
+        $("#pass-button").prop("disabled", true);
+    }
+}
+
+// Run the turn checking function periodically or when needed
+checkTurnAndUpdateUI();
+
+function fetchScores() {
+    $.ajax({
+        url: 'get_scores.php',
+        type: 'GET',
+        dataType: 'json',
+        success: function (data) {
+            console.log("Server Response:", data); // Debugging log
+
+            $(".team-1-score").text(data.team1 + "pts");
+            $(".team-2-score").text(data.team2 + "pts");
+
+            // Update images
+            $("#team-1-life").attr("src", `../img/pvpLives-${data.team1}.png`);
+            $("#team-2-life").attr("src", `../img/pvpLives-${data.team2}.png`);
+
+            // Use the user's team directly from the response
+            let userTeam = data.user_team;
+
+            // Check if any team reached 10 points
+            if (data.team1 >= 10) {
+                declareWinner("Left", userTeam);
+            } else if (data.team2 >= 10) {
+                declareWinner("Right", userTeam);
+            }
+        }
+    });
+}
+
+function declareWinner(winningTeam, userTeam) {
+    clearInterval(scoreInterval); // Stop fetching scores after a winner is decided
+
+    console.log("Declaring winner:", winningTeam, "User Team:", userTeam); // Debugging log
+    if (userTeam === winningTeam) {
+        console.log("Redirecting to victory.php"); // Debugging log
+        window.location.href = "victory.php";
+    } else {
+        console.log("Redirecting to defeat.php"); // Debugging log
+        window.location.href = "defeat.php";
+    }
+}
+
+
+            setInterval(loadNewQuestion, 1000);
             setInterval(fetchScores, 1000);
             function startTimer() {
                 clearInterval(timerInterval); // Clear existing timer
@@ -235,59 +309,63 @@ $team = $_SESSION['team'];
             loadNewQuestion();
             //configure for team 1
             document.getElementById("team1-run").addEventListener("click", function() {
-              let userAnswer = $("#team1-code").val().trim();
-              let scoreElement = document.querySelector(".team-1-score");
-              let currentScore = parseInt(scoreElement.textContent) || 0;
-              let timerElement = document.getElementById("timer");
-              let submitButton = document.getElementById("team1-run");
-              let textArea = document.getElementById("team1-code");
-              let lifeImage = document.getElementById("team-1-life");
+    let userAnswer = $("#team1-code").val().trim();
+    let scoreElement = document.querySelector(".team-1-score");
+    let currentScore = parseInt(scoreElement.textContent) || 0;
+    let timerElement = document.getElementById("timer");
+    let submitButton = document.getElementById("team1-run");
+    let textArea = document.getElementById("team1-code");
+    let lifeImage = document.getElementById("team-1-life");
 
-              if (!userAnswer) {
-                  alert("Please enter your code!");
-                  return;
-              }
-              
-              $.ajax({
-                url: 'check_answer.php',
-                type: 'POST',
-                data: { answer: userAnswer, question_id: currentQuestionId },
-                dataType: 'json',
-                success: function(response) {
-                  console.log("Server Response:", response); // Debugging log
+    if (!userAnswer) {
+        alert("Please enter your code!");
+        return;
+    }
 
-                  if (response.error) {
-                      alert("Error: " + response.error);
-                      return;
-                  }
+    $.ajax({
+        url: 'check_answer.php',  // Your backend PHP script to validate answer
+        type: 'POST',
+        data: { answer: userAnswer, question_id: currentQuestionId },
+        dataType: 'json',
+        success: function(response) {
+            console.log("Server Response:", response); // Debugging log
 
-                  if (response.status === "Correct") {
-                    let newScore = Math.min(currentScore + 1, 10);
-                    scoreElement.textContent = newScore + "pts";
-                    lifeImage.src = `../img/pvpLives-${newScore}.png`;
+            if (response.error) {
+                alert("Error: " + response.error);
+                return;
+            }
 
-                    if (newScore === 10) {
+            if (response.status === "Correct") {
+                let newScore = Math.min(currentScore + 1, 10);
+                scoreElement.textContent = newScore + "pts";
+                lifeImage.src = `../img/pvpLives-${newScore}.png`;
+
+                if (newScore === 10) {
                     alert("🎉 YOU WIN! 🎉");
-                    
-                    clearInterval(timerInterval);
+
+                    clearInterval(timerInterval);  // Assuming you have a timer running
                     timerElement.textContent = "00:00";
 
                     submitButton.disabled = true;
                     textArea.disabled = true;
 
-                    } else {
-                        setTimeout(() => {
-                            $("#team1-code").val("");
-                            loadNewQuestion();
-                        }, 1000);
-                    }
-                }  else {
-                  alert("❌ Wrong! The correct answer is: " + response.correct_answer);
+                } else {
+                    setTimeout(() => {
+                        // Reset input area for the next question
+                        $("#team1-code").val("");
+                        // Fetch and display the next question for the team
+                        loadNewQuestion();  // Call to load new question after correct answer
+                    }, 1000);
                 }
-              }
-              })
-                startTimer();
-            });
+            } else {
+                alert("❌ Wrong! The correct answer is: " + response.correct_answer);
+            }
+        }
+    });
+
+    startTimer();  // Assuming your timer is handled elsewhere
+});
+
 
             //configure for team 2
             document.getElementById("team2-run").addEventListener("click", function() {
@@ -394,6 +472,7 @@ function sendMessage(team) {
     });
   };
 </script>
+<script src="button.js"></script>
 
 </body>
 </html>

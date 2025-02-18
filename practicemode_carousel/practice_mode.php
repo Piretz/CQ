@@ -40,11 +40,11 @@ header("Location: ../index.php");
             <!-- Course Cards Container -->
             <div class="course-container">
                 <div class="course-card">
-                <img src="../img/solo_Card.png" alt="Solo Practice" onclick="window.location.href='../soloprac_course/soloprac_carousel.php';">
+                <img src="../img/soloPractice.png" alt="Solo Practice" onclick="window.location.href='../soloprac_course/soloprac_carousel.php';">
                 </div>
 
                 <div class="course-card">
-                <img src="../img/friends_Card.png" alt="PvP Mode" onclick="window.location.href='../multiprac_course/multiplayer_practice.php';">
+                <img src="../img/practice_friends.png" alt="PvP Mode" class="friends" onclick="window.location.href='../multiprac_course/multiplayer_practice.php';">
                 </div>
             </div>
         </main>

@@ -12,19 +12,22 @@ if (!isset($_SESSION['ID'])) {
 <html lang="en">
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Zen+Dots&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
-    <link rel="stylesheet" href="../components/styles.css">
+    <link rel="stylesheet" href="styles.css">
     <title>CoDev</title>
 </head>
 <body>
-    <?php include '../components/navbar.php'; ?>
+    
 
     <div class="level-panel">
         <!-- Navigation Buttons -->
-        <div class="btn-back" onclick="window.location.href='../selectmode/mode.php';"></div>
+        <!-- <div class="btn-back" onclick="window.location.href='../selectmode/mode.php';"></div> -->
         <div class="btn-container">
            
-            <div class="btn-prev-level"></div>
+            <div class="btn-prev-level" onclick="window.location.href='../selectmode/mode.php';"></div>
             <div class="btn-next-level" onclick="window.location.href='../level16-25/level16-25.php';"></div>
         </div>
 

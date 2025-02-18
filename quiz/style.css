@@ -1,7 +1,7 @@
 /* General Styling */
 body {
     font-family: 'Zen Dots', sans-serif;
-    background-image: url(../img/bgdashboard.png);
+    background: url('../img/bgBodyUsersLobby.png') no-repeat center center fixed;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -16,18 +16,40 @@ body {
 .quiz-panel {
     position: relative;
     width: 90%; /* Adjusted for better responsiveness */
-    max-width: 600px;
+    height: 95vh; /* Increased height to fit viewport */
+    max-height: 700px; /* Increased max-height */
+    max-width: 1200px;
     background: url("../img/bgPanelQuiz.png") no-repeat center center;
-    background-size: cover;
-    padding: 30px; /* Increased padding for better spacing */
+    background-size: 100% 100%; /* Ensures full coverage of the background */
+    padding: 40px; /* Increased padding for better spacing */
     border-radius: 20px;
     box-shadow: 0 10px 20px rgba(255, 174, 0, 0.5); /* Adjusted shadow color */
     text-align: center;
     color: white;
-    margin: 80px auto; /* Adjusted margin */
+    margin: 60px auto; /* Adjusted margin */
     border: 2px solid #FCAE00; /* Futuristic glowing effect */
+    
 }
 
+.quiz-container{
+    display: flex;  
+    height: 80vh;
+    max-height: 600px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    flex-direction: column;
+    margin-top: 50px;
+}
+
+.quiz-container::-webkit-scrollbar {
+    padding-right: 5%;
+    width: 10px;
+  }
+  
+  .quiz-container::-webkit-scrollbar-thumb {
+    background-color: #FCAE00;
+    border-radius: 10px;
+  }
 /* Back Button Styling */
 .btn-back {
     position: absolute;
@@ -48,7 +70,7 @@ body {
 
 /* Quiz Content */
 .quiz-content {
-    margin-top: 35px;
+    margin-top: 20px;
 }
 
 .quiz-content h2 {

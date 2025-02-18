@@ -54,7 +54,7 @@ $status = $row['status'];
 
 if(mysqli_num_rows($user_result) > 0 ){
     if($status == 'Playing'){
-    ?> <script>window.location.href = "../pvp/multiplayer.php"; <?php
+    ?> <script>window.location.href = "../pvp_friendsGame/multiplayer.php"; <?php
     }
 } else {
     unset($_SESSION['lobby_id']);

@@ -13,20 +13,20 @@ if(!isset($_SESSION['ID'])){
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
   <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.4.2/css/swiper.min.css'>
-  <link rel="stylesheet" href="../components/styles.css">
+  <link rel="stylesheet" href="styles.css">
   <script src='https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.4.2/js/swiper.min.js'></script>
   <title>CoDev</title>
 </head>
 <body>
-  <?php include '../components/navbar.php'; ?>
+  
 
   <div class="level-panel">
   <img src="../img/levelPanel.png" alt="Level Panel Image" class="level-panel-image">
 
   <!-- Back Button -->
-  <div class="btn-back">
+  <!-- <div class="btn-back">
     <img src="../img/btnback.png" alt="Back Button" class="btn-back-image" onclick="window.location.href='../selectmode/mode.php';">
-  </div>
+  </div> -->
 
   <!-- Prev Level Button -->
   <div class="btn-prev-level">
@@ -35,7 +35,7 @@ if(!isset($_SESSION['ID'])){
 
   <!-- Next Level Button -->
   <div class="btn-next-level">
-    <img src="../img/btnnext-level.png" alt="Next Level Button" class="btn-next-level-image" >
+    <!-- <img src="../img/btnnext-level.png" alt="Next Level Button" class="btn-next-level-image" > -->
   </div>
 
   <!-- Course Title -->
@@ -44,7 +44,7 @@ if(!isset($_SESSION['ID'])){
   <!-- Level Cards Section -->
   <div class="level16-cards">
   <?php 
-    $currentLevel = 16; 
+    $currentLevel = 0; 
     for ($i = 16; $i <= 25; $i++): 
   ?>
     <?php if ($i <= $currentLevel): ?>

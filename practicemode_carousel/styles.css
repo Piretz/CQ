@@ -54,12 +54,13 @@
 
 /* Individual Course Cards */
 .course-card {
-    width: 250px;
+    width: 300px;
     height: auto;
     position: relative;
     cursor: pointer;
     transition: transform 0.4s ease, box-shadow 0.4s ease-in-out;
     transform-style: preserve-3d;
+
 }
 
 /* Add Image Styling */
@@ -68,6 +69,10 @@
     border-radius: 10px;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
     transition: box-shadow 0.4s ease-in-out, transform 0.4s ease-in-out;
+}
+
+.friends{
+    height: 490px;
 }
 
 /* 3D Tilt Effect */

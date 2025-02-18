@@ -17,6 +17,9 @@ if($user_type == 'New'){
 
     $unlock_level = "INSERT INTO unlocked_level(Level_ID, Users_ID) VALUES (1,$id)";
     $unlock = mysqli_query($con, $unlock_level);
+    
+    $stats = "INSERT INTO users_stats(User_id) VALUES ($id)";
+    $stat_make = mysqli_query($con, $stats);
 }
 
 $query = "SELECT * FROM lesson where Lesson_ID = $video_id";
@@ -47,15 +50,16 @@ if(!isset($_SESSION['ID'])){
             <div class="grid-container">
                     <!-- First Panel: Video -->
                     <div class="panel video-panel">
-                        <iframe 
-                            id="lesson-video" 
-                            width="100%" 
-                            height="330" 
-                            src="<?php echo $row['Lesson_Vid'] ?>" 
-                            frameborder="2" 
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                            allowfullscreen>
-                        </iframe>
+                    <iframe 
+                        id="lesson-video" 
+                        width="100%" 
+                        height="330" 
+                        src="<?php echo $row['Lesson_Vid']; ?>?autoplay=0&rel=0&controls=1" 
+                        frameborder="2" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                        allowfullscreen>
+                    </iframe>
+
                     </div>
                      <!-- Second Panel: Lesson Details --> 
                     <div class="panel lesson-details-panel">
@@ -68,7 +72,7 @@ if(!isset($_SESSION['ID'])){
                             <div class="lesson-content">
                                 <div class="lesson-info">
                                     <span id="lesson-title"><?php echo $rows['Lesson_Title'] ?></span> <br>
-                                    <span class="instructor"><?php echo $rows['Lesson_Creator'] ?></span>
+                                    <span class="instructor"> - <?php echo $rows['Lesson_Creator'] ?></span>
                                 </div>
                             </div>
                         </button>
@@ -161,7 +165,7 @@ if(!isset($_SESSION['ID'])){
                     <button class="btn-exit" onclick="window.location.href='../lesson/lesson.php';">
                         Exit
                     </button>
-                    <button class="btn-back-lesson">
+                    <button class="btn-back-lesson" onclick="window.location.href='../lesson/lesson.php';">
                         Back to Lesson
                     </button>
                 </div>
@@ -179,7 +183,7 @@ if(!isset($_SESSION['ID'])){
                     <button class="btn-exit" onclick="window.location.href='../lesson/lesson.php';">
                         Exit
                     </button>
-                    <button class="btn-retake">
+                    <button class="btn-retake" onclick="retakeQuiz()">
                         Retake Quiz
                     </button>
                 </div>
@@ -203,6 +207,12 @@ if(!isset($_SESSION['ID'])){
             alert("Please select an answer before submitting.");
         }
     }
+
+    function retakeQuiz() {
+    document.getElementById("quiz-incorrect").style.display = "none";
+    document.getElementById("quiz-modal").style.display = "flex";
+}
+
 </script>
                 
         <script>
