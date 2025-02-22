@@ -153,9 +153,18 @@ $team = $_SESSION['team'];
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
-  var scoreInterval;
+/**
+ * NOTE: Indent must be fix this creates visual hierarchy which means that any dev. can traverse the code easily ( see Uncle Bob - CLEAN CODE book )
+ * */ 
 
-    document.addEventListener("DOMContentLoaded", function () {
+// NOTE: Use let or Const avoid old implement of var for variable declaration as this will implement bugs
+let scoreInterval;
+
+/**
+ * Event listeners
+ */
+
+document.addEventListener("DOMContentLoaded", function () {
         let userTeam = "<?php echo $team; ?>"; // Get the team from PHP
 
         if (userTeam === "Left") {
@@ -167,71 +176,111 @@ $team = $_SESSION['team'];
         }
     });
 
-        document.addEventListener("DOMContentLoaded", function() {
-            let timerElement = document.getElementById("timer");
-            let instructionPanel = document.querySelector(".instruction-panel");
-            let defaultTime = 121; // 2 minutes in seconds
-            let timeLeft = defaultTime;
-            let timerInterval;
+  document.addEventListener("DOMContentLoaded", function() {
+              let timerElement = document.getElementById("timer");
+              let instructionPanel = document.querySelector(".instruction-panel");
+              let defaultTime = 121; // 2 minutes in seconds
+              let timeLeft = defaultTime;
+              let timerInterval;
 
-            function updateTimer() {
-                let minutes = Math.floor(timeLeft / 60);
-                let seconds = timeLeft % 60;
-                timerElement.textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+              function updateTimer() {
+                  let minutes = Math.floor(timeLeft / 60);
+                  let seconds = timeLeft % 60;
+                  timerElement.textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
 
-                if (timeLeft > 0) {
-                    timeLeft--;
-                } else {
-                    clearInterval(timerInterval);
-                    alert("Time's up!"); // You can replace this with any other action
-                }
-            }
+                  if (timeLeft > 0) {
+                      timeLeft--;
+                  } else {
+                      clearInterval(timerInterval);
+                      alert("Time's up!"); // You can replace this with any other action
+                  }
+              }
 
-            function loadNewQuestion() {
-    $.ajax({
-        url: 'fetch_new_question.php',  // Your updated PHP endpoint
-        type: 'GET',
-        dataType: 'json',
-        success: function(response) {
-            if (response.success) {
-                // Update the UI with the new question
-                $("#output-area").text(response.Given_Code);
-                $("#task-area p").text(response.Task);
-                $("#expected-output-area").text(response.Display);
+  function loadNewQuestion() {
+      $.ajax({
+          url: 'fetch_new_question.php',  // Your updated PHP endpoint
+          type: 'GET',
+          dataType: 'json',
+          success: function(response) {
+              if (response.success) {
+                  // Update the UI with the new question
+                  $("#output-area").text(response.Given_Code);
+                  $("#task-area p").text(response.Task);
+                  $("#expected-output-area").text(response.Display);
 
-                // Update currentQuestionId for the next round
-                currentQuestionId = response.Level_Id;
-            } else {
-                console.error("Error fetching new question:", response.error);
-            }
-        },
-        error: function(xhr, status, error) {
-            console.error("Error fetching new question:", error);
-        }
-    });
+                  // Update currentQuestionId for the next round
+                  currentQuestionId = response.Level_Id;
+              } else {
+                  console.error("Error fetching new question:", response.error);
+              }
+          },
+          error: function(xhr, status, error) {
+              console.error("Error fetching new question:", error);
+          }
+  });
+
 }
 
-function checkTurnAndUpdateUI() {
+function initTurnAndUpdateUI() {
+    console.log("initTurnAndUpdateUI");
+
+    const currentTeam = "<?php echo $team; ?>";
+    const currentPlayerInScreen =  "<?php echo $id; ?>";
+
+    const btnTeam1Pass = document.querySelector("#team1-pass");
+    const btnTeam1Run = document.querySelector("#team1-run");
+
+    const btnTeam2Pass = document.querySelector("#team2-pass");
+    const btnTeam2Run = document.querySelector("#team2-run");
+
     $.ajax({
-        url: 'check_turn.php',  // File to get the current turn for each team
+        url: 'initial_turn.php',  // File to get the current turn for each team
         type: 'GET',
         dataType: 'json',
         success: function(data) {
-            if (data.error) {
+            if (data?.error) {
                 console.error(data.error);
                 return;
             }
 
             // Get the current turn (1, 2, or 3) for the team
-            let currentPlayerTurn = data.current_turn;
+            let currentPlayerTurn = data?.current_turn_player_id;
+            
+            /**
+             * HIDE the "pass" btn if player is only one in team it 
+             * doesn't make sense showing a pass button if you don't have someone from your team
+             */
 
-            // Enable/Disable buttons based on the player's turn
-            if (currentPlayerTurn === 1) {
-                enableButtonsForPlayer(1);
-            } else if (currentPlayerTurn === 2) {
-                enableButtonsForPlayer(2);
-            } else if (currentPlayerTurn === 3) {
-                enableButtonsForPlayer(3);
+          
+            if(data?.team_turns?.length === 1 && currentTeam === "Left"){
+              btnTeam1Pass.style.display = 'none';
+              return;
+            }
+          
+     
+            if(data?.team_turns?.length === 1 && currentTeam === "Right"){
+              btnTeam2Pass.style.display =  'none';
+              return;
+            }
+            
+            /**
+             * 
+             * Multiple member in Team
+             * 
+             * 
+             */
+            
+            // Hide buttons if the player's not in turn
+            if (currentPlayerTurn !== Number(currentPlayerInScreen) && currentTeam === "Left") {
+              btnTeam1Pass.style.display = 'none';
+              btnTeam1Run.style.display = 'none';
+              return;
+            }
+
+            if (currentPlayerTurn !== Number(currentPlayerInScreen) && currentTeam === "Left") {
+              btnTeam2Pass.style.display = 'none';
+              btnTeam2Run.style.display = 'none';
+              return;
             }
         },
         error: function(xhr, status, error) {
@@ -240,19 +289,8 @@ function checkTurnAndUpdateUI() {
     });
 }
 
-function enableButtonsForPlayer(playerTurn) {
-    // Enable buttons for the player whose turn it is
-    if (playerTurn === 1) {
-        $("#submit-button").prop("disabled", false);
-        $("#pass-button").prop("disabled", false);
-    } else {
-        $("#submit-button").prop("disabled", true);
-        $("#pass-button").prop("disabled", true);
-    }
-}
-
 // Run the turn checking function periodically or when needed
-checkTurnAndUpdateUI();
+initTurnAndUpdateUI();
 
 function fetchScores() {
     $.ajax({
@@ -295,20 +333,23 @@ function declareWinner(winningTeam, userTeam) {
     }
 }
 
+function startTimer() {
+    clearInterval(timerInterval); // Clear existing timer
+    timeLeft = defaultTime; // Reset time to default
+    updateTimer(); // Immediately update UI
+    timerInterval = setInterval(updateTimer, 1000); // Restart timer
+}
 
-            setInterval(loadNewQuestion, 1000);
-            setInterval(fetchScores, 1000);
-            function startTimer() {
-                clearInterval(timerInterval); // Clear existing timer
-                timeLeft = defaultTime; // Reset time to default
-                updateTimer(); // Immediately update UI
-                timerInterval = setInterval(updateTimer, 1000); // Restart timer
-            }
-            // Start timer when the page loads
-            startTimer();
-            loadNewQuestion();
-            //configure for team 1
-            document.getElementById("team1-run").addEventListener("click", function() {
+setInterval(loadNewQuestion, 1000);
+setInterval(fetchScores, 1000);
+        
+// Start timer when the page loads
+startTimer();
+loadNewQuestion();
+
+//configure for team 1
+document.getElementById("team1-run").addEventListener("click", function() {
+
     let userAnswer = $("#team1-code").val().trim();
     let scoreElement = document.querySelector(".team-1-score");
     let currentScore = parseInt(scoreElement.textContent) || 0;
@@ -366,9 +407,8 @@ function declareWinner(winningTeam, userTeam) {
     startTimer();  // Assuming your timer is handled elsewhere
 });
 
-
-            //configure for team 2
-            document.getElementById("team2-run").addEventListener("click", function() {
+//configure for team 2
+document.getElementById("team2-run").addEventListener("click", function() {
               let userAnswer = $("#team2-code").val().trim();
               let scoreElement = document.querySelector(".team-2-score");
               let currentScore = parseInt(scoreElement.textContent) || 0;
@@ -439,29 +479,30 @@ function declareWinner(winningTeam, userTeam) {
             timerElement.style.textAlign = "center";
             timerElement.style.transform = "translateX(-50%)";
             instructionPanel.appendChild(timerElement);
-        });
+});
+
 </script>
 
 <script>
-function sendMessage(team) {
-  const input = document.getElementById(`${team}-chat-input`);
-  const messages = document.getElementById(`${team}-chat-messages`);
-  const message = input.value.trim();
+  function sendMessage(team) {
+    const input = document.getElementById(`${team}-chat-input`);
+    const messages = document.getElementById(`${team}-chat-messages`);
+    const message = input.value.trim();
 
-  if (message) {
-    const messageElement = document.createElement('div');
-    messageElement.classList.add('chat-message');
-    messageElement.textContent = message;
-    messages.appendChild(messageElement);
-    input.value = '';
-    messages.scrollTop = messages.scrollHeight; // Scroll to the bottom
+    if (message) {
+      const messageElement = document.createElement('div');
+      messageElement.classList.add('chat-message');
+      messageElement.textContent = message;
+      messages.appendChild(messageElement);
+      input.value = '';
+      messages.scrollTop = messages.scrollHeight; // Scroll to the bottom
 
-    // Remove the message after 2-3 seconds
-    setTimeout(() => {
-      messageElement.remove();
-    }, 5000 + Math.random() * 1000); // Randomly between 2-3 seconds
+      // Remove the message after 2-3 seconds
+      setTimeout(() => {
+        messageElement.remove();
+      }, 5000 + Math.random() * 1000); // Randomly between 2-3 seconds
+    }
   }
-}
 </script>
 
 <script>
@@ -472,6 +513,7 @@ function sendMessage(team) {
     });
   };
 </script>
+
 <script src="button.js"></script>
 
 </body>

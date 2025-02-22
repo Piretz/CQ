@@ -12,7 +12,7 @@
 $dbhost = "localhost";
 $dbuser = "root";
 $dbpass = "";
-$dbname = "local_cipherion";
+$dbname = "sql12762129";
 
 $con = mysqli_connect($dbhost, $dbuser, $dbpass,$dbname);
 

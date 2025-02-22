@@ -15,7 +15,7 @@ $result_left = mysqli_query($con, $query_left);
 if (mysqli_num_rows($result_left) > 0) {
 while($rows = mysqli_fetch_assoc($result_left)){
 ?>
-    <div class="player-slot"><img src='../img/avatar.png' alt='Player'></div>
+    <div class="player-slot" style="display: flex; align-items: center; justify-content: center;"><img src='../img/avatar.png' alt='Player'></div>
 <?php
 } }
 ?>
@@ -31,7 +31,7 @@ if (mysqli_num_rows($result_right) > 0) {
 <?php
 while($rows = mysqli_fetch_assoc($result_right)){
 ?>
-        <div class="player-slot"><img src='../img/avatar.png' alt='Player'></div>
+        <div class="player-slot" style="display: flex; align-items: center; justify-content: center;"><img src='../img/avatar.png' alt='Player'></div>
 <?php
 }
 ?>
@@ -40,7 +40,7 @@ while($rows = mysqli_fetch_assoc($result_right)){
 } else {
 ?>
     <div class="team team-right">
-        <div class="player-slot" style="color:white">Finding Player</div>
+        <div class="player-slot" style="color:white; display: flex; align-items: center; justify-content: center;">Finding Player...</div>
     </div>
 <?php
 }
