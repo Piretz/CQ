@@ -160,6 +160,18 @@ $team = $_SESSION['team'];
 // NOTE: Use let or Const avoid old implement of var for variable declaration as this will implement bugs
 let scoreInterval;
 
+const currentTeam = "<?php echo $team; ?>";
+const currentPlayerInScreen =  "<?php echo $id; ?>";
+
+const btnTeam1CodeView = document.querySelector("#team1-code");
+const btnTeam2CodeView = document.querySelector("#team2-code");
+
+const btnTeam1Pass = document.querySelector("#team1-pass");
+const btnTeam1Run = document.querySelector("#team1-run");
+
+const btnTeam2Pass = document.querySelector("#team2-pass");
+const btnTeam2Run = document.querySelector("#team2-run");
+
 /**
  * Event listeners
  */
@@ -224,15 +236,6 @@ document.addEventListener("DOMContentLoaded", function () {
 function initTurnAndUpdateUI() {
     console.log("initTurnAndUpdateUI");
 
-    const currentTeam = "<?php echo $team; ?>";
-    const currentPlayerInScreen =  "<?php echo $id; ?>";
-
-    const btnTeam1Pass = document.querySelector("#team1-pass");
-    const btnTeam1Run = document.querySelector("#team1-run");
-
-    const btnTeam2Pass = document.querySelector("#team2-pass");
-    const btnTeam2Run = document.querySelector("#team2-run");
-
     $.ajax({
         url: 'initial_turn.php',  // File to get the current turn for each team
         type: 'GET',
@@ -257,7 +260,6 @@ function initTurnAndUpdateUI() {
               return;
             }
           
-     
             if(data?.team_turns?.length === 1 && currentTeam === "Right"){
               btnTeam2Pass.style.display =  'none';
               return;
@@ -269,19 +271,7 @@ function initTurnAndUpdateUI() {
              * 
              * 
              */
-            
-            // Hide buttons if the player's not in turn
-            if (currentPlayerTurn !== Number(currentPlayerInScreen) && currentTeam === "Left") {
-              btnTeam1Pass.style.display = 'none';
-              btnTeam1Run.style.display = 'none';
-              return;
-            }
-
-            if (currentPlayerTurn !== Number(currentPlayerInScreen) && currentTeam === "Left") {
-              btnTeam2Pass.style.display = 'none';
-              btnTeam2Run.style.display = 'none';
-              return;
-            }
+            userScreenUpdate(currentPlayerTurn);
         },
         error: function(xhr, status, error) {
             console.error("Error checking turn:", error);
@@ -289,12 +279,72 @@ function initTurnAndUpdateUI() {
     });
 }
 
+function userScreenUpdate(currentPlayerTurn){
+
+    console.log(currentPlayerTurn, currentPlayerInScreen, currentTeam);
+
+     /**
+      *
+      * TEAM 1
+      * 
+     */
+
+    // Hide buttons if the player's not in 
+    if(currentTeam === "Left"){
+      if (Number(currentPlayerTurn) !== Number(currentPlayerInScreen)) {
+        btnTeam1Pass.style.display = 'none';
+        btnTeam1Run.style.display = 'none';
+        btnTeam1CodeView.textContent = "Teammate currently answering..."
+
+        btnTeam1CodeView.setAttribute('disabled', "");
+        return;
+      }
+
+      // Enable the buttons
+      if (Number(currentPlayerTurn) === Number(currentPlayerInScreen)) {
+        btnTeam1Pass.style.display = 'block';
+        btnTeam1Run.style.display = 'block';
+        btnTeam1CodeView.textContent = "Enter your code here..."
+
+        btnTeam1CodeView.removeAttribute('disabled');
+        return;
+      }
+    }
+
+    /**
+     * 
+     * Team 2
+     * 
+     */
+
+    if(currentTeam === "Right"){
+      if ((currentPlayerTurn) !== Number(currentPlayerInScreen)) {
+        btnTeam2Pass.style.display = 'none';
+        btnTeam2Run.style.display = 'none';
+        btnTeam2CodeView.textContent = "Teammate currently answering..."
+
+        btnTeam2CodeView.setAttribute('disabled', "");
+        return;
+      }
+
+      // Enable button if player turn
+      if ((currentPlayerTurn) !== Number(currentPlayerInScreen)) {
+        btnTeam2Pass.style.display = 'block';
+        btnTeam2Run.style.display = 'block';
+        btnTeam2CodeView.textContent = "Enter your code here..."
+
+        btnTeam2CodeView.setAttribute('disabled');
+        return;
+      }
+    }
+}
+
 // Run the turn checking function periodically or when needed
 initTurnAndUpdateUI();
 
-function fetchScores() {
+function pollSync() {
     $.ajax({
-        url: 'get_scores.php',
+        url: 'poll_sync.php',
         type: 'GET',
         dataType: 'json',
         success: function (data) {
@@ -309,6 +359,9 @@ function fetchScores() {
 
             // Use the user's team directly from the response
             let userTeam = data.user_team;
+
+            if(currentTeam === "Left") userScreenUpdate(data?.team1_current_player);
+            if(currentTeam === "Right") userScreenUpdate(data?.team2_current_player);
 
             // Check if any team reached 10 points
             if (data.team1 >= 10) {
@@ -341,14 +394,14 @@ function startTimer() {
 }
 
 setInterval(loadNewQuestion, 1000);
-setInterval(fetchScores, 1000);
+setInterval(pollSync, 1000);
         
 // Start timer when the page loads
 startTimer();
 loadNewQuestion();
 
 //configure for team 1
-document.getElementById("team1-run").addEventListener("click", function() {
+btnTeam1Run.addEventListener("click", function() {
 
     let userAnswer = $("#team1-code").val().trim();
     let scoreElement = document.querySelector(".team-1-score");
@@ -407,8 +460,19 @@ document.getElementById("team1-run").addEventListener("click", function() {
     startTimer();  // Assuming your timer is handled elsewhere
 });
 
+btnTeam1Pass.addEventListener("click", function() {
+  $.ajax({
+        url: 'pass_turn.php',  // Your backend PHP script to validate answer
+        type: 'GET',
+        dataType: 'json',
+        success: function(response) {
+          console.log();
+        }
+    });
+});
+
 //configure for team 2
-document.getElementById("team2-run").addEventListener("click", function() {
+btnTeam2Run.addEventListener("click", function() {
               let userAnswer = $("#team2-code").val().trim();
               let scoreElement = document.querySelector(".team-2-score");
               let currentScore = parseInt(scoreElement.textContent) || 0;
@@ -508,7 +572,7 @@ document.getElementById("team2-run").addEventListener("click", function() {
 <script>
   window.onload = function() {
     let audio = document.getElementById("bg-music");
-    audio.play().catch(error => {
+    audio?.play()?.catch(error => {
       console.log("Autoplay failed due to browser restrictions: ", error);
     });
   };
