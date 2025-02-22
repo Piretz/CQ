@@ -140,7 +140,7 @@ $team = $_SESSION['team'];
       </div>
       <!-- Chat Box for Team 2 -->
       <div class="chat-box">
-        <div class="chat-messages" id="team1-chat-messages"></div>
+        <div class="chat-messages" id="team2-chat-messages"></div>
         <div class="chat-input-container">
             <input type="text" id="team2-chat-input" placeholder="Type a message...">
             <button onclick="sendMessage('team2')">
@@ -159,6 +159,10 @@ $team = $_SESSION['team'];
 
 // NOTE: Use let or Const avoid old implement of var for variable declaration as this will implement bugs
 let scoreInterval;
+let playerInCurrTeam;
+
+let team1MessagesLength = 0;
+let team2MessagesLength = 0;
 
 const currentTeam = "<?php echo $team; ?>";
 const currentPlayerInScreen =  "<?php echo $id; ?>";
@@ -171,6 +175,9 @@ const btnTeam1Run = document.querySelector("#team1-run");
 
 const btnTeam2Pass = document.querySelector("#team2-pass");
 const btnTeam2Run = document.querySelector("#team2-run");
+
+const team1Msgs = document.querySelector(`#team1-chat-messages`);
+const team2Msgs = document.querySelector(`#team2-chat-messages`);
 
 /**
  * Event listeners
@@ -248,23 +255,9 @@ function initTurnAndUpdateUI() {
 
             // Get the current turn (1, 2, or 3) for the team
             let currentPlayerTurn = data?.current_turn_player_id;
-            
-            /**
-             * HIDE the "pass" btn if player is only one in team it 
-             * doesn't make sense showing a pass button if you don't have someone from your team
-             */
 
-          
-            if(data?.team_turns?.length === 1 && currentTeam === "Left"){
-              btnTeam1Pass.style.display = 'none';
-              return;
-            }
-          
-            if(data?.team_turns?.length === 1 && currentTeam === "Right"){
-              btnTeam2Pass.style.display =  'none';
-              return;
-            }
-            
+            playerInCurrTeam = data?.team_turns?.length;
+
             /**
              * 
              * Multiple member in Team
@@ -282,6 +275,21 @@ function initTurnAndUpdateUI() {
 function userScreenUpdate(currentPlayerTurn){
 
     console.log(currentPlayerTurn, currentPlayerInScreen, currentTeam);
+
+     /**
+     * HIDE the "pass" btn if player is only one in team it 
+     * doesn't make sense showing a pass button if you don't have someone from your team
+     */
+          
+      if(playerInCurrTeam === 1 && currentTeam === "Left"){
+        btnTeam1Pass.style.display = 'none';
+        return;
+      }
+          
+      if(playerInCurrTeam === 1 && currentTeam === "Right"){
+        btnTeam2Pass.style.display =  'none';
+        return;
+      }
 
      /**
       *
@@ -306,7 +314,7 @@ function userScreenUpdate(currentPlayerTurn){
         btnTeam1Run.style.display = 'block';
         btnTeam1CodeView.textContent = "Enter your code here..."
 
-        btnTeam1CodeView.removeAttribute('disabled');
+        btnTeam1CodeView?.removeAttribute('disabled');
         return;
       }
     }
@@ -318,22 +326,22 @@ function userScreenUpdate(currentPlayerTurn){
      */
 
     if(currentTeam === "Right"){
-      if ((currentPlayerTurn) !== Number(currentPlayerInScreen)) {
+      if (Number(currentPlayerTurn) !== Number(currentPlayerInScreen)) {
         btnTeam2Pass.style.display = 'none';
         btnTeam2Run.style.display = 'none';
         btnTeam2CodeView.textContent = "Teammate currently answering..."
 
-        btnTeam2CodeView.setAttribute('disabled', "");
+        btnTeam2CodeView?.setAttribute('disabled', "");
         return;
       }
 
       // Enable button if player turn
-      if ((currentPlayerTurn) !== Number(currentPlayerInScreen)) {
+      if (Number(currentPlayerTurn) === Number(currentPlayerInScreen)) {
         btnTeam2Pass.style.display = 'block';
         btnTeam2Run.style.display = 'block';
         btnTeam2CodeView.textContent = "Enter your code here..."
 
-        btnTeam2CodeView.setAttribute('disabled');
+        btnTeam2CodeView?.setAttribute('disabled');
         return;
       }
     }
@@ -360,8 +368,51 @@ function pollSync() {
             // Use the user's team directly from the response
             let userTeam = data.user_team;
 
-            if(currentTeam === "Left") userScreenUpdate(data?.team1_current_player);
-            if(currentTeam === "Right") userScreenUpdate(data?.team2_current_player);
+            if(currentTeam === "Left"){
+              userScreenUpdate(data?.team1_current_player);
+              
+              // Do not update message UI
+              const team_msgs = data?.team1_messages.length || 0;
+              if(team_msgs !== team1MessagesLength){
+                team1MessagesLength = team_msgs;
+
+                // Remove element first to prevent duplicate
+                document.querySelector(".team1-msg-container")?.remove();
+                team1Msgs.insertAdjacentHTML("beforeend", `<div class="team1-msg-container" style="display: flex; flex-direction: column;"></div>`)
+
+                // Then insert
+                data?.team1_messages?.forEach(({ message, First_Name }) => {
+                  document.querySelector(".team1-msg-container").insertAdjacentHTML("afterbegin", `<div>${First_Name} : ${message}</div>`)
+                })
+
+                // Scroll to top
+                team1Msgs.scrollTop = 0;
+              }
+            };
+
+            if(currentTeam === "Right"){
+              userScreenUpdate(data?.team2_current_player); 
+
+              // Do not update message UI
+              const team_msgs = data?.team2_messages.length || 0;
+              
+              if(team_msgs !== team2MessagesLength){
+                team2MessagesLength = team_msgs;
+                console.log(team_msgs, team2MessagesLength, "TEAM 2");
+                
+                // Remove element first to prevent duplicate
+                document.querySelector(".team2-msg-container")?.remove();
+                team2Msgs.insertAdjacentHTML("beforeend", `<div class="team2-msg-container" style="display: flex; flex-direction: column;"></div>`)
+
+                // Then insert
+                data?.team2_messages?.forEach(({ message }) => {
+                  document.querySelector(".team2-msg-container").insertAdjacentHTML("afterbegin", `<div>${message}</div>`)
+                })
+
+                // Reset view to top
+                team2Msgs.scrollTop = 0;
+              }
+            };
 
             // Check if any team reached 10 points
             if (data.team1 >= 10) {
@@ -462,11 +513,11 @@ btnTeam1Run.addEventListener("click", function() {
 
 btnTeam1Pass.addEventListener("click", function() {
   $.ajax({
-        url: 'pass_turn.php',  // Your backend PHP script to validate answer
+        url: 'pass_turn.php',
         type: 'GET',
         dataType: 'json',
         success: function(response) {
-          console.log();
+          console.log("Left team pass");
         }
     });
 });
@@ -545,28 +596,41 @@ btnTeam2Run.addEventListener("click", function() {
             instructionPanel.appendChild(timerElement);
 });
 
-</script>
+btnTeam2Pass.addEventListener("click", function() {
+  $.ajax({
+        url: 'pass_turn.php',
+        type: 'GET',
+        dataType: 'json',
+        success: function(response) {
+          console.log("Right team pass");
+        }
+    });
+});
 
-<script>
-  function sendMessage(team) {
-    const input = document.getElementById(`${team}-chat-input`);
-    const messages = document.getElementById(`${team}-chat-messages`);
-    const message = input.value.trim();
+// Send Message
+function sendMessage(team) {
+  const input = document.getElementById(`${team}-chat-input`);
+  const message = input.value.trim();
 
-    if (message) {
-      const messageElement = document.createElement('div');
-      messageElement.classList.add('chat-message');
-      messageElement.textContent = message;
-      messages.appendChild(messageElement);
-      input.value = '';
-      messages.scrollTop = messages.scrollHeight; // Scroll to the bottom
+  if (message) {
+    input.value = "";
 
-      // Remove the message after 2-3 seconds
-      setTimeout(() => {
-        messageElement.remove();
-      }, 5000 + Math.random() * 1000); // Randomly between 2-3 seconds
-    }
+    $.ajax({
+        url: 'send_message.php',
+        type: 'POST',
+        data: { message, team: currentTeam },
+        dataType: 'json',
+        success: function(response) {
+          console.log("Successfully Post message");
+        },
+    });
+
+    // HIDE after sending message
+    setTimeout(() => {
+      document.querySelector(`.${team}-msg-container`).style.display = "0";
+    }, 1000)
   }
+}
 </script>
 
 <script>
