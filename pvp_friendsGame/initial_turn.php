@@ -1,4 +1,7 @@
 <?php
+// NOTE: Please INVOKE this file only once upon starting the game do not call this repeatedly
+// NOTE: check_turn file is for initial config only
+
 include '../connection/connection.php';
 session_start();
 
@@ -8,7 +11,7 @@ $match_id = $_SESSION['lobby_id'];
 $team_name = $_SESSION['team'];
 
 // Fetch the current turn for each team (allowing 3 players per team)
-$query = "SELECT player_id, turn FROM queue WHERE team = ? AND queue_id = ? ORDER BY turn ASC";
+$query = "SELECT player_id, turn, is_current_turn FROM queue WHERE team = ? AND queue_id = ? ORDER BY turn ASC";
 $stmt = $con->prepare($query);
 $stmt->bind_param("si", $team_name, $match_id);
 $stmt->execute();
@@ -19,23 +22,20 @@ while ($row = $result->fetch_assoc()) {
     $turns[] = $row;  // Store the turns for the team
 }
 
-// Find the current player's turn
-$current_turn = 0;
+// SET the initial current player's turn into 1 for player 1
+$current_turn_player_id;
 foreach ($turns as $turn) {
-    if ($turn['player_id'] == $_SESSION['ID']) {
-        $current_turn = $turn['turn'];  // Get the player's current turn number
-        break;
+
+    $update_turn_query = "UPDATE queue SET is_current_turn = ? WHERE player_id = ? AND queue_id = ?";
+    $stmt = $con->prepare($update_turn_query);
+
+    if($turn['turn'] == 1){
+        $is_current_turn = true;
+        $current_turn_player_id = $turn['player_id'];
+        $stmt->bind_param("iii", $is_current_turn, $current_turn_player_id, $match_id);
+        $stmt->execute();
     }
 }
-
-// Determine the next turn based on current turn (wrap around after turn 3)
-$next_turn = ($current_turn % 3) + 1;  // If turn is 3, next turn will be 1
-
-// Update the turn for the next player in the database
-$update_turn_query = "UPDATE queue SET turn = ? WHERE player_id = ? AND queue_id = ?";
-$stmt = $con->prepare($update_turn_query);
-$stmt->bind_param("iii", $next_turn, $_SESSION['ID'], $match_id);
-$stmt->execute();
 
 // Fetch the updated turn for the team
 $query = "SELECT turn FROM queue WHERE team = ? AND queue_id = ? ORDER BY turn ASC";
@@ -51,7 +51,7 @@ while ($row = $result->fetch_assoc()) {
 }
 
 $data['team_turns'] = $turns;
-$data['current_turn'] = $current_turn;  // Send the current turn info for the team
+$data['current_turn_player_id'] = $current_turn_player_id;  // Send the current turn info for the team
 
 echo json_encode($data);
 ?>

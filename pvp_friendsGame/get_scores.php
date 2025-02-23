@@ -5,6 +5,7 @@ session_start();
 $lobby_id = $_SESSION['lobby_id'];
 $user_team = $_SESSION['team']; // Get the team from session
 
+
 // Fetch scores for both teams
 $team1_query = "SELECT COALESCE(SUM(score), 0) AS team1_score FROM queue WHERE queue_id = $lobby_id AND team = 'Left'";
 $team2_query = "SELECT COALESCE(SUM(score), 0) AS team2_score FROM queue WHERE queue_id = $lobby_id AND team = 'Right'";

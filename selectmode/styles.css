@@ -5,7 +5,8 @@
   box-sizing: border-box;
 }
 
-html, body {
+html,
+body {
   width: 100vw;
   height: 100vh;
   overflow: hidden;
@@ -18,7 +19,6 @@ body {
   background-image: url(../img/bgdashboard.png);
   background-size: cover; /* Ensures the image covers the entire viewport */
   background-repeat: no-repeat;
-  
 }
 .dailyquest-container {
   position: absolute;
@@ -37,10 +37,10 @@ body {
 }
 
 .dailyquest-text {
-  background-color: #FCAE00;
+  background-color: #fcae00;
   font-family: zen dots;
   font-size: 12px;
-  padding: 10px 20px;;
+  padding: 10px 20px;
   color: #000000;
   text-align: center; /* Center the text under the image */
 }
@@ -51,10 +51,13 @@ body {
 
 /* Daily Quest Animation */
 @keyframes dailyquest {
-  from { transform: translateY(0); }
-  to { transform: translateY(-10px); }
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-10px);
+  }
 }
-
 
 /* Walkthrough Overlay - Blurred Background */
 .walkthrough-overlay {
@@ -81,7 +84,6 @@ body {
   display: flex;
   flex-direction: row;
   align-items: center;
-  
 }
 
 .joybee-character {
@@ -93,7 +95,7 @@ body {
 /* Speech Bubble */
 .joybee-text-box {
   position: absolute;
-  top: -70px;  /* Move the text box higher */
+  top: -70px; /* Move the text box higher */
   left: 30%;
   transform: translateX(50%);
   background: #fff;
@@ -109,7 +111,7 @@ body {
 
 /* Adjusted Speech Bubble Arrow */
 .joybee-text-box::after {
-  content: "";
+  content: '';
   position: absolute;
   bottom: -10px; /* Adjust arrow positioning */
   left: 30%;
@@ -162,8 +164,12 @@ body {
 
 /* Joybee Bounce Animation */
 @keyframes bounce {
-  from { transform: translateY(0); }
-  to { transform: translateY(-10px); }
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-10px);
+  }
 }
 
 /* Responsive adjustments */
@@ -199,7 +205,6 @@ body {
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
   width: 350px;
   max-width: 90%;
-  
 }
 
 .global-chat-image {
@@ -308,51 +313,57 @@ body {
   gap: 20px; /* Spacing between images */
 }
 
-.pvp-mode{
+.pvp-mode {
   width: 310px;
   height: auto;
   transition: transform 0.3s ease, opacity 0.3s ease;
   cursor: pointer;
 }
-.solo-mode, .lesson-mode, .practice-mode {
+.solo-mode,
+.lesson-mode,
+.practice-mode {
   width: 280px; /* Adjust for responsiveness */
   height: auto;
   transition: transform 0.3s ease, opacity 0.3s ease;
   cursor: pointer;
 }
 
-.solo-mode:hover, .pvp-mode:hover, .lesson-mode:hover, .practice-mode:hover {
+.solo-mode:hover,
+.pvp-mode:hover,
+.lesson-mode:hover,
+.practice-mode:hover {
   transform: scale(1.1);
   opacity: 1;
 }
 
-.solo-mode{
+.solo-mode {
   position: relative;
   top: 10%;
   left: 120%;
- 
 }
 
-.pvp-mode{
+.pvp-mode {
   position: absolute;
   top: 16%;
 }
 
-.practice-mode{
+.practice-mode {
   position: absolute;
   top: 140%;
   left: 164%;
 }
 
-.lesson-mode{
+.lesson-mode {
   position: absolute;
   top: 110%;
   left: 55%;
 }
 
-
 @media (max-width: 1024px) {
-  .solo-mode, .pvp-mode, .lesson-mode, .practice-mode {
+  .solo-mode,
+  .pvp-mode,
+  .lesson-mode,
+  .practice-mode {
     width: 150px; /* Resize for medium screens */
     max-width: 100%;
     height: auto; /* Maintain aspect ratio */
@@ -360,7 +371,10 @@ body {
 }
 
 @media (max-width: 768px) {
-  .solo-mode, .pvp-mode, .lesson-mode, .practice-mode {
+  .solo-mode,
+  .pvp-mode,
+  .lesson-mode,
+  .practice-mode {
     width: 100px; /* Smaller size for tablets */
     max-width: 100%;
     height: auto;
@@ -373,7 +387,10 @@ body {
 }
 
 @media (max-width: 480px) {
-  .solo-mode, .pvp-mode, .lesson-mode, .practice-mode {
+  .solo-mode,
+  .pvp-mode,
+  .lesson-mode,
+  .practice-mode {
     width: 90px; /* Smaller size for mobile devices */
     max-width: 100%;
     height: auto;
@@ -386,7 +403,10 @@ body {
 }
 
 @media (max-width: 320px) {
-  .solo-mode, .pvp-mode, .lesson-mode, .practice-mode {
+  .solo-mode,
+  .pvp-mode,
+  .lesson-mode,
+  .practice-mode {
     width: 80px; /* Very small size for compact mobile screens */
     max-width: 100%;
     height: auto;
@@ -396,8 +416,6 @@ body {
     background-position: top center; /* You can adjust position on small screens */
   }
 }
-
-
 
 /* FOR ALL POPUP MODAL */
 /* Solo Mode Modal Styles */
@@ -410,13 +428,13 @@ body {
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.4); /* Black background with opacity */
-  
+
   justify-content: center;
   align-items: center; /* Center the modal vertically */
 }
 
 .solo-modal-content {
-  background-color: #00253E;
+  background-color: #00253e;
   padding: 20px;
   border-radius: 8px;
   border: 20px solid transparent;
@@ -425,7 +443,7 @@ body {
   max-width: 700px;
   height: 30%; /* Mas flexible na height */
   text-align: center;
-  box-shadow: 0 8px 16px #FCAE00;
+  box-shadow: 0 8px 16px #fcae00;
   display: flex;
   flex-direction: row; /* I-arrange ang buttons sa row */
   align-items: center;
@@ -444,7 +462,7 @@ body {
   font-weight: bold;
   cursor: pointer;
 }
-.solo-close:hover{
+.solo-close:hover {
   transform: scale(1.1);
 }
 
@@ -474,7 +492,6 @@ body {
   scale: 1.1;
 }
 
-
 /* Multiplayer Mode Modal Styles */
 .multiplayer-modal {
   display: none; /* Hidden by default */
@@ -491,7 +508,7 @@ body {
 }
 
 .multiplayer-modal-content {
-  background-color: #00253E; /* Fallback color */
+  background-color: #00253e; /* Fallback color */
   margin: 5% auto;
   padding: 20px;
   border-radius: 8px;
@@ -502,7 +519,7 @@ body {
   height: 100%;
   max-height: 300px;
   text-align: center;
-  box-shadow: 0 8px 16px #FCAE00;
+  box-shadow: 0 8px 16px #fcae00;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -528,7 +545,7 @@ body {
   scale: 1.1;
 }
 
-.multiplayer-modal-content button{
+.multiplayer-modal-content button {
   display: inline-block; /* Align buttons next to each other */
 }
 
@@ -588,7 +605,7 @@ body {
 }
 
 .practice-start-btn {
-  background-color: #28A745;
+  background-color: #28a745;
   color: white;
   border: none;
   padding: 10px 20px;
@@ -640,7 +657,7 @@ body {
 }
 
 .custom-start-btn {
-  background-color: #007BFF;
+  background-color: #007bff;
   color: white;
   border: none;
   padding: 10px 20px;
@@ -652,7 +669,6 @@ body {
 .custom-start-btn:hover {
   background-color: #0056b3;
 }
-
 
 /* FOR USER'S LOBBY */
 /* Modal Styles */
@@ -678,12 +694,11 @@ body {
   height: 620px;
   text-align: center;
   position: relative;
- 
 }
 
 /* Title & Lobby ID */
 .users-lobby-title {
-  color: #FFD700;
+  color: #ffd700;
   font-size: 2rem;
   font-weight: normal;
   font-family: zen dots;
@@ -736,13 +751,12 @@ body {
 }
 
 .team-left .player-slot {
-  border-color: #FFD700;
+  border-color: #ffd700;
 }
 
 .team-right .player-slot {
-  border-color: #FF0000;
+  border-color: #ff0000;
 }
-
 
 /* Button Container */
 .button-container {
@@ -774,8 +788,7 @@ body {
   height: 100%;
 }
 
-
-/* ---------Joining Lobby Modal ---------------------*/ 
+/* ---------Joining Lobby Modal ---------------------*/
 .users-join-modal {
   display: none;
   position: fixed;
@@ -802,9 +815,9 @@ body {
   flex-direction: column;
   align-items: center; /* Center content horizontally */
   justify-content: center; /* Center content vertically */
-  overflow-y:auto ;
-  -ms-overflow-style: none; 
-    scrollbar-width:none;
+  overflow-y: auto;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 
 .users-back-close {
@@ -835,7 +848,7 @@ body {
   padding: 12px;
   text-align: center;
   color: #fff;
-  border: 1px solid #0286DF;
+  border: 1px solid #0286df;
   font-size: 2.5rem;
 }
 
@@ -843,17 +856,17 @@ body {
   padding: 12px;
   text-align: center;
   color: #fff;
-  border: 1px solid #0286DF;
+  border: 1px solid #0286df;
   font-size: 2rem;
 }
 
 .join-lobby-row:hover {
   cursor: pointer;
-  background: #011F2B;
+  background: #011f2b;
 }
 
 .join-lobby-row.selected {
-  background: #011F2B;
+  background: #011f2b;
   color: #fff;
 }
 
@@ -887,7 +900,6 @@ body {
   font-size: 20px;
 }
 
-
 /* Main Content Styles */
 .main-content {
   display: flex; /* Ensure flexbox is used */
@@ -901,12 +913,12 @@ body {
   padding: 10px;
 }
 
-.swiper-btn-close{
+.swiper-btn-close {
   width: 200px;
   height: 200px;
 }
 
-.btnswiper-back-button:hover{
+.btnswiper-back-button:hover {
   transform: scale(1.1);
 }
 
@@ -918,37 +930,36 @@ body {
   justify-content: center;
 }
 
-  /* Style for each swiper-slide */
+/* Style for each swiper-slide */
 .swiper-slide {
-    background-position: center;
-    background-size: cover;
-    width: 300px;
-    background-color: #223F77;
-    overflow: hidden;
-    border-radius: 8px;
-    border: 2px solid #223F77;
+  background-position: center;
+  background-size: cover;
+  width: 300px;
+  background-color: #223f77;
+  overflow: hidden;
+  border-radius: 8px;
+  border: 2px solid #223f77;
 }
 
 .picture {
-    width: 100%;
-    height: 90%;
-    overflow: hidden;
+  width: 100%;
+  height: 90%;
+  overflow: hidden;
 }
 
 .picture img {
-    display: block;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 /* Styling for the swiper-pagination bullets */
 .swiper-pagination-bullet {
-    background: #fff;
-    opacity: 1;
-    
+  background: #fff;
+  opacity: 1;
 }
 
 .swiper-pagination-bullet-active {
-    background: #007aff;
+  background: #007aff;
 }

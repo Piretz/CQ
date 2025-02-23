@@ -140,7 +140,7 @@ $team = $_SESSION['team'];
       </div>
       <!-- Chat Box for Team 2 -->
       <div class="chat-box">
-        <div class="chat-messages" id="team1-chat-messages"></div>
+        <div class="chat-messages" id="team2-chat-messages"></div>
         <div class="chat-input-container">
             <input type="text" id="team2-chat-input" placeholder="Type a message...">
             <button onclick="sendMessage('team2')">
@@ -153,9 +153,38 @@ $team = $_SESSION['team'];
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
-  var scoreInterval;
+/**
+ * NOTE: Indent must be fix this creates visual hierarchy which means that any dev. can traverse the code easily ( see Uncle Bob - CLEAN CODE book )
+ * */ 
 
-    document.addEventListener("DOMContentLoaded", function () {
+// NOTE: Use let or Const avoid old implement of var for variable declaration as this will implement bugs
+let scoreInterval;
+let playerInCurrTeam;
+let currentPlayerTurnId;
+
+let team1MessagesLength = 0;
+let team2MessagesLength = 0;
+
+const currentTeam = "<?php echo $team; ?>";
+const currentPlayerInScreen =  "<?php echo $id; ?>";
+
+const btnTeam1CodeView = document.querySelector("#team1-code");
+const btnTeam2CodeView = document.querySelector("#team2-code");
+
+const btnTeam1Pass = document.querySelector("#team1-pass");
+const btnTeam1Run = document.querySelector("#team1-run");
+
+const btnTeam2Pass = document.querySelector("#team2-pass");
+const btnTeam2Run = document.querySelector("#team2-run");
+
+const team1Msgs = document.querySelector(`#team1-chat-messages`);
+const team2Msgs = document.querySelector(`#team2-chat-messages`);
+
+/**
+ * Event listeners
+ */
+
+document.addEventListener("DOMContentLoaded", function () {
         let userTeam = "<?php echo $team; ?>"; // Get the team from PHP
 
         if (userTeam === "Left") {
@@ -167,72 +196,76 @@ $team = $_SESSION['team'];
         }
     });
 
-        document.addEventListener("DOMContentLoaded", function() {
-            let timerElement = document.getElementById("timer");
-            let instructionPanel = document.querySelector(".instruction-panel");
-            let defaultTime = 121; // 2 minutes in seconds
-            let timeLeft = defaultTime;
-            let timerInterval;
+  document.addEventListener("DOMContentLoaded", function() {
+              let timerElement = document.getElementById("timer");
+              let instructionPanel = document.querySelector(".instruction-panel");
+              let defaultTime = 121; // 2 minutes in seconds
+              let timeLeft = defaultTime;
+              let timerInterval;
 
-            function updateTimer() {
-                let minutes = Math.floor(timeLeft / 60);
-                let seconds = timeLeft % 60;
-                timerElement.textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+              function updateTimer() {
+                  let minutes = Math.floor(timeLeft / 60);
+                  let seconds = timeLeft % 60;
+                  timerElement.textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
 
-                if (timeLeft > 0) {
-                    timeLeft--;
-                } else {
-                    clearInterval(timerInterval);
-                    alert("Time's up!"); // You can replace this with any other action
-                }
-            }
+                  if (timeLeft > 0) {
+                      timeLeft--;
+                  } else {
+                      clearInterval(timerInterval);
+                      alert("Time's up!"); // You can replace this with any other action
+                  }
+              }
 
-            function loadNewQuestion() {
-    $.ajax({
-        url: 'fetch_new_question.php',  // Your updated PHP endpoint
-        type: 'GET',
-        dataType: 'json',
-        success: function(response) {
-            if (response.success) {
-                // Update the UI with the new question
-                $("#output-area").text(response.Given_Code);
-                $("#task-area p").text(response.Task);
-                $("#expected-output-area").text(response.Display);
+  function loadNewQuestion() {
+      $.ajax({
+          url: 'fetch_new_question.php',  // Your updated PHP endpoint
+          type: 'GET',
+          dataType: 'json',
+          success: function(response) {
+              if (response.success) {
+                  // Update the UI with the new question
+                  $("#output-area").text(response.Given_Code);
+                  $("#task-area p").text(response.Task);
+                  $("#expected-output-area").text(response.Display);
 
-                // Update currentQuestionId for the next round
-                currentQuestionId = response.Level_Id;
-            } else {
-                console.error("Error fetching new question:", response.error);
-            }
-        },
-        error: function(xhr, status, error) {
-            console.error("Error fetching new question:", error);
-        }
-    });
+                  // Update currentQuestionId for the next round
+                  currentQuestionId = response.Level_Id;
+              } else {
+                  console.error("Error fetching new question:", response.error);
+              }
+          },
+          error: function(xhr, status, error) {
+              console.error("Error fetching new question:", error);
+          }
+  });
+
 }
 
-function checkTurnAndUpdateUI() {
+function initTurnAndUpdateUI() {
+    console.log("initTurnAndUpdateUI");
+
     $.ajax({
-        url: 'check_turn.php',  // File to get the current turn for each team
+        url: 'initial_turn.php',  // File to get the current turn for each team
         type: 'GET',
         dataType: 'json',
         success: function(data) {
-            if (data.error) {
+            if (data?.error) {
                 console.error(data.error);
                 return;
             }
 
             // Get the current turn (1, 2, or 3) for the team
-            let currentPlayerTurn = data.current_turn;
+            currentPlayerTurnId = data?.current_turn_player_id;
 
-            // Enable/Disable buttons based on the player's turn
-            if (currentPlayerTurn === 1) {
-                enableButtonsForPlayer(1);
-            } else if (currentPlayerTurn === 2) {
-                enableButtonsForPlayer(2);
-            } else if (currentPlayerTurn === 3) {
-                enableButtonsForPlayer(3);
-            }
+            playerInCurrTeam = data?.team_turns?.length;
+
+            /**
+             * 
+             * Multiple member in Team
+             * 
+             * 
+             */
+            userScreenUpdate(currentPlayerTurnId);
         },
         error: function(xhr, status, error) {
             console.error("Error checking turn:", error);
@@ -240,23 +273,89 @@ function checkTurnAndUpdateUI() {
     });
 }
 
-function enableButtonsForPlayer(playerTurn) {
-    // Enable buttons for the player whose turn it is
-    if (playerTurn === 1) {
-        $("#submit-button").prop("disabled", false);
-        $("#pass-button").prop("disabled", false);
-    } else {
-        $("#submit-button").prop("disabled", true);
-        $("#pass-button").prop("disabled", true);
+function userScreenUpdate(currentPlayerTurnId){
+
+    console.log(currentPlayerTurnId, currentPlayerInScreen, currentTeam);
+
+     /**
+     * HIDE the "pass" btn if player is only one in team it 
+     * doesn't make sense showing a pass button if you don't have someone from your team
+     */
+          
+      if(playerInCurrTeam === 1 && currentTeam === "Left"){
+        btnTeam1Pass.style.display = 'none';
+        return;
+      }
+          
+      if(playerInCurrTeam === 1 && currentTeam === "Right"){
+        btnTeam2Pass.style.display =  'none';
+        return;
+      }
+
+     /**
+      *
+      * TEAM 1
+      * 
+     */
+
+    // Hide buttons if the player's not in 
+    if(currentTeam === "Left"){
+      if (Number(currentPlayerTurnId) !== Number(currentPlayerInScreen)) {
+        btnTeam1Pass.style.display = 'none';
+        btnTeam1Run.style.display = 'none';
+        btnTeam1CodeView.value = "";
+        btnTeam1CodeView.placeholder = "Teammate currently answering..."
+
+        btnTeam1CodeView.setAttribute('disabled', "");
+        return;
+      }
+
+      // Enable the buttons
+      if (Number(currentPlayerTurnId) === Number(currentPlayerInScreen)) {
+        btnTeam1Pass.style.display = 'block';
+        btnTeam1Run.style.display = 'block';
+        btnTeam1CodeView.placeholder = "Enter your code here..."
+
+        btnTeam1CodeView?.removeAttribute('disabled');
+        return;
+      }
+    }
+
+    /**
+     * 
+     * Team 2
+     * 
+     */
+
+    if(currentTeam === "Right"){
+      if (Number(currentPlayerTurnId) !== Number(currentPlayerInScreen)) {
+        btnTeam2Pass.style.display = 'none';
+        btnTeam2Run.style.display = 'none';
+        btnTeam2CodeView.value = "";
+        btnTeam2CodeView.placeholder = "Teammate currently answering..."
+
+        btnTeam2CodeView?.setAttribute('disabled', "");
+        return;
+      }
+
+      // Enable button if player turn
+      if (Number(currentPlayerTurnId) === Number(currentPlayerInScreen)) {
+        btnTeam2Pass.style.display = 'block';
+        btnTeam2Run.style.display = 'block';
+        btnTeam2CodeView.placeholder = "Enter your code here..."
+
+        btnTeam2CodeView?.setAttribute('disabled');
+        return;
+      }
     }
 }
 
 // Run the turn checking function periodically or when needed
-checkTurnAndUpdateUI();
+initTurnAndUpdateUI();
 
-function fetchScores() {
+function pollSync() {
     $.ajax({
-        url: 'get_scores.php',
+        url: 'poll_sync.php',
         type: 'GET',
         dataType: 'json',
         success: function (data) {
@@ -271,6 +370,52 @@ function fetchScores() {
 
             // Use the user's team directly from the response
             let userTeam = data.user_team;
+
+            if(currentTeam === "Left"){
+              userScreenUpdate(data?.team1_current_player);
+              
+              // Do not update message UI
+              const team_msgs = data?.team1_messages.length || 0;
+              if(team_msgs !== team1MessagesLength){
+                team1MessagesLength = team_msgs;
+
+                // Remove element first to prevent duplicate
+                document.querySelector(".team1-msg-container")?.remove();
+                team1Msgs.insertAdjacentHTML("beforeend", `<div class="team1-msg-container" style="display: flex; flex-direction: column;"></div>`)
+
+                // Then insert
+                data?.team1_messages?.forEach(({ message, first_name }) => {
+                  document.querySelector(".team1-msg-container").insertAdjacentHTML("afterbegin", `<div>${first_name} : ${message}</div>`)
+                })
+
+                // Scroll to top
+                team1Msgs.scrollTop = 0;
+              }
+            };
+
+            if(currentTeam === "Right"){
+              userScreenUpdate(data?.team2_current_player); 
+
+              // Do not update message UI
+              const team_msgs = data?.team2_messages.length || 0;
+              
+              if(team_msgs !== team2MessagesLength){
+                team2MessagesLength = team_msgs;
+                console.log(team_msgs, team2MessagesLength, "TEAM 2");
+                
+                // Remove element first to prevent duplicate
+                document.querySelector(".team2-msg-container")?.remove();
+                team2Msgs.insertAdjacentHTML("beforeend", `<div class="team2-msg-container" style="display: flex; flex-direction: column;"></div>`)
+
+                // Then insert
+                data?.team2_messages?.forEach(({ message, first_name }) => {
+                  document.querySelector(".team2-msg-container").insertAdjacentHTML("afterbegin", `<div>${first_name} : ${message}</div>`)
+                })
+
+                // Reset view to top
+                team2Msgs.scrollTop = 0;
+              }
+            };
 
             // Check if any team reached 10 points
             if (data.team1 >= 10) {
@@ -295,20 +440,24 @@ function declareWinner(winningTeam, userTeam) {
     }
 }
 
+function startTimer() {
+    clearInterval(timerInterval); // Clear existing timer
+    timeLeft = defaultTime; // Reset time to default
+    
+    updateTimer(); // Immediately update UI
+    timerInterval = setInterval(updateTimer, 1000); // Restart timer
+}
 
-            setInterval(loadNewQuestion, 1000);
-            setInterval(fetchScores, 1000);
-            function startTimer() {
-                clearInterval(timerInterval); // Clear existing timer
-                timeLeft = defaultTime; // Reset time to default
-                updateTimer(); // Immediately update UI
-                timerInterval = setInterval(updateTimer, 1000); // Restart timer
-            }
-            // Start timer when the page loads
-            startTimer();
-            loadNewQuestion();
-            //configure for team 1
-            document.getElementById("team1-run").addEventListener("click", function() {
+setInterval(loadNewQuestion, 1000);
+setInterval(pollSync, 1000);
+        
+// Start timer when the page loads
+startTimer();
+loadNewQuestion();
+
+//configure for team 1
+btnTeam1Run.addEventListener("click", function() {
+
     let userAnswer = $("#team1-code").val().trim();
     let scoreElement = document.querySelector(".team-1-score");
     let currentScore = parseInt(scoreElement.textContent) || 0;
@@ -360,15 +509,18 @@ function declareWinner(winningTeam, userTeam) {
             } else {
                 alert("❌ Wrong! The correct answer is: " + response.correct_answer);
             }
+
+            passTurn();
         }
     });
 
     startTimer();  // Assuming your timer is handled elsewhere
 });
 
+btnTeam1Pass.addEventListener("click", passTurn);
 
-            //configure for team 2
-            document.getElementById("team2-run").addEventListener("click", function() {
+//configure for team 2
+btnTeam2Run.addEventListener("click", function() {
               let userAnswer = $("#team2-code").val().trim();
               let scoreElement = document.querySelector(".team-2-score");
               let currentScore = parseInt(scoreElement.textContent) || 0;
@@ -401,13 +553,13 @@ function declareWinner(winningTeam, userTeam) {
                     lifeImage.src = `../img/pvpLives-${newScore}.png`;
 
                     if (newScore === 10) {
-                    alert("🎉 YOU WIN! 🎉");
-                    
-                    clearInterval(timerInterval);
-                    timerElement.textContent = "00:00";
+                      alert("🎉 YOU WIN! 🎉");
+                      
+                      clearInterval(timerInterval);
+                      timerElement.textContent = "00:00";
 
-                    submitButton.disabled = true;
-                    textArea.disabled = true;
+                      submitButton.disabled = true;
+                      textArea.disabled = true;
 
                     } else {
                         setTimeout(() => {
@@ -418,6 +570,8 @@ function declareWinner(winningTeam, userTeam) {
                 }  else {
                   alert("❌ Wrong! The correct answer is: " + response.correct_answer);
                 }
+
+                passTurn();
               }
               })
                 startTimer();
@@ -439,27 +593,43 @@ function declareWinner(winningTeam, userTeam) {
             timerElement.style.textAlign = "center";
             timerElement.style.transform = "translateX(-50%)";
             instructionPanel.appendChild(timerElement);
-        });
-</script>
+});
 
-<script>
+btnTeam2Pass.addEventListener("click", passTurn);
+
+function passTurn() {
+  $.ajax({
+        url: 'pass_turn.php',
+        type: 'GET',
+        dataType: 'json',
+        success: function(response) {
+          console.log("Current team pass");
+        }
+    });
+}
+
+// Send Message
 function sendMessage(team) {
   const input = document.getElementById(`${team}-chat-input`);
-  const messages = document.getElementById(`${team}-chat-messages`);
   const message = input.value.trim();
 
   if (message) {
-    const messageElement = document.createElement('div');
-    messageElement.classList.add('chat-message');
-    messageElement.textContent = message;
-    messages.appendChild(messageElement);
-    input.value = '';
-    messages.scrollTop = messages.scrollHeight; // Scroll to the bottom
+    input.value = "";
 
-    // Remove the message after 2-3 seconds
+    $.ajax({
+        url: 'send_message.php',
+        type: 'POST',
+        data: { message, team: currentTeam },
+        dataType: 'json',
+        success: function(response) {
+          console.log("Successfully Post message");
+        },
+    });
+
+    // HIDE after sending message
     setTimeout(() => {
-      messageElement.remove();
-    }, 5000 + Math.random() * 1000); // Randomly between 2-3 seconds
+      document.querySelector(`.${team}-msg-container`).style.display = "0";
+    }, 1000)
   }
 }
 </script>
@@ -467,11 +637,12 @@ function sendMessage(team) {
 <script>
   window.onload = function() {
     let audio = document.getElementById("bg-music");
-    audio.play().catch(error => {
+    audio?.play()?.catch(error => {
       console.log("Autoplay failed due to browser restrictions: ", error);
     });
   };
 </script>
+
 <script src="button.js"></script>
 
 </body>
