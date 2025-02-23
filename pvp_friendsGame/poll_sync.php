@@ -29,10 +29,9 @@ $team2_turn_result = mysqli_query($con, $team2_turn_query);
 $team1_current_player = mysqli_fetch_assoc($team1_turn_result)['player_id'];
 $team2_current_player = mysqli_fetch_assoc($team2_turn_result)['player_id'];
 
-
 // Fetch current msgs in room
-$team1_msg_query = "SELECT ing.message, ing.team, users.First_Name FROM in_game_chat ing JOIN users ON users.User_ID = ing.player_id WHERE ing.queue_id = $lobby_id AND ing.team = 'Left'";
-$team2_msg_query = "SELECT ing.message, ing.team, users.First_Name FROM in_game_chat ing JOIN users ON users.User_ID = ing.player_id WHERE ing.queue_id = $lobby_id AND ing.team = 'Right'";
+$team1_msg_query = "SELECT ing.message, ing.team, users.first_name FROM in_game_chat ing JOIN users ON users.User_ID = ing.player_id WHERE ing.queue_id = $lobby_id AND ing.team = 'Left'";
+$team2_msg_query = "SELECT ing.message, ing.team, users.first_name FROM in_game_chat ing JOIN users ON users.User_ID = ing.player_id WHERE ing.queue_id = $lobby_id AND ing.team = 'Right'";
 
 $team1_msg_result = mysqli_query($con, $team1_msg_query);
 $team2_msg_result = mysqli_query($con, $team2_msg_query);
@@ -47,6 +46,7 @@ while($row = mysqli_fetch_array($team2_msg_result)) {
     $team2_messages[] = $row;
 }
 
+
 // Send scores and user's team
 echo json_encode([
     "team1" => $team1_score,
@@ -56,7 +56,7 @@ echo json_encode([
     "team1_current_player" => $team1_current_player,
     "team2_current_player" => $team2_current_player, 
 
-    "team1_messages" => $team1_messages,
-    "team2_messages" => $team2_messages,
+    "team1_messages" => $team1_messages ?? [],
+    "team2_messages" => $team2_messages ?? [],
 ]);
 ?>

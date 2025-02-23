@@ -39,15 +39,15 @@ foreach ($player_turns as $player) {
         $is_current_turn = false;
         $current_turn_player_id = $player['player_id'];
         $stmt->bind_param("iii", $is_current_turn, $player['player_id'], $match_id);
+        $stmt->execute();
     } 
     
     // SET current turn for next player in team
     if($player['turn'] == $next_player_turn){
         $is_current_turn = true;
         $stmt->bind_param("iii", $is_current_turn, $player['player_id'], $match_id);
+        $stmt->execute();
     }
-
-    $stmt->execute();
 }
 
 echo json_encode($player_turns);

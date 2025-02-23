@@ -160,6 +160,7 @@ $team = $_SESSION['team'];
 // NOTE: Use let or Const avoid old implement of var for variable declaration as this will implement bugs
 let scoreInterval;
 let playerInCurrTeam;
+let currentPlayerTurnId;
 
 let team1MessagesLength = 0;
 let team2MessagesLength = 0;
@@ -254,7 +255,7 @@ function initTurnAndUpdateUI() {
             }
 
             // Get the current turn (1, 2, or 3) for the team
-            let currentPlayerTurn = data?.current_turn_player_id;
+            currentPlayerTurnId = data?.current_turn_player_id;
 
             playerInCurrTeam = data?.team_turns?.length;
 
@@ -264,7 +265,7 @@ function initTurnAndUpdateUI() {
              * 
              * 
              */
-            userScreenUpdate(currentPlayerTurn);
+            userScreenUpdate(currentPlayerTurnId);
         },
         error: function(xhr, status, error) {
             console.error("Error checking turn:", error);
@@ -272,9 +273,9 @@ function initTurnAndUpdateUI() {
     });
 }
 
-function userScreenUpdate(currentPlayerTurn){
+function userScreenUpdate(currentPlayerTurnId){
 
-    console.log(currentPlayerTurn, currentPlayerInScreen, currentTeam);
+    console.log(currentPlayerTurnId, currentPlayerInScreen, currentTeam);
 
      /**
      * HIDE the "pass" btn if player is only one in team it 
@@ -299,20 +300,21 @@ function userScreenUpdate(currentPlayerTurn){
 
     // Hide buttons if the player's not in 
     if(currentTeam === "Left"){
-      if (Number(currentPlayerTurn) !== Number(currentPlayerInScreen)) {
+      if (Number(currentPlayerTurnId) !== Number(currentPlayerInScreen)) {
         btnTeam1Pass.style.display = 'none';
         btnTeam1Run.style.display = 'none';
-        btnTeam1CodeView.textContent = "Teammate currently answering..."
+        btnTeam1CodeView.value = "";
+        btnTeam1CodeView.placeholder = "Teammate currently answering..."
 
         btnTeam1CodeView.setAttribute('disabled', "");
         return;
       }
 
       // Enable the buttons
-      if (Number(currentPlayerTurn) === Number(currentPlayerInScreen)) {
+      if (Number(currentPlayerTurnId) === Number(currentPlayerInScreen)) {
         btnTeam1Pass.style.display = 'block';
         btnTeam1Run.style.display = 'block';
-        btnTeam1CodeView.textContent = "Enter your code here..."
+        btnTeam1CodeView.placeholder = "Enter your code here..."
 
         btnTeam1CodeView?.removeAttribute('disabled');
         return;
@@ -326,20 +328,21 @@ function userScreenUpdate(currentPlayerTurn){
      */
 
     if(currentTeam === "Right"){
-      if (Number(currentPlayerTurn) !== Number(currentPlayerInScreen)) {
+      if (Number(currentPlayerTurnId) !== Number(currentPlayerInScreen)) {
         btnTeam2Pass.style.display = 'none';
         btnTeam2Run.style.display = 'none';
-        btnTeam2CodeView.textContent = "Teammate currently answering..."
+        btnTeam2CodeView.value = "";
+        btnTeam2CodeView.placeholder = "Teammate currently answering..."
 
         btnTeam2CodeView?.setAttribute('disabled', "");
         return;
       }
 
       // Enable button if player turn
-      if (Number(currentPlayerTurn) === Number(currentPlayerInScreen)) {
+      if (Number(currentPlayerTurnId) === Number(currentPlayerInScreen)) {
         btnTeam2Pass.style.display = 'block';
         btnTeam2Run.style.display = 'block';
-        btnTeam2CodeView.textContent = "Enter your code here..."
+        btnTeam2CodeView.placeholder = "Enter your code here..."
 
         btnTeam2CodeView?.setAttribute('disabled');
         return;
@@ -381,8 +384,8 @@ function pollSync() {
                 team1Msgs.insertAdjacentHTML("beforeend", `<div class="team1-msg-container" style="display: flex; flex-direction: column;"></div>`)
 
                 // Then insert
-                data?.team1_messages?.forEach(({ message, First_Name }) => {
-                  document.querySelector(".team1-msg-container").insertAdjacentHTML("afterbegin", `<div>${First_Name} : ${message}</div>`)
+                data?.team1_messages?.forEach(({ message, first_name }) => {
+                  document.querySelector(".team1-msg-container").insertAdjacentHTML("afterbegin", `<div>${first_name} : ${message}</div>`)
                 })
 
                 // Scroll to top
@@ -405,8 +408,8 @@ function pollSync() {
                 team2Msgs.insertAdjacentHTML("beforeend", `<div class="team2-msg-container" style="display: flex; flex-direction: column;"></div>`)
 
                 // Then insert
-                data?.team2_messages?.forEach(({ message }) => {
-                  document.querySelector(".team2-msg-container").insertAdjacentHTML("afterbegin", `<div>${message}</div>`)
+                data?.team2_messages?.forEach(({ message, first_name }) => {
+                  document.querySelector(".team2-msg-container").insertAdjacentHTML("afterbegin", `<div>${first_name} : ${message}</div>`)
                 })
 
                 // Reset view to top
@@ -440,6 +443,7 @@ function declareWinner(winningTeam, userTeam) {
 function startTimer() {
     clearInterval(timerInterval); // Clear existing timer
     timeLeft = defaultTime; // Reset time to default
+    
     updateTimer(); // Immediately update UI
     timerInterval = setInterval(updateTimer, 1000); // Restart timer
 }
@@ -505,22 +509,15 @@ btnTeam1Run.addEventListener("click", function() {
             } else {
                 alert("❌ Wrong! The correct answer is: " + response.correct_answer);
             }
+
+            passTurn();
         }
     });
 
     startTimer();  // Assuming your timer is handled elsewhere
 });
 
-btnTeam1Pass.addEventListener("click", function() {
-  $.ajax({
-        url: 'pass_turn.php',
-        type: 'GET',
-        dataType: 'json',
-        success: function(response) {
-          console.log("Left team pass");
-        }
-    });
-});
+btnTeam1Pass.addEventListener("click", passTurn);
 
 //configure for team 2
 btnTeam2Run.addEventListener("click", function() {
@@ -556,13 +553,13 @@ btnTeam2Run.addEventListener("click", function() {
                     lifeImage.src = `../img/pvpLives-${newScore}.png`;
 
                     if (newScore === 10) {
-                    alert("🎉 YOU WIN! 🎉");
-                    
-                    clearInterval(timerInterval);
-                    timerElement.textContent = "00:00";
+                      alert("🎉 YOU WIN! 🎉");
+                      
+                      clearInterval(timerInterval);
+                      timerElement.textContent = "00:00";
 
-                    submitButton.disabled = true;
-                    textArea.disabled = true;
+                      submitButton.disabled = true;
+                      textArea.disabled = true;
 
                     } else {
                         setTimeout(() => {
@@ -573,6 +570,8 @@ btnTeam2Run.addEventListener("click", function() {
                 }  else {
                   alert("❌ Wrong! The correct answer is: " + response.correct_answer);
                 }
+
+                passTurn();
               }
               })
                 startTimer();
@@ -596,16 +595,18 @@ btnTeam2Run.addEventListener("click", function() {
             instructionPanel.appendChild(timerElement);
 });
 
-btnTeam2Pass.addEventListener("click", function() {
+btnTeam2Pass.addEventListener("click", passTurn);
+
+function passTurn() {
   $.ajax({
         url: 'pass_turn.php',
         type: 'GET',
         dataType: 'json',
         success: function(response) {
-          console.log("Right team pass");
+          console.log("Current team pass");
         }
     });
-});
+}
 
 // Send Message
 function sendMessage(team) {
