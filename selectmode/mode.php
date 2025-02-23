@@ -36,9 +36,26 @@ $user_type = $user_row['user_type'];
 
           <!-- dailyquest animated button image -->
           <!-- <div class="dailyquest-container">
-            <img src="../img/dailyquest.png" alt="Daily Quest" class="dailyquest-image" onclick="window.location.href='../dailyquest/dailyquest.php';">
+            <img src="../img/dailyquest.png" alt="Daily Quest" class="dailyquest-image" id="dailyquest" onclick="window.location.href='../quest/quest.php';">
             <div class="dailyquest-text">Daily Quest</div>
           </div> -->
+
+          <script>
+                  function showLoadingAndRedirect(url) {
+                
+                    document.getElementById("loading").style.display = "flex";
+                    setTimeout(function() {
+                      window.location.href = url;
+                    }, 2000);
+                  }
+
+                  // Event listener for Take Lesson button
+                  document.getElementById("dailyquest").addEventListener("click", function() {
+                    showLoadingAndRedirect('../quest/quest.php');
+                  });
+                </script>
+
+
             <!-- Walkthrough Overlay -->
             <?php
                 if($user_type == "New"){
@@ -311,7 +328,7 @@ $user_type = $user_row['user_type'];
                 <div id="multiplayerModeModal" class="multiplayer-modal">
                   <div class="multiplayer-modal-content">
                     <span class="multiplayer-close" id="multiplayerCloseModal"><img src="../img/btnback.png" alt="Close Button"></span>
-                    <button id="createMultiplayerBtn"  onclick="window.location.href='course.php'" class="multiplayer-start-btn"><img src="../img/btncreate.png" alt="Close Button"></button>
+                    <button id="createMultiplayerBtn"  onclick="window.location.href='pvpCourse.php'" class="multiplayer-start-btn"><img src="../img/btncreate.png" alt="Close Button"></button>
                     <button id="joinMultiplayerBtn" class="multiplayer-start-btn"><img src="../img/btnjoin.png" alt="Close Button"></button>
                   </div>
                 </div>

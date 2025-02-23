@@ -191,29 +191,29 @@ if(!isset($_SESSION['ID'])){
         </div>
 
         <script>
-    function checkAnswer() {
-        var correctAnswer = "b";
-        var selectedAnswer = document.querySelector('input[name="answer"]:checked');
-        
-        if (selectedAnswer) {
-            if (selectedAnswer.value === correctAnswer) {
-                document.getElementById("quiz-modal").style.display = "none";
-                document.getElementById("quiz-correct").style.display = "flex";
-            } else {
-                document.getElementById("quiz-modal").style.display = "none";
-                document.getElementById("quiz-incorrect").style.display = "flex";
+            function checkAnswer() {
+                var correctAnswer = "b";
+                var selectedAnswer = document.querySelector('input[name="answer"]:checked');
+                
+                if (selectedAnswer) {
+                    if (selectedAnswer.value === correctAnswer) {
+                        document.getElementById("quiz-modal").style.display = "none";
+                        document.getElementById("quiz-correct").style.display = "flex";
+                    } else {
+                        document.getElementById("quiz-modal").style.display = "none";
+                        document.getElementById("quiz-incorrect").style.display = "flex";
+                    }
+                } else {
+                    alert("Please select an answer before submitting.");
+                }
+                }
+
+                function retakeQuiz() {
+                document.getElementById("quiz-incorrect").style.display = "none";
+                document.getElementById("quiz-modal").style.display = "flex";
             }
-        } else {
-            alert("Please select an answer before submitting.");
-        }
-    }
 
-    function retakeQuiz() {
-    document.getElementById("quiz-incorrect").style.display = "none";
-    document.getElementById("quiz-modal").style.display = "flex";
-}
-
-</script>
+        </script>
                 
         <script>
             // quiz

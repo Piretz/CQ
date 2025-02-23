@@ -36,104 +36,46 @@ if(!isset($_SESSION['ID'])){
                         </button>
                     </div>
                 </div>
-
             <div class="messages-container">
-                <div class="message-item" onclick="openConversation('Jane Smith', 'Hello, are you free to talk?', 'annette.png')">
-                    <img src="../img/annette.png" alt="Profile Image" class="profile-img">  
-                    <div class="message-details">
-                        <p class="user-name">Jane Smith</p>
-                        <p class="message-text">Hello, are you free to talk?</p>
-                        <p class="user-text"></p>
-                        <span class="message-times">10:30 AM</span> 
-                    </div>
-                    
-                </div>
-                <!-- More message items can be added here -->
-                <div class="message-item" onclick="openConversation('John', 'Hello, are you free to talk?', 'avatar.png')">
-                    <img src="../img/avatar.png" alt="Profile Image" class="profile-img">
-                    <div class="message-details">
-                        <p class="user-name">John</p>
-                        <p class="message-text">Hello, are you free to talk?</p>
-                        <p class="user-text"></p>
-                        <span class="message-times">10:30 AM</span>
-                    </div>
-                </div>
+            <?php
+                $query = "SELECT * FROM users WHERE User_ID != $id";
+                $result = mysqli_query($con,$query);
+                while($rows = mysqli_fetch_assoc($result)){
+                    $receiver_id = $rows['User_ID'];
+                    $query_message = "SELECT * FROM Messages WHERE receiver_id = $receiver_id  LIMIT 1";
+                    $result_message = mysqli_query($con,$query_message);
+                    $last_send = mysqli_fetch_assoc($result_message)
 
-                <div class="message-item" onclick="openConversation('Chris', 'Hello, are you free to talk?', 'john.png')">
-                    <img src="../img/john.png" alt="Profile Image" class="profile-img">
-                    <div class="message-details">
-                        <p class="user-name">Chris</p>
-                        <p class="message-text">Hello, are you free to talk?</p>
-                        <p class="user-text"></p>
-                        <span class="message-times">10:30 AM</span>
-                    </div>
-                    
-                </div>
-
-                <div class="message-item" onclick="openConversation('Lex', 'Hello, are you free to talk?', 'avatar.png')">
-                    <img src="../img/avatar.png" alt="Profile Image" class="profile-img">
-                    <div class="message-details">
-                        <p class="user-name">Lex</p>
-                        <p class="message-text">Hello, are you free to talk?</p>
-                        <p class="user-text"></p>
-                        <span class="message-times">10:30 AM</span>
-                    </div>
-                    
-                </div>
-
-                <div class="message-item" onclick="openConversation('Jan', 'Hello, are you free to talk?', 'avatar.png')">
-                    <img src="../img/avatar.png" alt="Profile Image" class="profile-img">
-                    <div class="message-details">
-                        <p class="user-name">Jan</p>
-                        <p class="message-text">Hello, are you free to talk?</p>
-                        <p class="user-text"></p>
-                        <span class="message-times">10:30 AM</span>
-                    </div>
-                    
-                </div>
-
-                <div class="message-item" onclick="openConversation('Luka', 'Hello, are you free to talk?', 'avatar.png')">
-                    <img src="../img/avatar.png" alt="Profile Image" class="profile-img">
-                    <div class="message-details">
-                        <p class="user-name">Luka</p>
-                        <p class="message-text">Hello, are you free to talk?</p>
-                        <p class="user-text"></p>
-                        <span class="message-times">10:30 AM</span>
-                    </div>
-                    
-                </div>
-
-                <div class="message-item" onclick="openConversation('Anthony', 'Hello, are you free to talk?', 'john.png')">
-                    <img src="../img/john.png" alt="Profile Image" class="profile-img">
-                    <div class="message-details">
-                        <p class="user-name">Anthony</p>
-                        <p class="message-text">Hello, are you free to talk?</p>
-                        <p class="user-text"></p>
-                        <span class="message-times">10:30 AM</span>
-                    </div>
-                    
-                </div>
-
-                <div class="message-item" onclick="openConversation('James', 'Hello, are you free to talk?', 'james.png')">
+            ?>
+                <div class="message-item" onclick="openConversation('<?php echo $rows['First_Name']; ?>', <?php echo $rows['User_ID']; ?>)">
                     <img src="../img/lebron.png" alt="Profile Image" class="profile-img">
                     <div class="message-details">
-                        <p class="user-name">James</p>
-                        <p class="message-text">Hello, are you free to talk?</p>
+                        <p class="user-name"><?php echo $rows['First_Name']; ?> <?php echo $rows['Last_Name']; ?></p>
+                        <?php
+                        if($last_send) {
+                        ?>
+                        <p class="message-text"><?php echo $last_send['message'] ?></p>
                         <p class="user-text"></p>
-                        <span class="message-times">10:30 AM</span>
+                        <span class="message-times"><?php echo date("h:i A", strtotime($last_send['created_at'])) ?></span>
+                        <?php
+                        }
+                        ?>
                     </div>
-                    
                 </div>
+            <?php
+            }
+            ?>
             </div>
+
         </div>
 
         <!-- Panel Box for Conversation Body -->
         <div class="conversation-body" id="conversation-body">
             <div class="header-box">
-                <img src="../img/annette.png" alt="Profile Image" class="profile-img">
-                <p class="user-name" id="conversation-user-name">Jane Smith</p>
+                <img src="../img/lebron.png" alt="Profile Image" class="profile-img">
+                <p class="user-name" id="conversation-user-name">Lebron James</p>
             </div>
-            <div class="conversation" id="conversation">
+            <div class="conversation" id="conversation" style="color: white">
                 <!-- Conversation will appear here -->
             </div>
             <div class="bottom-box">
@@ -144,6 +86,90 @@ if(!isset($_SESSION['ID'])){
             </div>
         </div>
     </div>
-    <script src="chats.js"></script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+let receiverId = null; // Store the receiver's ID here
+
+// Function to open the conversation and set the receiverId
+function openConversation(userName, userId) {
+    receiverId = userId; // Store receiverId when conversation is opened
+    document.getElementById("conversation-user-name").textContent = userName;
+    document.getElementById("conversation-user-name").setAttribute("data-user-id", userId); // Store receiverId in a data attribute
+    fetchMessages(userId); // Fetch previous messages for the conversation
+}
+
+// Function to fetch messages from the server
+function fetchMessages(receiverId) {
+    $.ajax({
+        url: 'fetch_messages.php', // Your PHP script to get messages
+        type: 'POST',
+        data: { receiver_id: receiverId },
+        dataType: 'json',
+        success: function(response) {
+            if (response.success) {
+                let conversationBox = document.getElementById("conversation");
+                conversationBox.innerHTML = ""; // Clear previous messages
+
+                response.messages.forEach(message => {
+                    let messageDiv = document.createElement("div");
+                    messageDiv.classList.add("message");
+
+                    if (message.sender_id == response.current_user) {
+                        messageDiv.classList.add("sent"); // Message from the logged-in user
+                    } else {
+                        messageDiv.classList.add("received"); // Message from the other user
+                    }
+
+                    messageDiv.innerHTML = `<p>${message.text}</p><span>${message.time}</span>`;
+                    conversationBox.appendChild(messageDiv);
+                });
+
+                // Scroll to the bottom to show the latest messages
+                conversationBox.scrollTop = conversationBox.scrollHeight;
+            } else {
+                console.error("Error fetching messages:", response.error);
+            }
+        },
+        error: function() {
+            console.error("AJAX error while fetching messages.");
+        }
+    });
+}
+
+// Function to send a message
+function sendMessage() {
+    let messageInput = document.getElementById("message-input");
+    let messageText = messageInput.value.trim();
+
+    // Ensure receiverId is set
+    if (receiverId === null) {
+        alert("No recipient selected!");
+        return;
+    }
+
+    if (messageText === "") return; // Don't send empty messages
+
+    // Send the message via AJAX
+    $.ajax({
+        url: 'send_message.php',
+        type: 'POST',
+        data: { receiver_id: receiverId, message: messageText },
+        dataType: 'json',
+        success: function(response) {
+            if (response.success) {
+                fetchMessages(receiverId); // Refresh the conversation with the new message
+                messageInput.value = ""; // Clear the message input field
+            } else {
+                alert("Error: " + response.error);
+            }
+        },
+        error: function() {
+            alert("An error occurred while sending the message.");
+        }
+    });
+}
+
+    </script>
 </body>
 </html>

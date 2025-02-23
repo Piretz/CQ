@@ -39,14 +39,12 @@ if (isset($_POST['signup'])){
         $query = "INSERT INTO users (First_Name, Last_Name, Birth_Date, Email, Role, user_type, Level, level_progress, next_level, User_Password) VALUES ('$firstName', '$lastName', '$birthday', '$email', 'Student','New', 1, 0, 50, '$password')";
         $result = mysqli_query($con, $query);
         if ($result){
-            echo "<script>alert('success')</script>";
+            echo "<script>alert('Successfully Registration!')</script>";
         } else {
             echo $query;
         }
     }
 }    
-
-  
 
 if(isset($_SESSION['ID'])){
     header("Location: selectmode/mode.php");
@@ -301,16 +299,21 @@ if(isset($_SESSION['ID'])){
                                 <input type="text" id="lastName" name="lastName" required placeholder="Ex: Doe">
                             </div>
                             <div class="signupform-group">
-                                <label for="username">Username:</label>
-                                <input type="text" id="username" name="username" required placeholder="Ex: johndoe123">
+                                <label for="email">Email Address:</label>
+                                <input type="email" id="email" name="email" required placeholder="Ex: johndoe@example.com">
                             </div>
                         </div>
 
                         <!-- Second Row -->
                         <div class="signupform-row">
+                            
                             <div class="signupform-group">
-                                <label for="email">Email Address:</label>
-                                <input type="email" id="email" name="email" required placeholder="Ex: johndoe@example.com">
+                                <label for="gender">Gender:</label>
+                                <select id="gender" name="gender" required>
+                                    <option value="" disabled selected>Select Gender</option>
+                                    <option value="male">Male</option>
+                                    <option value="female">Female</option>
+                                </select>
                             </div>
                             <div class="signupform-group">
                                 <label for="birthday">Birthday:</label>

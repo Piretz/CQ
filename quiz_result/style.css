@@ -1,0 +1,164 @@
+/* General Styling */
+body {
+    font-family: 'Zen Dots', sans-serif;
+    background: url('../img/bgBodyUsersLobby.png') no-repeat center center fixed;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    text-align: center;
+    color: white;
+    margin: 0;
+    padding: 0;
+}
+
+/* Quiz Completed Panel */
+.quiz-correct {
+    position: relative;
+    width: 100%;
+    max-width: 900px;
+    background: url("../img/bgPanelQuizResult.png") no-repeat center;
+    background-size: 100% 70%; /* Adjusted to cover the container properly */
+    background-repeat: no-repeat;
+    background-position: center;
+    padding: 80px;
+    border-radius: 15px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    color: white;
+    margin: 50px auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 650px; /* Increased height to fit content */
+}
+
+/* Quiz Content */
+.quiz-content-completed {
+    position: relative;
+    top: 100px;
+    width: 100%;
+    max-width: 750px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Quiz Title */
+.quiz-completed {
+    font-size: 36px;
+    margin-bottom: 10px;
+}
+
+/* Quiz Result */
+.quiz-result {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+/* Quiz Rewards Section */
+.quiz-rewards {
+    width: 100%;
+    max-width: 700px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    
+}
+
+.progress-container {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    margin: 10px 0;
+}
+
+.progress-label {
+    font-size: 18px;
+    font-weight: bold;
+    margin-right: 10px;
+    white-space: nowrap;
+}
+
+.progress-bar {
+    flex-grow: 1;
+    height: 20px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+}
+
+.progress-fill {
+    height: 100%;
+    background: #00E508;
+    transition: width 0.5s ease-in-out;
+}
+
+.progress-points {
+    position: absolute;
+    right: 10px;
+    font-size: 14px;
+    font-weight: bold;
+    color: white;
+}
+
+
+/* Badge Section */
+.quiz-badge-container {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.quiz-badges {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 100px;
+}
+
+.quiz-badge-image {
+    width: 60px;
+    height: 60px;
+}
+
+/* Buttons */
+.quiz-buttons-completed {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 400px;
+    margin-top: 30px;
+}
+
+.btn-exit,
+.btn-back-lesson {
+    background: linear-gradient(to top, #FF0000, #B80000);
+    color: white;
+    font-size: 18px;
+    padding: 12px 20px;
+    width: 48%;
+    border: none;
+    border-radius: 10px;
+    transition: 0.3s;
+    font-family: 'Zen Dots', sans-serif;
+    cursor: pointer;
+}
+
+.btn-back-lesson {
+    background: linear-gradient(to top, #37FF00, #00B816);
+}
+
+.btn-exit:hover,
+.btn-back-lesson:hover {
+    transform: scale(1.05);
+}

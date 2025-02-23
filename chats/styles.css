@@ -178,18 +178,61 @@ body {
 }
 
 .conversation {
+    display: flex;
+    flex-direction: column;
     max-height: 600px;
     overflow-y: auto;
     -ms-overflow-style: none;
     scrollbar-width:none;
     margin-bottom: 20px;
     flex-grow: 1;
+    color: #fff;
+    gap: 20px;
+    padding: 20px;
 }
 
 .message {
+    max-width: 50%;
+    padding: 10px;
+    border-radius: 10px;
+    font-size: 14px;
     display: flex;
-    align-items: flex-start;
-    margin-bottom: 10px;
+    flex-direction: column;
+    word-wrap: break-word; /* Ensures long words break */
+    overflow-wrap: break-word; /* Ensures text does not overflow */
+}
+
+.sent {
+    align-self: flex-end;
+    border: 2px solid #FCAE00;
+    color: white;
+    text-align: left;
+    border-top-right-radius: 0;
+}
+
+.received {
+    align-self: flex-start;
+    border: 2px solid #fff;
+    color: white;
+    text-align: left;
+    border-top-left-radius: 0;
+}
+
+.message span {
+    font-size: 12px;
+    display: block;
+    margin-top: 5px;
+    opacity: 0.7;
+    word-wrap: break-word;
+}
+
+/* Ensure messages are always at the bottom */
+.conversation-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    height: 100%;
+    max-width: 60%;
 }
 
 .message.friend {

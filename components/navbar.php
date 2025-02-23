@@ -47,9 +47,9 @@ $badge_count = mysqli_num_rows($badge_count_result);
 
               <!-- Middle Section -->
               <div class="middle">
-                <span class="badges">🏅</span>
+                <!-- <span class="badges">🏅</span> -->
                 <h1>Code Wizard</h1>
-                <span>5</span>
+                <!-- <span>5</span> -->
               </div>
 
               <!-- End Section -->

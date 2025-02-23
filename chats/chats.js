@@ -1,3 +1,35 @@
+function sendMessage() {
+    const messageInput = document.getElementById('message-input');
+    const messageText = messageInput.value.trim();
+    if (messageText === "") return; // Do nothing if input is empty
+
+    const xhr = new XMLHttpRequest();
+    xhr.open("POST", "sendMessage.php", true);
+    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+            const response = JSON.parse(xhr.responseText);
+            if (response.success) {
+                // Add the message to the conversation
+                const conversation = document.getElementById('conversation');
+                const newMessage = document.createElement('div');
+                newMessage.classList.add('message', 'me');
+                newMessage.innerHTML = `
+                    <img src="" alt="My Profile Image" class="profile-img">
+                    <p class="message-text">${messageText}</p>
+                    <span class="message-time">${response.time}</span>
+                `;
+                conversation.appendChild(newMessage);
+                messageInput.value = ""; // Clear the input field
+                conversation.scrollTop = conversation.scrollHeight; // Scroll to the bottom
+            } else {
+                alert("Failed to send message");
+            }
+        }
+    };
+    xhr.send(`message=${encodeURIComponent(messageText)}`);
+}
+
 function openConversation(userName, initialMessage, profileImg) {
     // Set up the conversation header
     const headerBox = document.querySelector('.header-box');
@@ -8,71 +40,21 @@ function openConversation(userName, initialMessage, profileImg) {
     `;
     userNameLabel.textContent = userName; // Ensure the name remains static
 
-    // Set up the conversation messages
-    const conversation = document.getElementById('conversation');
-    conversation.innerHTML = `
-        <div class="message friend">
-           
-            <img src="../img/${profileImg}" alt="Friend's Profile Image" class="profile-img">
-            <p class="message-text">${initialMessage}</p>
-            <span class="message-time"></span>
-        </div>
-        <div class="message me">
-            <span class="message-label"></span>
-            <img src="../img/john.png" alt="My Profile Image" class="profile-img">
-            <p class="message-text">Yeah, what's up?</p>
-            <span class="message-time">10:36 AM</span>
-        </div>
-    `;
-}
-
-function sendMessage() {
-const messageInput = document.getElementById('message-input');
-const messageText = messageInput.value;
-if (messageText.trim() === "") return; // Do nothing if input is empty
-
-// Get current time
-const currentTime = new Date().toLocaleTimeString([], {hour: '2-digit', minute: '2-digit'});
-
-// Add the message to the conversation
-const conversation = document.getElementById('conversation');
-const newMessage = document.createElement('div');
-newMessage.classList.add('message', 'me');
-newMessage.innerHTML = `
-    
-    <img src="../img/john.png" alt="My Profile Image" class="profile-img">
-    <p class="message-text">${messageText}</p>
-    <span class="message-time">${currentTime}</span>
-`;
-conversation.appendChild(newMessage);
-
-// Update the last message in the message details with "YOU: HI"
-const messageDetails = document.querySelector('.message-details');
-const messageTextElement = messageDetails.querySelector('.message-text');
-const messageTimeElement = messageDetails.querySelector('.message-times');
-
-if (messageTextElement) {
-    // If message-text exists, just update it without removing the username
-    messageTextElement.innerHTML = `<span class="message-label">You:</span> ${messageText}`;
-    messageTimeElement.textContent = currentTime; // Update the message time in the message list
-} else {
-    // If message-text doesn't exist (initial state), set it
-    messageDetails.innerHTML = `  
-        <p class="message-text">
-            <span class="message-label"></span> ${messageText}
-        </p>
-        <span class="message-time">${currentTime}</span>
-    `;
-}
-
- // Update message-time in the messages list
-    const messageItem = document.querySelector('.message-item');
-    const messageTimeInList = messageItem.querySelector('.message-times');
-    messageTimeInList.textContent = currentTime; // Update time in message list
-
-    // Clear the input field
-    messageInput.value = "";
-
-    // Scroll to the bottom of the conversation
-    conversation.scrollTop = conversation.scrollHeight;
+    // Fetch conversation messages from the backend
+    const xhr = new XMLHttpRequest();
+    xhr.open("GET", `getMessages.php?user=${encodeURIComponent(userName)}`, true);
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+            const messages = JSON.parse(xhr.responseText);
+            const conversation = document.getElementById('conversation');
+            conversation.innerHTML = messages.map(message => `
+                <div class="message ${message.sender === 'me' ? 'me' : 'friend'}">
+                    <img src="../img/${message.sender === 'me' ? 'john.png' : profileImg}" alt="Profile Image" class="profile-img">
+                    <p class="message-text">${message.text}</p>
+                    <span class="message-time">${message.time}</span>
+                </div>
+            `).join('');
+        }
+    };
+    xhr.send();
 }
