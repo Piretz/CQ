@@ -35,27 +35,10 @@ $user_type = $user_row['user_type'];
           <?php include '../components/navbar.php'; ?>
 
           <!-- dailyquest animated button image -->
-          <!-- <div class="dailyquest-container">
-            <img src="../img/dailyquest.png" alt="Daily Quest" class="dailyquest-image" id="dailyquest" onclick="window.location.href='../quest/quest.php';">
+          <div class="dailyquest-container">
+            <img src="../img/dailyquest.png" alt="Daily Quest" class="dailyquest-image" onclick="window.location.href='../dailyquest/dailyquest.php';">
             <div class="dailyquest-text">Daily Quest</div>
-          </div> -->
-
-          <script>
-                  function showLoadingAndRedirect(url) {
-                
-                    document.getElementById("loading").style.display = "flex";
-                    setTimeout(function() {
-                      window.location.href = url;
-                    }, 2000);
-                  }
-
-                  // Event listener for Take Lesson button
-                  document.getElementById("dailyquest").addEventListener("click", function() {
-                    showLoadingAndRedirect('../quest/quest.php');
-                  });
-                </script>
-
-
+          </div>
             <!-- Walkthrough Overlay -->
             <?php
                 if($user_type == "New"){
@@ -89,14 +72,14 @@ $user_type = $user_row['user_type'];
                 <img src="../img/mdSolo.png" alt="Solo Mode" class="solo-mode walkthrough-item locked" id="solomodeImage">
                 <img src="../img/mdpvp.png" alt="PvP Mode" class="pvp-mode walkthrough-item locked" id="multimodeImage"> 
                 <img src="../img/mdLesson.png" alt="Lesson Mode" class="lesson-mode walkthrough-item unlocked" id="lessonModeImage" onclick="window.location.href='../lesson/lesson.php';">
-                <img src="../img/mdpractice.png" alt="Practice Mode" class="practice-mode walkthrough-item locked" id="practiceModeImage" onclick="window.location.href='../practicemode_carousel/practice_mode.php';">
+                <img src="../img/mdpractice.png" alt="Practice Mode" class="practice-mode walkthrough-item locked" id="practiceModeImage" onclick="window.location.href='../selectcourse/course.php';">
             </div>
 
             <!-- FOR NEW USER WALKTHROUGH NewUserLoad DOMContentLoaded-->
               <script>
                  document.addEventListener("DOMContentLoaded", function () {
                     const steps = [
-                        { text: "Hi User's, Welcome to Cipherion! Get ready to learn coding in a fun and exciting way. Face challenges, solve puzzles, and become a coding hero. Ready to begin your adventure? Let’s go!", highlight: null },
+                        { text: "Hi User, Welcome to CoDev!", highlight: null },
                         { text: "This is Solo Mode, where you can practice coding alone!", highlight: "solomodeImage" },
                         { text: "This is Multiplayer Mode, where you can compete with others!", highlight: "multimodeImage" },
                         { text: "Lesson Mode helps you learn new programming concepts!", highlight: "lessonModeImage" },
@@ -213,12 +196,14 @@ $user_type = $user_row['user_type'];
                   <h2>Welcome to Code Quest!</h2>
               </div>
               <!-- Add your chat messages here -->
-              <div class="chat-message">
+              <div id = "chat-message" class="chat-message">
 
               </div>
               <!-- Add more chat messages as needed -->
-          </div>
+                </div>
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="message.js"></script>             
           <script>
             function toggleChatPanel() {
                 var chatPanelBox = document.getElementById('chatPanelBox');
@@ -230,31 +215,35 @@ $user_type = $user_row['user_type'];
             }
 
             function sendMessage() {
-                var chatInput = document.getElementById('chatInput');
-                var chatPanelBox = document.getElementById('chatPanelBox');
-                var message = chatInput.value.trim();
+              let message = document.getElementById("chatInput").value.trim();
 
-                if (message) {
-                    var newMessage = document.createElement('div');
-                    newMessage.className = 'chat-message';
+              if (message === "") {
+                  alert("Please enter a message!");
+                  return;
+              }
 
-                    var userIcon = document.createElement('img');
-                    userIcon.src = '../img/avatar.png';
-                    userIcon.alt = 'User Icon';
-                    userIcon.className = 'user-icon';
+              $.ajax({
+                  url: 'send_message.php',
+                  type: 'POST',
+                  data: { message: message },
+                  dataType: 'json',
+                  success: function(response) {
+                      console.log("Server Response:", response); // Debugging
+                      if (response.success) {
+                          console.log("Message sent successfully!");
+                          document.getElementById("chatInput").value = ""; // Clear input
+                      } else {
+                          alert("Error: " + response.error);
+                      }
+                  },
+                  error: function(xhr, status, error) {
+                      console.error("AJAX Error:", status, error);
+                      alert("AJAX error: " + error);
+                  }
+              });
+          }
 
-                    var messageText = document.createElement('span');
-                    messageText.textContent = message;
 
-                    newMessage.appendChild(userIcon);
-                    newMessage.appendChild(messageText);
-                    chatPanelBox.appendChild(newMessage); // Append at the bottom
-                    chatInput.value = ''; // Clear the input field
-
-                    // Scroll to the bottom of the chat panel box
-                    chatPanelBox.scrollTop = chatPanelBox.scrollHeight;
-                }
-            }
           </script>
 
                   

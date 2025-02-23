@@ -90,55 +90,55 @@ body {
   font-family: Poppins;
 }
   
-  .middle {
-    text-align: center;
-    flex-grow: 1;
-    align-items: center;
-    justify-items: center;
-  }
-  
-  .middle .badges {
-    position: relative;
-    top: 10px;
-    left: 14%;
-  }
-  
-  .middle h1 {
-    margin: 0;
-    font-size: 3.65rem;
-    position: relative;
-    right: 36px;
-    top: 10px;
-    font-family: zen dots;
-  }
-  .middle span {
-    position: relative;
-    right: 18%;
-    top: 10px;
-    font-size: 50px;
-    color: #221080;
-  }
-  
-  .end img {
-    width: 26%;
-    height: 8%;
-    cursor: pointer;
-    top: 60px;
-    right: 40px;
-    position: relative;
-  }
-  
-  .end img:hover {
-    transform: scale(1.1);
-  }
-  
-  .icon {
-    fill: #555;
-  }
-  
-  .icon:hover {
-    fill: #000;
-  }
+.middle {
+  text-align: center;
+  flex-grow: 1;
+  align-items: center;
+  justify-items: center;
+}
+
+.middle .badges {
+  position: relative;
+  top: 10px;
+  left: 14%;
+}
+
+.middle h1 {
+  margin: 0;
+  font-size: 3.65rem;
+  position: relative;
+  right: 36px;
+  top: 10px;
+  font-family: zen dots;
+}
+.middle span {
+  position: relative;
+  right: 18%;
+  top: 10px;
+  font-size: 50px;
+  color: #221080;
+}
+
+.end img {
+  width: 26%;
+  height: 8%;
+  cursor: pointer;
+  top: 60px;
+  right: 40px;
+  position: relative;
+}
+
+.end img:hover {
+  transform: scale(1.1);
+}
+
+.icon {
+  fill: #555;
+}
+
+.icon:hover {
+  fill: #000;
+}
 
   /* Responsiveness for smaller screens */
 @media screen and (max-width: 768px) {

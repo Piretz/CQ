@@ -4,7 +4,7 @@ session_start();
 
 $Lobby_ID = $_SESSION['lobby_id'];
 
-$query = "UPDATE queue SET status = 'Playing' WHERE queue_id = $Lobby_ID";
+$query = "UPDATE queue SET status = 'Playing', question_id = '1' WHERE queue_id = $Lobby_ID";
 $result  = mysqli_query($con , $query);
 
 if($result){
