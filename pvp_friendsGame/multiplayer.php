@@ -344,7 +344,7 @@ function userScreenUpdate(currentPlayerTurnId){
         btnTeam2Run.style.display = 'block';
         btnTeam2CodeView.placeholder = "Enter your code here..."
 
-        btnTeam2CodeView?.setAttribute('disabled');
+        btnTeam2CodeView?.removeAttribute('disabled');
         return;
       }
     }
